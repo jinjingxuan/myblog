@@ -125,3 +125,12 @@ git config --global http.proxy <代理地址>
 git config --global --unset http.proxy
 ```
 
+3、`cd ..` 和 `cd -` 有什么区别
+
+* `cd..`：返回到上一级目录
+* `cd -`：返回到上一次的工作目录
+
+4、`git add .`与`git add -A`的区别
+
+* `git add .`：将修改和新增的文件添加到暂存区
+* `git add -A`：将修改，新增和删除的文件添加到暂存区（方便恢复被删除的文件）
