@@ -12,12 +12,40 @@ module.exports = {
     editLinkText: '在 Github 上帮助我们编辑此页',
     nav: [
       {text: '首页', link: '/'},
+      {
+        text: '文章分类',
+        items: [
+          { text: 'css基础', link: '/css/bfc'},
+          { text: 'javascript基础', link: '/javascript/asynchronous'},
+          { text: 'vue框架', link: '/vue/code-1'},
+          { text: 'react框架', link: '/react/react-1'},
+          { text: 'san框架', link: '/san/san'},
+          { text: 'virtual dom', link: '/virtual-dom/virtualdom'},
+          { text: 'webpack', link: '/webpack/webpack1'},
+          { text: 'typescript', link: '/ts/ts'},
+          { text: 'nodejs', link: '/node/node-1'},
+          { text: '正则表达式', link: '/regular/regular'},
+          { text: '移动端问题', link: '/mobile/adaptation'},
+          { text: '算法', link: '/algorithm/array'},
+          { text: '设计模式', link: '/design-pattern/design-pattern'},
+          { text: '前端路由', link: '/route/route'},
+          { text: '前端工程化', link: '/engineering/engineering'},
+          { text: '前端安全', link: '/safe/safe'},
+          { text: '模块化', link: '/module/module'},
+          { text: '面试题', link: '/interview/interview'},
+          { text: '浏览器', link: '/chrome/gc'},
+          { text: '计算机基础', link: '/computer/computer'},
+          { text: '代码规范', link: '/code-style/code-style'},
+          { text: '常用工具', link: '/tool/tool'},
+        ]
+      }
     ],
     lastUpdated: '最后更新时间',
+    sidebarDepth: 0,
     sidebar: [
       {
         title: 'css基础',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/css/bfc',
           '/css/box',
@@ -27,7 +55,7 @@ module.exports = {
       },
       {
         title: 'javascript基础',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/javascript/asynchronous',
           '/javascript/clone',
@@ -46,7 +74,7 @@ module.exports = {
       },
       {
         title: 'vue框架',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/vue/code-1',
           '/vue/code-2',
@@ -61,14 +89,14 @@ module.exports = {
       },
       {
         title: 'san框架',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/san/san',
         ]
       },
       {
         title: 'react框架',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/react/react-1',
           '/react/react-2',
@@ -76,7 +104,7 @@ module.exports = {
       },
       {
         title: 'virtual dom',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/virtual-dom/virtualdom',
           '/virtual-dom/example',
@@ -84,7 +112,7 @@ module.exports = {
       },
       {
         title: 'webpack',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/webpack/webpack1',
           '/webpack/webpack2',
@@ -97,21 +125,21 @@ module.exports = {
       },
       {
         title: 'typescript',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/ts/ts',
         ]
       },
       {
         title: 'ssr',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/ssr/ssr',
         ]
       },
       {
         title: 'node',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/node/node-1',
           '/node/node-2',
@@ -123,14 +151,14 @@ module.exports = {
       },
       {
         title: '正则表达式',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/regular/regular',
         ]
       },
       {
         title: '移动端问题',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/mobile/adaptation',
           '/mobile/long-list',
@@ -138,7 +166,7 @@ module.exports = {
       },
       {
         title: '算法',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/algorithm/array',
           '/algorithm/dfs-bfs',
@@ -156,7 +184,7 @@ module.exports = {
       },
       {
         title: '设计模式',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/design-pattern/design-pattern',
           '/design-pattern/object',
@@ -164,14 +192,14 @@ module.exports = {
       },
       {
         title: '前端路由',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/route/route',
         ]
       },
       {
         title: '前端工程化',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/engineering/engineering',
           '/engineering/eslint',
@@ -182,21 +210,21 @@ module.exports = {
       },
       {
         title: '前端安全',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/safe/safe',
         ]
       },
       {
         title: '模块化',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/module/module',
         ]
       },
       {
         title: '面试题',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/interview/interview',
           '/interview/algorithm',
@@ -218,7 +246,7 @@ module.exports = {
       },
       {
         title: '浏览器',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/chrome/gc',
           '/chrome/render',
@@ -226,28 +254,28 @@ module.exports = {
       },
       {
         title: '计算机基础',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/computer/computer',
         ]
       },
       {
         title: 'git',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/git/git',
         ]
       },
       {
         title: '代码规范',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/code-style/code-style',
         ]
       },
       {
         title: '常用工具',
-        collapsable: true,
+        collapsable: false,
         children: [
           '/tool/tool',
         ]

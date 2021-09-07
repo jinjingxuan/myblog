@@ -1,4 +1,4 @@
-# 什么是BFC
+# BFC
 
 在一个Web页面的CSS渲染中，[块级格式化上下文](http://www.w3.org/TR/CSS21/visuren.html#block-formatting) (Block Fromatting Context)是按照块级盒子布局的。W3C对BFC的定义如下：
 
@@ -8,10 +8,10 @@
 
 为了便于理解，我们换一种方式来重新定义BFC。一个HTML元素要创建BFC，则满足下列的任意一个或多个条件即可：
 
-1、float的值不是none。
-2、position的值不是static或者relative。
-3、display的值是inline-block、table-cell、flex、table-caption或者inline-flex
-4、overflow的值不是visible
+1. float的值不是none。
+2. position的值不是static或者relative。
+3. display的值是inline-block、table-cell、flex、table-caption或者inline-flex
+4. overflow的值不是visible
 
 BFC是一个独立的布局环境，其中的元素布局是不受外界的影响，并且在一个BFC中，块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。
 
