@@ -8,7 +8,7 @@ module.exports = {
     logo: '',
     repo: 'jinjingxuan',
     docsDir: 'docs',
-    editLinks: true,
+    editLinks: false,
     editLinkText: '在 Github 上帮助我们编辑此页',
     nav: [
       {text: '首页', link: '/'},
