@@ -280,6 +280,13 @@ module.exports = {
           '/tool/tool',
         ]
       },
+      {
+        title: '扩展阅读',
+        collapsable: false,
+        children: [
+          '/read/read',
+        ]
+      },
     ],
     nextLinks: true,
     prevLinks: true,
