@@ -92,6 +92,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/san/san',
+          '/san/eslint-plugin-san',
         ]
       },
       {

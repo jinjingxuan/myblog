@@ -10,6 +10,7 @@ categories: 规范
 * Iterm2 + oh my zsh
 * nvm和n
 * Homebrew
+* tree
 * npm, cnpm, yarn
 
 ## VSCode 常用插件
@@ -66,6 +67,12 @@ categories: 规范
 
 [Homebrew](https://zhuanlan.zhihu.com/p/90508170)是一款自由及开放源代码的软件包管理系统，用以简化macOS系统上的软件安装过程。对于Appstore中没有的软件，推荐使用此方法安装管理第三方软件。
 
+## tree
+
+安装：`brew install tree`
+
+使用：`tree -a`
+
 ## npm, cnpm, yarn,tyarn
 
 下载完 node 就自动有了 npm
@@ -77,6 +84,8 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```js
 cnpm i -g yarn
 ```
+
+
 
 ## 同时配置github和gitlab
 
