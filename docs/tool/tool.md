@@ -12,6 +12,7 @@ categories: 规范
 * Homebrew
 * tree
 * npm, cnpm, yarn
+* carbon
 
 ## VSCode 常用插件
 
@@ -85,8 +86,6 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm i -g yarn
 ```
 
-
-
 ## 同时配置github和gitlab
 
 [git配置github与gitlab同时使用](https://blog.csdn.net/qq_36625806/article/details/111589620)
@@ -94,3 +93,7 @@ cnpm i -g yarn
 ## github访问慢
 
 [解决GitHub下载速度太慢问题](https://www.jianshu.com/p/238f8242e1a6)
+
+## carbon
+
+https://carbon.now.sh/

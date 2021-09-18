@@ -5,13 +5,11 @@ categories: San
 ---
 # [eslint-plugin-san](https://ecomfe.github.io/eslint-plugin-san/)
 
-> 参考：[百度工程师手把手教你实现代码规范检测工具](https://zhuanlan.zhihu.com/p/385386585)
-
 [eslint-plugin-san](https://ecomfe.github.io/eslint-plugin-san/) 是专门为 san 制定的基于 eslint 的规则校验插件。我会从以下几个方面来介绍：
 
 * eslint 使用及配置
 * eslint-plugin-san 使用及配置
-* 源码结构解析
+* 源码解析
 * 如何创建自己的规则
 * San-eslint-parser
 * 如何调试
@@ -68,8 +66,8 @@ module.exports = {
   * `ecmaFeature`：想使用额外的语言特性
     * `"jsx":true`： 启用jsx
 * plugins：插件，例如想增加校验 react, ts 的规则，可配置如下
-  * eslint-plugin-react
-  * @typescript-eslint
+  * `eslint-plugin-react`
+  * `@typescript-eslint`
 * rules：可以自定义配置校验规则
   * `'no-alert': "error"` ： 有 off/warn/error 选项
 * globals：声明可以使用的全局成员
@@ -96,6 +94,8 @@ module.exports = {
 yarn add -D eslint eslint-plugin-san
 ```
 
+用`extends`方式可以配置想要的规则集，例如`plugin:san/recommended`，`recommended`内部已经在`rules`配置好了相应的规则。如果配置到`plugins`中，还需在`rules`中自己添加规则。
+
 ```js
 // .eslintrc.js
 module.exports = {
@@ -111,7 +111,7 @@ module.exports = {
 }
 ```
 
-### 如何使用
+### 如何检测
 
 ```sh
 eslint --ext .js,.san ./src
@@ -119,7 +119,23 @@ eslint --ext .js,.san ./src
 
 `--ext`命令可以明确校验文件扩展：`.js`和`.san`文件都可以校验。
 
-## 源码结构解析
+### 利用 husky 和 lint-staged 构建工作流
+
+* husky：git hooks 工具，可以配置在 commit 之前执行检查。
+* lint-staged：只对暂存区的文件进行操作。
+
+```json
+"lint-staged": {
+  "**/*.{js,jsx,san}": "eslint --ext .js,.san ./src"
+},
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+```
+
+## 源码解析
 
 > 源码地址：https://github.com/ecomfe/eslint-plugin-san
 
@@ -319,7 +335,7 @@ module.exports = {
   * `scheme`：用来描述一个规则的选项，ESLint 会用它来验证配置中的选项是否有效。在传入到规则中之前，避免 context.options 出现无效或非法输入。
 * `create` (function) 返回一个对象，其中包含了 ESLint 在遍历 JavaScript 代码的抽象语法树 AST ([ESTree](https://github.com/estree/estree) 定义的 AST) 时，用来访问节点的方法。
   - 如果一个 key 是个节点类型或 [selector](https://cn.eslint.org/docs/developer-guide/selectors)，在 **向下** 遍历树时，ESLint 调用 **visitor** 函数
-  - 如果一个 key 是个节点类型或 [selector](https://cn.eslint.org/docs/developer-guide/selectors)，并带有 `:exit`，在遍历退出该节点时，ESLint 调用 **visitor** 函数
+  - 如果一个 key 是个节点类型或 [selector](https://cn.eslint.org/docs/developer-guide/selectors)，并带有 `:exit`，在遍历退出该节点时（DFS），ESLint 调用 **visitor** 函数
   - 如果一个 key 是个事件名字，ESLint 为[代码路径分析](https://cn.eslint.org/docs/developer-guide/code-path-analysis)调用 **handler** 函数
 
 ::: tip
@@ -412,7 +428,7 @@ module.exports = {
     },
     "dependencies": {
       "eslint": "^7.32.0",
-        "eslint-plugin-san": "^1.0.2"
+      "eslint-plugin-san": "^1.0.2"
     }
 }
 ```
@@ -451,6 +467,11 @@ node --inspect-brk index.js
 }
 ```
 
+5. [vscode配置](https://ecomfe.github.io/eslint-plugin-san/user-guide/#editor-integrations)
+
+* 下载 [eslint 插件](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+* 配置 settings.json
+
 ## [常见的 AST 节点类型](https://github.com/NightTeam/JavaScriptAST)
 
 | 类型原名称               | 中文名称     | 描述                                                  |
@@ -475,3 +496,5 @@ node --inspect-brk index.js
 | NumericLiteral           | 数字型字面量 | 数字，例如 100                                        |
 | StringLiteral            | 字符型字面量 | 字符串，例如 vansenb                                  |
 | SwitchCase               | Case 语句    | 通常指 Switch 语句中的 Case                           |
+
+参考：[百度工程师手把手教你实现代码规范检测工具](https://zhuanlan.zhihu.com/p/385386585)
