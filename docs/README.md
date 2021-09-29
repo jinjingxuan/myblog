@@ -12,15 +12,15 @@
 
 # 文章目录
 
-* [css基础](/myblog/css/bfc)
+* [css](/myblog/css/bfc)
 
-* [javascript基础](/myblog/javascript/asynchronous)
+* [javascript](/myblog/javascript/asynchronous)
 
-* [vue框架](/myblog/vue/code-1)
+* [vue](/myblog/vue/code-1)
 
-* [react框架](/myblog/react/react-1)
+* [react](/myblog/react/react-1)
 
-* [san框架](/myblog/san/san)
+* [san](/myblog/san/san)
 
 * [virtual dom](/myblog/virtual-dom/virtualdom)
 

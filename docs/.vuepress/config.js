@@ -1,5 +1,5 @@
 module.exports = {
-  title: '个人博客',
+  title: '金靖轩的博客',
   base: '/myblog/',
   head: [
     // ['link', { rel: 'icon', href: '/' }]
@@ -15,11 +15,11 @@ module.exports = {
       {
         text: '文章分类',
         items: [
-          { text: 'css基础', link: '/css/bfc'},
-          { text: 'javascript基础', link: '/javascript/asynchronous'},
-          { text: 'vue框架', link: '/vue/code-1'},
-          { text: 'react框架', link: '/react/react-1'},
-          { text: 'san框架', link: '/san/san'},
+          { text: 'css', link: '/css/bfc'},
+          { text: 'javascript', link: '/javascript/asynchronous'},
+          { text: 'vue', link: '/vue/code-1'},
+          { text: 'react', link: '/react/react-1'},
+          { text: 'san', link: '/san/san'},
           { text: 'virtual dom', link: '/virtual-dom/virtualdom'},
           { text: 'webpack', link: '/webpack/webpack1'},
           { text: 'typescript', link: '/ts/ts'},
@@ -44,8 +44,8 @@ module.exports = {
     sidebarDepth: 3,
     sidebar: [
       {
-        title: 'css基础',
-        collapsable: false,
+        title: 'css',
+        collapsable: true,
         children: [
           '/css/bfc',
           '/css/box',
@@ -54,8 +54,8 @@ module.exports = {
         ]
       },
       {
-        title: 'javascript基础',
-        collapsable: false,
+        title: 'javascript',
+        collapsable: true,
         children: [
           '/javascript/asynchronous',
           '/javascript/clone',
@@ -73,8 +73,8 @@ module.exports = {
         ]
       },
       {
-        title: 'vue框架',
-        collapsable: false,
+        title: 'vue',
+        collapsable: true,
         children: [
           '/vue/code-1',
           '/vue/code-2',
@@ -88,16 +88,16 @@ module.exports = {
         ]
       },
       {
-        title: 'san框架',
-        collapsable: false,
+        title: 'san',
+        collapsable: true,
         children: [
           '/san/san',
           '/san/eslint-plugin-san',
         ]
       },
       {
-        title: 'react框架',
-        collapsable: false,
+        title: 'react',
+        collapsable: true,
         children: [
           '/react/react-1',
           '/react/react-2',
@@ -105,7 +105,7 @@ module.exports = {
       },
       {
         title: 'virtual dom',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/virtual-dom/virtualdom',
           '/virtual-dom/example',
@@ -113,7 +113,7 @@ module.exports = {
       },
       {
         title: 'webpack',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/webpack/webpack1',
           '/webpack/webpack2',
@@ -126,7 +126,7 @@ module.exports = {
       },
       {
         title: 'typescript',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/ts/ts-base',
           '/ts/ts-advance',
@@ -134,14 +134,14 @@ module.exports = {
       },
       {
         title: 'ssr',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/ssr/ssr',
         ]
       },
       {
         title: 'node',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/node/node-1',
           '/node/node-2',
@@ -153,14 +153,14 @@ module.exports = {
       },
       {
         title: '正则表达式',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/regular/regular',
         ]
       },
       {
         title: '移动端问题',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/mobile/adaptation',
           '/mobile/long-list',
@@ -168,7 +168,7 @@ module.exports = {
       },
       {
         title: '算法',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/algorithm/array',
           '/algorithm/dfs-bfs',
@@ -186,7 +186,7 @@ module.exports = {
       },
       {
         title: '设计模式',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/design-pattern/design-pattern',
           '/design-pattern/object',
@@ -194,14 +194,14 @@ module.exports = {
       },
       {
         title: '前端路由',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/route/route',
         ]
       },
       {
         title: '前端工程化',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/engineering/engineering',
           '/engineering/eslint',
@@ -212,21 +212,21 @@ module.exports = {
       },
       {
         title: '前端安全',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/safe/safe',
         ]
       },
       {
         title: '模块化',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/module/module',
         ]
       },
       {
         title: '面试题',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/interview/interview',
           '/interview/algorithm',
@@ -248,7 +248,7 @@ module.exports = {
       },
       {
         title: '浏览器',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/chrome/gc',
           '/chrome/render',
@@ -256,35 +256,35 @@ module.exports = {
       },
       {
         title: '计算机基础',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/computer/computer',
         ]
       },
       {
         title: 'git',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/git/git',
         ]
       },
       {
         title: '代码规范',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/code-style/code-style',
         ]
       },
       {
         title: '常用工具',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/tool/tool',
         ]
       },
       {
         title: '扩展阅读',
-        collapsable: false,
+        collapsable: true,
         children: [
           '/read/read',
         ]
@@ -295,5 +295,6 @@ module.exports = {
   },
   markdown: {
     lineNumbers: false,
-  }
+  },
+  plugins: ['fulltext-search'],
 }
