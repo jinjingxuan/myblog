@@ -90,6 +90,25 @@ cnpm i -g yarn
 
 [git配置github与gitlab同时使用](https://blog.csdn.net/qq_36625806/article/details/111589620)
 
+```
+# gitlab
+Host icode
+  HostName gitlan.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa
+
+# github
+Host github
+  HostName github.com
+  User 915397405@qq.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_rsa_github
+```
+
+如果出现了 `git@github.com: Permission denied (publickey).`
+
+可以进入`ssh`目录运行下`ssh-add id_rsa_github`试试
+
 ## github访问慢
 
 [解决GitHub下载速度太慢问题](https://www.jianshu.com/p/238f8242e1a6)
