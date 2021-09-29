@@ -41,7 +41,7 @@ module.exports = {
       }
     ],
     lastUpdated: '最后更新时间',
-    sidebarDepth: 0,
+    sidebarDepth: 3,
     sidebar: [
       {
         title: 'css基础',
@@ -128,7 +128,8 @@ module.exports = {
         title: 'typescript',
         collapsable: false,
         children: [
-          '/ts/ts',
+          '/ts/ts-base',
+          '/ts/ts-advance',
         ]
       },
       {

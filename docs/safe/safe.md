@@ -177,7 +177,7 @@ XSS 攻击有两大要素：
     
     - None：Chrome 计划将`Lax`变为默认设置。这时，网站可以选择显式关闭`SameSite`属性，将其设为`None`。不过，前提是必须同时设置`Secure`属性（Cookie 只能通过 HTTPS 协议发送），否则无效。
     
-    - goole浏览器的设置
+    - goole浏览器的设置（chrome 91版本后已移除，默认值为 lax）
     
       #### SameSite by default cookies
     
@@ -193,6 +193,8 @@ XSS 攻击有两大要素：
       > 如果启用，没有SameSite限制的cookie也必须是安全的。如果没有设置SameSite限制的cookie没有Secure属性，它将被拒绝。此标志仅在启用'sameSite by default cookies'时有效。
     
       如果你想加 SameSite=none 属性，那么该 Cookie 就必须同时加上 Secure 属性，表示只有在 HTTPS 协议下该 Cookie 才会被发送。 
+      
+    - [iframe samesite问题](https://www.jianshu.com/p/cdfb7d0f69a7)
     
   - CSRF Token
 
