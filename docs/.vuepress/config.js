@@ -1,5 +1,5 @@
 module.exports = {
-  title: '金靖轩的博客',
+  title: 'Breeze blog',
   base: '/myblog/',
   head: [
     // ['link', { rel: 'icon', href: '/' }]
