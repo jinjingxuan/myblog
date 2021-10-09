@@ -93,6 +93,7 @@ module.exports = {
         children: [
           '/san/san',
           '/san/eslint-plugin-san',
+          '/san/composition',
         ]
       },
       {
