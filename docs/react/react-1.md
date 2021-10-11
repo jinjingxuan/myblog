@@ -1,5 +1,5 @@
 ---
-title: React基础（一）
+title: React基础
 date: 2021-06-17 11:27:54
 categories: React
 ---

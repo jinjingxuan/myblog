@@ -101,7 +101,8 @@ module.exports = {
         collapsable: true,
         children: [
           '/react/react-1',
-          '/react/react-2',
+          '/react/react-hooks',
+          '/react/redux',
         ]
       },
       {
