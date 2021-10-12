@@ -99,7 +99,29 @@ function Example(props) {
 
 ### useEffect
 
-```js
+> 类组件在生命周期中处理副作用，函数型组件使用 useEffect 来处理
+>
+> 可以把 useEffect 看做 componentDidMount，componentDidUpdate，componentWillUnmount 的组合
+>
+> 解决的问题：相干业务逻辑归置到同一副作用函数中，简化重复代码，使组件内部代码更加清晰
+
+#### 执行时机
+
+`useEffect` **必然会在 render 的时候执行一次**，其他的运行时机取决于以下情况：
+
+- 有没有第二个参数。`useEffect` hook 接受两个参数，第一个是要执行的代码，第二个是一个数组，指定一组依赖的变量，其中的变量发生变化时，此 effect 会重新执行一次。
+- 有没有返回值。 `useEffect` 的执行代码中可以返回一个函数，在每一次新的 render 进行前或者组件 unmount 之时，都会执行此函数，进行清理工作。
+
+例如：
+
+* `useEffect(() => {})`：在 componentDidMount，componentDidUpdate 执行
+* `useEffect(() => {}, [])`：空数组，只在 componentDidMount 执行
+* `useEffect(() => {}, [count])`：在 componentDidMount，componentDidUpdate（count变化） 执行
+* `useEffect(() => () => {})`：返回函数在 componentWillUnmount 执行
+
+原来的类组件写法
+
+```react
 class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -133,9 +155,9 @@ class Example extends React.Component {
 }
 ```
 
-`componentDidMount`和`componentDidUpdate`中的代码是一样的。可以使用 Effect Hook 来改写。当`useEffect`的返回值是一个函数的时候，React 会在下一次执行这个副作用之前执行一遍清理工作.
+`componentDidMount`和`componentDidUpdate`中的代码是一样的。可以使用 useEffect 来改写。
 
-```js
+```react
 import React, { useState, useEffect } from 'react';
 
 function Example() {
@@ -159,10 +181,6 @@ function Example() {
 }
 ```
 
-> `useEffect`会在每次 DOM 渲染后执行，不会阻塞页面渲染。它同时具备`componentDidMount`、`componentDidUpdate`和`componentWillUnmount`三个生命周期函数的执行时机。
->
-> 组件挂载 --> 执行副作用 --> 组件更新 --> 执行清理函数 --> 执行副作用 --> 组件更新 --> 执行清理函数 --> 组件卸载
-
 有的情况下我们希望只有在 state 或 props 改变的情况下才执行。如果是`Class Component`，我们会这么做：
 
 ```js
@@ -181,5 +199,130 @@ useEffect(() => {
 }, [count]); // 只有在 count 改变的时候才执行 Effect
 
 // 第二个参数是一个数组，可以传多个值，一般会将 Effect 用到的所有 props 和 state 都传进去。
+```
+
+#### useEffect 结合异步函数
+
+useEffect 中的参数函数不能是异步函数，因为 useEffect 要返回清理资源的函数，如果是异步函数就变成了返回Promise
+
+```react
+// err
+useEffect(async () => {
+  const result = axios.get();
+})
+
+// ok
+useEffect(() => {
+  (async () => {
+    const result = axios.get();
+  })()
+})
+```
+
+### useReducer
+
+> useReducer 是另一种让函数组件保存状态的方式，类似于 redux
+
+```react
+import React, { useReducer } from 'react';
+
+function reducer (state, action) {
+  swtich (action.type) {
+    case 'increment':
+    	return state + 1;
+    case 'decrement':
+    	return state - 1;
+    default:
+    	return state;
+  }
+}
+
+function App () {
+  const [count, dispatch] = useReducer(reducer, 0);
+  return (
+    <div>
+      <span>{count}</span>
+      <button onClick={() => dispatch({type: 'increment'})}>+1</button>
+      <button onClick={() => dispatch({type: 'decrement'})}>-1</button>
+    </div>
+  )
+}
+```
+
+### useContext
+
+> 一般组件传值可以使用 props，但是涉及很多层级时可以使用 context 来解决
+
+* React.createContext
+
+```react
+cont MyContext  = React.createContext(defaultValue);
+```
+
+创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
+
+* Context.Provider
+
+```react
+<MyContext.Provider value={/* 某个值 */}>
+```
+
+每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化。
+
+Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
+
+当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。
+
+* Context.Consumer
+
+```react
+<MyContext.Consumer>
+  {value => /* 基于 context 值进行渲染*/}
+</MyContext.Consumer>
+```
+
+一个简单的例子
+
+```react
+import React, { createContext } from 'react';
+
+const countContext = createContext();
+
+function App() {
+  return (
+  	<countContext.Provider value={100}>
+      <Foo />
+    </countContext.Provider>
+  )
+}
+
+function Foo() {
+	return (
+  	<countContext.Consumer>
+      { value => <div>{value}</div> }
+    </countContext.Consumer>
+  )
+}
+```
+
+> 使用 useContext 在跨组件层级获取数据时简化获取数据的代码
+
+```react
+import React, { createContext, useContext } from 'react';
+
+const countContext = createContext();
+
+function App() {
+  return (
+  	<countContext.Provider value={100}>
+      <Foo />
+    </countContext.Provider>
+  )
+}
+
+function Foo() {
+	const value = useContext(countContext);
+  return <div>{value}</div>
+}
 ```
 
