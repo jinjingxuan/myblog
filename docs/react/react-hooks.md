@@ -6,6 +6,8 @@ categories: React
 
 # React Hooks
 
+React 框架在 v16.8 版本引入了全新的 API，叫做 [React Hooks](https://reactjs.org/docs/hooks-reference.html)，颠覆了以前的用法。**React Hooks 的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码"钩"进来。**
+
 ## 函数组件与类组件的区别
 
 ### 函数式组件
@@ -36,12 +38,12 @@ Hooks 意为钩子，React Hooks 就是一堆钩子函数，React 通过这些�
 * useState
 * useEffects
 * useReducer
-* useRef
-* useCallback
 * useContext
 * useMemo
+* useCallback
+* useRef
 
-### useState：用于为函数组件引入状态
+### useState
 
 > 为什么需要 useState？因为一般函数内部的变量在使用完就会被释放掉，useState 内部使用闭包来实现保存状态数据，用于为函数组件引入状态
 
@@ -50,7 +52,7 @@ Hooks 意为钩子，React Hooks 就是一堆钩子函数，React 通过这些�
 * 方法可以被调用多次用以保存不同的状态值
 * **参数可以是一个函数，函数返回值就是初始状态。函数只会被调用一次，用于初始值为动态值的情况**
 
-```react
+```js
 import React, { useState } from 'react';
 
 function Example(props) {
@@ -77,7 +79,7 @@ function Example(props) {
 * 设置状态值方法的参数可以是一个值也可以是一个函数
 * 设置状态值方法的方法本身是异步的
 
-```react
+```js
 import React, { useState } from 'react';
 
 function Example(props) {
@@ -121,7 +123,7 @@ function Example(props) {
 
 原来的类组件写法
 
-```react
+```js
 class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -157,7 +159,7 @@ class Example extends React.Component {
 
 `componentDidMount`和`componentDidUpdate`中的代码是一样的。可以使用 useEffect 来改写。
 
-```react
+```js
 import React, { useState, useEffect } from 'react';
 
 function Example() {
@@ -205,7 +207,7 @@ useEffect(() => {
 
 useEffect 中的参数函数不能是异步函数，因为 useEffect 要返回清理资源的函数，如果是异步函数就变成了返回Promise
 
-```react
+```js
 // err
 useEffect(async () => {
   const result = axios.get();
@@ -223,7 +225,7 @@ useEffect(() => {
 
 > useReducer 是另一种让函数组件保存状态的方式，类似于 redux
 
-```react
+```js
 import React, { useReducer } from 'react';
 
 function reducer (state, action) {
@@ -255,7 +257,7 @@ function App () {
 
 * React.createContext
 
-```react
+```js
 cont MyContext  = React.createContext(defaultValue);
 ```
 
@@ -263,7 +265,7 @@ cont MyContext  = React.createContext(defaultValue);
 
 * Context.Provider
 
-```react
+```js
 <MyContext.Provider value={/* 某个值 */}>
 ```
 
@@ -275,7 +277,7 @@ Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider �
 
 * Context.Consumer
 
-```react
+```js
 <MyContext.Consumer>
   {value => /* 基于 context 值进行渲染*/}
 </MyContext.Consumer>
@@ -283,7 +285,7 @@ Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider �
 
 一个简单的例子
 
-```react
+```js
 import React, { createContext } from 'react';
 
 const countContext = createContext();
@@ -307,7 +309,7 @@ function Foo() {
 
 > 使用 useContext 在跨组件层级获取数据时简化获取数据的代码
 
-```react
+```js
 import React, { createContext, useContext } from 'react';
 
 const countContext = createContext();
@@ -325,4 +327,121 @@ function Foo() {
   return <div>{value}</div>
 }
 ```
+
+### useMemo
+
+> 类似于 vue 中的计算属性，可以监测某个值的变化，根据变化计算新值。
+>
+> useMemo 会缓存计算结果，如果监测值没有发生变化，即使组件重新渲染，也不会重新计算。此行为可以有助于避免在每个渲染上进行昂贵的计算。
+
+```js
+import React, { useState, useMemo } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const result = useMemo(() => {
+    return count * 2;
+  }, [count]);
+  return (
+  	<div>
+    	<span>{count} {result}</span>
+			<button onClick={() => setCount(count + 1)}>+1</button>
+    </div>
+  )
+}
+```
+
+### memo 方法
+
+> 性能优化，如果本组件中的数据没有发生变化，阻止组件更新。类似于类组件中的 PureComponent 和 shouldComponentUpdate
+
+```js
+import React, { useState, memo } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  return (
+  	<div>
+    	<span>{count}</span>
+			<button onClick={() => setCount(count + 1)}>+1</button>
+			<Foo />
+    </div>
+  )
+}
+
+const Foo = memo(function Foo() {
+  console.log("Foo组件重新渲染了");
+  return <div>我是Foo组件</div>
+})
+
+export default App;
+
+// 当点击按钮时，正常来说 App 组件会被重新渲染，相应地 Foo 组件也被重新渲染，但是使用 memo 后，Foo 组件中的数据没有发生变化，所以不会重新渲染。
+```
+
+### useCallback
+
+> 性能优化，缓存函数，是组件重新渲染时得到相同的函数实例。
+
+```js
+// 代码功能：App 组件中 setCount，Foo 组件中 resetCount
+
+// 表现效果：每次 resetCount 时都会输出 "Foo组件重新渲染了"
+
+// 原因：App 组件 setCount 时，组件被重新渲染，resetCount 函数也重新生成，所以当一个新的函数以 props 传入 Foo 组件时，相当于 Foo 组件中的数据改变，重新渲染
+
+import React, { useState, memo } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const resetCount = () => {
+    setCount(0);
+  }
+  return (
+  	<div>
+    	<span>{count}</span>
+			<button onClick={() => setCount(count + 1)}>+1</button>
+			<Foo resetCount={resetount}/>
+    </div>
+  )
+}
+
+const Foo = memo(function Foo(props) {
+  console.log("Foo组件重新渲染了");
+  return (
+    <div>
+    	我是Foo组件
+    	<button onClick={props.resetCount}>resetCount</button>
+    </div>
+  )
+})
+
+export default App;
+```
+
+使用 useCallback 改写 resetCount
+
+```js
+const restCount = useCallback(() => setCount(0), [setCount]);
+// setCount 不会改变，resetCount 也不会改变
+```
+
+### useRef
+
+> 获取 Dom 元素对象
+
+```js
+import React, { useRef } from 'react';
+
+function App() {
+  const box = useRef();
+  return (
+  	<div ref={box}>
+			<button onClick={() => console.log(box)}>获取DIV</button>
+    </div>
+  )
+}
+```
+
+> useRef还有另一个功能就是保存数据（跨组件周期）：即使组件重新渲染，保存的数据仍然还在。保存的数据被更改不会触发组件重新渲染。
 
