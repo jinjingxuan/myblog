@@ -11,8 +11,9 @@ categories: 规范
 * nvm和n
 * Homebrew
 * tree
-* npm, cnpm, yarn
+* npm, cnpm, yarn, tyarn
 * carbon
+* github部署
 
 ## VSCode 常用插件
 
@@ -109,6 +110,20 @@ Host github
 
 可以进入`ssh`目录运行下`ssh-add id_rsa_github`试试
 
+****
+
+如果出现以下错误：
+
+```Linux
+Bad owner or permissions on .ssh/config
+```
+
+这个时候，只需要在.ssh目录，执行以下命令行：
+
+```Linux
+sudo chmod 600 config
+```
+
 ## github访问慢
 
 [解决GitHub下载速度太慢问题](https://www.jianshu.com/p/238f8242e1a6)
@@ -116,3 +131,22 @@ Host github
 ## carbon
 
 https://carbon.now.sh/
+
+## github部署
+
+```sh
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd dist
+
+# git 命令
+git init
+git add .
+git commit -m 'deploy'
+
+# 发布: git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+git push -f git@github.com:jinjingxuan/san-admin.git master:gh-pages
+```
+

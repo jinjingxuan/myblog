@@ -4,6 +4,11 @@ date: 2020-08-18 09:21:01
 categories: 函数式编程
 ---
 # 函数式编程
+
+[JavaScript中的函数式编程](https://github.ahthw.com/natpagle/)
+
+[JavaScript轻量级函数式编程](https://github.com/Simingchen/Functional-Light-JS)
+
 - 什么是高阶函数
 - lodash
 - 纯函数与记忆函数
