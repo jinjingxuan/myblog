@@ -134,7 +134,12 @@ https://carbon.now.sh/
 
 ## github部署
 
+项目中新建脚本 `scripts/deploy-gh.sh`
+
 ```sh
+# 确保脚本抛出遇到的错误
+set -e
+
 # 生成静态文件
 npm run build
 
@@ -148,5 +153,16 @@ git commit -m 'deploy'
 
 # 发布: git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 git push -f git@github.com:jinjingxuan/san-admin.git master:gh-pages
+
+# 返回上一次的工作目录
+cd -
+```
+
+`package.json`中：
+
+```json
+"scripts": {
+  "deploy-gh": "bash scripts/deploy-gh.sh"
+}
 ```
 
