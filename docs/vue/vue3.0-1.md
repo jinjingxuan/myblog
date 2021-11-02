@@ -95,7 +95,7 @@ categories: Vue
     * 静态提升（再次编译可以跳过静态根节点）
     * Patch flag
     * 缓存事件处理函数
-  * 例子：[模板编译网址](https://vue-next-template-explorer.netlify.app)
+  * 例子：[vue2模板编译](template-explorer.vuejs.org)、[vue3模板编译网址](https://vue-next-template-explorer.netlify.app)
 
      ```html
      <div id='app'>

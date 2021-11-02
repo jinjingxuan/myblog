@@ -85,6 +85,7 @@ module.exports = {
           '/vue/vuex',
           '/vue/communication',
           '/vue/responsive',
+          '/vue/template',
         ]
       },
       {
