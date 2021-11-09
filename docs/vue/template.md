@@ -1,10 +1,10 @@
 ---
-title: vue如何处理单文件
+title: vue-loader原理解析
 date: 2021-11-01 09:47:00
 categories: Vue
 ---
 
-# vue如何处理单文件
+# vue-loader原理解析
 
 ## [vue-loader](https://github.com/vuejs/vue-loader#how-it-works)
 
@@ -12,7 +12,7 @@ categories: Vue
 
 ### vue-loader 处理 SFC
 
-* 首先 `vue-loader  ` 是怎么处理 SFC 的？他会使用 `@vue/component-compiler-utils` 将 SFC 源码解析成 `SFC 描述符` ，[源码地址](https://github.com/vuejs/vue-loader/blob/master/lib/index.js#L67)
+* 首先 `vue-loader  ` 是怎么处理 SFC 的？他会使用 `@vue/component-compiler-utils` （下文会介绍）将 SFC 源码解析成 `SFC 描述符` ，[源码地址](https://github.com/vuejs/vue-loader/blob/master/lib/index.js#L67)
 
 ```js
 // vue-loader lib/index.js
@@ -72,7 +72,7 @@ export default script
 
 ### Pitch Loader
 
-* Normal loader：Loader 本质上是导出函数的 JavaScript 模块，而该模块导出的函数（若是 ES6 模块，则是默认导出的函数）就被称为 Normal Loader。**需要注意的是，这里我们介绍的 Normal Loader 与 Webpack Loader 分类中定义的 Loader 是不一样的**。在 Webpack 中，loader 可以被分为 4 类：pre 前置、post 后置、normal 普通和 inline 行内。其中 pre 和 post loader，可以通过 `rule` 对象的 `enforce` 属性来指定
+* Normal loader：Loader 本质上是导出函数的 JavaScript 模块，而该模块导出的函数（若是 ES6 模块，则是默认导出的函数）就被称为 Normal Loader。**需要注意的是， Normal Loader 与 Webpack Loader 分类中定义的 Loader 是不一样的**。在 Webpack 中，loader 可以被分为 4 类：pre 前置、post 后置、normal 普通和 inline 行内。其中 pre 和 post loader，可以通过 `rule` 对象的 `enforce` 属性来指定
 * Pitch loader：在开发 Loader 时，我们可以在导出的函数上添加一个 `pitch` 属性，它的值也是一个函数。该函数被称为 **Pitching Loader**
 
 请看例子，我们定义 3 个 loader：
@@ -176,7 +176,7 @@ class VueLoaderPlugin {
 
 ![rules](./imgs/rules.png)
 
-* 在这里由于我们注入了 pitcher 规则，上面的 `source.vue?vue&type=script`  被 pitcher 规则匹配到，就会被 [pitch函数](https://github.com/vuejs/vue-loader/blob/master/lib/loaders/pitcher.js#L51) 处理，且 pitch 中返回了结果，会跳过剩余的 loader。这个函数根据参数 `type` 来生成 [行内lodaer](https://webpack.docschina.org/concepts/loaders/#inline) ：
+* 在这里由于我们注入了 pitcher 规则，上面的 `source.vue?vue&type=script`  被 pitcher 规则匹配到，就会被 [pitch函数](https://github.com/vuejs/vue-loader/blob/master/lib/loaders/pitcher.js#L51) 处理，且 pitch 中返回了结果，由于熔断机制会跳过剩余的 loader。这个函数根据参数 `type` 来生成 [行内lodaer](https://webpack.docschina.org/concepts/loaders/#inline) ：
 
 ```js
 export * from "-!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=template&id=21fec300&"
@@ -199,7 +199,7 @@ export * from "-!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vu
 
 #### parse(ParseOptions): SFCDescriptor
 
-将单文件组件的源码解析为一个带有 source map 的描述器。实际的编译器 (`vue-template-compiler`) 必须通过 `compiler` 选项被传入，这样具体的版本号就可以被最终用户指定。
+将 SFC 解析为一个带有 source map 的 `SFC 描述器`。编译器 (`vue-template-compiler`) 通过 `compiler` 传入。
 
 ```ts
 interface ParseOptions {
@@ -239,7 +239,7 @@ interface SFCBlock extends SFCCustomBlock {
 
 #### compileTemplate(TemplateCompileOptions): TemplateCompileResults
 
-将模板的源码编译为 JavaScript 代码。实际的编译器 (`vue-template-compiler`) 必须通过 `compiler` 选项被传入，这样具体的版本号就可以被最终用户指定。
+将 template 编译为 JavaScript 代码。编译器 (`vue-template-compiler`) 通过 `compiler` 选项被传入。
 
 它也可以通过 [consolidate](https://github.com/tj/consolidate.js/) 可选地为任何模板引擎进行预处理。
 
