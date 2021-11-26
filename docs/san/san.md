@@ -257,7 +257,7 @@ React Native 需要一个 JS 的运行环境，因为 React Native 会把应用�
 
 红色代表系统平台的功能，另外红色上面有一个虚线，表示所有平台相关的东西都通过 bridge 隔离开来了，红色部分是独立于 React Native 的。
 
-## [Talos](http://talos.bcc-bdbl.baidu.com:8006/guide/#%E4%BB%80%E4%B9%88%E6%98%AFsannative)
+## Talos
 
 Talos 是百度研发的一套动态 Native 视图框架，渲染引擎融合 Webview 和 NA，能同时支持 NA 和 Hybrid 的开发需求。它既能满足独立 App 的开发，也能满足平台型 App 内嵌。它专注性能优化，主要指标均优于同类框架。
 

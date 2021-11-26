@@ -14,6 +14,7 @@ categories: 规范
 * npm, cnpm, yarn, tyarn
 * carbon
 * github部署
+* 绘图工具
 
 ## VSCode 常用插件
 
@@ -166,3 +167,6 @@ cd -
 }
 ```
 
+## 绘图工具
+
+https://excalidraw.com/
