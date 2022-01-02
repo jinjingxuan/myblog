@@ -1,9 +1,7 @@
 # TypeScript 基础
-* 语言类型
-* TypeScript 项目
-* TypeScript 类型系统
+[《官方文档》](https://www.tslang.cn/docs/home.html)
 
-学习网址：<https://jkchao.github.io/typescript-book-chinese/> 
+[《深入理解TypeScript》](<https://jkchao.github.io/typescript-book-chinese/> )
 
 ## 语言类型
 
@@ -168,9 +166,15 @@ power = '123';
 power = 123;
 
 // 它也兼容任何类型
+let power: any;
 let num: number;
-power = num;
-num = power;
+
+power = '123'
+num = power
+
+// 反过来也可
+num = 123
+power = num
 ```
 
 #### null 和 undefined
@@ -230,29 +234,42 @@ const bar: object = []
 
 ### 接口
 
-接口可以合并众多类型声明至一个类型声明，在这里，我们把类型注解：`first: string` + `second: string` 合并到了一个新的类型注解 `Name` 里，这样能强制对每个成员进行类型检查。
+为什么需要接口？可以看这个例子：
 
 ```ts
-interface Name {
-  first: string;
-  second: string;
+function print(obj: { a: string }) {
+  console.log(obj.a);
 }
 
-let name: Name;
-name = {
-  first: 'John',
-  second: 'Doe'
+let myObj = { a: '10', b: 20 };
+print(myObj);
+```
+
+类型检查器会查看`print`的调用。 `print`有一个参数，并要求这个对象参数有一个名为`a`类型为`string`的属性。 需要注意的是，我们传入的对象参数实际上会包含很多属性，但是编译器只会检查那些`a`是否存在，而没有检查`b`
+
+**接口可以合并众多类型声明至一个类型声明**，在这里，我们把类型注解：`a: string` + `b: number` 合并到了一个新的类型注解 `Obj` 里，这样能强制对每个成员进行类型检查。
+
+```ts
+interface Obj {
+  a: string;
+  b: number;
+}
+
+let obj: Obj;
+obj = {
+  a: '10',
+  b: 20
 };
 
-name = {
-  // Error: 'Second is missing'
-  first: 'John'
+// Error: Property 'b' is missing
+obj = {
+  a: '10'
 };
 
-name = {
-  // Error: 'Second is the wrong type'
-  first: 'John',
-  second: 1337
+// Error: Property 'b' is missing
+obj = {
+  a: '10',
+  b: '20'
 };
 ```
 
@@ -308,7 +325,7 @@ const res = createArray<string>(3, 'foo')
 
 具体例子请看[泛型](https://jkchao.github.io/typescript-book-chinese/typings/overview.html#%E6%B3%9B%E5%9E%8B)
 
-### 联合类型
+### 联合类型(|)
 
 在 JavaScript 中，你可能希望属性为多种类型之一，如字符串或者数组。它使用 `|` 作为标记，如 `string | number`
 
@@ -323,33 +340,27 @@ function formatCommandline(command: string[] | string) {
 }
 ```
 
-### 交叉类型
+### 交叉类型(&)
 
-在 JavaScript 中， `extend` 是一种非常常见的模式，在这种模式中，你可以从两个对象中创建一个新对象，新对象拥有着两个对象所有的功能。交叉类型可以让你安全的使用此种模式：
+交叉类型是将多个类型合并为一个类型。 这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性。
 
 ```ts
-function extend<T extends object, U extends object>(first: T, second: U): T & U {
-  const result = <T & U>{};
-  for (let id in first) {
-    (<T>result)[id] = first[id];
-  }
-  for (let id in second) {
-    if (!result.hasOwnProperty(id)) {
-      (<U>result)[id] = second[id];
-    }
-  }
-
-  return result;
+interface A {
+  name: string;
+  sex: number;
 }
 
-const x = extend({ a: 'hello' }, { b: 42 });
+interface B {
+  age: number;
+  sex: number;
+}
 
-// 现在 x 拥有了 a 属性与 b 属性
-const a = x.a;
-const b = x.b;
+let c: A&B = { name: 'xxx', age: 18, sex: 1 }
 ```
 
 ### 元组类型
+
+元组可以看作是数组的拓展，它表示已知元素数量和类型的数组。确切地说，是已知数组中每一个位置上的元素的类型。
 
 ```ts
 let nameNumber: [string, number];
@@ -385,12 +396,14 @@ sample = true; // Error
 
 ### 枚举类型
 
+枚举（Enum）类型用于取值被**限定在一定范围内**的场景，比如一周只能有七天，颜色限定为红绿蓝等。默认情况下，枚举是基于 0 的，也就是说第一个值是 0，后面的值依次递增。
+
 ```ts
 // 例如文章对象
 const post = {
     title: 'aaaaa'
     content: 'abbb',
-    status: 0 // 0,1,2 代表不同状态，但是不直观
+    status: 0 // 0, 1, 2 代表不同状态，但是不直观
 }
 
 // 枚举类型
@@ -407,7 +420,7 @@ const post = {
 }
 ```
 
-枚举是基于 0 的，也就是说第一个值是 0，后面的值依次递增。
+枚举是基于 0 的，后面的值依次递增。
 
 ```ts
 enum Color {Red, Green, Blue}
@@ -423,7 +436,7 @@ let c: Color = Color.Green;  // 2
 class Person {
     public name: string
     private age: number
-    protected readonly gender: boolean // protected只允许子类访问   readonly只读属性
+    protected readonly gender: boolean // protected 只允许子类访问   readonly 只读属性
     
     constructor (name: string, age: number, gender: boolean) {
         this.name = name
@@ -492,10 +505,10 @@ abstract class Animal { // 抽象类只能被继承
 
 class Dog extends Animal {
     run (distance: number): void { 
-         console.log(`爬行：${distance}`);
+         console.log('爬行：' + distance);
     }
 }
-const d = new Dog()s
+const d = new Dog();
 d.eat('food')
 d.run(100)
 ```

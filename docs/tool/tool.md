@@ -14,6 +14,7 @@ categories: 规范
 * npm, cnpm, yarn, tyarn
 * carbon
 * github部署
+* tmux
 * 绘图工具
 
 ## VSCode 常用插件
@@ -48,9 +49,7 @@ categories: 规范
 
 ## Jsonview
 
-* [地址](https://github.com/gildas-lormeau/JSONView-for-Chrome)
-
-> Chrome 查看 json 数据
+https://github.com/gildas-lormeau/JSONView-for-Chrome
 
 ## Iterm2 + oh my zsh
 
@@ -166,6 +165,12 @@ cd -
   "deploy-gh": "bash scripts/deploy-gh.sh"
 }
 ```
+
+## tmux
+
+开发机常用
+
+http://www.ruanyifeng.com/blog/2019/10/tmux.html
 
 ## 绘图工具
 
