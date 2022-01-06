@@ -1,0 +1,189 @@
+module.exports = {
+    '/css/': [
+        '/css/bfc',
+        '/css/box',
+        '/css/flex',
+        '/css/layout',
+    ],
+    '/javascript': [
+        '/javascript/asynchronous',
+        '/javascript/clone',
+        '/javascript/closure',
+        '/javascript/datatype',
+        '/javascript/date',
+        '/javascript/ES6',
+        '/javascript/number',
+        '/javascript/parse-order',
+        '/javascript/prototype',
+        '/javascript/scope',
+        '/javascript/stringify',
+        '/javascript/this',
+        '/javascript/function',
+    ],
+    '/vue': [{
+            title: 'Vue源码解析',
+            children: [
+                '/vue/code-1',
+                '/vue/code-2',
+                '/vue/code-3',
+            ]
+        },
+        {
+            title: 'Vue3',
+            children: [
+                '/vue/vue3.0-1',
+                '/vue/vue3.0-2',
+                '/vue/vue3.0-3',
+            ]
+        },
+        '/vue/vuex',
+        '/vue/communication',
+        '/vue/responsive',
+        '/vue/template',
+    ],
+    '/san': [
+        '/san/san',
+        '/san/eslint-plugin-san',
+        '/san/composition',
+    ],
+    '/react': [
+        '/react/react-1',
+        '/react/react-hooks',
+        '/react/redux',
+    ],
+    '/virtual-dom': [
+        '/virtual-dom/virtualdom',
+        '/virtual-dom/example',
+    ],
+    '/webpack': [{
+            title: 'webpack基础',
+            collapsable: true,
+            children: [
+                '/webpack/webpack1',
+                '/webpack/webpack2',
+                '/webpack/webpack3',
+                '/webpack/webpack4',
+                '/webpack/webpack5',
+
+            ]
+        },
+        '/webpack/config',
+        '/webpack/hmr',
+    ],
+    '/ts': [
+        '/ts/ts-base',
+        '/ts/ts-advance',
+    ],
+    '/ssr': [
+        '/ssr/ssr',
+    ],
+    '/node': [{
+        title: 'Node基础',
+        collapsable: true,
+        children: [
+            '/node/node-1',
+            '/node/node-2',
+            '/node/node-3',
+            '/node/node-4',
+            '/node/node-5',
+            '/node/node-6',
+        ]
+    }, '/node/book'],
+    '/regular': [
+        '/regular/regular',
+    ],
+    '/mobile': [
+        '/mobile/adaptation',
+        '/mobile/long-list',
+    ],
+    '/algorithm/': [
+        '/algorithm/array',
+        '/algorithm/dfs-bfs',
+        '/algorithm/dynamic',
+        '/algorithm/greedy',
+        '/algorithm/list',
+        '/algorithm/scene',
+        '/algorithm/sort',
+        '/algorithm/stack',
+        '/algorithm/string',
+        '/algorithm/trace',
+        '/algorithm/tree',
+        '/algorithm/two-pointer'
+    ],
+    '/design-pattern': [
+        '/design-pattern/design-pattern',
+        '/design-pattern/object',
+    ],
+    '/route': [
+        '/route/route',
+    ],
+    '/engineering': [
+        '/engineering/engineering',
+        '/engineering/eslint',
+        '/engineering/grunt',
+        '/engineering/gulp',
+        '/engineering/rollup',
+    ],
+    '/safe': [
+        '/safe/safe',
+    ],
+    '/module': [
+        '/module/module',
+    ],
+    '/interview': [{
+            title: '面试题整理',
+            collapsable: true,
+            children: [
+                '/interview/interview',
+
+            ]
+        },
+        {
+            title: '手写代码',
+            collapsable: true,
+            children: [
+                '/interview/code-1',
+                '/interview/code-2',
+            ]
+        },
+        {
+            title: '面试题集合',
+            collapsable: true,
+            children: [
+                '/interview/interview-1',
+                '/interview/interview-2',
+                '/interview/interview-3',
+                '/interview/interview-4',
+                '/interview/interview-5',
+                '/interview/interview-6',
+                '/interview/interview-7',
+                '/interview/interview-8',
+                '/interview/interview-9',
+                '/interview/interview-10',
+                '/interview/interview-11',
+            ]
+        },
+
+        '/interview/algorithm',
+        '/interview/iq',
+    ],
+    '/chrome': [
+        '/chrome/gc',
+        '/chrome/render',
+    ],
+    '/computer': [
+        '/computer/computer',
+    ],
+    '/git': [
+        '/git/git',
+    ],
+    '/code-style': [
+        '/code-style/code-style',
+    ],
+    '/tool': [
+        '/tool/tool',
+    ],
+    '/read': [
+        '/read/read',
+    ]
+}
