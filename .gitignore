@@ -1,5 +1,11 @@
+# node_modules
 node_modules
-yarn.lock
-docs/.vuepress/dist/*
+
+# dist
+docs/.vuepress/dist/
+
+# DS_Store
 docs/.DS_Store
+
+# history
 .history
