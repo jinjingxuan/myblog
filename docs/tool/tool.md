@@ -16,6 +16,7 @@ categories: 规范
 * github部署
 * tmux
 * 绘图工具
+* charles
 
 ## VSCode 常用插件
 
@@ -175,3 +176,10 @@ http://www.ruanyifeng.com/blog/2019/10/tmux.html
 ## 绘图工具
 
 https://excalidraw.com/
+
+## charles
+
+官网：https://www.charlesproxy.com/
+
+破解：https://www.zzzmode.com/mytools/charles/
+

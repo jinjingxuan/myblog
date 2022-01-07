@@ -185,5 +185,9 @@ module.exports = {
     ],
     '/read': [
         '/read/read',
-    ]
+    ],
+    '/re': [
+        '/re/development',
+        '/re/mongodb',
+    ],
 }

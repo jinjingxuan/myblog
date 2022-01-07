@@ -248,6 +248,18 @@ module.exports = [{
         ]
     },
     {
+        text: '后端系列',
+        items: [{
+                text: '开发机相关',
+                link: '/re/development'
+            },
+            {
+                text: 'mongodb',
+                link: '/re/mongodb'
+            }
+        ]
+    },
+    {
         text: '前端系列',
         items: [{
                 text: 'git',
