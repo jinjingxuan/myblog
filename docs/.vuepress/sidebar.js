@@ -163,9 +163,17 @@ module.exports = {
                 '/interview/interview-11',
             ]
         },
-
+        {
+            title: '外企',
+            collapsable: true,
+            children: [
+                '/interview/foreign-company',
+                '/interview/english'
+            ]
+        },
         '/interview/algorithm',
         '/interview/iq',
+        
     ],
     '/chrome': [
         '/chrome/gc',
