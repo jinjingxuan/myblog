@@ -197,6 +197,10 @@ module.exports = [{
                 text: 'hmr原理',
                 link: '/webpack/hmr'
             },
+            {
+                text: 'webpack模块化',
+                link: '/module/webpack'
+            },
         ]
     },
     {

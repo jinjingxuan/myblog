@@ -129,6 +129,7 @@ module.exports = {
     ],
     '/module': [
         '/module/module',
+        '/module/webpack',
     ],
     '/interview': [{
             title: '面试题整理',

@@ -121,6 +121,8 @@ exports.hello = true; // 从模块的 require 中导出
 exports = { hello: false };  // 未导出，仅在模块中可用
 ```
 
+[exports、module.exports和export、export default到底是咋回事](https://segmentfault.com/a/1190000010426778)
+
 **C/C++ 模块**
 
 `.node`的模块文件并不需要编译，因为他是 C/C++ 模块编译生成的，所以只有加载和执行的过程。Node 调用`dlopen`方法进行加载和执行。

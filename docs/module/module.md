@@ -9,6 +9,7 @@ categories: 模块化
 * Polyfill
 * ES Module与CommonJS交互
 * import中的@
+* 几个实际的例子
 
 ## 模块化的演变过程
 
@@ -272,4 +273,57 @@ console.log(mod)
     }
   },
 ```
+
+## 几个实际的例子
+
+某天在看代码时发现类似下面的写法：
+
+
+```ts
+// a.ts
+export default 123;
+```
+
+```ts
+// b.ts
+let b = require('./a').default;
+```
+
+对此我感到很疑惑，在我的记忆中，模块化无非就是两种：
+
+* ES Modules ：使用 import、export / export default 语法
+* CommonJS：使用 require、module.exports / exports 语法
+
+那么代码中的 `require('./a').default` 中的 `.default` 是什么意思呢？将其编译成 js 文件再来看：
+
+```js
+// a.js
+"use strict";
+exports.__esModule = true;
+exports["default"] = 123;
+
+// b.js
+var b = require('./a')["default"];
+```
+
+> 原来是经过 ts 编译后，es6 的 `export default` 都会被转换成 `exports.default`，即 CommonJS 规范
+>
+> 转换的逻辑非常简单，即将输出赋值给 exports，并带上一个标志 `__esModule` 表明这是个由 es6 转换来的 commonjs 输出。
+
+如果没有加上  `.default` ，则会得到整个对象：
+
+
+```ts
+// a.ts
+export default 123;
+
+// b.ts
+let b = require('./a');
+
+console.log(b) // { __esModule: true, default: 123 }
+```
+
+> 总结：esm 语法经过 ts 或者 babel 转换后会变为 commonjs 语法，所以这也解释了为什么两个文件既可以用 esm 语法，也可以用 CommonJs 语法，因为最后都会转换为 CommonJS 语法。
+
+参考链接：https://juejin.cn/post/6844903520865386510#heading-3
 
