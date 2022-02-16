@@ -540,3 +540,4 @@ function createFunction (code, errors) {
 * [图解 VueLoader : .vue 文件是如何被打包的?](https://www.infoq.cn/article/lBI6h9AXeBBkGuRvYPtO)
 * [vue-loader都做了些什么](http://sunjl729.cn/2021/05/28/vue-loader%E9%83%BD%E5%81%9A%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88/)
 * [深入 vue-loader 原理](http://soiiy.com/index.php/Vue-js/15262.html)
+* [Webpack 案例 —— vue-loader 原理分析](https://juejin.cn/post/6937125495439900685)

@@ -185,6 +185,10 @@ module.exports = [{
                 text: 'san-composition',
                 link: '/san/composition'
             },
+            {
+                text: 'san-loader',
+                link: '/san/san-loader'
+            }
         ]
     },
     {

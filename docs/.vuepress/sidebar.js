@@ -45,6 +45,7 @@ module.exports = {
         '/san/san',
         '/san/eslint-plugin-san',
         '/san/composition',
+        '/san/san-loader'
     ],
     '/react': [
         '/react/react-1',

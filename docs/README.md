@@ -12,7 +12,9 @@
 
 ## 更新日志
 
-* 2022.1
+* 2022
+
+  * [san-loader 原理](./san/san-loader.html)
 
   * [精读《深入浅出NodeJs》](./node/book.html)
 
@@ -23,8 +25,6 @@
   * [Redux](/react/redux.html)
   
   * [React Hooks](/react/react-hooks.html)
-
-  * [Vue-loader原理解析](/vue/template.html)
 
   * [TypeScript基础](/ts/ts-base.html)
 
