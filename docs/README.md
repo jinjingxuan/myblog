@@ -8,11 +8,13 @@
 
 :mag: 毕业院校：BIT
 
-:pencil: 职位：前端开发工程师
+:pencil: 职位：高级前端开发工程师
 
 ## 更新日志
 
 * 2022
+
+  * [服务端渲染](./ssr/ssr.html)
 
   * [san-loader 原理](./san/san-loader.html)
 
