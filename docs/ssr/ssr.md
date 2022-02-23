@@ -146,7 +146,7 @@ const render = compileToRenderer(MyApp);
 const html = render({ name: 'San' });  
 ```
 
-**关于 hydration 即客户端激活的解释**
+## 关于 hydration (客户端激活)的解释
 
 思考：如何通过 ssr 的方式将以下组件展示到页面上：
 

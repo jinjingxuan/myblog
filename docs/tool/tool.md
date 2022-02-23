@@ -179,7 +179,17 @@ https://excalidraw.com/
 
 ## charles
 
+> charles 相当于插在服务器和客户端之间的过滤器，当客户端向服务器发起请求的时候，先到 charles 进行过滤，然后 charles 在把最终的数据发送给服务器。服务器接收请求后的返回数据，也会先到 charles，经过 charles 过滤后再发给客户端。charles 发给服务器的数据，不一定是客户端请求的数据，charles 在接到客户端的请求时可以自由的修改数据。同理：客户端接收的数据，不一定就是服务器返回的数据，而是 charles 给的数据。
+
 官网：https://www.charlesproxy.com/
 
 破解：https://www.zzzmode.com/mytools/charles/
+
+## nodemon
+
+nodemon是一种工具，可以自动检测到目录中的文件更改时通过重新启动应用程序来调试基于node.js的应用程序。
+
+```bash
+npm install -g nodemon
+```
 
