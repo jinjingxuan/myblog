@@ -175,3 +175,42 @@ Node 在两者之间给出了它的方案：利用单线程，远离多线程死
 至此，整个异步 I/O 的流程完全结束。
 
 ![io](./imgs/io.jpeg)
+
+## 非 I/O 的异步 API
+
+尽管我们在介绍 Node 时，多数情况下都会提到异步 I/O，但是 Node 中其实还存在一些与 I/O 无关的异步 API。
+
+setTimeout、setInterval、setImmediate、process.nextTick
+
+### 定时器
+
+setTimeout、setInterval 的实现原理与异步 I/O 比较类似，只是不需要 I/O 线程池的参与，创建的定时器会被插入到定时器观察者内部的一个红黑树中。每次 Tick 执行时从该红黑树中迭代取出定时器对象，检查是否超过定时时间，如果超过立即执行回调函数。
+
+问题在于它并非精确的，尽管事件循环非常快，但是如果某次循环占用的时间过多，那么下次循环时，它也许已经超时很久了。比如 setTimeout 设定一个任务在 10 毫秒后执行，但是在 9 毫秒后，有一个任务占用了 5 毫秒的 CPU 时间片，时间就已经过期 4 毫秒。
+
+### process.nextTick
+
+定时器需要动用红黑树，创建定时器对象和迭代等操作，较为浪费性能。实际上，process.nextTick 更为轻量。
+
+每次调用 process.nextTick ，只会将回调函数放入队列，在下一轮 Tick 时取出执行。
+
+### setImmediate
+
+setImmediate 与 process.nextTick 十分类似，只需记住 process.nextTick 观察者优先级高于 setImmediate
+
+```js
+process.nextTick(function() {
+  console.log('nextTick延迟执行');
+})
+
+setImmediate(function() {
+  console.log('setImmediate延迟执行');
+})
+
+console.log('正常执行')
+
+// 正常执行
+// nextTick延迟执行
+// setImmediate延迟执行
+```
+

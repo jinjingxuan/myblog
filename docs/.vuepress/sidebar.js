@@ -74,6 +74,7 @@ module.exports = {
     '/ts': [
         '/ts/ts-base',
         '/ts/ts-advance',
+        '/ts/ts-type',
     ],
     '/ssr': [
         '/ssr/ssr',
