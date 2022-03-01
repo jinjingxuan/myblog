@@ -4,6 +4,9 @@ date: 2020-09-05 09:47:00
 categories: 模块化
 ---
 # 模块化
+
+阮一峰文档：[Module 的语法](https://es6.ruanyifeng.com/#docs/module)、[Module 的加载实现](https://es6.ruanyifeng.com/#docs/module-loader)
+
 * 模块化的演变过程
 * ES Modules
 * Polyfill
@@ -327,3 +330,28 @@ console.log(b) // { __esModule: true, default: 123 }
 
 参考链接：https://juejin.cn/post/6844903520865386510#heading-3
 
+## .mjs 与 .cjs
+
+从 Node.js v13.2 版本开始，Node.js 已经默认打开了 ES6 模块支持。
+
+Node.js 要求 ES6 模块采用`.mjs`后缀文件名。也就是说，只要脚本文件里面使用`import`或者`export`命令，那么就必须采用`.mjs`后缀名。Node.js 遇到`.mjs`文件，就认为它是 ES6 模块，默认启用严格模式，不必在每个模块文件顶部指定`"use strict"`。
+
+如果不希望将后缀名改成`.mjs`，可以在项目的`package.json`文件中，指定`type`字段为`module`。
+
+```json
+{
+   "type": "module"
+}
+```
+
+一旦设置了以后，该项目的 JS 脚本，就被解释成 ES6 模块。
+
+如果这时还要使用 CommonJS 模块，那么需要将 CommonJS 脚本的后缀名都改成`.cjs`。如果没有`type`字段，或者`type`字段为`commonjs`，则`.js`脚本会被解释成 CommonJS 模块。
+
+总结为一句话：`.mjs`文件总是以 ES6 模块加载，`.cjs`文件总是以 CommonJS 模块加载，`.js`文件的加载取决于`package.json`里面`type`字段的设置。
+
+## ES Modules 与 Common JS 差异
+
+- CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+- CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+- CommonJS 模块的`require()`是同步加载模块，ES6 模块的`import`命令是异步加载，有一个独立的模块依赖的解析阶段。

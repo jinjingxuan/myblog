@@ -75,6 +75,7 @@ module.exports = {
         '/ts/ts-base',
         '/ts/ts-advance',
         '/ts/ts-type',
+        '/ts/book',
     ],
     '/ssr': [
         '/ssr/ssr',
@@ -193,6 +194,15 @@ module.exports = {
     ],
     '/tool': [
         '/tool/tool',
+        {
+            title: '第三方npm包',
+            collapsable: true,
+            children: [
+                '/tool/babel',
+                '/tool/postcss',
+                '/tool/htmlparser2',
+            ]
+        },
     ],
     '/read': [
         '/read/read',

@@ -1,6 +1,6 @@
 # TypeScirpt类型声明文件
 
-**类型声明（Type Declaration）**或者**类型定义（Type Definition）**文件是一个以`.d.ts`作为文件后缀名的TypeScript文件。
+类型声明（Type Declaration）或者 类型定义（Type Definition）文件是一个以`.d.ts`作为文件后缀名的TypeScript文件。
 
 类型声明文件用来帮助开发者在 typescript 中使用已有的 JavaScript 工具包。
 

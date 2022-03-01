@@ -512,3 +512,112 @@ const d = new Dog();
 d.eat('food')
 d.run(100)
 ```
+
+## 高级类型
+
+### partial
+
+> Partial 形容词，译为 部分的/局部的/不完全的。使一个 interface/class 或 其他 k/v 形式的 类型的每一个属性完全可选。
+
+类型声明：
+
+```ts
+/**
+ * Make all properties in T optional
+ */
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+```
+
+示例：
+
+```ts
+interface A {
+  id: number;
+  name: string;
+  age: number;
+}
+type PartialA = Partial<A>;a.ts
+```
+
+![partial](./imgs/partial.png)
+
+### Record
+
+> `Record<K,T>`构造具有给定类型`T`的一组属性`K`的类型。在将一个类型的属性映射到另一个类型的属性时，`Record`非常方便。（是一个对象类型）
+
+类型声明：
+
+```ts
+/**
+ * Construct a type with a set of properties K of type T
+ */
+type Record<K extends keyof any, T> = {
+  [P in K]: T;
+};
+```
+
+示例：
+
+```ts
+interface EmployeeType {
+    id: number
+    fullname: string
+    role: string
+}
+ 
+let employees: Record<number, EmployeeType> = {
+    0: { id: 1, fullname: "John Doe", role: "Designer" },
+    1: { id: 2, fullname: "Ibrahima Fall", role: "Developer" },
+    2: { id: 3, fullname: "Sara Duckson", role: "Developer" },
+}
+ 
+// 0: { id: 1, fullname: "John Doe", role: "Designer" },
+// 1: { id: 2, fullname: "Ibrahima Fall", role: "Developer" },
+// 2: { id: 3, fullname: "Sara Duckson", role: "Developer" }
+```
+
+### Pick
+
+> 从 T 中，选择一组键在并集 K 中的属性。实际就是说在原有的类型 T 上 筛选出想要的全部或极个别的属性和类型。
+
+类型声明：
+
+```ts
+/**
+ * From T, pick a set of properties whose keys are in the union K
+ */
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+};
+```
+
+示例：
+
+```ts
+interface B {
+  id: number;
+  name: string;
+  age: number;
+}
+
+type PickB = Pick<B, "id" | "name">;
+```
+
+![pick](./imgs/pick.png)
+
+### Omit
+
+> 作用与Pick相反，Omit是排除一个字段，剩下的所有，
+
+```ts
+interface C {
+  id: number;
+  name: string;
+  age: number;
+}
+
+type OmitC = Omit<C, "id">;
+```
+

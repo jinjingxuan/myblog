@@ -8,11 +8,13 @@
 
 :mag: 毕业院校：BIT
 
-:pencil: 职位：高级前端开发工程师
+:pencil: 方向：前端开发
 
 ## 更新日志
 
 * 2022
+
+  * [《深入理解TypeScript》](./ts/book.html)
 
   * [服务端渲染](./ssr/ssr.html)
 

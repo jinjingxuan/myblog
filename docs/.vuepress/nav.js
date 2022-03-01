@@ -79,6 +79,14 @@ module.exports = [{
             {
                 text: 'flex',
                 link: '/css/flex'
+            },
+            {
+                text: '工具',
+                items: [{
+                        text: 'postcss',
+                        link: '/css/postcss'
+                    }
+                ]
             }
         ]
     },
@@ -130,64 +138,72 @@ module.exports = [{
                         text: '进阶',
                         link: '/ts/ts-advance'
                     },
+                    {
+                        text: '《深入理解TypeScript》',
+                        link: '/ts/book'
+                    },
                 ]
             },
-
-        ]
-    },
-    {
-        text: 'Vue',
-        items: [{
-                text: '源码解析',
-                link: '/vue/code-1'
-            },
             {
-                text: '响应式原理',
-                link: '/vue/responsive'
-            },
-            {
-                text: 'vue3',
-                link: '/vue/vue3.0-1'
-            },
-            {
-                text: 'vuex',
-                link: '/vue/vuex'
+                text: '工具',
+                items: [{
+                        text: 'babel',
+                        link: '/javascript/babel'
+                    }
+                ]
             }
         ]
     },
     {
-        text: 'React',
+        text: '前端框架',
         items: [{
-                text: 'react基础',
-                link: '/react/react-1'
+                text: 'Vue',
+                items: [{
+                        text: '源码解析',
+                        link: '/vue/code-1'
+                    },
+                    {
+                        text: '响应式原理',
+                        link: '/vue/responsive'
+                    },
+                    {
+                        text: 'vue3',
+                        link: '/vue/vue3.0-1'
+                    },
+                    {
+                        text: 'vuex',
+                        link: '/vue/vuex'
+                    }
+                ]
             },
             {
-                text: 'react hooks',
-                link: '/react/react-hooks'
+                text: 'React',
+                items: [{
+                        text: 'react基础',
+                        link: '/react/react-1'
+                    },
+                    {
+                        text: 'react hooks',
+                        link: '/react/react-hooks'
+                    },
+                    {
+                        text: 'redux',
+                        link: '/react/redux'
+                    },
+                ]
             },
             {
-                text: 'redux',
-                link: '/react/redux'
-            },
-        ]
-    },
-    {
-        text: 'San',
-        items: [{
-                text: 'San基础',
-                link: '/san/san'
-            },
-            {
-                text: 'eslint-plugin-san',
-                link: '/san/eslint-plugin-san'
-            },
-            {
-                text: 'san-composition',
-                link: '/san/composition'
-            },
-            {
-                text: 'san-loader',
-                link: '/san/san-loader'
+                text: 'San',
+                items: [
+                    {
+                        text: 'eslint-plugin-san',
+                        link: '/san/eslint-plugin-san'
+                    },
+                    {
+                        text: 'san-loader',
+                        link: '/san/san-loader'
+                    }
+                ]
             }
         ]
     },
@@ -353,6 +369,30 @@ module.exports = [{
                     }
                 ]
             },
+        ]
+    },
+    {
+        text: '工具系列',
+        items: [{
+                text: '常用工具和插件',
+                link: '/tool/tool'
+            },
+            {
+                text: '第三方包',
+                items: [{
+                        text: 'postcss',
+                        link: '/tool/postcss'
+                    },
+                    {
+                        text: 'babel',
+                        link: '/tool/babel'
+                    },
+                    {
+                        text: 'htmlparser2',
+                        link: '/tool/htmlparser2'
+                    },
+                ]
+            }
         ]
     },
 ]
