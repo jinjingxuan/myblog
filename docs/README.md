@@ -8,11 +8,13 @@
 
 :mag: 毕业院校：BIT
 
-:pencil: 方向：前端开发
+:pencil: 前端开发工程师
 
 ## 更新日志
 
 * 2022
+
+  * [跨平台与跨端技术简介](./mobile/cross.html)
 
   * [《深入理解TypeScript》](./ts/book.html)
 

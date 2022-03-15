@@ -96,6 +96,7 @@ module.exports = {
         '/regular/regular',
     ],
     '/mobile': [
+        '/mobile/cross',
         '/mobile/adaptation',
         '/mobile/long-list',
     ],

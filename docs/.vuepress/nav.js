@@ -336,6 +336,9 @@ module.exports = [{
             {
                 text: '移动端',
                 items: [{
+                        text: '跨端技术',
+                        link: '/mobile/cross'
+                    },{
                         text: '移动端适配',
                         link: '/mobile/adaptation'
                     },
