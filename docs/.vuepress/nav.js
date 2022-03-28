@@ -245,6 +245,10 @@ module.exports = [{
                 text: 'rollup',
                 link: '/engineering/rollup'
             },
+            {
+                text: 'cli工具',
+                link: '/engineering/env'
+            },
         ]
     },
     {

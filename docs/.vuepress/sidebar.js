@@ -127,6 +127,7 @@ module.exports = {
         '/engineering/grunt',
         '/engineering/gulp',
         '/engineering/rollup',
+        '/engineering/env',
     ],
     '/safe': [
         '/safe/safe',
