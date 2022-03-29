@@ -24,6 +24,7 @@ categories: 规范
 * 对象数组去重
 * 巧用apply
 * 合并对象
+* Array.filter(Boolean)
 
 ## 使用默认值
 
@@ -396,5 +397,27 @@ const o3 = { c: 3 };
 
 const obj = Object.assign({}, o1, o2, o3);
 console.log(obj); // { a: 1, b: 2, c: 3 }
+```
+
+## Array.filter(Boolean)
+
+像 0, undefined, null, false, "", 这样的假值可以通过此方法轻易地过滤掉。
+
+```js
+[0, undefined, null, false, "", {}].filter(Boolean) // [{}]
+
+// 等价于
+[0, undefined, null, false, "", {}].filter(function (x) { return Boolean(x); });
+```
+
+Boolean 是一个函数，它会对遍历数组中的元素，并根据元素的真假类型，对应返回 true 或 false.
+
+```js
+Boolean(0)         // false
+Boolean(undefined) // false
+Boolean(null)      // false
+Boolean(false)     // false
+Boolean("")        // false
+Boolean({})        // true
 ```
 
