@@ -91,7 +91,7 @@ module.exports = {
             '/node/node-5',
             '/node/node-6',
         ]
-    }, '/node/book'],
+    }, '/node/book', '/node/express'],
     '/regular': [
         '/regular/regular',
     ],
@@ -128,6 +128,7 @@ module.exports = {
         '/engineering/gulp',
         '/engineering/rollup',
         '/engineering/env',
+        '/engineering/commander',
     ],
     '/safe': [
         '/safe/safe',

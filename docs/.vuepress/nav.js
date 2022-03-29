@@ -11,6 +11,10 @@ module.exports = [{
             {
                 text: '《深入浅出NodeJs》',
                 link: '/node/book'
+            },
+            {
+                text: 'express',
+                link: '/node/express'
             }
         ]
     },
@@ -247,8 +251,17 @@ module.exports = [{
             },
             {
                 text: 'cli工具',
-                link: '/engineering/env'
-            },
+                items: [
+                    {
+                        text: '环境变量',
+                        link: '/engineering/env'
+                    },
+                    {
+                        text: '命令行交互工具',
+                        link: '/engineering/commander'
+                    }
+                ]
+            }
         ]
     },
     {

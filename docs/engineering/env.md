@@ -60,12 +60,48 @@ console.log(process.env.VUE_APP_NOT_SECRET_CODE); // some_value
 
 `process` 对象提供有关当前 Node.js 进程的信息并对其进行控制。它可以作为全局可用。
 
-[`process.env`](http://nodejs.cn/api/process.html#processenv) 属性返回包含用户环境的对象。
+[`process.env`](http://nodejs.cn/api/process.html#processenv) 属性返回包含用户环境的对象，包含了当前Shell的所有环境变量。比如，`process.env.HOME` 返回用户的主目录。
 
 ```js
 // 可以直接在 node 程序中输出
 console.log(process.env);
 ```
+
+项目中通常的做法是，新建一个环境变量`NODE_ENV`，用它确定当前所处的阶段，生产阶段设为 `production`，开发阶段设为 `development`。**NODE_ENV 这个名称只是开发社区的一种共识，名称内容是可以修改的。**
+
+如何设置 这个 `process.env.NODE_ENV` 环境变量呢？在webpack项目里，我们可以通过设置package.json来实现，但是Windows 系统和Mac系统有区别。
+
+```json
+// windows
+{
+  "scripts": {
+    "dev": "set NODE_ENV=development &&  webpack-dev-server --open --hot",
+    "build": "set NODE_ENV=production &&   --progress --hide-modules"
+  }
+}
+
+// mac
+{
+  "scripts": {
+    "dev": "export NODE_ENV=development &&  webpack-dev-server --open --hot",
+    "build": "export NODE_ENV=production &&   --progress --hide-modules"
+  }
+}
+```
+
+`cross-env` 是一个跨平台设置环境变量的第三方包，它可以让你只配置一行命令，就能轻松地在多个平台设置环境变量。
+
+```json
+{
+  ...
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --mode=production  --progress --hide-modules"
+  },
+}
+```
+
+这样我们就可以在项目里取到 `process.env.NODE_ENV` 的值，然后利用这个值来区分当前环境。
 
 ### process.cwd
 
