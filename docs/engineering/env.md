@@ -1,6 +1,8 @@
-# cli 实现读取 .env 环境变量
+# process.env全局变量
 
-最近在公司的跨端框架的 cli 工具中发现并没有像 vue-cli 一样的环境变量功能，所以打算自己实现一下如何在 cli 工具中读取 `.env` 环境变量并在客户端侧使用。
+众所周知，vue-cli 中有 `.env` 创建全局变量的功能，项目中可以直接使用 `process.env.[变量名]` 来使用。
+
+最近在公司自研 cli 创建的项目中并没有发现此功能，于是打算了解一下 `process.env` 的原理并探索如何在 cli 工具中实现读取 `.env` 环境变量的功能，使其在客户端侧使用。
 
 ## vue-cli
 
@@ -109,13 +111,41 @@ console.log(process.env);
 
 ### compiler
 
-`Compiler` 对象包含了当前运行`Webpack`的配置，包括`entry、output、loaders`等配置，这个对象在启动`Webpack`时被实例化，而且是全局唯一的。`Plugin`可以通过该对象获取到Webpack的配置信息进行处理。
+`Compiler` 对象包含了当前运行`Webpack`的配置，包括`entry、output、loaders`等配置，这个对象在启动`Webpack`时被实例化，而且是全局唯一的。`Plugin`可以通过该对象获取到 Webpack 的配置信息进行处理。
 
 ### [webpack.DefinePlugin](https://webpack.docschina.org/plugins/define-plugin/)
 
 `DefinePlugin` 允许在 **编译时** 将你代码中的变量替换为其他值或表达式。
 
 换种方式理解就是可以向应用中**注入全局变量**。
+
+:::tip
+
+请注意，由于本插件会直接替换文本，因此提供的值必须在字符串本身中再包含一个 **实际的引号** 。通常，可以使用类似 `'"production"'` 这样的替换引号，或者直接用 `JSON.stringify('production')`。
+
+:::
+
+```js
+// 这样写的话
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': 'production',
+})
+
+// production是一个变量，并不是我们想象中的字符串
+if (production === 'production') {
+    console.log('production');
+}
+
+
+// 所以需要这么写
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production'),
+})
+// 或者
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': '"production"',
+})
+```
 
 ## 具体实现
 
@@ -167,8 +197,8 @@ module: {
   	rules: [],
     plugins: [
       new webpack.DefinePlugin({
-        '__GLOBAL_VAR__': '1',
-        ...resolveClientEnv()
+        ...resolveClientEnv(),
+        '__GLOBAL_VAR__': '1'
       })
     ]
 }
@@ -203,5 +233,8 @@ export function resolveClientEnv () {
 
 在项目中创建 `.env`、`.env.development`、`.env.production` 三个文件，使用 cli 启动项目，测试客户端侧代码中的变量输出及优先级。
 
+## 总结
 
+综上所述，项目中使用的 `process.env` 其实和 node 中的 `process.env` 不是一回事，项目中使用的是我们自定义的全局变量，可以更改为其他名字，实现原理其实是 `webpack` + `dotenv` + `webpack.definePlugin` 的作用。
 
+node 中的 `process.env` 是自带的 api。

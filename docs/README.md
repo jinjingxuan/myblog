@@ -14,7 +14,7 @@
 
 * 2022
 
-  * [cli 实现读取 .env 环境变量](./engineering/env.html)
+  * [process.env全局变量](./engineering/env.html)
 
   * [跨平台与跨端技术简介](./mobile/cross.html)
 
