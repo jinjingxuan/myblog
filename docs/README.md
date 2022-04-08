@@ -13,6 +13,7 @@
 ## 更新日志
 
 * 2022
+  * [TypeScript中的装饰器](./ts/decorator.html)
 
   * [process.env全局变量](./engineering/env.html)
 

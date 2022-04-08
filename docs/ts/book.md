@@ -144,7 +144,7 @@ console.log(Number.MIN_VALUE / 10); // 0
 ```js
 class Something {
   static instances = 0;
-	constructor() {
+  constructor() {
 		Something.instances++;
   }
 }
@@ -181,12 +181,12 @@ var foo = new Foo();
 ```js
 class Foo {
   x: number;
-	constructor(x: number) {
+  constructor(x: number) {
     this.x = x;
   }
 }
 
-// TS 为这种方式提供了一个缩写
+// TS 为这种方式提供了一个缩写，x 加一个修饰符前缀，它会在类上自动声明，并且从构造器中复制过去
 class Foo {
   constructor(public x: number)
 }
@@ -221,10 +221,95 @@ function Person(age) {
   }
 }
 
+// 相当于捕获了 this
+function Person(age) {
+  this.age = age;
+  var _this = this;
+  this.growOld = function() {
+    _this.age++;
+  }
+}
+
 var person = new Person(1);
 setTimeout(person.growOld, 1000);
 setTimeout(function() {
   console.log(person.age); // 1
 }, 2000)
+```
+
+快速返回对象
+
+```js
+// 错误
+var foo = () => {
+  bar: 123
+}
+
+// 正确
+var foo = () => {
+  return { bar: 123 }
+}
+
+// 正确
+var foo = () => ({
+  bar: 123
+})
+```
+
+### 3.3 let
+
+let 声明了块级作用域，`let` 关键字，创建块级作用域的条件是必须有一个 `{ }` 包裹：
+
+```js
+var foo = 123;
+if (true) {
+    var foo = 456;
+}
+console.log(foo); // 456
+
+// test.ts
+let foo = 123;
+if (true) {
+    let foo = 456;
+}
+console.log(foo); // 123
+
+// 以上代码经过 ts 转换后会创建一个新的变量名
+var foo = 123;
+if (true) {
+    var foo_1 = 456;
+}
+console.log(foo);
+```
+
+除 let 外，函数也可以创建一个新的作用域
+
+```js
+var foo = 123
+function test() {
+  var foo = 456
+}
+test()
+console.log(foo) // 123
+```
+
+### 3.4 rest
+
+使用 rest 可以删除成员
+
+```js
+const point3D = { x: 1, y: 2, z: 3 };
+
+const { z, ...point2D } = point3D;
+console.log(point2D); // { x: 1, y: 2 }
+```
+
+### 3.5 扩展运算符
+
+对于对象来说，扩展的顺序很重要，后面的属性可以覆盖前面的属性。
+
+```js
+const point2D = { x: 1, y: 2 };
+const point3D = { x: 5, z: 4, ...point2D }; // { x: 1, y: 2, z: 4}
 ```
 

@@ -83,14 +83,6 @@ module.exports = [{
             {
                 text: 'flex',
                 link: '/css/flex'
-            },
-            {
-                text: '工具',
-                items: [{
-                        text: 'postcss',
-                        link: '/css/postcss'
-                    }
-                ]
             }
         ]
     },
@@ -146,14 +138,10 @@ module.exports = [{
                         text: '《深入理解TypeScript》',
                         link: '/ts/book'
                     },
-                ]
-            },
-            {
-                text: '工具',
-                items: [{
-                        text: 'babel',
-                        link: '/javascript/babel'
-                    }
+                    {
+                        text: 'TypeScript中的装饰器',
+                        link: '/ts/decorator'
+                    },
                 ]
             }
         ]

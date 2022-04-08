@@ -3,6 +3,7 @@
 
 [《深入理解TypeScript》](<https://jkchao.github.io/typescript-book-chinese/> )
 
+[TS Platground](http://www.typescriptlang.org/play/ )
 ## 语言类型
 
 强类型：不允许随意的隐式类型转换

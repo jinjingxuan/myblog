@@ -76,6 +76,7 @@ module.exports = {
         '/ts/ts-advance',
         '/ts/ts-type',
         '/ts/book',
+        '/ts/decorator',
     ],
     '/ssr': [
         '/ssr/ssr',
