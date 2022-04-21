@@ -80,5 +80,45 @@ export PATH=$N_PREFIX/bin:$PATH
 
 用完重置：git config --global --unset http.proxy
 
+## 解压命令
 
+tar命令的常用参数
+
+```
+-c, --create 创建一个新归档：压缩
+-x, --extract, --get 从归档中解出文件：解压
+-f, --file=ARCHIVE 使用归档文件
+-z, --gzip, --gunzip, --ungzip 通过 gzip 过滤归档
+-C, --directory=DIR 改变至目录 DIR
+-v, --verbose 详细地列出处理的文件
+```
+
+```sh
+tar -zcvf test.tar.gz test -C /home/ # 压缩 test 到 home 目录下
+tar -zxvf test.tar.gz # 解压
+```
+
+## sed 命令
+
+sed -i 可以直接对文本文件进行操作 `sed -i 's/原字符串/新字符串'`，例如以下文本：
+
+```sh
+# test.txt
+d
+ddd
+```
+
+```sh
+sed -i 's/d/1' test.txt
+
+# 文本修改为
+1
+1dd
+
+sed -i 's/d/1/g' test.txt
+
+# 文本修改为
+1
+111
+```
 

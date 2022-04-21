@@ -1,16 +1,11 @@
 ---
-title: 移动端适配
+title: 移动端h5开发
 date: 2020-11-16 16:01:54
 categories: 移动端
 ---
-# 移动端适配
-* 逻辑像素与物理像素
-* 常见长度单位
-* 移动端 1px
-* 适配案例
-* 常见移动端适配方案
-
-## 逻辑像素与物理像素
+# 移动端h5开发
+## 移动端适配
+### 逻辑像素与物理像素
 
 * pt: html css中的使用的单位像素px: 实际上指的是逻辑像素pt
 * px: photoshop测量中的但是实际上指的是物理像素, 物理像素即表示的是一个点, 大小固定
@@ -19,9 +14,9 @@ categories: 移动端
 
 * 不同设备下的分辨率不同, 在iphone6s中 一个逻辑像素pt包含三个物理像素px  即 1pt = 3px
 
-## 常见长度单位
+### 常见长度单位
 
-### em
+#### em
 
 em是相对长度单位。它的单位长度是根据元素的文本垂直长度来决定的。可以作用在width、height、line-height、margin、padding、border等样式的设置上。 如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。 默认1em=16px。如果在body选择器中声明font-size=62.5%,则1em=10px。
 
@@ -46,7 +41,7 @@ em是相对长度单位。它的单位长度是根据元素的文本垂直长度
 
 在不设置元素font-size的情况下，em总是根据父元素的font-size来确定长度；即使元素设置了font-size，多次嵌套使用em也往往会造成疏忽，不仅使用前需要大量计算，而且不能保证没有漏网之鱼。这将是一个繁杂而低效率的工作。 于是有了rem.
 
-### rem
+#### rem
 
 rem不是依据父元素——而是依据根元素（root element）来确定其长度。
 
@@ -70,7 +65,7 @@ rem不是依据父元素——而是依据根元素（root element）来确定�
 </body>
 ```
 
-### rpx
+#### rpx
 
 | 设备         | rpx换算px (屏幕宽度/750) | px换算rpx (750/屏幕宽度) |
 | :----------- | :----------------------- | :----------------------- |
@@ -81,23 +76,23 @@ rem不是依据父元素——而是依据根元素（root element）来确定�
 - rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。
 - 建议小程序的设计稿以750 x 1334 的物理分辨率进行设计
 
-### vw,vh
+#### vw,vh
 
 - vw和vh是css3中的新单位，是一种视窗单位，在小程序中也同样适用。
 - 小程序中，窗口宽度固定为100vw，将窗口宽度平均分成100份，1份是1vw
 - 小程序中，窗口高度固定为100vh ，将窗口高度平均分成100份，1份是1vh
 - 所以，我们在小程序中也可以使用vw、vh作为尺寸单位使用在布局中进行布局，但是一般情况下，百分比+rpx就已经足够使用了,所以它们的出场机会很少。
 
-## 移动端 1px
+### 移动端 1px
 
-### 原因
+#### 原因
 
 * DPR(devicePixelRatio) 设备像素比 = 物理像素 / css像素 ，它是默认缩放为100%的屏幕下，设备像素和css像素的比值。
 * 目前比较主流的设备的DPR=2或3，所以： 当我们的DPR为2，也就是2倍屏时，当物理像素（设备像素）为1px的时候，我们的css像素应该是0.5px。当DPR=3，物理像素为1px时，css像素应该为1/3px。
 
-### 解决方案
+#### 解决方案
 
-#### scale
+##### scale
 
 如果在一个元素上使用`scale`时会导致整个元素同时缩放，所以应该在该元素的伪元素下设置`scale`属性。
 
@@ -110,7 +105,7 @@ rem不是依据父元素——而是依据根元素（root element）来确定�
 }
 ```
 
-#### linear-gradient
+##### linear-gradient
 
 通过线性渐变，也可以实现移动端1px的线。原理大致是使用渐变色，上部分为白色，下部分为黑色。这样就可以将线从视觉上看只有1px。
 
@@ -125,7 +120,7 @@ div.linear::after {
 }
 ```
 
-#### box-shadow
+##### box-shadow
 
 通过`box-shaodow`来实现1px也可以，实现原理是将纵坐标的shadow设置为0.5px即可。`box-shadow`属性在Chrome和Firefox下支持小数设置，但是在Safari下不支持。所以使用该方法设置移动端1px时应该慎重使用。
 
@@ -135,7 +130,7 @@ div.shadow {
 }
 ```
 
-## 适配案例
+### 适配案例
 
 **设计给出750px的设计稿，也按照750px来开发h5页面，怎么在小程序的 webview 页面中适配？**
 
@@ -144,30 +139,30 @@ div.shadow {
 * toFixed 是为了取整，防止小数出现 bug
 
 ```js
-				function autoAdapt() {
-            var screenWidth = hack.offsetWidth
-            var screenHeight = hack.offsetHeight
-            var scale = (screenWidth / 750).toFixed(2)
-            if (scale < 1) {
-                main.style.width = `${(screenWidth / scale).toFixed(0)}px`
-                main.style.height = `${(screenHeight / scale).toFixed(0)}px`
-                main.style.overflow = 'auto'
-                document.body.style.transform = `scale(${scale})`
-                document.body.style.transformOrigin = '0% 0%'
-                document.body.style.overflow = `hidden`
-            } else {
-                main.style.transform = `scale(${scale})`
-                main.style.transformOrigin = '50% 0%'
-            }
-        }
-        autoAdapt()
+function autoAdapt() {
+  var screenWidth = hack.offsetWidth
+  var screenHeight = hack.offsetHeight
+  var scale = (screenWidth / 750).toFixed(2)
+  if (scale < 1) {
+    main.style.width = `${(screenWidth / scale).toFixed(0)}px`
+    main.style.height = `${(screenHeight / scale).toFixed(0)}px`
+    main.style.overflow = 'auto'
+    document.body.style.transform = `scale(${scale})`
+    document.body.style.transformOrigin = '0% 0%'
+    document.body.style.overflow = `hidden`
+  } else {
+    main.style.transform = `scale(${scale})`
+    main.style.transformOrigin = '50% 0%'
+  }
+}
+autoAdapt()
 
-        window.onresize = function() {
-            autoAdapt()
-        }
+window.onresize = function() {
+  autoAdapt()
+}
 ```
 
-## 常见移动端适配方案
+### 常见移动端适配方案
 
 - media queries
 - flex 布局
@@ -175,7 +170,7 @@ div.shadow {
 - vh vw
 - 百分比
 
-#### 一、Meida Queries
+##### 一、Meida Queries
 
 meida queries 的方式可以说是我早期采用的布局方式，它主要是通过查询设备的宽度来执行不同的 css 代码，最终达到界面的配置。
 
@@ -191,7 +186,6 @@ meida queries 的方式可以说是我早期采用的布局方式，它主要是
 @media only screen and (min-width: 414px) {
   /* iphone6p 或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置样式 */
 }
-复制代码
 ```
 
 **优点：**
@@ -206,7 +200,7 @@ meida queries 的方式可以说是我早期采用的布局方式，它主要是
 - 为了兼顾大屏幕或高清设备，会造成其他设备资源浪费，特别是加载图片资源
 - 为了兼顾移动端和 PC 端各自响应式的展示效果，难免会损失各自特有的交互方式
 
-#### 二、Flex 弹性布局
+##### 二、Flex 弹性布局
 
 以天猫的实现方式进行说明：
 
@@ -216,7 +210,7 @@ meida queries 的方式可以说是我早期采用的布局方式，它主要是
 
 随着屏幕宽度变化，页面也会跟着变化，效果就和 PC 页面的流体布局差不多，在哪个宽度需要调整的时候使用响应式布局调调就行（比如网易新闻），这样就实现了『适配』。
 
-#### 三、rem+viewport 缩放
+##### 三、rem+viewport 缩放
 
 **实现原理：**
 
@@ -229,7 +223,7 @@ meida queries 的方式可以说是我早期采用的布局方式，它主要是
 
 `设备的物理分辨率/(devicePixelRatio * scale)`，在 scale 为 1 的情况下，`device-width = 设备的物理分辨率/devicePixelRatio`。
 
-#### 四、rem 实现
+##### 四、rem 实现
 
 `rem`是相对长度单位，`rem`方案中的样式设计为相对于根元素`font-size`计算值的倍数。根据屏幕宽度设置`html`标签的`font-size`，在布局时使用 **rem** 单位布局，达到自适应的目的。
 
@@ -273,7 +267,6 @@ viewport 是固定的：`<meta name="viewport" content="width=device-width,initi
   );
   e();
 })(window);
-复制代码
 ```
 
 css 通过 sass 预编译，设置量取的 px 值转化 rem 的变量`$px: (1/100)+rem;`
@@ -287,7 +280,7 @@ css 通过 sass 预编译，设置量取的 px 值转化 rem 的变量`$px: (1/1
 - 不是纯 css 移动适配方案，需要在头部内嵌一段 `js`脚本监听分辨率的变化来动态改变根元素的字体大小，`css`样式和 `js` 代码有一定耦合性，并且必须将改变`font-size`的代码放在 `css` 样式之前。
 - 小数像素问题，浏览器渲染最小的单位是像素，元素根据屏幕宽度自适应，通过 `rem` 计算后可能会出现小数像素，浏览器会对这部分小数四舍五入，按照整数渲染，有可能没那么准确。
 
-#### 五、纯 vw 方案
+##### 五、纯 vw 方案
 
 视口是浏览器中用于呈现网页的区域。
 
@@ -303,7 +296,6 @@ $base_vw = 375;
 @function vw ($px) {
     return ($px/$base_vw) * 100vw
 };
-复制代码
 ```
 
 优点：
@@ -315,7 +307,7 @@ $base_vw = 375;
 
 - 存在一些兼容性问题，有些浏览器不支持
 
-#### 六、vw + rem 方案
+##### 六、vw + rem 方案
 
 ```js
 // scss 语法
@@ -345,10 +337,9 @@ body {
     min-width: 320px;
 }
 
-复制代码
 ```
 
-#### 七、百分比
+##### 七、百分比
 
 使用百分比%定义宽度，高度用`px`固定，根据可视区域实时尺寸进行调整，尽可能适应各种分辨率，通常使用`max-width`/`min-width`控制尺寸范围过大或者过小。
 
@@ -365,3 +356,141 @@ body {
 > 链接：https://juejin.cn/post/6899291168891207688
 > 来源：掘金
 
+### vw + rem方案实践
+
+首先在 html 根元素中设置：
+
+```css
+html {
+  font-size: 5vw;
+}
+```
+
+这样 1rem = 5 vw，20 rem = 100 vw。
+
+如果浏览器不支持 vw 写法，我们需要手动插入以下代码：
+
+```js
+(function (doc, win) {
+  var dummy = doc.createElement('_').style;
+  dummy.width = '1vw';
+  // 若支持vw则退出
+  if (dummy.width) {
+    return;
+  }
+  // 不支持 vw 则手动计算一下，设置 font-size 为屏幕宽度 1 / 20
+  var docEl = doc.documentElement,
+      resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+      recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) {
+          return;
+        }
+        docEl.style.fontSize = (clientWidth / 20) + 'px';
+      };
+  recalc();
+  win.addEventListener(resizeEvt, recalc, false);
+})(document, window);
+```
+
+****
+
+开发时我们不建议直接写 rem，理想情况是设计稿给出多少我就写多少，所以我们需要再设置一下 rem 和 px 的转换关系：
+
+先说结论，如果设计稿是 n px 的，那么设置 `1px = (20 / n) rem`
+
+> 如果项目中写 100 px ，其实希望无论屏幕宽度是多少，它都占设计稿宽度的 100 / n 的。按照换算关系：
+>
+> `100`px = `100 * (20 / n)` rem = `100 * (20 / n) * 5` vw ，那么：
+>
+> 1 vw 占屏幕宽度的 1 /100 之一，`100 * (20 / n) * 5` vw 则占屏幕的 `100 * (20 / n) * 5 / 100` 分之一，即 `100 / n`  分之一，就是我们所希望的结果。
+
+综上，如果设计稿是 375px 的，一个元素宽度为 100px，我们只需直接在项目中写 100px，那么这个元素无论在什么宽度的屏幕上，其宽度都会占屏幕宽度的 100 / 375 份，这就满足了自适应。
+
+****
+
+至于 px 转 rem 我们可以使用 `postcss-px2rem` 插件来实现，项目中新建 `postcss.config.js`，详见[此项目](https://github.com/jinjingxuan/vue-h5)
+
+```js
+// remUnit 即 n / 20 的值
+module.exports = {
+    plugins: [
+        require('postcss-px2rem')({remUnit: 18.75}),
+    ]
+}
+```
+
+## 滚动加载注意事项
+
+一般我们在项目中使用滚动到底加载，这时候要注意两点：
+
+1. 避免多次触发（前一个接口还没请求完，又去请求下一个接口）
+2. 监听事件的取消
+
+```js
+async getList() {
+  // 当上一个接口没返回时，不去请求下一个
+  if (this.data.get('loading')) {
+    return;
+  }
+  this.data.set('loading', true);
+  let res = await getDetail();
+  if (res && res.data) {
+    this.list = res.data;
+    return list;
+  });
+  this.data.set('loading', false);
+}
+```
+
+关于滚动事件监听
+
+```js
+mounted() {
+  this.loadingFun = this.loading.bind(this);
+  window.addEventListener('scroll', this.loadingFun);
+}
+
+unmounted() {
+  window.removeEventListener('scroll', this.loadingFun);
+}
+
+loading() {
+  //文档内容实际高度（包括超出视窗的溢出部分）
+  let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  //滚动条滚动距离
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  //窗口可视范围高度
+  let clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight,document.body.clientHeight);
+
+  if (clientHeight + scrollTop >= scrollHeight - 500) {
+    this.getList();
+  }
+}
+```
+
+为什么要 bind (this) ？
+
+> 因为 loading 内部还有 this，这个 this 应该指向组件实例，但是直接 `window.addEventListener('scroll', this.loading);` this.getList 就会指向 window
+
+那我使用箭头函数不行吗？这样 this 就会指向外部作用域了？
+
+```js
+window.addEventListener('scroll', () => {
+  this.loading;
+});
+window.removeEventListener('scroll', () => {
+  this.loading;
+});
+```
+
+> 不行，因为 () => {} !== () => {}，不是一个函数，同下面这个例子
+
+为什么要定义个 loadingFunc？下面这样写不行吗？
+
+```js
+window.addEventListener('scroll', this.loading.bind(this));
+window.removeEventListener('scroll', this.loading.bind(this));
+```
+
+> 不行，因为 bind 之后返回的是一个新函数，添加监听和移除监听的不是一个函数，不会生效
