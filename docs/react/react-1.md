@@ -326,6 +326,47 @@ class App extends Component {
 }
 ```
 
+#### 2.11 括号
+
+return 后面带着一个圆括号，只是为了换行显示，也可以是中括号[]。不使用括号不能换行。
+
+```js
+// ok
+const Person = () => {
+	return <div>
+    	hello world;
+    </div>
+}
+
+// ok
+const Person = () => {
+	return (
+  	<div>
+    	hello world;
+    </div>
+  );
+}
+
+// ok
+const Person = () => {
+	return [
+    <div>
+    	hello world;
+    </div>
+  ];
+}
+
+// error
+const Person = () => {
+	return
+    <div>
+    	hello world;
+    </div>
+}
+```
+
+
+
 ### 3. 组件
 
 #### 3.1 什么是组件

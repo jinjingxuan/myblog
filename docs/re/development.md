@@ -18,6 +18,8 @@ kill 进程：kill -9 xxxx
 
 复制a文件内容到b：cp -p a b
 
+查找文件命令 find：find . -name "*.c"
+
 移动文件：mv /usr/local/a /usr/
 
 软链：sudo ln -s

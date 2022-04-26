@@ -158,7 +158,7 @@ const f = fn(1, 2)
 
 ## 防抖函数，节流函数的作用与实现
 
-* [手写代码整理](https://www.jinjingxuan.com/2020/03/20/%E9%9D%A2%E8%AF%95-%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/)
+* [手写代码整理](https://jinjingxuan.github.io/myblog/interview/code-1.html#%E9%98%B2%E6%8A%96)
 
 ## 什么是闭包，闭包的作用是什么
 

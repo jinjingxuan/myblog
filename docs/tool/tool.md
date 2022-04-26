@@ -17,6 +17,8 @@ categories: 规范
 * tmux
 * 绘图工具
 * charles
+* helm
+* Mac 软件
 
 ## VSCode 常用插件
 
@@ -193,3 +195,12 @@ nodemon是一种工具，可以自动检测到目录中的文件更改时通过�
 npm install -g nodemon
 ```
 
+## helm
+
+Mac 上修改 host 文件的工具，Appstore中就能下载。可以建多份配置文件来回切换。
+
+![helm](./imgs/helm.png)
+
+## Mac 软件
+
+https://www.macwk.com/

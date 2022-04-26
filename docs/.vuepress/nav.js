@@ -346,6 +346,9 @@ module.exports = [{
                     },{
                         text: '移动端适配',
                         link: '/mobile/adaptation'
+                    },{
+                        text: '移动端h5开发',
+                        link: '/mobile/h5'
                     },
                     {
                         text: '长列表优化',

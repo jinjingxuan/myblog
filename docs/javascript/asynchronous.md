@@ -486,7 +486,7 @@ Promise.resolve(1).then(2).then(Promise.resolve(3)).then(console.log) // 1
 * promise.resolve
 * Promise 封装 AJAX
 
-* [手写代码整理](https://jinjingxuan.github.io/2020/03/20/%E9%9D%A2%E8%AF%95-%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81%EF%BC%88%E4%B8%80%EF%BC%89/)
+* [手写代码整理](https://jinjingxuan.github.io/myblog/interview/code-1.html#%E9%98%B2%E6%8A%96)
 
 ### 看代码说答案
 

@@ -32,7 +32,7 @@ categories: 面试
 >
 > bind 的返回值为一个新的函数，需要再次调用： fn.bind(this)(1, 2, 3)
 
-* [手写代码整理](https://www.jinjingxuan.com/2020/03/20/%E9%9D%A2%E8%AF%95-%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/)
+* [手写代码整理](https://jinjingxuan.github.io/myblog/interview/code-1.html#%E9%98%B2%E6%8A%96)
 
 ## vue的生命周期
 

@@ -99,6 +99,7 @@ module.exports = {
     '/mobile': [
         '/mobile/cross',
         '/mobile/adaptation',
+        '/mobile/h5',
         '/mobile/long-list',
     ],
     '/algorithm/': [
