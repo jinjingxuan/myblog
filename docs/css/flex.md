@@ -104,6 +104,48 @@ content：指根据该子元素的内容自动布局。(内容多的占比也会
 }
 ```
 
+****
 
+* 场景：如何实现以下效果，文字部分左对齐，数字百分号部分右对齐
+
+![flex](./imgs/flex1.png)
 
   
+
+```html
+<div class="wrap">
+  <div class="icon"><span></span></div>
+  <div class="name">满意</div>
+  <div class="num">100</div>
+  <div class="percent">10%</div>
+</div>
+```
+
+```css
+.manner {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  .icon {
+    text-align: left;
+    flex: 0 0 10%;
+  }
+  .name {
+    text-align: left;
+    flex: 0 0 35%;
+  }
+  .sum {
+    text-align: right;
+    flex: 0 0 30%;
+  }
+  
+  .percent {
+    text-align: right;
+    flex: 0 0 25%;
+  }
+}
+```
+
+> 使用百分比的原因是在外层盒子变化时，里面的元素也会跟随着变化。
+>
+> 对齐方案使用 text-align 即可。

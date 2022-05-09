@@ -426,6 +426,8 @@ const restCount = useCallback(() => setCount(0), [setCount]);
 // setCount 不会改变，resetCount 也不会改变
 ```
 
+> 总结一下，使用场景是：有一个父组件，其中包含子组件，子组件接收一个函数作为props；通常而言，如果父组件更新了，子组件也会执行更新；但是大多数场景下，更新是没有必要的，我们可以借助 useCallback 来返回函数，然后把这个函数作为props传递给子组件；这样，子组件就能避免不必要的更新。
+
 ### useRef
 
 > 获取 Dom 元素对象
