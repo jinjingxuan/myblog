@@ -206,6 +206,7 @@ module.exports = {
                 '/tool/babel',
                 '/tool/postcss',
                 '/tool/htmlparser2',
+                '/tool/yaml',
             ]
         },
     ],

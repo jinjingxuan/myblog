@@ -402,6 +402,10 @@ module.exports = [{
                         text: 'htmlparser2',
                         link: '/tool/htmlparser2'
                     },
+                    {
+                        text: 'yaml',
+                        link: '/tool/yaml'
+                    },
                 ]
             }
         ]

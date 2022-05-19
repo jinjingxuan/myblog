@@ -18,6 +18,7 @@ categories: 规范
 * 绘图工具
 * charles
 * helm
+* ipic
 * Mac 软件
 
 ## VSCode 常用插件
@@ -200,6 +201,10 @@ npm install -g nodemon
 Mac 上修改 host 文件的工具，Appstore中就能下载。可以建多份配置文件来回切换。
 
 ![helm](./imgs/helm.png)
+
+## ipic
+
+图床工具，Appstore中就能下载。
 
 ## Mac 软件
 
