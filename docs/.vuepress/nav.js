@@ -336,6 +336,10 @@ module.exports = [{
                         text: '浏览器渲染',
                         link: '/chrome/render'
                     },
+                    {
+                        text: '跨域',
+                        link: '/chrome/cross'
+                    },
                 ]
             },
             {

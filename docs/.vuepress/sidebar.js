@@ -19,6 +19,7 @@ module.exports = {
         '/javascript/stringify',
         '/javascript/this',
         '/javascript/function',
+        '/javascript/log',
     ],
     '/vue': [{
             title: 'Vue源码解析',
@@ -187,6 +188,7 @@ module.exports = {
     '/chrome': [
         '/chrome/gc',
         '/chrome/render',
+        '/chrome/cross',
     ],
     '/computer': [
         '/computer/computer',

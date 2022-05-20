@@ -13,6 +13,16 @@
 ## 更新日志
 
 * 2022
+  * 服务端转发页面（未完成）
+
+  * devops介绍（未完成）
+
+  * [常见跨域方案](/chrome/cross.html)
+  
+  * [yaml简介](/tool/yaml.html)
+
+  * [console.log 控制台 I/O 异步](/javascript/log.html)
+  
   * [移动端h5开发](./mobile/h5.html)
 
   * [TypeScript中的装饰器](./ts/decorator.html)
