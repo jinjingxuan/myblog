@@ -1,9 +1,9 @@
 ---
-title: JS异步编程，Promise
+title: Promise
 date: 2020-03-08 09:52:01
 categories: JavaScript
 ---
-# JS异步编程，Promise
+# Promise
 * promise
 * Generator
 * async和await
@@ -44,7 +44,7 @@ A(B);//先执行A后执行B，当需要执行ABCDEFG时，就会造成回调地�
 
 ```js
 console.log(1)
-setTimeout(()=>console.log(5))
+setTimeout(() => console.log(5))
 new Promise(function(resolve,reject){
     console.log(2) //立刻执行
     resolve()      //Promise.then是微任务
@@ -64,9 +64,9 @@ new Promise(function(resolve,reject){
 ```js
 // 拿点外卖为例，点外卖后可能会成功派送也可能会延迟，无论如何都会有个结果
 funtion dianwaimai(){
-    return new Promise((reslove,reject)=>{
+    return new Promise((reslove,reject) => {
         let result = cooking()
-        if(result==="做好了") reslove("正在派送")
+        if (result==="做好了") reslove("正在派送")
         else reject("还没做好")
     })
 }
@@ -75,7 +75,7 @@ function cooking(){
 }
 
 //执行
-dianwaimai().then(res=>console.log(res)).catch(res=>console.log(res))
+dianwaimai().then(res => console.log(res)).catch(res => console.log(res))
 ```
 
 ### Promise静态方法
@@ -160,6 +160,56 @@ p.then(function () {
 });
 ```
 
+### Promise.then 返回值
+
+[Promise.then方法的返回值问题](https://www.jianshu.com/p/802fc5801db4)
+
+```js
+var p1 = Promise.resolve(42)
+p1.then((value) => {
+  //第一种情况，返回一个Promise
+  return new Promise(function(resolve,rejected){
+    resolve(value + 1)
+  })
+
+  //第二种情况，返回一个值
+  return value + 2;
+
+  //第三种情况，新建一个promise，使用reslove返回值
+  const p2 = new Promise(function(resolve,rejected){
+    resolve(value + 3)
+  })
+
+  //第四种情况，新建一个promise，使用return返回值
+  const p2 = new Promise(function(resolve,rejected){
+    return(value + 4)
+  })
+
+  //第五种情况，没有返回值
+  return undefined
+
+}).then((value) => {
+  console.log(value)
+})
+```
+
+> 第一种情况，新建promise的resolve传出的值将作为then方法返回的promise的resolve的值传递出，console将打印出43
+>
+> 第二种情况，return的值将作为then方法返回的promise的resolve的值传递出，console将打印出44
+>
+> 第三种情况，虽然新建了promise，但对于then方法来说，没有向它返回的promise传递返回值，console将打印出undifined
+>
+> 第四种情况，同第三种情况，
+>
+> 第五种情况，then方法没有返回值，then方法的promise的resolve的值将传递出undifined。
+
+参考文章开篇 promise 的特性：
+
+- promise对象的then方法会返回一个全新的promise对象
+- 前面then方法中的回调函数的返回值会作为后面then方法回调的参数
+
+所以 then 方法中如果没有返回值，则没有继续向后传递参数。如果有返回值，不论这个值是 promise 还是普通的值，都会被处理成 promise，具体可看 [promise 实现](/interview/code-1.html#promise)
+
 ## Generator
 
 - Generator 的中文名称是生成器，
@@ -208,10 +258,10 @@ ES2017提供了`async`函数，使得异步操作变得更加方便。`async`函
  `async`函数就是将`Generator`函数的星号（`*`）替换成`async`，将`yield`替换成`await`，仅此而已。
  进一步说，`async`函数完全可以看作多个异步操作，包装成的一个`Promise`对象，而`await`命令就是内部`then`命令的语法糖。 
 
-- async函数返回的就是一个Promise对象，所接收的值就是函数return的值
+- async 函数返回的就是一个 Promise 对象，所接收的值就是函数 return 的值
 
-- await  操作符用于等待一个Promise 对象。它只能在异步函数 async function 中使用。
-- await 表达式会暂停当前 async function 的执行，等待 Promise 处理完成。若 Promise 正常处理(fulfilled)，其回调的resolve函数参数作为 await 表达式的值，继续执行 async function。
+- await  操作符用于等待一个 Promise 对象。它只能在异步函数 async function 中使用。
+- await 表达式会暂停当前 async function 的执行，等待 Promise 处理完成。若 Promise 正常处理(fulfilled)，其回调的 resolve 函数参数作为 await 表达式的值，继续执行 async function。
 - 若 Promise 处理异常(rejected)，await 表达式会把 Promise 的异常原因抛出。
 - 另外，如果 await 操作符后的表达式的值不是一个 Promise，则返回该值本身。
 
