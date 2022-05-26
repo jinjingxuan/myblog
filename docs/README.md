@@ -15,7 +15,7 @@
 * 2022
   * 服务端转发页面（未完成）
 
-  * devops介绍（未完成）
+  * [devops介绍](./re/devops.html)
 
   * [常见跨域方案](/chrome/cross.html)
   

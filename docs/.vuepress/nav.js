@@ -285,6 +285,10 @@ module.exports = [{
             {
                 text: 'mongodb',
                 link: '/re/mongodb'
+            },
+            {
+                text: 'devops',
+                link: '/re/devops'
             }
         ]
     },

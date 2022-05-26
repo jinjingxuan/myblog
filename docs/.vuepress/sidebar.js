@@ -218,5 +218,6 @@ module.exports = {
     '/re': [
         '/re/development',
         '/re/mongodb',
+        '/re/devops',
     ],
 }
