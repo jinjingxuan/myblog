@@ -289,7 +289,11 @@ module.exports = [{
             {
                 text: 'devops',
                 link: '/re/devops'
-            }
+            },
+            {
+                text: 'nginx',
+                link: '/re/nginx'
+            },
         ]
     },
     {

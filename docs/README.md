@@ -13,7 +13,7 @@
 ## 更新日志
 
 * 2022
-  * 服务端转发页面（未完成）
+  * [Nginx](./re/nginx.html)
 
   * [devops介绍](./re/devops.html)
 
