@@ -129,17 +129,17 @@ http://localhost:8088/myblog/ => http://localhost:8081
 
 ```text
 http: {
-	server {
-		server_name example.com
-		
-		location /mail {
-      proxy_pass http:example.com:8080;
+  server {
+    server_name example.com
+
+    location /mail {
+    	proxy_pass http:example.com:8080;
     }
 
     location /user {
-      proxy_pass http:example.com:8081;
+    	proxy_pass http:example.com:8081;
     }
-	}
+  }
 }
 ```
 
@@ -172,6 +172,24 @@ server {
 ```
 
 这样可以完美绕过浏览器的同源策略：`fe.server.com`访问`nginx`的`fe.server.com`属于同源访问，而`nginx`对服务端转发的请求不会触发浏览器的同源策略。
+
+#### 场景一
+
+访问某一台机器的域名时，我希望返回我上传到 bos 上的 html 地址。
+
+```
+server {  
+  listen       8088;        
+  server_name  xxx.com;
+
+  location / {
+  	proxy_pass   http://bos/index.html;
+  }
+
+}
+```
+
+此时访问的虽然是 `xxx.com`，但是实际请求的是 `http://bos/index.html`，对客户端隐藏了真实请求地址。
 
 ### 负载均衡
 
