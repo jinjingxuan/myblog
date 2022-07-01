@@ -3,6 +3,13 @@ module.exports = [{
         link: '/'
     },
     {
+        text: '产品与数据',
+        items: [{
+                text: 'AB test',
+                link: '/product/abtest'
+        }]
+    },
+    {
         text: 'node',
         items: [{
                 text: 'Node基础',

@@ -221,4 +221,7 @@ module.exports = {
         '/re/devops',
         '/re/nginx',
     ],
+    '/product': [
+        '/product/abtest',
+    ],
 }

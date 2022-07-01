@@ -11,6 +11,8 @@
 ## 更新日志
 
 * 2022
+  * [ABtest](./product/abtest.html)
+
   * [Nginx](./re/nginx.html)
 
   * [devops介绍](./re/devops.html)
