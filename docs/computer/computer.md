@@ -193,6 +193,76 @@ HTTP/2 对同一域名下所有请求都是基于流，也就是说同一域名�
 就好比面试，HTTP1.1是一面之后，视频不断继续二面，HTTP2.0是只要有面试官来了就同时面试（传输数据）
 ```
 
+![http2](./imgs/com.jpeg)
+
+### 怎么理解多路复用
+
+**HTTP/2是基于二进制“帧”的协议，HTTP/1.1是基于“文本分割”解析的协议。**
+
+HTTP 1.1 基于串行文件传输数据，因此这些请求必须是有序的，比如需要传输：hello world，只能从h到d一个一个的传输，不能并行传输，因为接收端并不知道这些字符的顺序。
+
+而 HTTP/2 引入二进制数据帧和流的概念，其中帧对数据进行顺序标识，这样浏览器收到数据之后，就可以按照序列对数据进行合并，而不会出现合并后数据错乱的情况。同样是因为有了序列，服务器就可以并行的传输数据。
+
+### TCP 队头阻塞和 HTTP 队头阻塞
+
+* TCP 队头阻塞：TCP数据包是有序传输，中间一个数据包丢失，会等待该数据包重传，造成后面的数据包的阻塞。
+* HTTP 队头阻塞：http1.1采用长连接，可以在一个TCP请求上，发送多个http请求。**管道化的机制**使得请求可以并行发出，但是响应必须串行返回。后一个响应必须在前一个响应之后。原因是，没有序号标明顺序，只能串行接收。这就会造成队头阻塞，前一个响应未及时返回，后面的响应被阻塞
+
+### 如何解决队头阻塞
+
+* TCP 队头阻塞：直接弃用。。详见[Http3](https://network.51cto.com/article/625999.html)
+* HTTP 队头阻塞：
+  * 建立多个 Tcp 连接，如 chrome 最多限制6个并发请求，每个 TCP 连接对应一个 `connection ID`
+  * Http2 多路复用
+
+![tcp](./imgs/tcp.png)
+
+### 如何在 chrome 中查看 http 协议
+
+只需在 network 中右键点击表头，就可以控制展示的列，其中就有 protocol 选项。
+
+![chrome](./imgs/chrome.png)
+
+### http 1.1 和 http 2 对比
+
+在http 1.1，所以浏览器会限制同一个域的同时请求数，Chrome是限制6个，如图：
+
+![http1.1](./imgs/http1.1.jpeg)
+
+但当我们开启了http/2之后，个数几乎没有限制了，如下图所示：
+
+![http2](./imgs/http2.jpeg)
+
+不过请求的顺序及并发并不完全依赖于此，如果在项目中写了如下代码：
+
+```js
+async getData() {
+  await this.getList1();
+  await this.getList2();
+  await this.getList3();
+  await this.getList4();
+  await this.getList5();
+}
+```
+
+那么在 chrome 中的表现如下：
+
+![await](./imgs/await.png)
+
+我们一般可以优化为：
+
+```js
+async getData() {
+	 await Promise.all([
+     this.getList1(),
+     this.getList2(),
+     this.getList3(),
+     this.getList4(),
+     this.getList5(),
+   ]);
+}
+```
+
 ## HTTPS
 
 HTTP请求都是明文传输的，所谓的明文指的是没有经过加密的信息，如果HTTP请求被黑客拦截，并且里面含有银行卡密码等敏感数据的话，会非常危险。为了解决这个问题，Netscape 公司制定了HTTPS协议，HTTPS可以将数据加密传输，也就是传输的是密文，即便黑客在传输过程中拦截到数据也无法破译，这就保证了网络通信的安全。
