@@ -220,6 +220,7 @@ module.exports = {
         '/re/mongodb',
         '/re/devops',
         '/re/nginx',
+        '/re/shell',
     ],
     '/product': [
         '/product/abtest',

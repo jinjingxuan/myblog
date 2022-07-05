@@ -301,6 +301,10 @@ module.exports = [{
                 text: 'nginx',
                 link: '/re/nginx'
             },
+            {
+                text: 'shell',
+                link: '/re/shell'
+            },
         ]
     },
     {

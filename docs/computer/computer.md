@@ -213,7 +213,7 @@ HTTP 1.1 基于串行文件传输数据，因此这些请求必须是有序的�
 * TCP 队头阻塞：直接弃用。。详见[Http3](https://network.51cto.com/article/625999.html)
 * HTTP 队头阻塞：
   * 建立多个 Tcp 连接，如 chrome 最多限制6个并发请求，每个 TCP 连接对应一个 `connection ID`
-  * Http2 多路复用
+  * Http2 多路复用，对于同一域名只需要创建一个连接，而不是像 http/1.1 那样创建 6~8 个连接
 
 ![tcp](./imgs/tcp.png)
 

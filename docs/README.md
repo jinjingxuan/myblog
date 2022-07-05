@@ -11,6 +11,8 @@
 ## 更新日志
 
 * 2022
+  * [Shell命令](./re/shell.html)
+  
   * [ABtest](./product/abtest.html)
 
   * [Nginx](./re/nginx.html)

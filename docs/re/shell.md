@@ -32,6 +32,33 @@ bash # 开启子 shell
 echo ${var} # 1
 ```
 
+### path 环境变量
+
+首先介绍一下 which 命令，它用于查找某个命令所在的绝对路径。
+
+```sh
+which node #/usr/local/bin/node
+which npm #/usr/local/bin/npm
+which rm #/bin/rm
+```
+
+为什么前面在使用 rm、node、npm 等命令时，无论当前位于哪个目录，都可以直接使用，而无需指明命令的执行文件所在的位置，这是 PATH 环境变量在起作用。
+
+```sh
+echo $PATH
+# /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+```
+
+PATH 环境变量的内容是由一堆目录组成的，各目录之间用冒号“:”隔开。当执行某个命令时，Linux 会依照 PATH 中包含的目录依次搜寻该命令的可执行文件。
+
+```sh
+export APATH = /user/a/bin
+export PATH=$APATH:$PATH
+
+# 在原有的 path 基础上添加新的目录
+# 注意，这种方式只是临时有效，一旦退出下次再登陆的时候，$PATH 就恢复成了默认值。
+```
+
 ### 位置参数变量
 
 - $n ：$0 代表命令本身、$1-$9 代表第1到9个参数，10以上参数用花括号，如 ${10}。
