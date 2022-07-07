@@ -11,6 +11,8 @@
 ## 更新日志
 
 * 2022
+  * [npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm](./tool/npm.html)
+  
   * [Shell命令](./re/shell.html)
   
   * [ABtest](./product/abtest.html)

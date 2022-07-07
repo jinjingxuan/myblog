@@ -135,6 +135,45 @@ eslint --ext .js,.san ./src
 },
 ```
 
+### 新版 husky 配置
+
+新版的 husky 取消了在 `package.json` 中配置的方式，可以使用 `husky install` 来创建 `.husky` 目录，我们不妨写个脚本：
+
+```sh
+# install-husky.sh
+#!/bin/sh
+
+npx husky install
+
+# 删除已有的 git hooks
+rm .husky/commit-msg
+rm .husky/pre-commit
+
+# 添加 pre-commit hook
+npx husky add .husky/pre-commit "npx --no-install lint-staged"
+
+# commit-msg hook 添加 commitlint 调用
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+```
+
+在项目中执行这个脚本生成`.husky`目录，里面分别包含 `pre-commit` 和 `commit-msg`。在每次 `commit` 时：
+
+* 运行 lint-staged ，可以配置来同时校验 eslint 和 stylelint
+
+```json
+"scripts": {
+  "lint-staged": "lint-staged"
+},
+"lint-staged": {
+  "**/*.{js,jsx,san}": "eslint",
+  "**/*.{css,less}": "stylelint"
+},
+```
+
+* 运行 [commitlint](https://commitlint.js.org/#/)，需要在项目中创建 `commitlint.config.js` 进行配置
+
+这样就完成了使用 husky 来集成 eslint & stylelint & commitlint。
+
 ## 源码解析
 
 > 源码地址：https://github.com/ecomfe/eslint-plugin-san

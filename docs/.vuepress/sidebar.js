@@ -201,6 +201,7 @@ module.exports = {
     ],
     '/tool': [
         '/tool/tool',
+        '/tool/npm',
         {
             title: '第三方npm包',
             collapsable: true,

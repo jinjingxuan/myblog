@@ -412,6 +412,10 @@ module.exports = [{
                 link: '/tool/tool'
             },
             {
+                text: '依赖管理工具',
+                link: '/tool/npm'
+            },
+            {
                 text: '第三方包',
                 items: [{
                         text: 'postcss',
