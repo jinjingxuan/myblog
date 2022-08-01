@@ -132,6 +132,7 @@ module.exports = {
         '/engineering/rollup',
         '/engineering/env',
         '/engineering/commander',
+        '/engineering/test',
     ],
     '/safe': [
         '/safe/safe',

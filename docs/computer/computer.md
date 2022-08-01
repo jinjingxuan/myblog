@@ -373,94 +373,124 @@ PATCH方法用于对资源应用部分修改。
 
 ## 常见请求头
 
-HTTP 首部字段是由首部字段名和字段值构成的，中间用冒号“:” 分隔。
+HTTP 首部字段是由首部字段名和字段值构成的，中间用冒号 `:` 分隔。
 
-> 首部字段名: 字段值
+```
+首部字段名: 字段值
+```
 
-另外，字段值对应单个 HTTP 首部字段可以有多个值，多个指令之间通过“,”分隔。如下所示。
+另外，字段值对应单个 HTTP 首部字段可以有多个值，多个指令之间通过 `,`分隔。如下所示。
 
-> Keep-Alive: timeout=15, max=100
+```
+Keep-Alive: timeout=15, max=100
+```
 
 若想要加优先级，则使用 q=来额外表示权重值 1 ，用分号（;）进行分隔。权重值 q 的范围是 0~1（可精确到小数点后 3位），且 1 为最大值。不指定权重 q 值时，默认权重为 q=1.0。
 
-> Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+```
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+```
 
 ### 请求头字段
 
 * Accept
 
-> Accept: image/webp,image/apng,image/*,*/*;q=0.8
->
-> Accept 首部字段可通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级。可使用type/subtype 这种形式，一次指定多种媒体类型。
+```
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+
+Accept 首部字段可通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级。可使用type/subtype 这种形式，一次指定多种媒体类型。
+```
 
 * Accept-Encoding
 
-> Accept-Encoding: gzip, deflate, br
->
-> Accept-Encoding 首部字段用来告知服务器用户代理支持的内容编码及内容编码的优先级顺序。可一次性指定多种内容编码。
+```
+Accept-Encoding: gzip, deflate, br
+
+Accept-Encoding 首部字段用来告知服务器用户代理支持的内容编码及内容编码的优先级顺序。可一次性指定多种内容编码。
+```
 
 * Accept-Language
 
-> Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
->
-> 首部字段 Accept-Language 用来告知服务器用户代理能够处理的自然语言集（指中文或英文等），以及自然语言集的相对优先级。可一次指定多种自然语言集。
+```
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+
+首部字段 Accept-Language 用来告知服务器用户代理能够处理的自然语言集（指中文或英文等），以及自然语言集的相对优先级。可一次指定多种自然语言集。
+```
 
 * Cache-Control
 
-> Cache-Control: no-cache，缓存
+```
+Cache-Control: no-cache，缓存
+```
 
 * Connection
 
-> Connection: keep-alive
->
-> HTTP/1.1 之前的 HTTP 版本的默认连接都是非持久连接。为此，如果想在旧版本的HTTP 协议上维持持续连接，则需要指定Connection 首部字段的值为 Keep-Alive。
+```
+Connection: keep-alive
+
+HTTP/1.1 之前的 HTTP 版本的默认连接都是非持久连接。为此，如果想在旧版本的HTTP 协议上维持持续连接，则需要指定Connection 首部字段的值为 Keep-Alive。
+```
 
 * Cookie
 
-> 首部字段 Cookie 会告知服务器，当客户端想获得HTTP 状态管理支持时，就会在请求中包含从服务器接收到的 Cookie。
+```
+首部字段 Cookie 会告知服务器，当客户端想获得HTTP 状态管理支持时，就会在请求中包含从服务器接收到的 Cookie。
+```
 
 * Host
 
-> Host: www.baidu.com
->
-> 首部字段 Host 会告知服务器，请求的资源所处的互联网主机名和端口号。Host 首部字段在HTTP/1.1 规范内是唯一一个必须被包含在请求内的首部字段。
+```
+Host: www.baidu.com
+
+首部字段 Host 会告知服务器，请求的资源所处的互联网主机名和端口号。Host 首部字段在HTTP/1.1 规范内是唯一一个必须被包含在请求内的首部字段。
+```
 
 * Referer
 
-> 首部字段 Referer 会告知服务器请求的原始资源的 URI。它记录了该 HTTP 请求的来源地址。
->
-> 如果黑客要对银行网站实施 CSRF 攻击，他只能在他自己的网站构造请求，当用户通过黑客的网站发送请求到银行时，该请求的 Referer 是指向黑客自己的网站。因此，要防御 CSRF 攻击，银行网站只需要对于每一个转账请求验证其 Referer 值 。
->
-> 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的 ，目前已经有一些方法可以篡改 Referer 值 
->
-> 即便是使用最新的浏览器，黑客无法篡改 Referer 值，这种方法仍然有问题。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。
+```
+首部字段 Referer 会告知服务器请求的原始资源的 URI。它记录了该 HTTP 请求的来源地址。
+
+如果黑客要对银行网站实施 CSRF 攻击，他只能在他自己的网站构造请求，当用户通过黑客的网站发送请求到银行时，该请求的 Referer 是指向黑客自己的网站。因此，要防御 CSRF 攻击，银行网站只需要对于每一个转账请求验证其 Referer 值 。
+
+然而，这种方法并非万无一失。Referer 的值是由浏览器提供的 ，目前已经有一些方法可以篡改 Referer 值 
+
+即便是使用最新的浏览器，黑客无法篡改 Referer 值，这种方法仍然有问题。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。
+```
 
 * Origin
 
-> 用来说明请求从哪里发起的，包括，且仅仅包括**协议和域名**。
-> 这个参数一般只存在于CORS跨域请求中，可以看到response有对应的header：`Access-Control-Allow-Origin`。
+```
+用来说明请求从哪里发起的，包括，且仅仅包括 协议和域名。
+这个参数一般只存在于CORS跨域请求中，可以看到 response 有对应的 header：Access-Control-Allow-Origin。
+```
 
 * User-Agent
 
-> 首部字段 User-Agent 会将创建请求的浏览器和用户代理名称等信息传达给服务器。
+```
+首部字段 User-Agent 会将创建请求的浏览器和用户代理名称等信息传达给服务器。
+```
 
 * Pragma
 
-> Pragma: no-cache
->
-> Pragma 是 HTTP/1.1 之前版本的历史遗留字段，仅作为与 HTTP/1.0 的向后兼容而定义。客户端会要求所有的中间服务器不返回缓存的资源。
+```
+Pragma: no-cache
+
+Pragma 是 HTTP/1.1 之前版本的历史遗留字段，仅作为与 HTTP/1.0 的向后兼容而定义。客户端会要求所有的中间服务器不返回缓存的资源。
+```
 
 * Content-Type
 
-> Content-Type来表示具体请求中的媒体类型信息。
->
-> **application/x-www-form-urlencoded**
->
-> 请求参数格式`key1=val1&key2=val2`的方式进行拼接，并放到请求实体里面，如果是中文或特殊字符等会自动进行URL转码。一般用于表单提交
->
-> **application/json**
->
-> application/json 作为响应头比较常见，用来告诉服务端消息主体是序列化后的 JSON 字符串，其中一个好处就是JSON 格式支持比键值对复杂得多的结构化数据。由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持JSON.stringify，服务端语言也都有处理 JSON 的函数，使用起来没有困难。
+```
+Content-Type来表示具体请求中的媒体类型信息。
+
+application/x-www-form-urlencoded
+
+请求参数格式`key1=val1&key2=val2`的方式进行拼接，并放到请求实体里面，如果是中文或特殊字符等会自动进行URL转码。一般用于表单提交
+
+application/json
+
+application/json 作为响应头比较常见，用来告诉服务端消息主体是序列化后的 JSON 字符串，其中一个好处就是JSON 格式支持比键值对复杂得多的结构化数据。由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持JSON.stringify，服务端语言也都有处理 JSON 的函数，使用起来没有困难。
+```
 
 ## 响应头字段
 
@@ -480,39 +510,51 @@ HTTP 首部字段是由首部字段名和字段值构成的，中间用冒号“
 
 * Date
 
-> 服务端响应客户端的时间
+```
+服务端响应客户端的时间
+```
 
 * Server
 
-> 服务器名字
+```
+服务器名字
+```
 
 * Content-Type
 
-> 服务端发送的媒体类型
+```
+服务端发送的媒体类型
+```
 
 * Set-Cookie
 
-> 浏览器会在当前页面所在域名设置cookie，当浏览器再次发送请求时，浏览器默认会自动将cookie放在请求头中的Cookie项中发送给服务器。
+```
+浏览器会在当前页面所在域名设置cookie，当浏览器再次发送请求时，浏览器默认会自动将cookie放在请求头中的Cookie项中发送给服务器。
+```
 
 * [Cache-Control、E-Tag 、 Last-Modified](https://juejin.cn/post/6844903763665240072)
 
 * Content-Encoding
 
-> 文档的编码（Encode）方法。只有在解码之后才可以得到Content-Type头指定的内容类型。利用gzip压缩文档能够显著地减少HTML文档的下载时间。
+```
+文档的编码（Encode）方法。只有在解码之后才可以得到Content-Type头指定的内容类型。利用gzip压缩文档能够显著地减少HTML文档的下载时间。
+```
 
 * Connection
 
-> Keep-alive 长连接
+```
+Keep-alive 长连接
+```
 
 ## Content-type
 
 ### 用于前端请求
 
-> Content-Type设置与get请求无关,一般与post请求相关
->
-> 当用form表单提交时 Content-Type 默认为`application/x-www-form-urlencoded`，当用XHR提交时，Content-Type默认为`application/json`
+* Content-Type 设置与 get 请求无关,一般与post请求相关
 
-- `Content-Type`为`application/x-www-form-urlencoded`时提交数据的方式为`a = 123&b = 456&c = [1,2,3]`
+* 当用 form 表单提交时 Content-Type 默认为`application/x-www-form-urlencoded`，当用XHR提交时，Content-Type默认为`application/json`
+
+- `Content-Type` 为 `application/x-www-form-urlencoded`时提交数据的方式为`a = 123&b = 456&c = [1,2,3]`
 
 - `Content-Type`为`application/json`时需要以json形式提交`body: '{"a":123,"b":456}'`
 
