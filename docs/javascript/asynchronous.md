@@ -340,6 +340,61 @@ async function getABC() {
 }
 ```
 
+### 顶层 await
+
+顶层 await 允许我们在 async 函数外面使用 await 关键字。它允许模块充当大型异步函数，通过顶层 await，这些 ECMAScript 模块可以等待资源加载。这样其他导入这些模块的模块在执行代码之前要等待资源加载完再去执行。
+
+由于 await 仅在 async 函数中可用，因此模块可以通过将代码包装在 async 函数中来在代码中包含 await：
+
+```js
+// a.js
+import fetch  from "node-fetch";
+let users;
+export const fetchUsers = async () => {
+  const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+  users =  resp.json();
+}
+fetchUsers();
+export { users };
+
+// usingAwait.js
+import {users} from './a.js';
+console.log('users:', users); // undefined
+setTimeout(() => {
+  console.log('users:', users);
+}, 100);
+```
+
+一个方法是导出一个 promise，让导入模块知道数据已经准备好了：
+
+```js
+//a.js
+import fetch  from "node-fetch";
+export default (async () => {
+  const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+  users = resp.json();
+})();
+export { users };
+
+//usingAwait.js
+import promise, {users} from './a.js';
+promise.then(() => {
+  setTimeout(() => console.log('users:', users), 100); 
+});
+```
+
+而顶层await就可以解决这些问题：
+
+```js
+// a.js
+const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+const users = resp.json();
+export { users};
+// usingAwait.js
+import {users} from './a.mjs';
+console.log(users);
+```
+
 ### try...catch处理错误
 
 ```js

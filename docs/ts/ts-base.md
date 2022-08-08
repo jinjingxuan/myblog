@@ -539,7 +539,7 @@ interface A {
   name: string;
   age: number;
 }
-type PartialA = Partial<A>;a.ts
+type PartialA = Partial<A>;
 ```
 
 ![partial](./imgs/partial.png)

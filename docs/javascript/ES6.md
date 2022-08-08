@@ -9,6 +9,7 @@ categories: JavaScript
 * ES6的let与const
 * 对象字面量的增强
 * object.assign
+* Map数据结构
 * Set数据结构
 * Symbol可作为键
 * forEach、find、map、filter、reduce、every、some
@@ -496,6 +497,27 @@ Object.is(NaN, NaN) // true
 与[`==`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Equality) 运算*不同。* `==` 运算符在判断相等前对两边的变量(如果它们不是同一类型) 进行强制转换 (这种行为的结果会将 `"" == false` 判断为 `true`), 而 `Object.is`不会强制转换两边的值。
 
 与[`===`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity) 运算也不相同。 `===` 运算符 (也包括 `==` 运算符) 将数字 `-0` 和 `+0` 视为相等 ，而将[`Number.NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/NaN) 与[`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)视为不相等.
+
+## Map数据结构
+
+[When You Should Prefer Map Over Object In JavaScript](https://www.zhenghao.io/posts/object-vs-map)
+
+Object 相比于 Map 的缺点：
+
+* 原型污染：Object 会自动继承原型上的方法，如 `hasOwnProperty`,如果在对象本身定义了相同的方法，则无法区分方法是原型上的还是对象本身的。当然也可以使用 `Object.create(null) `来创建不会继承的对象。
+* 命名冲突：对象自己的属性可能会和原型上的属性冲突，此时我们需要用 `Object.prototype.hasOwnProperty.call(obj, key)` 来确定原型是否在对象本身，当然现在也可以用 `Object.hasOwn`。
+* 获取大小：没有直接获取 size 的 api，但是可以使用`Object.keys`, `Object.values` 和 `Object.entries`，获取对应数组。
+* 不可迭代：不能使用`for...of`迭代，但是可以使用`Object.keys`, `Object.values` 和 `Object.entries`，获取对应数组再进行迭代。
+* 清空对象：只能使用 `delete` 来逐个删除属性，相比于 `Map.prototype.delete` 要慢的很。
+* 检查属性：不能使用点运算和括号运算符来判断属性是否存在，因为属性可以被设置为 `undefined`，要使用`Object.prototype.hasOwnProperty` 或者 `Object.hasOwn`。
+
+Map 的优点：
+
+* 键可以为任意数据类型
+* 用户定义的属性和结构本身属性有明确的分离，`Map.prototype.get` 来获取用户定义的属性
+* 可以迭代，也可以进行解构：`const [[firstKey, firstValue]] = map`
+* 便捷的 api：`Map.prototype.has`,`Map.prototype.get`,`Map.prototype.size`,`Map.prototype.clear`
+* 性能更好
 
 ## Set数据结构
 

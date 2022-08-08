@@ -1,10 +1,6 @@
----
-title: JSON.stringify详解
-date: 2020-04-12 09:52:01
-categories: JavaScript
----
+# JSON.stringify
 
-我们都知道toString是用于处理非字符串到字符串的强制类型转换（隐式类型转换）
+我们都知道 toString 是用于处理非字符串到字符串的强制类型转换（隐式类型转换）
 
 ```js
 let a={}  
@@ -13,14 +9,14 @@ let b=[1,2,3]
 b.toString()   //数组的toString被重写了，所以输出"1,2,3"
 ```
 
-JSON.stringify将JSON对象序列化时也用到了toString()
+`JSON.stringify` 将 JSON对象序列化时也用到了 `toString()`
 
 ### 先说结论
 
-* 安全的JSON值可以序列化，不安全的JSON值会特殊处理
+* 安全的 `JSON` 值可以序列化，不安全的 `JSON` 值会特殊处理
 
-* 安全：字符串，数字，布尔值和null的JSON.stringify与toString基本相同
-* 不安全：undefined,function,symbol会特殊处理，如果传递给JSON.stringify的对象中定义了toJSON方法，那么该方法会在字符串化前调用，将对象转化为安全JSON值
+* 安全：字符串，数字，布尔值和 null 的` JSON.stringify` 与 `toString` 基本相同
+* 不安全：`undefined,function,symbol`会特殊处理，如果传递给 `JSON.stringify` 的对象中定义了 `toJSON`方法，那么该方法会在字符串化前调用，将对象转化为安全` JSON` 值
 
 ### 不安全的JSON值
 
@@ -45,7 +41,7 @@ JSON.stringify(
 JSON.stringify(
 	{a:1,b:undefined,c:function(){},d:Symbol(a),e:4}
 )
-//{"a":1,"e":4}
+//{"a": 1,"e": 4}
 ```
 
 ### （2）循环引用
@@ -55,18 +51,18 @@ JSON.stringify(
 ```js
 let o = {}
 let a = {
-    b:42,
-    c:o,
-    d:function(){}
+    b: 42,
+    c: o,
+    d: function(){}
 }
-o.e = a //创建循环引用
-console.log(JSON.stringify(a)) //报错
+o.e = a // 创建循环引用
+console.log(JSON.stringify(a)) // 报错
 
-//自定义一下toJSON
-a.toJSON = function(){
-    return {b:this.b}
+// 自定义一下 toJSON
+a.toJSON = function() {
+    return {b: this.b}
 }
-console.log(JSON.stringify(a)) //{"b":42}
+console.log(JSON.stringify(a)) // {"b": 42}
 ```
 
 也就是说，toJSON应该返回一个能够被字符串化的安全JSON值
@@ -75,10 +71,10 @@ console.log(JSON.stringify(a)) //{"b":42}
 var a = {
  val: [1,2,3],
  toJSON: function(){
- 	return this.val.slice( 1 );
+ 	return this.val.slice(1);
  }
 };
-console.log(JSON.stringify(a)) //"[2,3]"
+console.log(JSON.stringify(a)) // "[2,3]"
 ```
 
 ## JSON.stringify的几个参数
@@ -90,17 +86,32 @@ console.log(JSON.stringify(a)) //"[2,3]"
 
 ```js
 let a = {
-    b:42,
-    c:"42",
-    d:[1,2,3]
+    b: 42,
+    c: "42",
+    d: [1,2,3]
 }
-console.log(JSON.stringify(a,["b","c"]))
+console.log(JSON.stringify(a, ["b","c"]))
 //{"b":42,"c":"42"}
 
-console.log(JSON.stringify(a,function(k,v){
-    if(k!=="c") return v
+console.log(JSON.stringify(a, function(k,v) {
+    if(k !== "c") return v
 }))
 //{"b":42,"d":[1,2,3]}
+
+const dude = {
+  name: "Pawel",
+  friends: new Set(["Dan", "Pedro", "Mr Gregory"])
+};
+
+const dudeStringified = JSON.stringify(dude);
+console.log(dudeStringified);
+// {"name":"Pawel","friends":{}}
+
+const dudeStringified = JSON.stringify(dude, (key, value) =>
+  value instanceof Set ? [...value] : value
+);
+console.log(dudeStringified);
+// {"name":"Pawel","friends":["Dan","Pedro","Mr Gregory"]}
 ```
 
 ### （2）space
@@ -109,11 +120,11 @@ console.log(JSON.stringify(a,function(k,v){
 
 ```js
 let a = {
-    b:42,
-    c:"42",
-    d:[1,2,3]
+    b: 42,
+    c: "42",
+    d: [1,2,3]
 }
-console.log(JSON.stringify(a,null,3))
+console.log(JSON.stringify(a, null, 3))
 /*
 {
    "b": 42,
@@ -126,7 +137,7 @@ console.log(JSON.stringify(a,null,3))
 }
 */
 
-console.log(JSON.stringify(a,null,'----'))
+console.log(JSON.stringify(a, null, '----'))
 /*
 {
 ----"b": 42,
@@ -151,4 +162,4 @@ JSON.parse(JSON.stringify(obj)) 的问题：
 5. 会忽略 symbol
 6. 会忽略 undefined
 
-**由此可知，无法处理函数,undefied,symbol是因为不是安全的JSON格式**
+**由此可知，无法处理函数, undefied, symbol 是因为不是安全的 JSON 格式**
