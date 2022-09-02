@@ -8,7 +8,7 @@
 | somewhat    | reach for   | underused | literal       | mechanism    | collision  |
 | ergonomic   | intuitively | nuances   | constitute    | introduce    | infamously |
 | retrieve    | dedicated   | awkward   | clunk         | Nevertheless | melt       |
-| come across | recursive   |           |               |              |            |
+| come across | recursive   | grasp     | crude         | paradigm     |            |
 
 ## 长句
 

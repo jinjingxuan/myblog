@@ -80,6 +80,35 @@ Commercial support is available at
 
 ```
 
+## 多个配置文件
+
+我们在使用nginx时，会遇到有多个服务要进行代理，如果我们直接在nginx.conf文件中添加，配置文件会显得
+
+比较臃肿且不好维护。此时我们可以通过include的方式，为每个服务建立nginx的配置文件，这样也便于后期维护。
+
+```
+http {
+    # ...
+    include /etc/nginx/conf/*.conf;
+}
+```
+
+`conf` 目录下可以有 `a.conf` 和 `b.conf`
+
+## 查看 nginx 进程
+
+ps -ef | grep nginx
+
+* `ps -ef` 表示显示所有进程的消息。
+* `|` 是管道命令。通常需要借助管道命令”|”多个命令的组合
+* `grep` 是`Linux` 下的文本过滤工具
+
+输出为：
+
+![grep](./imgs/grep.png)
+
+> 启动nginx以后，有两个nginx进程，一个master进程，一个worker进程，worker进程的父进程 ID 即是master进程，可以在输出的第2列和第3列验证。
+
 ## Nginx 主要应用
 
 ### 动静分离
