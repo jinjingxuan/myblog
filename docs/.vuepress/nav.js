@@ -189,6 +189,10 @@ module.exports = [{
                         text: 'redux',
                         link: '/react/redux'
                     },
+                    {
+                        text: 'React Fiber',
+                        link: '/react/fiber'
+                    },
                 ]
             },
             {
@@ -308,6 +312,10 @@ module.exports = [{
             {
                 text: 'shell',
                 link: '/re/shell'
+            },
+            {
+                text: 'docker',
+                link: '/re/docker'
             },
         ]
     },

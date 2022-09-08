@@ -52,6 +52,7 @@ module.exports = {
         '/react/react-1',
         '/react/react-hooks',
         '/react/redux',
+        '/react/fiber',
     ],
     '/virtual-dom': [
         '/virtual-dom/virtualdom',
@@ -223,6 +224,7 @@ module.exports = {
         '/re/devops',
         '/re/nginx',
         '/re/shell',
+        '/re/docker',
     ],
     '/product': [
         '/product/abtest',
