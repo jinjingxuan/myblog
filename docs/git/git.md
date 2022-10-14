@@ -11,6 +11,7 @@ categories: 规范
 * git stash
 * git commit --amend
 * gitemoji
+* cherry-pick
 
 ## git
 
@@ -110,6 +111,10 @@ git pull
 
 https://gitmoji.js.org/
 
+## cherry-pick
+
+[git cherry-pick 教程](https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html)
+
 ## 一些问题
 
 1、2021.8.14 github修改密码校验为 token 校验
@@ -136,3 +141,6 @@ git config --global --unset http.proxy
 
 * `git add .`：将修改和新增的文件添加到暂存区
 * `git add -A`：将修改，新增和删除的文件添加到暂存区（方便恢复被删除的文件）
+
+
+
