@@ -114,7 +114,10 @@ https://gitmoji.js.org/
 ## cherry-pick
 
 [git cherry-pick 教程](https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html)
-3
+
+如有冲突则解决冲突后 `git add .` `git cherry-pick --continue`
+
+rebase、merge、cherry-pick 都有 --abort（相当于反悔，回到操作之前的状态）
 
 ## 一些问题
 
