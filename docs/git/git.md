@@ -114,6 +114,7 @@ https://gitmoji.js.org/
 ## cherry-pick
 
 [git cherry-pick 教程](https://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html)
+3
 
 ## 一些问题
 
