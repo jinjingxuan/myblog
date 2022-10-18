@@ -93,12 +93,18 @@ cnpm i -g yarn
 
 ## 同时配置github和gitlab
 
+生成公钥：`ssh-keygen -t rsa -C 915397405@qq.com -f ~/.ssh/id_rsa_github`
+
+进入 ssh 配置目录：`cd ~/.ssh`
+
+配置文件生效：`sudo source config`
+
 [git配置github与gitlab同时使用](https://blog.csdn.net/qq_36625806/article/details/111589620)
 
 ```
 # gitlab
 Host icode
-  HostName gitlan.com
+  HostName gitlab.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_rsa
 
@@ -116,17 +122,21 @@ Host github
 
 ****
 
-如果出现以下错误：
+如果出现以下错误：`Bad owner or permissions on .ssh/config`
 
-```Linux
-Bad owner or permissions on .ssh/config
+这个时候，只需要在.ssh目录，执行以下命令行：`sudo chmod 600 config`
+
+****
+
+```
+kex_exchange_identification: Connection closed by remote host
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
 ```
 
-这个时候，只需要在.ssh目录，执行以下命令行：
-
-```Linux
-sudo chmod 600 config
-```
+则配置下 `hosts` 中的 github ip 地址即可
 
 ## github访问慢
 
