@@ -803,6 +803,42 @@ p.then(undefined, err => {
 });
 ```
 
+### for 循环中异步顺序不一致问题
+
+```js
+// 遍历 dataList，当存在 d.data 时则调用异步请求，否则返回 123，存入 list 中
+const list = [];
+dataList.forEach(d => {
+  let res = 123;
+  if (d.data) {
+    res = await axios.get(d.data);
+  }
+  list.push(res);
+});
+```
+
+> 这样一来会有一个问题，异步请求会把回调事件放入微任务事件队列，宏任务执行完毕再执行微任务。所以 for 循环会先执行完，导致结果为 [123, 123, 123, data, data]，异步请求的结果永远在后面。
+
+```js
+// 解决办法是把原 dataList 重新生成一个 promiseList，等异步请求全部请求完再进行下一步操作
+const list = [];
+const promiseList = [];
+dataList.forEach(d => {
+  if (d.data) {
+    promiseList.push(axios.get(d.data));
+  }
+  else {
+  	promiseList.push(123);
+  }
+});
+
+Promise.all(promiseList).then(res => {
+  dataList.forEach((d, i) => {
+      list.push(res[i]);
+  });
+})
+```
+
 ## 浏览器事件循环和node事件循环的区别
 
 Node的事件循环是libuv实现的，大体的task（宏任务）执行顺序是这样的：[图示](http://lynnelv.github.io/img/article/event-loop/ma(i)crotask-in-node.png)
