@@ -20,6 +20,7 @@ categories: 规范
 * helm
 * ipic
 * Mac 软件
+* github cli
 
 ## VSCode 常用插件
 
@@ -219,3 +220,19 @@ Mac 上修改 host 文件的工具，Appstore中就能下载。可以建多份�
 ## Mac 软件
 
 https://www.macwk.com/
+
+## github cli
+
+当我们将本地代码提交到 `GitHub` 后，就可以在 `GitHub` 网站上查看到各种的交互信息了，例如其它开发者提的 `Issue`，或者提交的代码合并请求等。但是，如果我们能在命令行上直接查看、处理这些信息，那么就有了 `github cli`
+
+官网：https://cli.github.com/
+
+安装：`brew install gh`
+
+更新：` brew update && brew upgrade gh`
+
+授权登录：`gh auth login`（通过命令行交互会调起浏览器 github 进行授权）
+
+查看 issue 列表：`gh issue list`
+
+切换到 pr 分支：`gh pr checkout 111`
