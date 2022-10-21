@@ -11,6 +11,7 @@ categories: 算法
 * 最长重复子数组
 * 最长递增子序列
 * 最长公共子序列
+* 编辑距离
 * 最长回文子串
 * 不同路径
 * 最小路径和
@@ -314,6 +315,80 @@ var longestCommonSubsequence = function (text1, text2) {
     return dp[m][n]
 };
 ```
+
+## 编辑距离(SES)
+
+* [leetcode72](https://leetcode.cn/problems/edit-distance/)
+* [题解:微软又考了这道题](https://mp.weixin.qq.com/s/JDfm9uWF7zKhQJL4mbCSeQ)、[题解2](https://leetcode.cn/problems/edit-distance/solution/jsshua-ti-mian-shi-ti-jie-by-distracted-5dc5t/)
+
+```js
+输入：word1 = "horse", word2 = "ros"
+输出：3
+
+horse -> rorse (将 'h' 替换为 'r')
+rorse -> rose (删除 'r')
+rose -> ros (删除 'e')
+```
+
+状态定义：`dp[i][j]`是word1,word2的最小编辑距离
+
+* 当`word1[i - 1]` = `word2[j - 1]` 时，字符串最后一位相等，不需要任何操作，
+  也就是`dp(i, j) = dp(i - 1, j - 1)`， `s1[0..i] 和 s2[0..j]` 的最小编辑距离等于`s1[0..i - 1]` 和 `s2[0..j - 1]` 的最小编辑距离
+
+* 当 `word1[i]！= word2[j]`，则需要进行插入、删除、替换操作了
+  1、插入：`dp[i][j] = dp(i, j - 1) + 1`， 直接在 `s1[i]` 插入一个和 `s2[j]` 一样的字符， 操作数加一
+  2、删除：`dp[i][j] = dp(i - 1, j) + 1`，直接把 `s[i]` 这个字符删掉， 操作数加一
+  3、替换：`dp[i][j] = dp(i - 1, j - 1) + 1` ， 直接把 `s1[i]` 替换成` s2[j]`， 操作数加一
+
+| word1/word2 | -    | r    | o    | s    |
+| ----------- | ---- | ---- | ---- | ---- |
+| -           | 0    | 1    | 2    | 3    |
+| h           | 1    | 1    | 2    | 3    |
+| o           | 2    | 2    | 1    | 2    |
+| r           | 3    | 2    | 2    | 2    |
+| s           | 4    | 3    | 3    | 2    |
+| e           | 5    | 4    | 4    | 3    |
+
+```js
+var minDistance = function(wonrd1, word2) {
+    let m = word1.length;
+    let n = word2.length;
+    let dp = Array.from(new Array(m + 1), () => new Array(n + 1).fill(0))
+    // 初始化
+    for (let i = 1; i <= m; i++) { 
+        dp[i][0] = i;
+    }
+    for (let j = 1; j <= n; j++) {
+        dp[0][j] = j;
+    }
+
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (word1[i - 1] === word2[j - 1]) {// 最后一位字符一样，不需要任何操作
+                dp[i][j] = dp[i - 1][j - 1]
+            }
+          	else { // 插入、删除、替换
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+            }
+        }
+    }
+    return dp[m][n];
+};
+```
+
+## LCS和SES的关系
+
+对于LCS和SES如果我们细心想一下就不难发现两者其实就是同一个问题；
+
+> **存在字符串string1=ABCDE，string2=BCEGF；**
+>
+> **则字符串的长度分别计作Length(string1)，Length(string2);**
+>
+> **从LCS的角度来看，最长公共子序列就是BCE，长度计作Length(LCS);**
+>
+> **从SES的角度来看，最短编辑路径就是A(-)D(-)G(+)F(+)，长度计作Length(SES);**
+>
+> **Length(string1)+Length(string2)=Length(SES)+Length(LCS)*2；**
 
 ## 最长回文子串
 
