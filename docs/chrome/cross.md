@@ -80,3 +80,56 @@ fetch('/api/users')
 
 另一种是使用相对路径的方式，只写 `/api/users`，不用区分测试和线上环境，这种方式一般使用上述的 devserver 开发的，测试环境可以直接跑在开发机上，线上部署后由于相对路径请求起来也没问题。
 
+## 预检请求与重定向
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+
+并不是所有浏览器都支持预检请求的重定向。如果一个预检请求发生了重定向，一部分浏览器将报告错误：
+
+> Access to XMLHttpRequest at 'http://xxx' (redirected from 'http://yyy') from origin 'http://zzz' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: Redirect is not allowed for a preflight request.
+
+CORS 最初要求浏览器具有该行为，不过在后续的[修订](https://github.com/whatwg/fetch/commit/0d9a4db8bc02251cc9e391543bb3c1322fb882f2)中废弃了这一要求。但并非所有浏览器都实现了这一变更，而仍然表现出最初要求的行为。
+
+在浏览器的实现跟上规范之前，有两种方式规避上述报错行为：
+
+- 在服务端去掉对预检请求的重定向；
+- 将实际请求变成一个[简单请求](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#简单请求)。
+
+如果上面两种方式难以做到，我们仍有其他办法：
+
+1. 发出一个[简单请求](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#简单请求)（使用 [`Response.url`](https://developer.mozilla.org/zh-CN/docs/Web/API/Response/url) 或 [`XMLHttpRequest.responseURL`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/responseURL)）以判断真正的预检请求会返回什么地址。
+2. 发出另一个请求（*真正*的请求），使用在上一步通过 `Response.url` 或 `XMLHttpRequest.responseURL` 获得的 URL。
+
+不过，如果请求是由于存在 `Authorization` 字段而引发了预检请求，则这一方法将无法使用。这种情况只能由服务端进行更改。
+
+## axios 请求的三种错误
+
+* 网络异常错误：当网络出现异常（比如网络不通）的时候，再比如上述所说的预检请求不允许重定向
+* 超时错误
+* 状态码错误：比如 http状态码为 500
+
+```js
+instance.interceptors.response.use(
+    response => {},
+    error => {
+        if (error.response && error.response.data) {
+            return Promise.reject(error);
+        }
+
+        let {message} = error;
+        if (message === 'Network Error') {
+            message = '后端接口连接异常!';
+        }
+        if (message.includes('timeout')) {
+            message = '后端接口请求超时';
+        }
+        if (message.includes('Request failed with status code')) {
+            const code = message.substr(message.length - 3);
+            message = '后端接口' + code + '异常';
+        }
+        Message.error(message);
+        return Promise.reject(error);
+    }
+);
+```
+
