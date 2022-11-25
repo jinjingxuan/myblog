@@ -82,7 +82,7 @@ fetch('/api/users')
 
 ## 预检请求与重定向
 
-https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+[https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 
 并不是所有浏览器都支持预检请求的重定向。如果一个预检请求发生了重定向，一部分浏览器将报告错误：
 
