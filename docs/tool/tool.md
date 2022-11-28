@@ -21,6 +21,7 @@ categories: 规范
 * ipic
 * Mac 软件
 * github cli
+* JSDoc
 
 ## VSCode 常用插件
 
@@ -236,3 +237,7 @@ https://www.macwk.com/
 查看 issue 列表：`gh issue list`
 
 切换到 pr 分支：`gh pr checkout 111`
+
+## JSDoc
+
+js注释工具：https://www.jsdoc.com.cn/

@@ -233,5 +233,6 @@ module.exports = {
         '/time/2022b',
         '/time/2022a',
         '/time/2021',
+        '/time/code',
     ],
 }
