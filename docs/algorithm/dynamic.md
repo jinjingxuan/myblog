@@ -100,7 +100,7 @@ const coinChange = (coins, amount) => {
 }
 ```
 
-## 最大子序列和
+## 最大子序列和（连续）
 
 * [leetcode53](https://leetcode-cn.com/problems/maximum-subarray/)
 
@@ -171,6 +171,30 @@ var maxSubArray = function(nums) {
 
 console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
 // [4,-1,2,1]
+```
+
+## 打家劫舍（非连续）
+
+* [leetcode198](https://leetcode-cn.com/problems/house-robber/)
+* 由于不可以在相邻的房屋闯入，所以在当前位置 n 房屋可盗窃的最大值，要么就是 n-1 房屋可盗窃的最大值，要么就是 n-2 房屋可盗窃的最大值加上当前房屋的值，二者之间取最大值
+* 状态转移方程：`dp[n] = max( dp[n-1], dp[n-2] + num )`
+* 举例来说：`[3,4,2]`，1 号房间可盗窃最大值为 3， 即为 `dp[1]=3`，2 号房间可盗窃最大值为 4， 即为 `dp[2]=4`，3 号房间自身的值为 2 即为 num=2，那么 `dp[3] = MAX( dp[2], dp[1] + num ) =  5`，3 号房间可盗窃最大值为 5
+* 时间复杂度：O(n)
+
+```js
+var rob = function(nums) {
+    const dp = new Array(nums.length).fill(0);
+  
+  	// 初始化好前两个状态
+    dp[0] = nums[0];
+    dp[1] = nums[1] > nums[0] ? nums[1] : nums[0];
+
+    for (let i = 2; i < nums.length; i++) {
+        dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+    }
+
+    return dp[nums.length - 1]
+};
 ```
 
 ## 最长非重复子串
@@ -772,27 +796,6 @@ var maxProfit = function(prices) {
         dp[i][0] = Math.max(dp[i-1][0], dp[i-1][2])
     }
     return Math.max(dp[len-1][0], dp[len-1][2])
-};
-```
-
-## 打家劫舍
-
-* [leetcode198](https://leetcode-cn.com/problems/house-robber/)
-* 由于不可以在相邻的房屋闯入，所以在当前位置 n 房屋可盗窃的最大值，要么就是 n-1 房屋可盗窃的最大值，要么就是 n-2 房屋可盗窃的最大值加上当前房屋的值，二者之间取最大值
-* 状态转移方程：`dp[n] = max( dp[n-1], dp[n-2] + num )`
-* 举例来说：`[3,4,2]`，1 号房间可盗窃最大值为 3， 即为 `dp[1]=3`，2 号房间可盗窃最大值为 4， 即为 `dp[2]=4`，3 号房间自身的值为 2 即为 num=2，那么 `dp[3] = MAX( dp[2], dp[1] + num ) =  5`，3 号房间可盗窃最大值为 5
-* 时间复杂度：O(n)
-
-```js
-var rob = function(nums) {
-    let len = nums.length
-    let dp = new Array(len + 1).fill(0)
-    dp[0] = 0
-    dp[1] = nums[0]
-    for (let i = 2; i <= len; i++) {
-        dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1])
-    }
-    return dp[len]
 };
 ```
 
