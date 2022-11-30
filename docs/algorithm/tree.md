@@ -24,6 +24,10 @@ categories: 算法
 
 ## 二叉树的前序遍历，中序遍历，后序遍历的递归与非递归
 
+* [前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+* [中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+* [后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+
 给一棵二叉树
 
 ```js
@@ -58,75 +62,93 @@ function TreeNode(val) {  // 树节点构造方式
 }
 
 //先序递归
-function DLR(root){
-    if(root!=null){
-        console.log(root.val);
-        DLR(root.left);
-        DLR(root.right);
-    }
-}
+var preorderTraversal = function(root) {
+    const res = []; 
+    function DLR (root) {
+      if (root) {
+          res.push(root.val);
+          DLR(root.left);
+          DLR(root.right);
+      }
+  	}
+    DLR(root);
+    return res;
+};
+
 //中序递归
-function LDR(root){
-    if(root!=null){
+var inorderTraversal = function(root) {
+    const res = []; 
+    function LDR (root) {
+    	if (root) {
         LDR(root.left);//先遍历到最左边的节点，然后输出
-        console.log(root.val);
+        res.push(root.val);
         LDR(root.right);
+      }
     }
-}
+    LDR(root);
+    return res;
+};
+
 //后序递归
-function LRD(root){
-    if(node!=null){
+var postorderTraversal = function(root) {
+    const res = []; 
+    function LRD (root) {
+      if(root){
         LRD(root.left);
         LRD(root.right);
-        console.log(root.val);
+        res.push(root.val);
+      }
     }
-}
+    LRD(root);
+    return res;
+};
+
 //先序非递归
 var preorderTraversal = function(root) {
-    if (root === null) return []
-    const stack = []
-    const res = []
-    stack.push(root)
+    if (!root) return [];
+    const stack = [];
+    const res = [];
+    stack.push(root);
     while (stack.length) {
-        let tmp = stack.pop()
-        res.push(tmp.val)
-        if (tmp.right) stack.push(tmp.right)
-        if (tmp.left) stack.push(tmp.left)
+        const tmp = stack.pop();
+        res.push(tmp.val);
+        if (tmp.right) stack.push(tmp.right);
+        if (tmp.left) stack.push(tmp.left);
     } 
-    return res
+    return res;
 };
 
 //中序非递归
 var inorderTraversal = function(root) {
-    if (!root) return []
-    const stack = []
-    const res= []
+    if (!root) return [];
+    const stack = [];
+    const res= [];
     while (true) {
         while (root) {
-            stack.push(root)
-            root = root.left
+            stack.push(root);
+            root = root.left;
         }
-        if (stack.length === 0) break
-        let tmp = stack.pop()
-        res.push(tmp.val)
-        root = tmp.right
+        if (stack.length === 0) break;
+        const tmp = stack.pop();
+        res.push(tmp.val);
+        root = tmp.right;
     }
-    return res
+    return res;
 };
 
 //后序非递归
 var postorderTraversal = function(root) {
-    if (root === null) return []
-    const stack = []
-    const res = []
-    stack.push(root)
+    if (!root) return [];
+    const stack = [];
+    const res = [];
+    stack.push(root);
     while (stack.length) {
-        let tmp = stack.pop()
-        res.push(tmp.val)
-        if (tmp.left) stack.push(tmp.left)
-        if (tmp.right) stack.push(tmp.right)
+        const tmp = stack.pop();
+        res.push(tmp.val);
+        if (tmp.left) stack.push(tmp.left);
+        if (tmp.right) stack.push(tmp.right);
     } 
-    return res.reverse()
+    return res.reverse();
 };
 ```
 

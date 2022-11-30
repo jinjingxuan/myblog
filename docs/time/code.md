@@ -15,3 +15,8 @@
 
   * 最小路径和：[leetcode64](https://leetcode-cn.com/problems/minimum-path-sum/)
 
+* 2022.11.30
+
+  * 前序遍历：[leetcode144](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+  * 中序遍历：[leetcode94](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+  * 后序遍历：[leetcode145](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
