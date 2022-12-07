@@ -20,6 +20,7 @@ module.exports = {
         '/javascript/this',
         '/javascript/function',
         '/javascript/log',
+        '/javascript/ES2017-2022',
     ],
     '/vue': [{
             title: 'Vue源码解析',
