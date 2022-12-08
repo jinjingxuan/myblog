@@ -803,41 +803,96 @@ p.then(undefined, err => {
 });
 ```
 
-### for 循环中异步顺序不一致问题
+### 当 async/await 遇到 forEach
+
+可以把下面代码复制到浏览器控制台执行：
 
 ```js
-// 遍历 dataList，当存在 d.data 时则调用异步请求，否则返回 123，存入 list 中
-const list = [];
-dataList.forEach(d => {
-  let res = 123;
-  if (d.data) {
-    res = await axios.get(d.data);
-  }
-  list.push(res);
+// 遍历 dataList，分别调用异步请求
+function fetchData(d) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(d)
+    }, 1000)
+  })
+}
+
+const dataList = [1, 2, 3];
+dataList.forEach(async d => {
+  const res = await fetchData(d);
+  console.log(res);
 });
+
+// 结果：1秒后同时输出 1，2，3
 ```
 
-> 这样一来会有一个问题，异步请求会把回调事件放入微任务事件队列，宏任务执行完毕再执行微任务。所以 for 循环会先执行完，导致结果为 [123, 123, 123, data, data]，异步请求的结果永远在后面。
+> 此处我们期待的是每隔一秒输出 1，2，3，但是 forEach 却不能实现，至于为什么我们可以看下 forEach 和 普通的 for 循环有什么区别。
 
 ```js
-// 解决办法是把原 dataList 重新生成一个 promiseList，等异步请求全部请求完再进行下一步操作
-const list = [];
+// for 循环
+for (let i = 0; i < dataList.length; i++) {
+  const res = await fetchData(dataList[i]);
+  console.log(res)
+}
+
+// 上面 forEach 的写法相当于
+const fn = async d => {
+  const res = await fetchData(d);
+  console.log(res);
+}
+for (let i = 0; i < dataList.length; i++) {
+  fn(dataList[i], i);
+}
+```
+
+> 第一个 for 循环的 fetchData 要 await 返回后才继续执行，所以是顺序执行。而第二个的 fn 不会阻塞循环，因为调用的是传入 forEach 的回调函数，并没有 await 到 fetchData 的执行。
+>
+> 总结下解决办法：
+
+```js
+function fetchData(d) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(d)
+    }, 1000)
+  })
+}
+const dataList = [1, 2, 3];
+
+// 1. 改用 for 循环
+for (let i = 0; i < dataList.length; i++) {
+  const res = await fetchData(dataList[i]);
+  console.log(res)
+}
+
+// 2. 改用 for...of
+for (let d of dataList) {
+  const res = await fetchData(d);
+  console.log(res)
+}
+
+// 3. Promise.all
 const promiseList = [];
 dataList.forEach(d => {
-  if (d.data) {
-    promiseList.push(axios.get(d.data));
-  }
-  else {
-  	promiseList.push(123);
-  }
+    promiseList.push(fetchData(d)); // 此处已经开始执行了
 });
 
 Promise.all(promiseList).then(res => {
-  dataList.forEach((d, i) => {
-      list.push(res[i]);
-  });
+  console.log(res) // [1, 2, 3]
 })
+
+// 4. for await...of : 同时输出 1，2，3
+const promiseList = [];
+dataList.forEach(d => {
+    promiseList.push(fetchData(d)); // 此处已经开始执行了
+});
+
+for await (p of promiseList) {
+  console.log(p)
+}
 ```
+
+> 其实不仅仅是 forEach，几乎有回调的遍历方法：forEach、map、filter、reduce、some、every、find等，使用await都是不生效的。
 
 ## 浏览器事件循环和node事件循环的区别
 
