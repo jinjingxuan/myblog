@@ -19,5 +19,3 @@
 * [2021年 9-12月](/time/2021.html)
 
 * [英语学习](/interview/english.html)
-
-* [ES2022](https://h3manth.com/ES2022/)
