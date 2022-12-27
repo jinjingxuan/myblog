@@ -21,6 +21,7 @@ categories: 面试
 * 数组去重
 * 并发请求控制
 * 实现 map 和 reduce
+* 实现 'abcd'.f() 返回 'd-c-b-a'
 
 ## 防抖
 
@@ -142,6 +143,16 @@ function _new(constructor, ...args) {
     obj.__proto__ = constructor.prototype
     constructor.call(obj, ...args)
     return obj
+}
+
+/**
+		上面代码可以再优化一下，模拟了 new 就别再用 new 了
+		而且没有考虑构造函数存在返回值的情况，如果构造函数返回了对象那么则返回这个对象
+*/
+function _new(constructor, ...args) {
+  const obj = Object.create(fn.prototype); // 原型式继承
+  const ret = constructor.call(obj, ...args); // 继承属性
+  return typeof ret === "object" ? ret : obj;
 }
 ```
 
@@ -605,24 +616,29 @@ sleep(1000).then(() => {
 ## 实现 map 和 reduce
 
 ```js
-Array.prototype.myMap = function(callBack) {
-    const arr = this, res = []
+Array.prototype.myMap = function(fn) {
+    const arr = this;
+    const res = [];
     for (let i = 0; i < arr.length; i++) {
-        res.push(fn(arr[i], i, arr))
+        res[i] = fn(arr[i], i, arr)
     }
-    return res
-}
+    return res;
+};
 
-Array.prototype.myReduce = function(callBack, value) {
-    const arr = this
-    const hasValue = value !== undefined
-    value = hasValue ? value : arr[0]
-    for (let i = hasValue ? 0 : 1; i < arr.length; i++) {
-        value = callBack(value, arr[i], i, arr)
+Array.prototype.myReduce = function(fn, initValue) {
+    const arr = this;
+    let val = initValue || arr[0]
+    for (let i = initValue ? 0 : 1; i < arr.length; i++) {
+        val = fn(val, arr[i], i, arr)
     }
-    return value
-}
+    return val;
+};
 ```
 
+## 实现 'abcd'.f() 返回 'd-c-b-a'
 
-
+```js
+String.prototype.f = function() {
+    return this.split('').reverse().join('-')
+}
+```

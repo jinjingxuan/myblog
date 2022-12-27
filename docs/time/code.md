@@ -1,4 +1,4 @@
-# 刷题笔记
+# 面试准备
 * 2022.11.28
 
   * 最长递增子序列：[leetcode300](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
@@ -23,3 +23,11 @@
 
   * 后序遍历：[leetcode145](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
 
+* 2022.12.27
+
+  * 实现 map、reduce、'abcd'.f() 返回 'd-c-b-a'
+  * this 指向
+  * new 实现
+  * 什么是原型
+  * 说出常见的数组方法
+  
