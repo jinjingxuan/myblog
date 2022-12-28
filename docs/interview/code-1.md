@@ -32,11 +32,13 @@ categories: 面试
 function debounce(fn, delay) {
   let timer = null
   return function () {
-    let context = this
-    let args = arguments
     timer && clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.apply(context, args)
+      /**
+      	fn 中的 this 指向 debounce 中 return 的这个函数中的 this
+      	return 回来的这个函数中的 this 也就是指向直接调用 return 函数那个对象
+      */
+      fn.apply(this, arguments)
     }, delay)
   }
 }
@@ -44,7 +46,7 @@ function debounce(fn, delay) {
 function out(){
     console.log("防抖")
 }
-window.onscroll = debounce(out,1000)
+window.onscroll = debounce(out, 1000)
 ```
 
 ## 节流
@@ -52,43 +54,42 @@ window.onscroll = debounce(out,1000)
 **所谓节流，就是指连续触发事件但是在 n 秒中只执行一次函数。** 节流会稀释函数的执行频率。
 
 ```js
-// 时间戳版，先触发式
+// 使用时间戳写法，事件会立即执行，停止触发后没有办法再次执行
 function throttle(fn, delay) {
-    let lastTime = 0
-    return function() {
-        let now = +new Date()
-        
-        if (now - lastTime > delay) {
-            fn.apply(this, arguments)
-            lastTime = now
-        }
+  let lastTime = 0;
+  return function() {
+    let now = Date.now();
+    if (now - lastTime >= delay) {
+      fn.apply(this, arguments);
+      lastTime = now;
     }
+  }
 }
 
-// 定时器版
-function throttle(fn, delay) {
-    let timer = null 
-    return function () {
-        if (!timer) { 
-            timer = setTimeout(() => {
-                timeout = null
-                fn.apply(this, arguments)
-            }, delay)
-        }
+// 使用定时器写法，delay 毫秒后第一次执行，第二次事件停止触发后依然会再一次执行
+function throttle2(fn, delay) {
+  let timer = null;
+  return function() {
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(this, arguments);
+        timer = null;
+      }, delay);
     }
+  };
 }
 
-// 先触发式
+// 使用定时器写法，事件会立即执行
 function throttle(fn, delay) {
-    let timer = null
-    return function () {
-        if (!timer) { 
-            fn.apply(this, arguments)
-            timer = setTimeout(() => {
-                timer = null
-            }, delay)
-        }
+  let timer = null;
+  return function() {
+    if (!timer) {
+      fn.apply(this, arguments);
+      timer = setTimeout(() => {
+        timer = null;
+      }, delay)
     }
+  };
 }
 ```
 
