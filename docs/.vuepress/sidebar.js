@@ -231,6 +231,7 @@ module.exports = {
         '/product/abtest',
     ],
     '/': [
+        '/time/2023a',
         '/time/2022b',
         '/time/2022a',
         '/time/2021',

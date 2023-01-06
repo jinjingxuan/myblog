@@ -94,6 +94,8 @@ JIT 技术：[V8引擎的JIT技术简述](https://blog.csdn.net/u012563346/artic
 
 跨端布局引擎 Yoga 官网：https://yogalayout.com/
 
+> yoga 是 facebook 打造的一个跨IOS、Android、Window平台在内的布局引擎，兼容Flexbox布局方式，让界面更加简单。 *react native* 使用*Yoga* 实现跨平台布局。
+
 ### DSL + Layout 方案
 
 对于交互较少的基础 UI 动态化布局能力，还有一种方式就是 DSL + Layout：就是动态下发 UI 的布局信息，Native 使用解析之后的数据对 View 进行布局。
@@ -129,4 +131,4 @@ JIT 技术：[V8引擎的JIT技术简述](https://blog.csdn.net/u012563346/artic
 
 > DSL + Layout 的方式只需要将定义好的数据格式（如 JSON）下发给客户端，客户端按照已有的规则解析即可，在此期间我们可以修改下发的数据，来完成客户端上对应样式的修改，并不依赖 APP 发版。
 >
-> JS-Native 的方式只需要将我们写好的代码（如 react native）打包好，然后比如通过某个平台进行资源的上传，然后客户端将资源下载下来，再通过 Javascript 引擎驱动 `NA` 端渲染。
+> JS-Native 的方式只需要将我们写好的代码（如 react native）通过 cli 打包好，然后比如通过某个平台进行资源 bundle 文件的上传，然后客户端将资源下载下来，再通过 Javascript 引擎运行 js 代码，进一步驱动 `NA` 端渲染。

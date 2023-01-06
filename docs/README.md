@@ -10,7 +10,9 @@
 
 ## 更新日志
 
-* [刷题笔记](/time/code.html)
+* [面试准备](/time/code.html)
+
+* [2023年 1-6月](/time/2023a.html)
 
 * [2022年 7-12月](/time/2022b.html)
   
