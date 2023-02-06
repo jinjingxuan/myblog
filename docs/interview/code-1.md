@@ -10,6 +10,7 @@ categories: 面试
 * 柯里化
 * 函数组合
 * new
+* instanceof
 * apply,bind,call
 * promise.all
 * promise.race
@@ -154,6 +155,25 @@ function _new(constructor, ...args) {
   const obj = Object.create(fn.prototype); // 原型式继承
   const ret = constructor.call(obj, ...args); // 继承属性
   return typeof ret === "object" ? ret : obj;
+}
+```
+
+## instanceof
+
+```js
+function _instanceof(left, right) {
+ 		if (typeof L !== 'object') return false
+    let l = left.__proto__;
+    let r = right.prototype;
+    while (true) {
+        if (l === null) {
+            return false;
+        }
+        if (l === r) {
+            return true;
+        }
+        l = l.__proto__;
+    }
 }
 ```
 
@@ -522,9 +542,9 @@ function flat(arr) {
 （1）reduce + includes
 
 ```js
-let arr = [1, 2, 2, 4, null, null].reduce((prev, current) => {
-    return prev.includes(current) ? prev : prev.concat(current);
-}, [])
+function deduplicate(arr) {
+    return arr.reduce((acc, cur) => acc.includes(cur) ? acc : acc.concat(cur), []);
+}
 // concat 不会改变原有数组，返回值为新数组，可拼接单个元素
 ```
 
@@ -533,30 +553,37 @@ let arr = [1, 2, 2, 4, null, null].reduce((prev, current) => {
 > `set` 类似于数组，且成员值不重复都是唯一的，`set`本身是一个构造函数。 
 
 ```js
-let arr = [1,2,2,3]
-[...new Set(arr)]  //[1,2,3]
+function deduplicate(arr) {
+    return [...new Set(arr)];
+}
 ```
 
 （3）利用sort
 
 ```js
-arr = arr.sort()
-var array = []
-for(var i=0;i<arr.length;i++){
-    if(arr[i]!==arr[i-1]){
-        array.push(arr[i])
+function deduplicate(arr) {
+    arr = arr.sort();
+    const res = [];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[i - 1]) {
+            res.push(arr[i]);
+        }
     }
+    return res;
 }
 ```
 
 （4）利用includes
 
 ```js
-var array = []
-for(var i=0;i<arr.length;i++){
-    if(!array.includes(arr[i])){
-        array.push(arr[i])
+function deduplicate(arr) {
+    const res = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (!res.includes(arr[i])) {
+            res.push(arr[i]);
+        }
     }
+    return res;
 }
 ```
 
@@ -575,26 +602,24 @@ function multiRequest(urls = [], maxNum) {
   
     return new Promise((resolve, reject) => {
         while (count < maxNum) {
-            next()
+            next();
         }
         function next() {
-            let current = count++
+            let current = count++;
             if (current >= len) {
-                !result.includes(false) && resolve(result)
-                return
+                !result.includes(false) && resolve(result);
+                return;
             }
-            const url = urls[current]
-            fetch(url)
-                .then((res) => {
-                    result[current] = res
-                    if (current < len) {
-                        next()
-                    }
-                })
-            .catch((err) => {
-                result[current] = err
+            const url = urls[current];
+            fetch(url).then((res) => {
+                result[current] = res;
                 if (current < len) {
-                    next()
+                    next();
+                }
+            }).catch((err) => {
+                result[current] = err;
+                if (current < len) {
+                    next();
                 }
             })
         }

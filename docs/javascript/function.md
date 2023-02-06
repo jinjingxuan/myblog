@@ -119,7 +119,7 @@ const fibonacci = n => {
 ```js
 // 尾递归
 const fibonacci = (n, sum1 = 1, sum2 = 1) => {
-  if (n <= 1) return sum2;
+  if (n < 3) return sum2;
   return fibonacci(n - 1, sum2, sum1 + sum2);
 }
 ```
@@ -205,6 +205,7 @@ const some = (array, fn) => {
 * 把多元函数转换成一元函数，可以组合使用函数产生强大的功能
 
 ```js
+// arguments对象是所有（非箭头）函数中都可用的局部变量, 所以在这里需要在括号里声明一下 (...arguments)
 const curry = (fn, ...args) => 
 	args.length < fn.length
      ? (...arguments) => curry(fn, ...args, ...arguments)
