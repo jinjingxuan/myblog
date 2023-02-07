@@ -98,24 +98,26 @@ function throttle(fn, delay) {
 
 ```js
 function deepClone(obj, hash = new WeakMap()) {
-    if (obj instanceof Date) return new Date(obj)
-    if (obj instanceof Error) return new Error(obj)
-    if (obj instanceof RegExp) return new RegExp(obj)
-    if (typeof obj !== "object" || obj === null) return obj // 考虑数组
-    if (hash.get(obj)) return hash.get(obj)
-    let cloneObj = new Object()
-    hash.set(obj, cloneObj)
+    if (obj instanceof Date) return new Date(obj);
+    if (obj instanceof Error) return new Error(obj);
+    if (obj instanceof RegExp) return new RegExp(obj);
+    if (typeof obj !== "object" || obj === null) return obj; // 考虑数组
+    if (hash.get(obj)) return hash.get(obj);
+    let cloneObj = new Object();
+    hash.set(obj, cloneObj);
     for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            cloneObj[key] = deepClone(obj[key], hash)
+        if (Object.hasOwn(obj, key)) {
+            cloneObj[key] = deepClone(obj[key], hash);
         }
     }
-    return cloneObj
+    return cloneObj;
 }
 ```
 
-## 柯里化
+> 使用`WeakMap`，`hash`和`obj`存在的就是弱引用关系，当下一次垃圾回收机制执行时，这块内存就会被释放掉。设想一下，如果我们要拷贝的对象非常庞大时，使用`Map`会对内存造成非常大的额外消耗，而且我们需要手动清除`Map`的属性才能释放这块内存，而`WeakMap`会帮我们巧妙化解这个问题。
 
+
+## 柯里化
 ```js
 let curry = (fn,...args)=> args.length < fn.length
                 ?(...arguments) => curry(fn,...args,...arguments)
@@ -234,17 +236,17 @@ Promise.all = function (promises) {
         if (!promises || promises.length === 0) {
             resolve([])
         } else {
-            let count = 0
-            let result = []
+            let count = 0;
+            let result = [];
             for (let i = 0; i < promises.length; i++) {
                 // 考虑到promises[i]可能是普通对象，则统一包装为Promise对象
                 Promise.resolve(promises[i]).then(res => {
-                    result[i] = res
+                    result[i] = res;
                     if (++count === promises.length) {
-                        resolve(result)
+                        resolve(result);
                     }
                 }).catch((err) => {
-                    reject(err) // 任何一个Promise对象执行失败，则调用reject()方法
+                    reject(err); // 任何一个Promise对象执行失败，则调用reject()方法
                     return
                 })
             }
@@ -258,17 +260,19 @@ Promise.all = function (promises) {
 ```js
 Promise.race = function(promises) {
     return new Promise((resolve, reject) => {
-       	 if (!promises || promises.length === 0) return
+       	 if (!promises || promises.length === 0) {
+            return;
+         }
          for (const item of promises) {
               Promise.resolve(item).then((res) => {
-                  resolve(res)
-                  return
+                  resolve(res);
+                  return;
               }).catch((err) => {
-                  reject(err)
-                  return
+                  reject(err);
+                  return;
               })
           }
-    })
+    });
 }
 ```
 
@@ -300,70 +304,62 @@ const REJECTED = 'rejected' //失败
 
 class MyPromise {
   constructor (executor) {
-    executor(this.resolve, this.reject)
+    executor(this.resolve, this.reject);
   }
   // promise 状态
-  status = PENDING
+  status = PENDING;
   // 成功之后的值
-  value = undefined
+  value = undefined;
   // 失败后的原因
-  reason = undefined
+  reason = undefined;
   // 成功回调，用数组的原因是可能有多个 promise.then
-  successCallback = []
+  successCallback = [];
   // 失败回调
-  failCallback = []
+  failCallback = [];
   // 定义成箭头函数的好处是 this 指向当前类
   resolve = value => {
     // 如果状态不是等待 阻止程序向下执行 因为状态一旦确定就不可以再改变
-    if (this.status !== PENDING) return
+    if (this.status !== PENDING) return;
     // 将状态更改为成功
-    this.status = FULFILLED
+    this.status = FULFILLED;
     // 保存成功之后的值
-    this.value = value
+    this.value = value;
     // 判断成功回调是否存在 存在则调用
     while (this.successCallback.length) {
-     	this.successCallback.shift()(this.value)  
+     	this.successCallback.shift()(this.value);
     }
   }
   reject = reason => {
     // 如果状态不是等待 阻止程序向下执行
-    if (this.status !== PENDING) return
+    if (this.status !== PENDING) return;
     // 将状态更改为失败
-    this.status = REJECTED
+    this.status = REJECTED;
     // 保存失败后的原因
-    this.reason = reason
+    this.reason = reason;
     // 判断失败回调是否存在 存在则调用
     while (this.failCallback.length) {
-     	this.failCallback.shift()(this.reason)  
+     	this.failCallback.shift()(this.reason); 
     }
   }
  then = (successCallback, failCallback) => {
-   successCallback = successCallback ? successCallback : value => value
-   let promise2 = new MyPromise((resolve, reject) => {
+   successCallback = successCallback ? successCallback : value => value;
+   return new MyPromise((resolve, reject) => {
      if (this.status === FULLFILLED) {
-       let x = successCallback(this.value)
-       resolvePromise(x, resolve, reject)
-     } else if (this.status === REJECTED) {
-       failCallback(this.reason)
-     } else {
-       this.successCallback.push(successCallback)
-       this.failCallback.push(failCallback)
+       let x = successCallback(this.value);
+       x instanceof MyPromise ? x.then(resolve, reject) : resolve(x);
      }
-   })
-   return promise2
- },
- catch = (failCallback) => {
-   return this.then(undefined, failCallback)
+     else if (this.status === REJECTED) {
+       failCallback(this.reason);
+     }
+     else {
+       this.successCallback.push(successCallback);
+       this.failCallback.push(failCallback);
+     }
+   });
  }
-}
-
-// 处理返回值 x 可能是 promise 的情况
-function resolvePromise(x, resolve, reject) {
-    if (x instanceof MyPromise) {
-        x.then(resolve, reject)
-    } else {
-        resolve(x)
-    }
+ catch = (failCallback) => {
+   return this.then(undefined, failCallback);
+ }
 }
 
 // 测试

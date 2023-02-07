@@ -1,10 +1,6 @@
----
-title: Promise
-date: 2020-03-08 09:52:01
-categories: JavaScript
----
 # Promise
 * promise
+* promise相关方法
 * Generator
 * async和await
 * 宏任务，微任务，事件循环
@@ -209,6 +205,18 @@ p1.then((value) => {
 - 前面then方法中的回调函数的返回值会作为后面then方法回调的参数
 
 所以 then 方法中如果没有返回值，则没有继续向后传递参数。如果有返回值，不论这个值是 promise 还是普通的值，都会被处理成 promise，具体可看 [promise 实现](/interview/code-1.html#promise)
+
+## promise相关方法
+
+1. [`Promise.all()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)：所有promise均resolve时，返回promise结果，只要有一个promise reject，那么返回的promise就reject
+2. [`Promise.allSettled()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)：返回的所有的promise结果，无论resolve还是reject
+3. *[`Promise.any()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)*：任意一个promise resolve，返回的promise则resolve。除非所有的promise均reject，则返回的promise才reject
+4. [`Promise.race()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)：一旦某个 promise resolve或reject，返回的 promise 就会resolve或reject。（最快的那个promise无论resolve还是reject都取这个结果）
+5. [`Promise.reject()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject)
+6. [`Promise.resolve()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
+7. [`Promise.prototype.then()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+8. [`Promise.prototype.catch()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+9. [`Promise.prototype.finally()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)：finally中的逻辑相当于在.then和.catch中各执行一遍
 
 ## Generator
 
