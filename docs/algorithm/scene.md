@@ -13,6 +13,9 @@ categories: 算法
 * [题解](https://leetcode-cn.com/problems/lru-cache/solution/146-lruli-yong-js-mapshun-xu-cha-ru-de-fang-fa-by-/)：利用`Map`对于set的数值为顺序插入的原理实现LRU
 
 ```js
+// 1. 新数据插入到链表头部；
+// 2. 每当缓存命中（即缓存数据被访问），则将数据移到链表头部；
+// 3. 当链表满的时候，将链表尾部的数据丢弃。
 class LRUCache {
     constructor(capacity) {
         this.capacity = capacity

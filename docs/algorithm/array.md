@@ -30,11 +30,26 @@ categories: 算法
 
 ```js
 var merge = function(nums1, m, nums2, n) {
-    let k = m + n - 1, i = m - 1, j = n - 1
+    let i = m - 1;
+    let j = n - 1;
+    let len = i + j + 1;
     while (j >= 0) {
-        nums1[i] >= nums2[j] ? nums1[k--] = nums1[i--] : nums1[k--] = nums2[j--]
+        nums1[len--] = nums1[i] >= nums2[j] ? nums1[i--] : nums2[j--];
     }
 };
+
+// 参数如果只给了两个普通的数组
+const merge = (nums1, nums2) => {
+    let i = nums1.length - 1;
+    let j = nums2.length - 1;
+    let len = i + j + 1;
+    nums1 = nums1.concat(new Array(nums2.length).fill(0));
+    while (j >= 0) {
+        nums1[len--] = nums1[i] >= nums2[j] ? nums1[i--] : nums2[j--];
+    }
+    return nums1;
+}
+
 ```
 
 ## 合并区间
@@ -67,22 +82,23 @@ var merge = function(nums1, m, nums2, n) {
 
 ```js
 var merge = function(intervals) {
-    let flag = true 
-    intervals.sort((a,b) => a[0] - b[0])
+    let flag = true;
+    intervals.sort((a,b) => a[0] - b[0]);
     while (flag) {
-        flag = false
-        for (let i = 0;i < intervals.length - 1;i++) {
-            if (intervals[i][1] >= intervals[i+1][1]) {
-                intervals.splice(i+1,1)
-                flag = true
-            } else if (intervals[i][1] >= intervals[i+1][0]) {
-                intervals[i][1] = intervals[i+1][1]
-                intervals.splice(i+1,1)
-                flag = true
+        flag = false;
+        for (let i = 0; i < intervals.length - 1; i++) {
+            if (intervals[i][1] >= intervals[i + 1][1]) {
+                intervals.splice(i + 1, 1);
+                flag = true;
+            }
+            else if (intervals[i][1] >= intervals[i + 1][0]) {
+                intervals[i][1] = intervals[i + 1][1];
+                intervals.splice(i + 1,1);
+                flag = true;
             }     
         }
     }
-    return intervals
+    return intervals;
 };
 ```
 
@@ -92,20 +108,21 @@ var merge = function(intervals) {
 
 ```js
 var search = function(nums, target) {
-    let low = 0, high = nums.length - 1, mid = 0
-    let index = -1
-    while (low <= high) {
-        mid = ~~((low + high) / 2)
-        if (target === nums[mid]) {
-            index = mid
-            high = mid - 1
-        } else if (target > nums[mid]) {
-            low = mid + 1
-        } else {
-            high = mid - 1
+    let left = 0;
+    let right = nums.length - 1;
+    while(left <= right) {
+        let mid = Math.floor((left + right)/2);
+        if (nums[mid] > target) {
+            right = mid - 1;
+        }
+        else if (nums[mid] < target) {
+            left = mid + 1;
+        }
+        else {
+            return mid;
         }
     }
-    return index
+    return -1;
 };
 ```
 
@@ -180,6 +197,14 @@ var findDisappearedNumbers = function(nums) {
 ## 两数之和
 
 * [leetcode1](https://leetcode-cn.com/problems/two-sum/)
+
+```js
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+你可以按任意顺序返回答案。
+```
 
 ```js
 var twoSum = function(nums, target) {

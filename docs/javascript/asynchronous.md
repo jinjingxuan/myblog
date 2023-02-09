@@ -453,10 +453,19 @@ Promise、 MutaionObserver、process.nextTick(Node.js环境
 
  **事件循环(Event Loop)**:   指主线程重复从任务队列中取任务、执行的过程 
 
-- 选择最先进入队列的宏任务(通常是`script`整体代码)，如果有则执行
-- 检查是否存在 Microtask，如果存在则不停的执行，直至清空 microtask 队列
-- 更新render(每一次事件循环，浏览器都可能会去更新渲染)
-- 重复以上步骤
+- 一开始整个脚本作为一个宏任务执行
+- 执行过程中同步代码直接执行，宏任务进入宏任务队列，微任务进入微任务队列
+- 当前宏任务执行完出队，检查微任务列表，有则依次执行，直到全部执行完
+- 执行浏览器UI线程的渲染工作
+- 检查是否有`Web Worker`任务，有则执行
+- 执行完本轮的宏任务，回到2，依此循环，直到宏任务和微任务队列都为空
+
+**微任务包括：**`MutationObserver`、`Promise.then()或reject()`、`Promise为基础开发的其它技术，比如fetch API `、`V8`的垃圾回收过程、`Node独有的process.nextTick`。
+
+**宏任务包括**：`script`、`script` 、`setTimeout`、`setInterval` 、`setImmediate` 、`I/O` 、`UI rendering`。
+
+**注意**⚠️：在所有任务开始的时候，由于宏任务中包括了`script`，所以浏览器会先执行一个宏任务，在这个过程中你看到的延迟任务(例如`setTimeout`)将被放到下一轮宏任务中来执行。
+
 - [图示](http://lynnelv.github.io/img/article/event-loop/ma(i)crotask.png)
 
 ## 面试题精选
@@ -530,6 +539,7 @@ setTimeout
 ```js
 // 上题变形
 // 本来是把 async1 end 加入微任务队列，结果 async 又返回了一个 promise ，加入微任务队列的就是这个 promise，执行完 async，最后才执行 async1 end
+// 解析：https://zhuanlan.zhihu.com/p/450906325
 async function async1() {
     console.log('async1 start')
     await async2() 

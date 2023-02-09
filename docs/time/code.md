@@ -28,4 +28,11 @@
   * 手写：并发请求控制、数组去重（4种）、数组扁平化（2种）、判断数组方法（5种）、instanceof
   * Promise（手写、方法）、深拷贝、WeakMap、WeakSet
   * fetch、ajax、axios、XHR 区别(ajax异步技术包括新的fetch和传统的XHR, axios是对XHR的封装)
-  
+  * 合并有序数组：[leetcode88](https://leetcode-cn.com/problems/merge-sorted-array/)
+  * 合并区间：[leetcode56](https://leetcode-cn.com/problems/merge-intervals/)
+  * 前端缓存（浏览器缓存、HTTP缓存）cache-control、last-modified(3个缺点)、etag
+  * 事件循环(宏任务、微任务)、nextTick原理
+  * 二分查找：[二分查找](https://leetcode-cn.com/problems/binary-search/)
+  * LRU：[leetcode146](https://leetcode-cn.com/problems/lru-cache/)
+  * 只出现过一次的数字：[leetcode136](https://leetcode-cn.com/problems/single-number/)
+  * 旋转矩阵：[旋转矩阵](https://leetcode-cn.com/problems/rotate-image/)
