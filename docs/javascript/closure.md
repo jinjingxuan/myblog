@@ -35,16 +35,39 @@ categories: JavaScript
 
 ## vue源码中闭包的应用
 
+> 因为使用了 Virtual DOM 的原因，Vue.js具有了跨平台的能力，Virtual DOM 终归只是一些 JavaScript 对象罢了，那么最终是如何调用不同平台的 API 的呢？这就需要依赖一层适配层了，将不同平台的 API 封装在内，以同样的接口对外提供。
+
 ```js
 function createPatchFunction(nodeOps, modules) {
   return function patch(vdom1, vdom2) {
     // ...
   }
 }
-const patch = createPatch(...)
+const patch = createPatchFunction(...)
 /**
-因为vue可以运行在多个平台上通过nodeOps来区分，如果直接写在path里面的话，需要在path里面写一系列if平台判断，多次执行path会判断多次，那么如过通过闭包把这个平台差异只执行一次就判断出来，今后不需要判断就好了
-*/                 
+因为 vue 可以运行在多个平台上通过 nodeOps 来区分，patch 中有许多操作节点的函数，如果直接写在 patch 里面的话，需要在 patch 里面写一系列 if 平台判断，多次执行 patch 会判断多次，那么如过通过闭包把这个平台差异只执行一次就判断出来，今后不需要判断就好了。
+*/                    
+const nodeOps = {
+    setTextContent (text) {
+        if (platform === 'weex') {
+            node.parentNode.setAttr('value', text);
+        } else if (platform === 'web') {
+            node.textContent = text;
+        }
+    },
+    parentNode () {
+        //......
+    },
+    removeChild () {
+        //......
+    },
+    nextSibling () {
+        //......
+    },
+    insertBefore () {
+        //......
+    }
+}
 ```
 
 ## 闭包与高阶函数

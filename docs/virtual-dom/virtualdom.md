@@ -12,6 +12,8 @@ categories: VirtualDOM
   * init函数
 * Diff 算法
 * v-for 带 key
+* vue 和 react 在虚拟dom的diff上，做了哪些改进使得速度很快
+* React 和 Vue 的 diff 时间复杂度从 O(n^3) 优化到 O(n) ，那么 O(n^3) 和 O(n) 是如何计算出来的？
 
 ## 什么是虚拟DOM
 
@@ -225,7 +227,7 @@ export function vnode (sel: string | undefined,
 
 ### init函数
 
-* **功能：**init(modules, domApi)，返回 patch() 函数（高阶函数）
+* **功能:** init(modules, domApi)，返回 patch() 函数（高阶函数）
 
 * 为什么要使用高阶函数？
   * 因为 patch() 函数在外部会调用多次，每次调用依赖一些参数，比如：modules/domApi/cbs
@@ -273,45 +275,70 @@ export function init(modules: Array<Partial<Module>>, domApi?: DOMAPI) {
   * 返回新的 VNode，作为下一次 patch() 的 oldVnode
 
 * **执行过程：**
-  * 如果 oldVnode 和 vnode 相同（key 和 sel 相同）
+  * vnode 不存在，但是 oldVnode 存在，说明是需要销毁旧节点
+  * vnode 存在，但是 oldVnode 不存在，说明是需要创建新节点
+  * 如果 oldVnode 和 vnode 都存在且是相同节点时
     * 调用 patchVnode()，找节点的差异并更新 DOM
-  * 如果 oldVnode 和 vnode 不同，且oldVnode 是 DOM 元素
-    * 把 DOM 元素转换成 oldVnode
-    * 调用 createElm() 把 vnode 转换为真实 DOM，记录到 vnode.elm
-    * 把刚创建的 DOM 元素插入到 parent 中
-    * 移除老节点
+  * 如果 oldVnode 和 vnode 都存在且是不同节点时
+    * 根据 vnode 创建一个真实的 DOM 节点，删除老节点，增加新节点
+  
 
 ```ts
-// 如果新旧节点是相同节点(key 和 sel 相同) 
+// vnode 不存在，但是 oldVnode 存在，说明是需要销毁旧节点
+if (isUndef(vnode)) {
+  if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
+  return
+}
+
+// vnode 存在，但是 oldVnode 不存在，说明是需要创建新节点
+if (isUndef(oldVnode)) {
+  isInitialPatch = true
+  createElm(vnode, insertedVnodeQueue)
+}
+
+// 如果新旧节点是相同节点
 if (sameVnode(oldVnode, vnode)) { 
-    // 找节点的差异并更新 DOM 
-    patchVnode(oldVnode, vnode, insertedVnodeQueue); 
+  // 找节点的差异并更新 DOM 
+  patchVnode(oldVnode, vnode, insertedVnodeQueue); 
 } else { 
-    // 如果新旧节点不同，vnode 创建对应的 DOM 
-    // 获取当前的 DOM 元素 
-    elm = oldVnode.elm!; 
-    parent = api.parentNode(elm); 
-    // createElm 是为 VNode 创建真实的 DOM 
-    createElm(vnode, insertedVnodeQueue); 
-    if (parent !== null) { 
-        // 如果父节点不为空，把 vnode 对应的 DOM 插入到文档中 
-        api.insertBefore(parent, vnode.elm!, api.nextSibling(elm)); 
-        // 移除老节点 
-        removeVnodes(parent, [oldVnode], 0, 0);
-    } 
+  // 如果新旧节点不同，vnode 创建对应的 DOM 
+  // 获取当前的 DOM 元素 
+  elm = oldVnode.elm!; 
+  parent = api.parentNode(elm); 
+  // createElm 是为 VNode 创建真实的 DOM 
+  createElm(vnode, insertedVnodeQueue); 
+  if (parent !== null) { 
+    // 如果父节点不为空，把 vnode 对应的 DOM 插入到文档中 
+    api.insertBefore(parent, vnode.elm!, api.nextSibling(elm)); 
+    // 移除老节点 
+    removeVnodes(parent, [oldVnode], 0, 0);
+  } 
 }
 return vnode
 
 // 当可以比较时，调用 patchVnode 找差异并更新 DOM
 // 当不值得比较时，新节点直接把老节点整个替换了
 // 最后会返回 VNode，可以继续进行下一个 patch 过程
+
+// sameVnode 判断了 key、 tag、 isComment（是否为注释节点）
+function sameVnode(a, b) {
+  return (
+    a.key === b.key &&
+    a.asyncFactory === b.asyncFactory &&
+    ((a.tag === b.tag &&
+      a.isComment === b.isComment &&
+      isDef(a.data) === isDef(b.data) &&
+      sameInputType(a, b)) ||
+      (isTrue(a.isAsyncPlaceholder) && isUndef(b.asyncFactory.error)))
+  )
+}
 ```
 
 ### patchVnode函数
 
 * 功能：
 
-  * patchVnode(oldVnode, vnode, insertedVnodeQueue)
+  * `patchVnode(oldVnode, vnode, insertedVnodeQueue)`
   * 对比 oldVnode 和 vnode 的差异，把差异渲染到 DOM
 
 * 执行过程：
@@ -331,7 +358,7 @@ return vnode
   * diff 算法的核心，对比新旧节点的 children，更新 DOM
 
 * **执行过程：**
-  * 此外可参考：https://juejin.im/post/6844903607913938951
+  * 此外可参考：[https://juejin.im/post/6844903607913938951](https://juejin.im/post/6844903607913938951)
   * 在对**开始和结束节点**比较的时候，总共有四种情况
     * oldStartVnode / newStartVnode (旧开始节点 / 新开始节点)
     * oldEndVnode / newEndVnode (旧结束节点 / 新结束节点)
@@ -344,7 +371,7 @@ return vnode
   * oldStartVnode / newStartVnode (旧开始节点 / 新开始节点)
   * oldEndVnode / newEndVnode (旧结束节点 / 新结束节点)
 
-* 如果 oldStartVnode 和 newStartVnode 是 sameVnode (key 和 sel 相同)
+* 如果 oldStartVnode 和 newStartVnode 是 sameVnode 
   * 调用 patchVnode() 对比和更新节点
   * 把旧开始和新开始索引往后移动 oldStartIdx++ / oldEndIdx++
 
@@ -373,9 +400,8 @@ return vnode
   * 如果没有找到，说明 newStartNode 是新节点
     * 创建新节点对应的 DOM 元素，插入到 DOM 树中
   * 如果找到了
-    * 判断新节点和找到的老节点的 sel 选择器是否相同
-    * 如果不相同，说明节点被修改了
-      * 重新创建对应的 DOM 元素，插入到 DOM 树中
+    * 判断新节点和找到的老节点是否 sameVnode
+    * 如果不相同，说明节点被修改了，重新创建对应的 DOM 元素，插入到 DOM 树中
     * 如果相同，把 elmToMove 对应的 DOM 元素，移动到左边
 
 ****
@@ -436,3 +462,18 @@ key: 3  id: 3 index: 2 name: test3
 
 再比如中间插入的时候，如果使用index作为key会造成复用
 
+## vue 和 react 在虚拟dom的diff上，做了哪些改进使得速度很快
+[https://juejin.cn/post/6878892606307172365](https://juejin.cn/post/6878892606307172365)
+
+1. 虚拟DOM在比较时只比较同一层级节点，复杂度都为 O(n)，降低了算法复杂度；
+2. 都使用key比较是否是相同节点，都是为了尽可能的复用节点
+3. 都是操作虚拟DOM，最小化操作真实DOM，提高性能（其实虚拟DOM的优势 并不是在于它操作DOM快）
+
+## React 和 Vue 的 diff 时间复杂度从 O(n^3) 优化到 O(n) ，那么 O(n^3) 和 O(n) 是如何计算出来的？
+原来的 O(n^3) 的 diff 流程是：
+
+老树的每一个节点都去遍历新树的节点，直到找到新树对应的节点。那么这个流程就是 O(n^2)，再紧接着找到不同之后，再计算最短修改距离然后修改节点，这里是 O(n^3)
+
+所以前端框架的 diff 约定了两种处理原则：只做同层的对比，type 变了就不再对比子节点。
+因为 dom 节点做跨层级移动的情况还是比较少的，一般情况下都是同一层级的 dom 的增删改。
+这样只要遍历一遍，对比一下 type 就行了，是 O(n) 的复杂度，而且 type 变了就不再对比子节点，能省下一大片节点的遍历。

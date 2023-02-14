@@ -22,7 +22,7 @@
   * 跨平台与跨端技术
 
 * 2023.2
-  * 闭包：概念、优缺点、应用
+  * 闭包：概念、优缺点、应用(Vue diff 算法、nodeOps)
   * 函数式编程：纯函数、递归与尾递归、记忆函数、高阶函数、柯里化与偏函数、函数组合
   * 垃圾回收机制（GC算法、内存泄露、内存溢出、V8引擎的内存分配与垃圾回收）
   * 手写：并发请求控制、数组去重（4种）、数组扁平化（2种）、判断数组方法（5种）、instanceof
@@ -36,3 +36,4 @@
   * LRU：[leetcode146](https://leetcode-cn.com/problems/lru-cache/)
   * 只出现过一次的数字：[leetcode136](https://leetcode-cn.com/problems/single-number/)
   * 旋转矩阵：[旋转矩阵](https://leetcode-cn.com/problems/rotate-image/)
+  * diff 算法（createPatchFunction、patch、patchVnode、updateChildren、vue 和 react 在虚拟dom的diff上，做了哪些改进使得速度很快、O(n^3) 和 O(n) 如何计算）
