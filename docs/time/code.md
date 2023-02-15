@@ -37,3 +37,4 @@
   * 只出现过一次的数字：[leetcode136](https://leetcode-cn.com/problems/single-number/)
   * 旋转矩阵：[旋转矩阵](https://leetcode-cn.com/problems/rotate-image/)
   * diff 算法（createPatchFunction、patch、patchVnode、updateChildren、vue 和 react 在虚拟dom的diff上，做了哪些改进使得速度很快、O(n^3) 和 O(n) 如何计算）
+  * 浏览器多进程架构、页面渲染解析过程、回流与重绘、CSS硬件加速、js/css 阻塞 dom 解析/渲染？、script 标签 defer、async
