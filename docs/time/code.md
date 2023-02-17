@@ -9,7 +9,6 @@
   * 前序遍历：[leetcode144](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
   * 中序遍历：[leetcode94](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
   * 后序遍历：[leetcode145](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
-
 * 2023.1
   * 实现 map、reduce、'abcd'.f() 返回 'd-c-b-a'
   * this 指向
@@ -20,7 +19,6 @@
   * osi七层协议，TCP/IP五层协议，arp/rarp协议
   * BFC 概念
   * 跨平台与跨端技术
-
 * 2023.2
   * 闭包：概念、优缺点、应用(Vue diff 算法、nodeOps)
   * 函数式编程：纯函数、递归与尾递归、记忆函数、高阶函数、柯里化与偏函数、函数组合
@@ -38,3 +36,5 @@
   * 旋转矩阵：[旋转矩阵](https://leetcode-cn.com/problems/rotate-image/)
   * diff 算法（createPatchFunction、patch、patchVnode、updateChildren、vue 和 react 在虚拟dom的diff上，做了哪些改进使得速度很快、O(n^3) 和 O(n) 如何计算）
   * 浏览器多进程架构、页面渲染解析过程、回流与重绘、CSS硬件加速、js/css 阻塞 dom 解析/渲染？、script 标签 defer、async
+  * 路径总和：[leetcode112](https://leetcode.cn/problems/path-sum/submissions/)
+  * 求根到叶子节点数字之和：[leetcode129](https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/)

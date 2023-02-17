@@ -99,24 +99,24 @@ function wideTraversal(node) {
 * 从根节点开始，遍历每个节点，如果遇到叶子节点，则将叶子节点对应的数字加到数字之和。如果当前节点不是叶子节点，则计算其子节点对应的数字，然后对子节点递归遍历。
 
 ```js
-const dfs = function(root, n) {
-    // 若节点是 null 直接返回 0
-    if (root === null) {
-        return 0;
-    }
-    // 不是空节点就计算一下加到目前的值
-    const sum = n * 10 + root.val;
-    // 若是根节点返回该计算值，一条路就走完了
-    if (root.left == null && root.right == null) {
-        return sum;
-    // 不是根节点则递归遍历
-    } else {
-        return dfs(root.left, sum) + dfs(root.right, sum);
-    }
-}
-
 var sumNumbers = function(root) {
-    return dfs(root, 0)
+    const dfs = function(root, num) {
+        // 若节点是 null 直接返回 0
+        if (!root) {
+            return 0;
+        }
+        // 不是空节点就计算一下加到目前的值
+        num = num * 10 + root.val;
+        // 若是根节点返回该计算值，一条路就走完了
+        if (root.left === null && root.right === null) {
+            return num;
+        }
+        // 不是根节点则递归遍历
+        else {
+            return dfs(root.left, num) + dfs(root.right, num);
+        }
+    }
+    return dfs(root, 0);
 };
 ```
 
@@ -126,19 +126,22 @@ var sumNumbers = function(root) {
 
 ```js
 var hasPathSum = function(root, targetSum) {
-    const res = []
-    const dfs = (root, num) => {
-        if (root === null) return
-        const val = num + root.val
+    const res = [];
+    const dfs = function(root, num) {
+        if (!root) {
+            return;
+        }
+        num = num + root.val;
         if (root.left === null && root.right === null) {
-            res.push(val)
-        } else {
-            dfs(root.left, val) 
-            dfs(root.right, val) 
+            res.push(num);
+        }
+        else {
+            dfs(root.left, num);
+            dfs(root.right, num);
         }
     }
-    dfs(root, 0)
-    return res.includes(targetSum)
+    dfs(root, 0);
+    return res.includes(targetSum);
 };
 ```
 
