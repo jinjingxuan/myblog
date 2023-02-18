@@ -152,28 +152,29 @@ var hasPathSum = function(root, targetSum) {
 
 ```js
 var numIslands = function(grid) {
-    const dfs = (grid, i, j, row, col) => {
-        if (i < 0 || j < 0 || i > row - 1 || j > col - 1 || grid[i][j] === "0") {
-            return
+    const m = grid.length;
+    const n = grid[0].length;
+    const dfs = function(i, j) {
+        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === '0') {
+            return;
         }
-        grid[i][j] = "0"
-        dfs(grid, i - 1, j, row, col)
-        dfs(grid, i + 1, j, row, col)
-        dfs(grid, i, j - 1, row, col)
-        dfs(grid, i, j + 1, row, col)
-    }
-    if (grid.length === 0) return 0
-    const row = grid.length, col = grid[0].length
-    let count = 0
-    for (let i = 0; i < row; i++) {
-        for (let j = 0; j < col; j++) {
-            if (grid[i][j] === "1") {
-                dfs(grid, i, j, row, col)
-                count ++
+        grid[i][j] = '0';
+        dfs(i - 1, j);
+        dfs(i + 1, j);
+        dfs(i, j + 1);
+        dfs(i, j - 1);
+    };
+
+    let count = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === '1') {
+                dfs(i, j);
+                count++;
             }
         }
     }
-    return count
+    return count;
 };
 ```
 
@@ -183,29 +184,30 @@ var numIslands = function(grid) {
 * 思路：和上题一样，在dfs的过程中计算面积即可
 
 ```js
-var maxAreaOfIsland = function(grid) {
-    const dfs = (grid, row, col, i, j) => {
-        if (i < 0 || i >= row || j < 0 || j >= col || grid[i][j] == '0') {
-            return 0
+var numIslands = function(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+    const dfs = function(i, j) {
+        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === '0') {
+            return;
         }
-        grid[i][j] = '0'
-        let num = 1
-        num += dfs(grid, row, col, i + 1, j)
-        num += dfs(grid, row, col, i - 1, j)
-        num += dfs(grid, row, col, i, j + 1)
-        num += dfs(grid, row, col, i, j - 1)
-        return num
-    }
-    const row = grid.length, col = grid[0].length
-    let res = 0
-    for (let i = 0; i < row; i++) {
-        for (let j = 0; j < col; j++) {
-            if (grid[i][j] == '1') {
-                res = Math.max(res, dfs(grid, row, col, i, j))
+        grid[i][j] = '0';
+        dfs(i - 1, j);
+        dfs(i + 1, j);
+        dfs(i, j + 1);
+        dfs(i, j - 1);
+    };
+
+    let count = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === '1') {
+                dfs(i, j);
+                count++;
             }
         }
     }
-    return res
+    return count;
 };
 ```
 
