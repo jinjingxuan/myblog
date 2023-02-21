@@ -157,45 +157,19 @@ var postorderTraversal = function(root) {
 [leetcode100](https://leetcode-cn.com/problems/same-tree/)
 
 ```js
-给定两个二叉树，编写一个函数来检验它们是否相同。
-
-如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
-
-示例 1:
-
-输入:       1         1
-          / \       / \
-         2   3     2   3
-
-        [1,2,3],   [1,2,3]
-
-输出: true
-示例 2:
-
-输入:      1          1
-          /           \
-         2             2
-
-        [1,2],     [1,null,2]
-
-输出: false
-示例 3:
-
-输入:       1         1
-          / \       / \
-         2   1     1   2
-
-        [1,2,1],   [1,1,2]
-
-输出: false
-```
-
-```js
 var isSameTree = function(p, q) {
-    if(p == null && q == null) return true
-    else if((p === null && q !== null) || (p !== null && q === null)) return false
-    else if(p.val !== q.val) return false
-    else return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+    if (!p && !q) {
+        return true;
+    }
+    else if ((!p && q) || (p && !q)) {
+        return false;
+    }
+    else if (p.val !== q.val) {
+        return false;
+    }
+    else {
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+    }
 };
 ```
 
@@ -340,14 +314,14 @@ var minDepth = function(root) {
 
 ```js
 var invertTree = function(root) {
-    if (!root) return null
-    let tmp = new TreeNode()
-    tmp = root.right
-    root.right = root.left
-    root.left = tmp
-    invertTree(root.left)
-    invertTree(root.right)
-    return root
+    if (!root) {
+        return null;
+    }
+    let tmp = new TreeNode();
+    [root.left, root.right] = [root.right, root.left]
+    invertTree(root.left);
+    invertTree(root.right);
+    return root;
 };
 ```
 
@@ -712,20 +686,27 @@ var flatten = function(root) {
 ## 最近公共祖先
 
 * [leetcode236](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+* [视频讲解](https://www.bilibili.com/video/BV1W44y1Z7AR/?vd_source=97847e8b8c5d751e295339f7abf09033)
 
 ```js
 var lowestCommonAncestor = function(root, p, q) {
-    if(root == null || root == p || root == q){
+    if (root === null || root === p || root === q) {
         return root;
     }
-    let left = lowestCommonAncestor(root.left,p,q);
-    let right = lowestCommonAncestor(root.right,p,q);
-    // 如果left和right都不为空，说明此时root就是最近公共节点
-    if(left != null && right != null){
+    const left = lowestCommonAncestor(root.left, p ,q);
+    const right = lowestCommonAncestor(root.right, p ,q);
+    // 左右子树都找到，说明左子树和右子树各有一个寻找的节点，此时 root 就是最近公共祖先
+    if (left && right) {
         return root;
     }
-    // 如果left为空，right不为空，说明目标节点是通过right返回的，反之亦然。
-    return left != null ? left : right;
+    // 只有左子树找到, 返回递归左子树的结果
+    else if (left) {
+        return left;
+    }
+    // 只有右子树找到, 返回递归右子树的结果
+    else if (right) {
+        return right;
+    }
 };
 ```
 

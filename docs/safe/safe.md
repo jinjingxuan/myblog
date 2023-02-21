@@ -133,12 +133,13 @@ XSS 攻击有两大要素：
 * 对 HTML 做充分转义
   * & < > " ' /'
   * 转义库 js-xss
-* [CSP：内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
+* [CSP：内容安全策略(HTTP响应头、meta标签)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
   * 一个CSP兼容的浏览器将会仅执行从白名单域获取到的脚本文件，忽略所有的其他脚本
-* [X-Xss-Protection](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-XSS-Protection)
+  * [https://www.ruanyifeng.com/blog/2016/09/csp.html](https://www.ruanyifeng.com/blog/2016/09/csp.html)
+* [X-Xss-Protection(HTTP响应头)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-XSS-Protection)
   * HTTP **`X-XSS-Protection`** 响应头是 Internet Explorer，Chrome 和 Safari 的一个特性，当检测到跨站脚本攻击 ([XSS](https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting))时，浏览器将停止加载页面。
 
-## CSRF
+## [CSRF](https://juejin.cn/post/6844904004288249870)
 
 * **XSS 利用的是网站对用户（输入）的信任，而CSRF 利用的是网站对用户网页浏览器的信任。**
 
@@ -154,7 +155,9 @@ XSS 攻击有两大要素：
 
 **如何防御**
 
-* Referer：但攻击者可以隐藏 Referer
+* 同源检测
+  * Referer：但攻击者可以隐藏 Referer
+  * Origin：但在 ie11 或者 302 时 origin 不存在
 
   ```html
   <img src="http://bank.example/withdraw?amount=10000&for=hacker" referrerpolicy="no-referrer"> 
@@ -169,7 +172,7 @@ XSS 攻击有两大要素：
   >
   > 即便是使用最新的浏览器，黑客无法篡改 Referer 值，这种方法仍然有问题。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。
 
-  - [Samesite Cookie](http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html)
+* [Samesite Cookie](http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html)
 
     - strict：完全禁止第三方 Cookie
     
@@ -196,17 +199,15 @@ XSS 攻击有两大要素：
       
     - [iframe samesite问题](https://www.jianshu.com/p/cdfb7d0f69a7)
     
-  - CSRF Token
+* CSRF Token
 
   > CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。
   >
   > 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。 在一个网站中，可以接受请求的地方非常多，要对于每一个请求都加上 token 是很麻烦的
 
-  * 验证码
+* 验证码
 
   > CSRF攻击是伪造成用户的身份，自动发起恶意的请求。那么我们可以强迫攻击者与我们的网站进行交互。在一些操作之前加入验证码校验，可以抵御一部分的CSRF攻击。但是加入验证码会影响用户的体验，所以验证码不能作为主要的防御手段。
-
-* [跨站请求伪造—CSRF](https://juejin.cn/post/6844904004288249870)
 
 ## 点击劫持
 

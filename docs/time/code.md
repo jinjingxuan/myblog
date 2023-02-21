@@ -39,3 +39,5 @@
   * 路径总和：[leetcode112](https://leetcode.cn/problems/path-sum/submissions/)、求根到叶子节点数字之和：[leetcode129](https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/)
   * 岛屿数量：[leetcode200](https://leetcode-cn.com/problems/number-of-islands/)、岛屿最大面积：[leetcode695](https://leetcode-cn.com/problems/max-area-of-island/)
   * 7层模型、UDP/TCP(超时重传、滑动窗口、流量控制、拥塞控制)、http（0.9 ~ 3、长连接/管道化、多路复用/二进制分帧/首部压缩）、队头阻塞（TCP和HTTP）、https
+  * 最近公共祖先：[leetcode236](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)、翻转二叉树：[leetcode226](https://leetcode.cn/problems/invert-binary-tree/submissions/)、相同的树：[leetcode100](https://leetcode.cn/problems/same-tree/)
+  * XSS（反射、存储、Dom）：httponly、转义、csp、x-xss-protected；CSRF：同源检测、samesite、验证码、token；点击劫持：禁止内嵌；中间人攻击；控制台注入；钓鱼；第三方依赖安全；
