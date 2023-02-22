@@ -1,28 +1,4 @@
----
-title: 常用工具和插件
-date: 2020-12-18 11:27:54
-categories: 规范
----
 # 常用工具和插件
-* VSCode 插件
-* vue-dev-tools
-* Jsonview
-* Iterm2 + oh my zsh
-* nvm和n
-* Homebrew
-* tree
-* npm, cnpm, yarn, tyarn
-* carbon
-* github部署
-* tmux
-* 绘图工具
-* charles
-* helm
-* ipic
-* Mac 软件
-* github cli
-* JSDoc
-
 ## VSCode 常用插件
 
 * Git History： 查看 git 历史
@@ -194,11 +170,31 @@ https://excalidraw.com/
 
 ## charles
 
-> charles 相当于插在服务器和客户端之间的过滤器，当客户端向服务器发起请求的时候，先到 charles 进行过滤，然后 charles 在把最终的数据发送给服务器。服务器接收请求后的返回数据，也会先到 charles，经过 charles 过滤后再发给客户端。charles 发给服务器的数据，不一定是客户端请求的数据，charles 在接到客户端的请求时可以自由的修改数据。同理：客户端接收的数据，不一定就是服务器返回的数据，而是 charles 给的数据。
+![](./imgs/charles-3.png)
+
+charles 相当于插在服务器和客户端之间的过滤器，当客户端向服务器发起请求的时候，先到 charles 进行过滤，然后 charles 在把最终的数据发送给服务器。服务器接收请求后的返回数据，也会先到 charles，经过 charles 过滤后再发给客户端。charles 发给服务器的数据，不一定是客户端请求的数据，charles 在接到客户端的请求时可以自由的修改数据。同理：客户端接收的数据，不一定就是服务器返回的数据，而是 charles 给的数据。(类似中间人攻击)
 
 官网：https://www.charlesproxy.com/
 
 破解：https://www.zzzmode.com/mytools/charles/
+
+### 如何使用 charles 抓包（APP）
+
+1. 点击顶部菜单栏【Help】-->选择【SSL Proxying】，点击【install Charles Root Certificate】在 mac 上安装 Charles 根证书即可； 点击安装【Install Charles Root Certificate On a Mobile Device or Remote Browser】在移动设备上或远程浏览器安装证书；
+
+![](./imgs/charles-1.png)
+
+2. 保证手机和 mac 在同一局域网内，wifi 配置手动代理（按 charles 给出的 ip 和 端口号），然后访问 `chls.pro/ssl` 下载证书，然后通用 -> 关于本机 -> 证书信任设置中选中 Charles 的证书
+
+![](./imgs/charles-2.png)
+
+3. 检查下 charles proxy setting
+
+![](./imgs/charles-4.jpg)
+
+4. 接下来就可以抓包了，如果出现红叉以下情况，可能是证书过期了。【Help】-->【SSL Proxying】--> 【Reset Charles Root Certificate】重置证书，手机上也把之前下载好的证书卸载掉，按照以上步骤重新安装。
+
+![](./imgs/charles-5.png)
 
 ## nodemon
 
