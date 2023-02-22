@@ -42,3 +42,5 @@
   * 最近公共祖先：[leetcode236](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)、翻转二叉树：[leetcode226](https://leetcode.cn/problems/invert-binary-tree/submissions/)、相同的树：[leetcode100](https://leetcode.cn/problems/same-tree/)
   * XSS（反射、存储、Dom）：httponly、转义、csp、x-xss-protected；CSRF：同源检测、samesite、验证码、token；点击劫持：禁止内嵌；中间人攻击；控制台注入；钓鱼；第三方依赖安全；
   * 发布订阅模式、观察者模式、Object.create(null) 和 {} 区别
+  * 二叉树的层次遍历：[leetcode102](https://leetcode.cn/problems/binary-tree-level-order-traversal/submissions/)、二叉树的最大宽度：[leetcode662](https://leetcode.cn/problems/maximum-width-of-binary-tree/)、二叉树的右视图：[leetcode199](https://leetcode.cn/problems/binary-tree-right-side-view/)
+  * Vue 响应式原理、proxy（Reflect、receiver）

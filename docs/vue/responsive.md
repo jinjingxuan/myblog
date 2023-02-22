@@ -4,14 +4,7 @@ date: 2020-11-12 11:27:54
 categories: Vue
 ---
 # Vue响应式原理详解
-* 发布订阅模式
-* 观察者模式
-* Vue 实例初始化过程
-* 组件渲染过程
-* 响应式过程总结
-* Vue 3.0 Proxy
-
-### 发布订阅模式
+## 发布订阅模式
 
 * 订阅者
 * 发布者
@@ -19,7 +12,7 @@ categories: Vue
 
 > 假定存在一个信号中心，某个任务执行完成，就向信号中心发布一个信号，其他任务可以向信号中心订阅这个信号，从而知道自己什么时候自己可以开始执行。
 
-### Vue的自定义事件
+## Vue的自定义事件
 
 ```js
 let vm = new Vue()
@@ -37,7 +30,7 @@ vm.$on('dataChange', ()=>{
 vm.$emit('dataChange')
 ```
 
-#### 兄弟组件通信过程
+### 兄弟组件通信过程
 
 **两个组件不相互依赖，即发布者和订阅者被事件中心隔离**
 
@@ -60,7 +53,7 @@ created: function () {
 }
 ```
 
-#### 模拟实现vue的自定义事件
+### 模拟实现vue的自定义事件
 
 ```js
 // 类内部存储一个对象，包含事件名和对应的触发函数
@@ -100,7 +93,7 @@ em.$emit('click')
 
 [Object.create(null) 和 {} 的区别](https://juejin.cn/post/6844903589815517192)
 
-### 观察者模式
+## 观察者模式
 
 * 观察者  -- watcher
   * update()：当事件发生时，具体要做的事情
@@ -144,7 +137,7 @@ em.$emit('click')
     dep.notify()
 ```
 
-### Vue实例初始化过程
+## Vue实例初始化过程
 
 在 Vue 实例初始化的时候会调用`_init`方法，`_init`方法中有很多初始化的过程，比如
 
@@ -229,7 +222,7 @@ export class Observer {
 - 若对象是array类型，则进行array类型操作
 - 若对象是object类型，则进行object类型操作
 
-#### 1. 数据是object类型
+### 1. 数据是object类型
 
 当数据是object类型时，调用了一个walk方法，在walk方法中遍历数据的所有属性，并调用defineReactive方法。
 
@@ -265,7 +258,7 @@ export function defineReactive (...) {
 - 当外界通过Watcher读取数据时，会触发getter从而将Watcher添加到依赖中。
 - 在修改对象的值的时候，会触发对应的`setter`， `setter`通知之前**依赖收集**得到的 Dep 中的每一个 Watcher，告诉它们自己的值改变了，需要重新渲染视图。这时候这些 Watcher就会开始调用 `update` 来更新视图。
 
-#### 2. 数据是array类型
+### 2. 数据是array类型
 
 调用`arrayMethods`拦截修改数组方法：
 
@@ -376,7 +369,7 @@ vm.items.splice(newLength)
 }
 ```
 
-### 组件渲染过程
+## 组件渲染过程
 
 **那么究竟是如何触发依赖实现响应式的呢，从组件渲染阶段开始说起**
 
@@ -468,7 +461,7 @@ new Watcher(vm, updateComponent, noop, {
 
 * [更多详细请看](https://zhuanlan.zhihu.com/p/110441137)
 
-Watche 实例分为渲染 watcher (render watcher),计算属性 watcher (computed watcher),侦听器 watcher（user watcher）三种：
+Watcher 实例分为渲染 watcher (render watcher),计算属性 watcher (computed watcher),侦听器 watcher（user watcher）三种：
 
 1. initState 时,对 computed 属性初始化时,触发 computed watcher 依赖收集
 2. initState 时,对侦听属性初始化时,触发 user watcher 依赖收集
@@ -526,16 +519,15 @@ class Watcher {
 }
 ```
 
-### 响应式的整体流程
+## 响应式的整体流程
+[Vue响应式原理-理解Observer、Dep、Watcher](https://juejin.cn/post/6844903858850758670)
 
-* 组件实例初始化过程中，data的每个属性都有自己的getter、setter方法，用于收集依赖和触发依赖
+* 组件实例初始化过程中，walk 方法遍历 data 利用`Object.defineProperty`为每个属性添加getter、setter方法，用于收集依赖和触发依赖，每个属性都会有一个 Dep 用来收集依赖。
+* 组件渲染过程中（mountComponent方法），初始化组件自己的 watcher 对象，当外界通过 watcher 读取数据时，会触发 getter 从而将 watcher 添加到 Dep 中。watcher 可以是渲染 watcher、computed watcher、watch watcher
+* data 中的属性变化，会调用 setter 中的方法（Dep.notify）通知收集到的 watcher 执行 update 方法。
+* watcher 收到依赖变化的消息，重新渲染虚拟dom，实现页面响应
 
-- 组件渲染过程中，在`mountComponent`中初始化组件自己的watcher对象，用于记录数据依赖
-- watcher的内部有触发取值的操作，调用data中的属性的getter方法，收集依赖
-- data中的属性变化，会调用setter中的方法，告诉watcher有依赖发生了变化
-- watcher收到依赖变化的消息，重新渲染虚拟dom，实现页面响应
-
-### Vue 3.0 Proxy
+## Vue 3.0 Proxy
 
 >  Object.defineProperty 只能劫持对象的属性,因此我们需要对每个对象的每个属性进行遍历。Vue 2.x 里,是通过 递归 + 遍历 data 对象来实现对数据的监控的,如果属性值也是对象那么需要深度遍历,显然如果能劫持一个完整的对象是才是更好的选择。Proxy 可以劫持整个对象,并返回一个新的对象。Proxy 不仅可以代理对象,还可以代理数组。还可以代理动态增加的属性。
 
@@ -645,6 +637,8 @@ class Watcher {
 
   ### Proxy 中的 receiver
 
+[Proxy 和 Reflect](https://zh.javascript.info/proxy)
+
 > 在 Reflect.get 的场景下，receiver 可以改变计算属性中 this 的指向。
 
 ```js
@@ -655,40 +649,35 @@ var target = {
 Reflect.get(target, 'a', { c: 4 }) // 4
 ```
 
-> 如果 target 对象中设置了 getter，getter 中的 this 指向 receiver
+> receiver是接受者的意思，表示调用对应属性或方法的主体对象，通常情况下，receiver参数是无需使用的，但是如果发生了继承，为了明确调用主体，receiver参数就需要出马了。
 
 ```js
-const obj = {
-  // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/get
-  // get语法将对象属性绑定到查询该属性时将被调用的函数。
-  get foo() {			
-    console.log(this)
-    return this.bar
+let user = {
+  _name: "Guest",
+  get name() {
+    return this._name;
   }
-}
+};
 
-const proxy = new Proxy(obj, {
-	get (target, key, receiver) {
-    	if (key === 'bar') {
-      	return 'value - bar'
-    	}
-    	return Reflect.get(target, key)
+let userProxy = new Proxy(user, {
+  get(target, prop, receiver) {
+    return target[prop]; // (*) target = user
+    return Reflect.get(target, prop, receiver); // receiver = admin
   }
-})
+});
 
-console.log(proxy.foo) 
-// console.log(this) => obj
-// this.bar => undefined
+let admin = {
+  __proto__: userProxy,
+  _name: "Admin"
+};
 
-// 若 Reflect 中加入 receiver
-return Reflect.get(target, key, receiver)
-// console.log(this) => proxy
-// this.bar => value - bar
-
-// 个人理解：执行 target[key] 是针对于 receiver 执行的
+// 期望输出：Admin
+alert(admin.name); // 输出：Guest (?!?)
 ```
 
-
+- `target` —— 是目标对象，该对象被作为第一个参数传递给 `new Proxy`，
+- `prop` —— 目标属性名，
+- `receiver` —— 如果目标属性是一个 getter 访问器属性，则 `receiver` 就是本次读取属性所在的 `this` 对象。通常，这就是 `proxy` 对象本身（或者，如果我们从 proxy 继承，则是从该 proxy 继承的对象）。
 
   
 

@@ -331,20 +331,28 @@ var invertTree = function(root) {
 
 ```js
 // 队列
-var levelOrderBottom = function(root) {
-    let queue = [] , res = []
-    if(!root) return []
-    queue.push(root)
-    while(queue.length!==0){
-        let tmp = queue.shift()
-        console.log(tmp.val)
-        if(tmp.left!==null){
-            queue.push(tmp.left)
-        }
-        if(tmp.right!==null){
-            queue.push(tmp.right)
-        }
+var levelOrder = function(root) {
+    if (!root) {
+        return [];
     }
+    const res = [];
+    const queue = [root];
+    while (queue.length) {
+        const len = queue.length;
+        const arr = [];
+        for (let i = 0; i < len; i++) {
+            const tmp = queue.shift();
+            arr.push(tmp.val);
+            if (tmp.left) {
+                queue.push(tmp.left);
+            }
+            if (tmp.right) {
+                queue.push(tmp.right);
+            }
+        }
+        res.push(arr);
+    }
+    return res;
 };
 
 // 改变题型，输出二维数组
@@ -556,29 +564,36 @@ var isBalanced = function(root) {
 
 ```js
 var widthOfBinaryTree = function(root) {
-    if (root === null) return 0
-    const queue = []
-    queue.push(root)
-    root.val = 0
-    let res = 0
+    if (!root) {
+        return 0;
+    }
+    // 防止计算溢出, 均用BigInt类型表示
+    let res = 0n;
+    root.val = 0n;
+    const queue = [root];
     while (queue.length) {
-        const len = queue.length
-        let left = queue[0].val, right
+        const len = queue.length;
+        let left = queue[0].val;
+        let right = 0n;
         for (let i = 0; i < len; i++) {
-            if (i === len - 1) right = queue[0].val
-            let tmp = queue.shift()
+            const tmp = queue.shift();
+            if (i === len - 1) {
+                right = tmp.val;
+            }
             if (tmp.left) {
-                tmp.left.val = 2 * tmp.val + 1 - left
-                queue.push(tmp.left)
+                queue.push(tmp.left);
+                tmp.left.val = 2n * tmp.val;
             }
             if (tmp.right) {
-                tmp.right.val = 2 * tmp.val + 2 - left
-                queue.push(tmp.right)
+                queue.push(tmp.right);
+                tmp.right.val = 2n * tmp.val + 1n;
             }
         }
-        res = Math.max(res, right - left + 1)
+        if (right - left + 1n > res) {
+            res = right - left + 1n;
+        }
     }
-    return res
+    return res;
 };
 ```
 
@@ -635,19 +650,27 @@ var buildTree = function(preorder, inorder) {
 
 ```js
 var rightSideView = function(root) {
-    const queue = []
-    const res = []
-    if (root !== null) queue.push(root)
+    if (!root) {
+        return [];
+    }
+    const queue = [root];
+    const res = [];
     while (queue.length) {
-        const len = queue.length
+        const len = queue.length;
         for (let i = 0; i < len; i++) {
-            let tmp  = queue.shift()
-            if (tmp.left !== null) queue.push(tmp.left)
-            if (tmp.right !== null) queue.push(tmp.right)
-            if (i === len - 1) res.push(tmp.val)
+            const tmp = queue.shift();
+            if (i === len - 1) {
+                res.push(tmp.val);
+            }
+            if (tmp.left) {
+                queue.push(tmp.left);
+            } 
+            if (tmp.right) {
+                queue.push(tmp.right);
+            } 
         }
     }
-    return res
+    return res;
 };
 ```
 
