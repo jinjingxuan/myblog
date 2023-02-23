@@ -115,11 +115,14 @@ store.subscribe(() => {
 })
 ```
 
-## Redux、Vuex、san-store 对比
+## Redux、Vuex 区别
 
-|            | Redux                                                        | Vuex                                                       | San-store                                                 |
-| ---------- | ------------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------- |
-| 核心概念   | action、reducer、store                                       | action、mutation、state、getters                           | action、store                                             |
-| 是否可变性 | 不可变，reducer 内部禁止直接修改 `state`。必须通过复制现有的 `state` 并对复制的值进行更改的方式来做 | 可变，直接修改 state                                       | 不可变，san-update 提供 Immutable 方法 builder 来修改数据 |
-| 同步与异步 | action 中可同步可异步（依赖 redux-thunk 插件）               | commit 触发mutation同步操作，dispatch 触发 action 异步操作 | action 中 返回 builder 为同步，返回 Promise 为异步        |
+|              | Redux                                                        | Vuex                                                         |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 核心概念     | action、reducer、store、state                                | action、mutation、store、state、getters                      |
+| 状态更新计算 | reducer                                                      | mutation                                                     |
+| 是否可变性   | 不可变，reducer 内部禁止直接修改 `state`。必须通过复制现有的 `state` 并对复制的值进行更改的方式来做（reducer 为纯函数） | 可变，mutation 可以直接修改 state                            |
+| 同步与异步   | action 中可同步可异步（依赖 redux-thunk 插件）               | commit 触发mutation同步操作，dispatch 触发 action 异步操作   |
+| 与组件结合   | 组件不能直接使用，使用 Provider 和 connect 把组件和 Redux 关联起来 | VUE 通过VUEX 全局插件的使用，结合将 store传入根实例的过程，就可以使得 store 对象在运行时存在于任何vue组件中 |
 
+[一文总结redux、react-redux、redux-thunk、redux-sage](https://juejin.cn/post/6880011662926364679)

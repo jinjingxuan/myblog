@@ -44,3 +44,6 @@
   * 发布订阅模式、观察者模式、Object.create(null) 和 {} 区别
   * 二叉树的层次遍历：[leetcode102](https://leetcode.cn/problems/binary-tree-level-order-traversal/submissions/)、二叉树的最大宽度：[leetcode662](https://leetcode.cn/problems/maximum-width-of-binary-tree/)、二叉树的右视图：[leetcode199](https://leetcode.cn/problems/binary-tree-right-side-view/)
   * Vue 响应式原理、proxy（Reflect、receiver）
+  * 二叉树的最大深度：[leetcode104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/submissions/)、二叉树的最小深度：[leetcode111](https://leetcode.cn/problems/minimum-depth-of-binary-tree/submissions/)、N叉树的最大深度：[leetcode559](https://leetcode.cn/problems/maximum-depth-of-n-ary-tree/submissions/)
+  * vuex（state、mutation、action）、redux（state、reducer、action）、react-redux 区别
+

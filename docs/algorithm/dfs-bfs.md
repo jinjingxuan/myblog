@@ -324,12 +324,14 @@ var maxDepth = function(root) {
 
 // 递归
 var maxDepth = function(root) {
-    if (root === null) return 0
-    let num = 0
-    for (let i = 0; i < root.children.length; i++) {
-        num = Math.max(num, maxDepth(root.children[i]))
+    if (!root) {
+        return 0;
     }
-    return num + 1
+    let depth = 0;
+    for (let i = 0; i < root.children.length; i++) {
+        depth = Math.max(depth, maxDepth(root.children[i]));
+    }
+    return 1 + depth;
 };
 ```
 

@@ -256,12 +256,38 @@ var mergeTrees = function(root1, root2) {
 返回它的最大深度 3 。
 ```
 
-* 递归思想
-
 ```js
+// 递归
 var maxDepth = function(root) {
-   if (root === null) return 0
-   return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
+    if (!root) {
+        return 0;
+    }
+    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+};
+
+// BFS
+var maxDepth = function(root) {
+    if (!root) {
+        return 0;
+    }
+    const queue = [root];
+    let depth = 1;
+    while (queue.length) {
+        const len = queue.length;
+        for (let i = 0; i < len; i++) {
+            const tmp = queue.shift();
+            if (tmp.left) {
+                queue.push(tmp.left);
+            }
+            if (tmp.right) {
+                queue.push(tmp.right);
+            }
+        }
+        if (queue.length) {
+            depth++;
+        }
+    }
+    return depth;
 };
 ```
 
@@ -289,10 +315,41 @@ var maxDepth = function(root) {
 ```js
 // 需要考虑斜着下来的树，例如left为null时，左侧虽然深度为0，但没有叶子结点，所以需要去计算右侧的深度
 var minDepth = function(root) {
-    if (root === null) return 0
-    if (root.left === null) return 1 + minDepth(root.right)
-    if (root.right === null) return 1 + minDepth(root.left)
-    else return 1 + Math.min(minDepth(root.left), minDepth(root.right))
+    if (!root) {
+        return 0;
+    }
+    if (!root.left) {
+        return 1 + minDepth(root.right);
+    }
+    if (!root.right) {
+        return 1 + minDepth(root.left);
+    }
+    return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+};
+
+// BFS
+var minDepth = function(root) {
+    if (!root) {
+        return 0;
+    }
+    const queue = [root];
+    let depth = 1;
+    while (queue.length) {
+        const len = queue.length;
+        for (let i = 0; i < len; i++) {
+            const tmp = queue.shift();
+            if (!tmp.left && !tmp.right) {
+                return depth;
+            }
+            if (tmp.left) {
+                queue.push(tmp.left);
+            }
+            if (tmp.right) {
+                queue.push(tmp.right);
+            }
+        }
+        depth++;
+    }
 };
 ```
 
