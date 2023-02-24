@@ -48,4 +48,5 @@
   * vuex（state、mutation、action）、redux（state、reducer、action）、react-redux 区别
   * 最长有效括号：[leetcode32](https://leetcode.cn/problems/longest-valid-parentheses/submissions/)
   * 前端路由：hash（hashchange）、history（pushState、replaceState、popState）
+  * 回溯算法、全排列：[Leetcode46](https://leetcode-cn.com/problems/permutations/)、括号生成：[leetcode22](https://leetcode-cn.com/problems/generate-parentheses/)、电话号码的数字组合：[leetcode17](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)、子集：[Leetcode78](https://leetcode-cn.com/problems/subsets/)
 

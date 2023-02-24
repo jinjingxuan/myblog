@@ -77,25 +77,24 @@ def backtrack(路径, 选择列表):
 我们要在这个包含解的空间树上，用 递归的方式搜索出所有的解。
 
 ```js
-const permute = (nums) => {
-  const res = [];
-
-  function backtrack(path) {
-    if (path.length == nums.length) {
-      // slice的原因是防止push到res中的结果是引用类型，后面path改变时会影响res
-      res.push(path.slice()); 
-      return;
+var permute = function(nums) {
+    const res = [];
+    const backtrack = (path) => {
+        if (path.length === nums.length) {
+            // slice 的原因是防止 push 到 res 中的结果是引用类型，后面 path 改变时会影响 res
+            res.push(path.slice());
+        }
+        for (const item of nums) {
+            if (path.includes(item)) {
+                continue;
+            }
+            path.push(item); // 比如目前 path 是 [1]，push(2), 变成 [1, 2]
+            backtrack(path); // 递归到头了：[1,2,3] 就 return 
+            path.pop(); // [1,2] pop 变为 [1]， 继续下一轮 for 循环, push(3)
+        }
     }
-    for (const num of nums) {
-      if (path.includes(num)) continue;
-      path.push(num);  // 比如目前 path 是 [1]，push(2), 变成 [1, 2]
-      backtrack(path); // 递归到头了：[1,2,3] 就 return 
-      path.pop();      // [1,2] pop 变为 [1]， 继续下一轮 for 循环, push(3)
-    }
-  }
-
-  backtrack([]);
-  return res;
+    backtrack([]);
+    return res;
 };
 ```
 
@@ -120,21 +119,21 @@ const permute = (nums) => {
 
 ```js
 var generateParenthesis = function(n) {
-    const res = []
-    const backTrack = (left, right, path) => {
+    const res = [];
+    const backtrack = (left, right, path) => {
         if (path.length === 2 * n) {
-            res.push(path)
-            return
+            res.push(path);
+            return;
         }
         if (left > 0) {
-            backTrack(left - 1, right, path + '(')
+            backtrack(left - 1, right, path + '(');
         }
         if (right > left) {
-            backTrack(left, right - 1, path + ')')
+            backtrack(left, right - 1, path + ')');
         }
     }
-    backTrack(n, n, '')
-    return res
+    backtrack(n, n, '');
+    return res;
 };
 ```
 
@@ -156,20 +155,22 @@ var generateParenthesis = function(n) {
 
 ```js
 var letterCombinations = function(digits) {
-    if (digits.length == 0) return [];
-    const map = { '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz' };
-    const res = []
-    const backTrack = (path, i) => {
-      if (path.length === digits.length) {
-        res.push(path)
-        return
-      }
-      for (const digit of map[digits[i]]) {
-        backTrack(path + digit, i + 1)
-      }
+    if (!digits.length) {
+        return [];
     }
-    backTrack('', 0)
-    return res
+    const map = {2: 'abc', 3: 'def', 4: 'ghi', 5: 'jkl', 6: 'mno', 7: 'pqrs', 8: 'tuv', 9: 'wxyz'};
+    const res = [];
+    const backtrack = (path, i) => {
+        if (path.length === digits.length) {
+            res.push(path);
+            return;
+        }
+        for (const item of map[digits[i]]) {
+            backtrack(path + item, i + 1);
+        }
+    }
+    backtrack('', 0);
+    return res;
 };
 ```
 
@@ -201,17 +202,17 @@ var letterCombinations = function(digits) {
 
 ```js
 var subsets = function(nums) {
-  const res = []
-  const backTrack = (path, index) => {
-    res.push(path.slice())
-    for (let i = index; i < nums.length; i++) {
-      path.push(nums[i])
-      backTrack(path, i + 1)
-      path.pop()
+    const res = [];
+    const backtrack = (path, index) => {
+        res.push(path.slice());
+        for (let i = index; i < nums.length; i++) {
+            path.push(nums[i]);
+            backtrack(path, i + 1);
+            path.pop();
+        }
     }
-  }
-  backTrack([], 0)
-  return res
+    backtrack([], 0);
+    return res;
 };
 ```
 
