@@ -85,21 +85,23 @@ const isBalanced = str => {
 
 ```js
 var longestValidParentheses = function(s) {
-    const stack = []
-    stack.push(-1)
-    let res = 0
-    for (let i in s) {
+    const stack = [-1];
+    let res = 0;
+    for (let i = 0; i < s.length; i++) {
         if (s[i] === '(') {
-            stack.push(i)
-        } else {
-            stack.pop()
-            if (!stack.length) stack.push(i)
+            stack.push(i);
+        }
+        else {
+            stack.pop();
+            if (!stack.length) {
+                stack.push(i);
+            }
             else {
-                res = Math.max(res, i - stack[stack.length - 1])
+                res = Math.max(res, i - stack[stack.length - 1]);
             }
         }
     }
-    return res
+    return res;
 };
 ```
 

@@ -1,16 +1,5 @@
----
-title: history模式和hash模式
-date: 2020-09-11 14:47:00
-categories: 前端路由
----
 # history模式和hash模式
-* hash模式
-* history模式
-* 根据权限动态添加路由列表
-* 配置路由meta属性
-* router跳转两次的问题
-
-> 前端随着 ajax 的流行，数据请求可以在不刷新浏览器的情况下进行。异步交互体验中最盛行的就是 SPA —— 单页应用。单页应用不仅仅是在页面交互时无刷新的，连页面跳转都是无刷新的，为了实现单页应用，所以就有了前端路由。 
+前端随着 ajax 的流行，数据请求可以在不刷新浏览器的情况下进行。异步交互体验中最盛行的就是 SPA —— 单页应用。单页应用不仅仅是在页面交互时无刷新的，连页面跳转都是无刷新的，为了实现单页应用，所以就有了前端路由。 
 
 ## hash模式
 
@@ -154,11 +143,9 @@ history.go(2) //url显示为example.com/example.html?page=3
 
 ### popState 事件
 
-* 每当同一个文档的浏览历史（即history）出现变化时，就会触发popState事件
-
-* 需要注意：仅仅调用pushState方法或replaceState方法，并不会触发该事件，只有用户点击浏览器后退和前进按钮时，或者使用js调用back、forward、go方法时才会触发。另外该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件不会被触发
-
-* 使用的时候，可以为popState事件指定回调函数
+* history.pushState和history.replaceState方法是不会触发popstate事件的
+* 但是浏览器的某些行为会导致popstate，比如go、back、forward
+* popstate事件对象中的state属性，可以理解是我们在通过history.pushState或history.replaceState方法时，传入的指定的数据，可以为popState事件指定回调函数
 
 ```js
 window.onpopstate = function (event) {
@@ -167,18 +154,20 @@ window.onpopstate = function (event) {
 };
 
 // 或者
-
 window.addEventListener('popstate', function(event) {
   console.log('location: ' + document.location);
   console.log('state: ' + JSON.stringify(event.state));
 });
 ```
 
-回调函数的参数是一个event事件对象，它的state属性指向pushState和replaceState方法为当前url所提供的状态对象（即这两个方法的第一个参数）。上边代码中的event.state就是通过pushState和replaceState方法为当前url绑定的state对象
+所以，我们可以罗列出所有可能触发 history 改变的情况，并且将这些方式一一进行拦截，变相地监听 history 的改变。
 
-那既然调用pushState方法或replaceState方法，并不会触发popState事件，要怎么处理呢？
+对于单页应用的 history 模式而言，url 的改变只能由下面四种方式引起：
 
-> **解决思路：**我们可以通过遍历页面上的所有 `a` 标签，阻止 `a` 标签的默认事件的同时，加上点击事件的回调函数，在回调函数内获取 `a` 标签的 `href` 属性值，再通过 `pushState`去改变浏览器的 `location.pathname` 属性值。然后手动执行 `popstate` 事件的回调函数，去匹配相应的路由。
+1. 点击浏览器的前进或后退按钮
+2. 点击 a 标签
+3. 在 JS 代码中触发 history.pushState 函数
+4. 在 JS 代码中触发 history.replaceState 函数
 
 ```html
 <!-- popstate 和点击事件 触发页面改变 -->
@@ -229,6 +218,16 @@ window.addEventListener('popstate', function(event) {
       }
 </script>
 ```
+
+**优点：**
+
+- 该模式的路由不带`#`，看起来更美观
+- `pushState`设置的`URL`可以是任意的与当前URL同源的URL，而`hash`只能改变#后面的内容
+
+**缺点**：
+
+* 当我们使用 history 模式路由时，比如有这么一个 url：www.test.com/home，如果我们刷新页面的话，浏览器会发送新的请求 www.test.com/home, 如果后端服务器没有 /home 对应的接口，那么就会返回404。
+* **刷新 404 的解决办法**：在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，接口则应该返回首页 index.html。
 
 ## 根据权限动态添加路由列表
 

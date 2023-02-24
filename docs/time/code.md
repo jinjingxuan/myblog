@@ -46,4 +46,6 @@
   * Vue 响应式原理、proxy（Reflect、receiver）
   * 二叉树的最大深度：[leetcode104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/submissions/)、二叉树的最小深度：[leetcode111](https://leetcode.cn/problems/minimum-depth-of-binary-tree/submissions/)、N叉树的最大深度：[leetcode559](https://leetcode.cn/problems/maximum-depth-of-n-ary-tree/submissions/)
   * vuex（state、mutation、action）、redux（state、reducer、action）、react-redux 区别
+  * 最长有效括号：[leetcode32](https://leetcode.cn/problems/longest-valid-parentheses/submissions/)
+  * 前端路由：hash（hashchange）、history（pushState、replaceState、popState）
 
