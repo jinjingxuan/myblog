@@ -1,25 +1,20 @@
----
-title: 常考知识点整理
-date: 2021-03-12 09:21:01
-categories: 面试
----
-
 ## html基础
 
 * 常见行内元素：`<span>、<a>、<b>、<strong>、<img>、<input>`
 * 常见块元素：`<p>、<h1>~<h6>、<ul>、<div>、<form>`
-* [html5常见语义化标签](https://developer.mozilla.org/zh-CN/docs/conflicting/Web/HTML/Element)
+* 行内元素、块元素、行内块元素的区别；input 和 img 属于哪种？
+* [html5常见语义化标签](https://juejin.cn/post/6844903544995184653#heading-6)
 
 ## JavaScript基础
 
 * 面向对象与基于对象
   * 面向对象的三个基本特征
   * Js是基于对象但实现了面向对象编程(继承，函数重载)
-  * 如何实现继承（[ES5六种](https://jinjingxuan.github.io/2018/08/04/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%89%EF%BC%89/#toc-heading-2)，[ES6的class](https://jinjingxuan.github.io/2020/11/06/JavaScript-ES%E6%89%A9%E5%B1%95/)）
-  * [原型与原型链](https://jinjingxuan.github.io/2018/09/19/JavaScript-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/)
+  * 如何实现继承（[ES5六种](/interview/interview-3.html#讲讲-js-的继承方式)，[ES6的class](/javascript/ES6.html#class)）
+  * [原型与原型链](/javascript/prototype.html)
   * [Object与Function原型关系](https://pic2.zhimg.com/80/dcd9f21f6457d284950b767e6f7bdea3_720w.jpg?source=1940ef5c)
   * 如何实现函数重载（arguments）
-  * [Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+  * [Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create), [如何实现](/interview/code-1.html#object-create)
   
 * [语言的强类型/弱类型，静态类型/动态类型](https://jinjingxuan.github.io/2020/08/23/TypeScript-TypeScript/)
 

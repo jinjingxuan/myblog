@@ -23,6 +23,7 @@ categories: 面试
 * 并发请求控制
 * 实现 map 和 reduce
 * 实现 'abcd'.f() 返回 'd-c-b-a'
+* Object.create
 
 ## 防抖
 
@@ -183,45 +184,39 @@ function _instanceof(left, right) {
 
 ```js
 //apply
-Function.prototype.myApply = function(thisArg, params) {
-    thisArg = thisArg || window
-    thisArg.func = this
-    let result
-    if (!params) {
-        result = thisArg.func()
-    } else {
-        result = thisArg.func(...params)
-    }
-    delete thisArg.func
-    return result
+Function.prototype.myApply = function(context, args) {
+    context = context || window;
+    context.fn = this;
+    const result = context.fn(...args);
+    delete context.fn;
+    return result;
+    
 }
 
 let obj = {}
 console.log(Math.max.myApply(obj, [1, 2, 3])) //3
 
 //call
-Function.prototype.myCall = function() {
-    let [thisArg, ...params] = [...arguments]
-    thisArg = thisArg || window
-    thisArg.func = this
-    let result = thisArg.func(...params)
-    delete thisArg.func
-    return result
+Function.prototype.myCall = function(context, ...args) {
+    context = context || window;
+    context.fn = this;
+    const result = context.fn(...args);
+    delete context.fn;
+    return result;
 }
 
 let obj = {}
 console.log(Math.max.myCall(obj, 1, 2, 3)) // 3
 
 //bind
-Function.prototype.myBind = function() {
-    let [thisArg, ...params] = [...arguments]
-    thisArg = thisArg || window
-    thisArg.func = this
+Function.prototype.myBind = function(context, ...args) {
+    context = context || window;
+    context.fn = this;
     return function() {
-        let result = thisArg.func(...params, ...arguments)
-        delete thisArg.func
-        return result
-    }  
+        const result = context.fn(...args, ...arguments);
+        delete context.fn;
+        return result;   
+    }
 }
 
 let obj = {}
@@ -662,5 +657,24 @@ Array.prototype.myReduce = function(fn, initValue) {
 ```js
 String.prototype.f = function() {
     return this.split('').reverse().join('-')
+}
+```
+
+## Object.create
+
+```js
+// Object.create 实现
+let o = Object.create(obj) // o.__proto__ === obj
+Object.create = function (obj) {
+    function F() {}
+    F.prototype = obj;
+    return new F();
+};
+
+// 可以理解为
+Object.create = function (obj) {
+  return {
+    __proto__: obj
+  }
 }
 ```
