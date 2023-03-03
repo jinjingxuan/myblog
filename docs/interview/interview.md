@@ -861,6 +861,11 @@
       * 修改了 vue 的建构配置，使之构建出符合小程序项目结构的代码格式： json/wxml/wxss/js 文件
 
     * [小程序框架对比](https://ask.dcloud.net.cn/article/35867)：基于微信自定义组件实现组件开发的框架（uni-app/taro/chameleon），组件数据通讯性能接近于微信原生框架，远高于基于template实现组件开发的框架（wepy/mpvue）性能
+    * 小程序为双线程模型，逻辑层和视图层，通过 Native 层通信。不像在 web 上 js 和 ui 会互斥，小程序中会限制 js 操作 dom，所以不用担心不同步问题。
+    * 逻辑层和视图层通过 setData 进行通信，会把数据转换成字符串并拼接一段 js 脚本（evaluateJavascript）传到视图层，这个过程是异步的。
+    * 如果每次 setData 的数据量过大，会非常损耗性能，最好是增量更新。uni-app、taro 都在调用setData之前自动做diff计算，每次仅传递变动的数据。
+    * 而且基于微信自定义组件实现组件开发的框架（uni-app/taro），组件数据通讯性能接近于微信原生框架，远高于基于template实现组件开发的框架（wepy/mpvue）性能。
+    * 跨端能力，uni-app 比较优秀，同时支持H5、多家小程序、跨平台App，但是一套代码横跨 iOS Android Web 和小程序比较复杂，可能会存在大量兼容性问题。
 
   * 后台
 
