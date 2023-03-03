@@ -50,3 +50,6 @@
   * 前端路由：hash（hashchange）、history（pushState、replaceState、popState）
   * 回溯算法、全排列：[Leetcode46](https://leetcode-cn.com/problems/permutations/)、括号生成：[leetcode22](https://leetcode-cn.com/problems/generate-parentheses/)、电话号码的数字组合：[leetcode17](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)、子集：[Leetcode78](https://leetcode-cn.com/problems/subsets/)
   * 继承（ES5、ES6）、Object.create、call/apply/bind 实现
+  * 路径总和：[leetcode112](https://leetcode.cn/problems/path-sum/submissions/)、路径总和II：[leetcode112](https://leetcode.cn/problems/path-sum-ii/submissions/)
+  * 组合总和：[leetcode39](https://leetcode.cn/problems/combination-sum/submissions/)、组合总和II：[leetcode40](https://leetcode.cn/problems/combination-sum-ii/submissions/)
+  * http 状态码、cookie 和 session 区别、小程序原理

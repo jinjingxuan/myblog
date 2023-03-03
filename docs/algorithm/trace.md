@@ -297,22 +297,23 @@ const fullArray = (arr) => {
 
 ```js
 var combinationSum = function(candidates, target) {
-    const res = []
-    // start 用于剪枝
-    const traceback = (start, path, sum) => {
-        if (sum > target) return
+    const res = [];
+    const fn = (path, sum, start) => {
+        if (sum > target) {
+            return;
+        }
         if (sum === target) {
-            res.push(path.slice())
-            return
+            res.push(path.slice());
+            return;
         }
         for (let i = start; i < candidates.length; i++) {
-            path.push(candidates[i])
-            traceback(i, path, sum + candidates[i])
-            path.pop()
+            path.push(candidates[i]);
+            fn(path, sum + candidates[i], i);
+            path.pop();
         }
     }
-    traceback(0, [], 0)
-    return res
+    fn([], 0, 0);
+    return res;
 };
 ```
 
@@ -345,27 +346,29 @@ var combinationSum = function(candidates, target) {
 
 ```js
 var combinationSum2 = function(candidates, target) {
-    candidates.sort((a,b) => a - b ) // 升序排序
-    const res = []
-    const traceback = (start, path, sum) => {
-        if (sum > target) return
+    candidates = candidates.sort((a, b) => a - b);
+    const res = [];
+    const fn = (path, sum, start) => {
+        if (sum > target) {
+            return;
+        }
         if (sum === target) {
-            res.push(path.slice())
-            return
+            res.push(path.slice());
+            return;
         }
         for (let i = start; i < candidates.length; i++) {
             // 数组中有重复元素时，当前选项和左邻选项一样，跳过达到去重
             // 比如[1, 2, 2, 3]，选两次2会重复
-            if (i >= start + 1 && candidates[i - 1] == candidates[i]) { 
-                continue
+            if (i > start && candidates[i] === candidates[i - 1]) {
+                continue;
             }
-            path.push(candidates[i])
-            traceback(i + 1, path, sum + candidates[i])
-            path.pop()
+            path.push(candidates[i]);
+            fn(path, sum + candidates[i], i + 1);
+            path.pop();
         }
     }
-    traceback(0, [], 0)
-    return res
+    fn([], 0, 0);
+    return res;
 };
 ```
 
@@ -518,22 +521,23 @@ var minimumTotal = function(triangle) {
 ```js
 // ans 甚至可以求究竟有几条路径
 var hasPathSum = function(root, targetSum) {
-    if (root === null) return 0
-    let res = 0
-    const backTrack = (path, num) => {
-        if (path.left === null && path.right === null && num + path.val === targetSum) {
-            res ++
-            return
+    if (!root) {
+        return 0;
+    }
+    let res = 0;
+    const backtrack = (path, sum) => {
+        if (!path.left && !path.right && sum === targetSum) {
+            res++;
         }
-        if (path.left !== null) {
-            backTrack(path.left, num + path.val)
+        if (path.left) {
+            backtrack(path.left, sum + path.left.val);
         }
-        if (path.right !== null) {
-            backTrack(path.right, num + path.val)
+        if (path.right) {
+            backtrack(path.right, sum + path.right.val);
         }
     }
-    backTrack(root, 0)
-    return res > 0
+    backtrack(root, root.val);
+    return res > 0;
 };
 ```
 
@@ -564,26 +568,27 @@ var hasPathSum = function(root, targetSum) {
 
 ```js
 var pathSum = function(root, targetSum) {
-    if (!root) return []
-    let ans = []
-    const backtrack = (path, num, arr) => {
-        if (num === targetSum && path.left === null && path.right === null) {
-            ans.push(arr.slice())
-            return
+    if (!root) {
+        return [];
+    }
+    const res = [];
+    const backtrack = (path, sum, arr) => {
+        if (!path.left && !path.right && sum === targetSum) {
+            res.push(arr.slice());
         }
-        if (path.left !== null) {
+        if (path.left) {
             arr.push(path.left.val)
-            backtrack(path.left, num + path.left.val, arr)
-            arr.pop()
+            backtrack(path.left, sum + path.left.val, arr);
+            arr.pop();
         }
-        if (path.right !== null) {
+        if (path.right) {
             arr.push(path.right.val)
-            backtrack(path.right, num + path.right.val, arr)
-            arr.pop()
+            backtrack(path.right, sum + path.right.val, arr);
+            arr.pop();
         }
     }
-    backtrack(root, root.val, [root.val])
-    return ans
+    backtrack(root, root.val, [root.val]);
+    return res;
 };
 ```
 

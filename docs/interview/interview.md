@@ -20,7 +20,7 @@
 
 * 为什么单线程？webworker
   
-* [数据类型](https://jinjingxuan.github.io/2020/03/05/JavaScript-JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/)（必考）
+* [数据类型](/javascript/datatype.html)（必考）
   
   * 5种基本 + 1种复杂 + 2种新增
   * null和undefined区别
@@ -31,7 +31,7 @@
   * 值类型 / 引用类型，堆 / 栈
   * 如何定义一个常量对象`Object.freeze`
   
-* [进行类型判断的方式及优缺点](https://jinjingxuan.github.io/2020/03/05/JavaScript-JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/)
+* [进行类型判断的方式及优缺点](/javascript/datatype.html#js如何进行类型判断)
   * typeof（type of null， typeof NaN）
   * instanceof（手写实现）
   * Object.prototype.toString.call（为什么用call，内部属性[[Class]]）
@@ -894,4 +894,20 @@
     * 对我的评价？建议？
     * 部门的业务情况？
     * 团队架构？
+
+* santd
+  * upload：底层实现还是基于input输入框（type=file），然后利用onchange事件，监听文件选择的事件，然后利用formData对象装载需要上传的文件，最后通过XMLHttpRequest来进行文件的网络异步传输。通过`xhr.upload` 的`onprogress` 事件的监听，可以正确的获取到上传文件的total值和loaded的值，从而实时的计算出当前上传的进度。
+  * tab：key、active_key
+  * table：通过 slot 让用户可以自定义 column title 并支持获取 column 信息
+* eslint-plugin-san
+  * eslint-plugin-san 是 eslint 的一个插件，类似于 eslint-plugin-vue，内部配置了一系列针对性的规则
+  * eslint执行原理：使用解析器 espree 将代码解析成 AST，进行词法分析以及语法分析；通过 DFS 来遍历 AST；在遍历的过程中 eslint 通过选择器来匹配 AST 上的节点，通过代码路径分析来控制代码检测的范围。每个 rule 都定义了 create 方法，会返回一个 vistor（即访问到某些节点时做出的操作），eslint 会收集配置文件中所有规则的 vistor，遍历 AST 并调用 vistor，得到检测结果。规则内还可以定义 fix 方法，在报错的时候可以进行修正。
+  * no-empty-attributes: 默认检测 class 和 style 属性不能为空，可以通过 options 配置其他不允许为空的属性。
+  * data-name-casing：dataTypes, initData, computed 中的数据在多个单词的情况下使用 "下划线"、"短横线"、"帕斯卡"命名规则会报错，提示统一使用驼峰式命名法。
+  * boolean-value：强制布尔属性。`<div attr></div>`
+* san-loader:
+  * SanLoaderPlugin 在 webpack 正式构建之前修改原有的配置 rules。 
+  * webpack 从入口文件出发, 遇到`.san`文件，第一次调用 san-loader 来处理 san 单文件, 这个过程会调用 san-sfc-compiler 的 parseSFC 方法来解析文件内容生成 import 语句，对于每一条 import 语句再遍历 rules 进行规则匹配。最后提取代码块交给对应 loader 处理
+
+
 

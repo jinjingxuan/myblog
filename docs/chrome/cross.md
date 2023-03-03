@@ -80,11 +80,25 @@ fetch('/api/users')
 
 另一种是使用相对路径的方式，只写 `/api/users`，不用区分测试和线上环境，这种方式一般使用上述的 devserver 开发的，测试环境可以直接跑在开发机上，线上部署后由于相对路径请求起来也没问题。
 
+## 预检请求
+
+**只有跨域的时候才可能会发送预检请求，此时还需要判断请求是否为简单请求**
+
+简单请求：同时满足以下两大条件，
+
+*  条件1：使用下列方法之一：GET，[HEAD](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/HEAD)，POST
+*  条件2：Content-Type 的值仅限于下列三者之一：
+  * text/plain
+  * multipart/form-data
+  * application/x-www-form-urlencoded
+
+除了以上条件之外，则会发起预检请求。
+
 ## 预检请求与重定向
 
 [https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 
-并不是所有浏览器都支持预检请求的重定向。如果一个预检请求发生了重定向，一部分浏览器将报告错误：
+并不是所有浏览器都支持预检请求的重定向。如果一个预检请求发生了重定向，一部分浏览器将报告错误（chrome 有问题，safari 没问题）：
 
 > Access to XMLHttpRequest at 'http://xxx' (redirected from 'http://yyy') from origin 'http://zzz' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: Redirect is not allowed for a preflight request.
 
@@ -95,12 +109,11 @@ CORS 最初要求浏览器具有该行为，不过在后续的[修订](https://g
 - 在服务端去掉对预检请求的重定向；
 - 将实际请求变成一个[简单请求](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#简单请求)。
 
-如果上面两种方式难以做到，我们仍有其他办法：
-
-1. 发出一个[简单请求](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#简单请求)（使用 [`Response.url`](https://developer.mozilla.org/zh-CN/docs/Web/API/Response/url) 或 [`XMLHttpRequest.responseURL`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/responseURL)）以判断真正的预检请求会返回什么地址。
-2. 发出另一个请求（*真正*的请求），使用在上一步通过 `Response.url` 或 `XMLHttpRequest.responseURL` 获得的 URL。
-
-不过，如果请求是由于存在 `Authorization` 字段而引发了预检请求，则这一方法将无法使用。这种情况只能由服务端进行更改。
+> 情景1：用户登录页面 http://aaa.com 后，请求 http://aaa.com/getuser 接口，后端判断未登录，于是 302 重定向到单点登录网站 http://login.com，但是此时却报错：
+>
+> Access to XMLHttpRequest at 'http://login.com' (redirected from 'http://aaa.com/getuser') from origin 'http://aaa.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+>
+> 问题：http://aaa.com/getuser 接口的请求头中加了 Content-Type：application/json，使得发送了预检请求，然后在 chrome 中预检请求直接重定向有问题从而报错，把 application/json 删掉即可。
 
 ## axios 请求的三种错误
 
