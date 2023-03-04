@@ -16,7 +16,7 @@
   * 如何实现函数重载（arguments）
   * [Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create), [如何实现](/interview/code-1.html#object-create)
   
-* [语言的强类型/弱类型，静态类型/动态类型](https://jinjingxuan.github.io/2020/08/23/TypeScript-TypeScript/)
+* [语言的强类型/弱类型，静态类型/动态类型](/ts/ts-base.html#语言类型)
 
 * 为什么单线程？webworker
   
@@ -37,29 +37,32 @@
   * Object.prototype.toString.call（为什么用call，内部属性[[Class]]）
   * 判断数组的方法至少说出5种
   
-* [类型转换](https://jinjingxuan.github.io/2020/03/05/JavaScript-JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/)
+* [类型转换](/javascript/datatype.html#js基本数据类型与类型转换)
+  
   * 运算符带来的类型转换，`-，*，、，%`优先转数值，`+` 除外
   * +的规则，[] + {}，{} + []
   * == 和 === 的区别
   * 什么情况 ` a ===  a-1`，`Number.MAX_SAFE_INTEGER`
   * 什么情况 `a == 1 && a == 2 && a == 3` 为true
   
-* [作用域](https://jinjingxuan.github.io/2018/11/01/JavaScript-JS%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/)
+* [作用域](https://juejin.im/post/5abb99e9f265da2392366824)
+  
   * 全局作用域
   * 函数作用域
   * 块级作用域
   * 词法作用域
   * 动态作用域
   
-* [作用域（链）与执行上下文（栈）的区别](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%9B%9B%EF%BC%89/#toc-heading-4)
+* [作用域（链）与执行上下文（栈）的区别](/interview/interview-4.html#说一下你对js执行上下文栈和作用域链的理解)
 
-* [this的指向，箭头函数与普通函数区别](https://jinjingxuan.github.io/2018/10/31/JavaScript-JS%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/)与[new一个对象的过程](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%BA%94%EF%BC%89/#toc-heading-19)
+* [this的指向，箭头函数与普通函数区别](/javascript/this.html#javascript中this的指向)与[new一个对象的过程](/interview/interview-5.html#简述-new-一个对象的过程)
 
-* [call / apply / bind](https://jinjingxuan.github.io/2020/03/20/%E9%9D%A2%E8%AF%95-%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81%EF%BC%88%E4%B8%80%EF%BC%89/)
+* [call / apply / bind](/interview/interview-10.html#call-apply-bind-的区别-怎么实现)
 
-* [闭包](https://jinjingxuan.github.io/2018/08/16/JavaScript-%E9%97%AD%E5%8C%85/)，高阶函数，vue中有什么应用
+* [闭包](/javascript/closure.html#闭包的定义)，高阶函数，vue中有什么应用
 
-* [深拷贝与浅拷贝](https://jinjingxuan.github.io/2018/09/27/JavaScript-%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/)
+* [深拷贝与浅拷贝](/javascript/clone.html#浅拷贝与深拷贝)
+  
   * JSON.stringify中不安全的JSON值，参数
   * JSON.parse(JSON.stringify)的问题
   * 手写一个深拷贝方法
@@ -124,10 +127,11 @@
 * 剩余运算符（接收参数）
 
 * [Map, WeakMap, Set, WeakSet](https://juejin.cn/post/6854573210794082318)，[如何理解weak](https://juejin.cn/post/6844904160085671949)
+  
   * WeakMap和WeakSet的键只能为对象
-  * 弱引用，[GC算法](https://jinjingxuan.github.io/2020/08/26/%E6%B5%8F%E8%A7%88%E5%99%A8-GC%E7%AE%97%E6%B3%95%EF%BC%8CV8%E5%BC%95%E6%93%8E/)，[内存泄漏的场景（4种）](https://juejin.cn/post/6844903833387155464)
+  * 弱引用，[GC算法](/chrome/gc.html#gc算法)，[内存泄漏的场景（4种）](https://juejin.cn/post/6844903833387155464)
   * 不可迭代，只支持部分方法
-
+  
 * Includes
 
 * 模板字符串 
@@ -140,7 +144,7 @@
   
 * Array.from：如何初始化一个二维数组
   
-* [promise](https://jinjingxuan.github.io/2020/03/08/JavaScript-JS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%8CPromise/)
+* [promise](/javascript/asynchronous.html#promise-2)
 
 * 手写`promise.all`和`promise.race`
 
@@ -188,7 +192,7 @@
 
 * for of ，迭代器，Generator
 
-* [事件冒泡 / 事件捕获 / 事件委托](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%BA%94%EF%BC%89/)
+* [事件冒泡 / 事件捕获 / 事件委托](/interview/interview-5.html#什么是事件冒泡-事件捕获-事件委托)
   
   * DOM 事件流
   * target 和 currentTarget 的区别
@@ -199,13 +203,13 @@
   * 高阶函数
   * 纯函数  / 记忆函数
   * 函数柯里化 / 函数组合
-  * [尾递归 / 尾调用](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%8D%81%EF%BC%89/#toc-heading-23)
+  * [尾递归 / 尾调用](/interview/interview-10.html#什么是尾递归和尾调用)
   * 常见数组方法，哪些是高阶函数，哪些会改变数组本身
     * push,pop,splice,unshift,shift,reverse
     * slice,concat,forEach,map,filter,some,every
     * ['1', '2', '3'].map(parseInt)的结果
   
-* [setTimeout误差](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B9%9D%EF%BC%89/#toc-heading-6)
+* [setTimeout误差](/interview/interview-9.html#settimeout倒计时为什么会出现误差)
 
 * babel
 
