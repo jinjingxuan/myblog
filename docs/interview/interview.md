@@ -76,74 +76,42 @@
   
   * let / const （块级作用域，不允许重复声明，暂时性死区）
   
-* 箭头函数
+  * 箭头函数
   
-  * 没有构造函数，没有原型(prototype)
+    * 没有构造函数，没有原型(prototype)
   
-  * 省略 return 关键字，隐式返回
+    * 省略 return 关键字，隐式返回
   
-  * 继承当前上下文的 this 关键字
+    * 继承当前上下文的 this 关键字
   
-    ```js
-    function fn() {
-        let a = 1
-        const arrow = () => {
-            console.log(this.a)
-        }
-        arrow()
-    }
-    fn() // 1
-    ```
+    * 没有arguments属性，剩余运算符
   
-  * 没有arguments属性，剩余运算符
+    * 由于 箭头函数没有自己的this指针，通过 `call()` *或* `apply()` 方法调用一个箭头函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。
   
-      ```js
-      const fn1 = (...args) => {
-          console.log(args)
-      }
-      
-      const fn2 = (arguments) => {
-          console.log(arguments)
-      }
-      
-      fn1(1,2,3) // [1, 2, 3]
-      fn2(1,2,3) // Cannot access 'fn' before initialization
-      ```
-      
-  * 由于 箭头函数没有自己的this指针，通过 `call()` *或* `apply()` 方法调用一个箭头函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。
+    * 用处：箭头函数表达式对非方法函数是最合适的
   
-      ```js
-      const fn = a => {
-          console.log(this.val, a)
-      }
-      let obj = { val: 1 }
-      fn.call(obj, 1) // undefined 1
-      ```
+  * 扩展运算符（构造数组，解析数组，参数赋值）
   
-  * 用处：箭头函数表达式对非方法函数是最合适的
+  * 剩余运算符（接收参数）
   
-* 扩展运算符（构造数组，解析数组，参数赋值）
-
-* 剩余运算符（接收参数）
-
-* [Map, WeakMap, Set, WeakSet](https://juejin.cn/post/6854573210794082318)，[如何理解weak](https://juejin.cn/post/6844904160085671949)
+  * [Map, WeakMap, Set, WeakSet](https://juejin.cn/post/6854573210794082318)，[如何理解weak](https://juejin.cn/post/6844904160085671949)
   
-  * WeakMap和WeakSet的键只能为对象
-  * 弱引用，[GC算法](/chrome/gc.html#gc算法)，[内存泄漏的场景（4种）](https://juejin.cn/post/6844903833387155464)
-  * 不可迭代，只支持部分方法
+    * WeakMap和WeakSet的键只能为对象
+    * 弱引用，[GC算法](/chrome/gc.html#gc算法)，[内存泄漏的场景（4种）](https://juejin.cn/post/6844903833387155464)
+    * 不可迭代，只支持部分方法
   
-* Includes
-
-* 模板字符串 
-
-* 对象字面量的增强
-
-* Object.assign / Object.is / Object.keys / Object.values / Object.entries
-
+  * Includes
+  
+  * 模板字符串 
+  
+  * 对象字面量的增强
+  
+  * Object.assign / Object.is / Object.keys / Object.values / Object.entries
+  
 * forEach/find/map/filer/reduce/every/some
   
 * Array.from：如何初始化一个二维数组
-  
+
 * [promise](/javascript/asynchronous.html#promise-2)
 
 * 手写`promise.all`和`promise.race`
@@ -176,11 +144,11 @@
 * 宏任务/微任务/事件循环
 
   * 浏览器与node事件循环区别（libuv，c语言）
-  
+
 * 微任务有哪些，[MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)是什么
-  
+
   * 面试题看代码说结果
-  
+
 * for in 与 for of
 
   * [for in（字符串）/ Object.keys / Object.getOwnProperty 区别](https://www.jianshu.com/p/f88c8c90b281)
@@ -193,12 +161,12 @@
 * for of ，迭代器，Generator
 
 * [事件冒泡 / 事件捕获 / 事件委托](/interview/interview-5.html#什么是事件冒泡-事件捕获-事件委托)
-  
+
   * DOM 事件流
   * target 和 currentTarget 的区别
     * target获取是触发事件的源对象
     * currentTarget获取的事件绑定的对象
-  
+
 * 函数式编程
   * 高阶函数
   * 纯函数  / 记忆函数
@@ -208,15 +176,15 @@
     * push,pop,splice,unshift,shift,reverse
     * slice,concat,forEach,map,filter,some,every
     * ['1', '2', '3'].map(parseInt)的结果
-  
+
 * [setTimeout误差](/interview/interview-9.html#settimeout倒计时为什么会出现误差)
 
 * babel
 
   * 为什么使用babel
-  
+
 * babel原理（词法分析生成tokens流，语法分析转换成AST，AST节点遍历进行添加更新移除，生成ES5字符串）
-  
+
   * babel怎么处理ESM模块化（编译成CommonJS风格）
 
 ## CSS基础
