@@ -72,43 +72,53 @@
   * 函数声明优先级最高
   * let / const 暂时性死区
   
-* ES6及之后
-  
+* ES6
   * let / const （块级作用域，不允许重复声明，暂时性死区）
-  
   * 箭头函数
-  
     * 没有构造函数，没有原型(prototype)
-  
     * 省略 return 关键字，隐式返回
-  
     * 继承当前上下文的 this 关键字
-  
     * 没有arguments属性，剩余运算符
-  
     * 由于 箭头函数没有自己的this指针，通过 `call()` *或* `apply()` 方法调用一个箭头函数时，只能传递参数（不能绑定this），他们的第一个参数会被忽略。
-  
     * 用处：箭头函数表达式对非方法函数是最合适的
-  
   * 扩展运算符（构造数组，解析数组，参数赋值）
-  
   * 剩余运算符（接收参数）
-  
   * [Map, WeakMap, Set, WeakSet](https://juejin.cn/post/6854573210794082318)，[如何理解weak](https://juejin.cn/post/6844904160085671949)
-  
     * WeakMap和WeakSet的键只能为对象
     * 弱引用，[GC算法](/chrome/gc.html#gc算法)，[内存泄漏的场景（4种）](https://juejin.cn/post/6844903833387155464)
     * 不可迭代，只支持部分方法
-  
-  * Includes
-  
   * 模板字符串 
-  
   * 对象字面量的增强
-  
   * Object.assign / Object.is / Object.keys / Object.values / Object.entries
   
-* forEach/find/map/filer/reduce/every/some
+* ES2016~ES2022
+  * includes
+  * 求幂运算符（**）
+  
+  * Object.values 与 Object.entries
+  * Object.hasOwn()
+  * String.prototype.padStart 与 Sting.prototype.padEnd
+  * async/await
+  
+  * 异步迭代 for await...of
+  * 顶层 await
+  * Promise.prototype.finally
+  * Promise.allSettled
+  * Promise.any
+  
+  * flat 与 flatMap
+  
+  * 空值合并运算符
+  * 可选链操作符
+  * Dynamic import
+  * BigInt
+  
+  * 数值分隔符
+  
+  * at() 方法
+  * class 私有字段
+  
+* 数组方法：forEach/find/map/filer/reduce/every/some
   
 * Array.from：如何初始化一个二维数组
 
@@ -151,12 +161,12 @@
 
 * for in 与 for of
 
-  * [for in（字符串）/ Object.keys / Object.getOwnProperty 区别](https://www.jianshu.com/p/f88c8c90b281)
+  * [for in（字符串）/ Object.keys / Object.getOwnPropertyNames 区别](https://www.jianshu.com/p/f88c8c90b281)
   * 性能 `for...i > forEach > for...of > map > for...in`
   * for in 为什么效率低，这是因为 for...in 有一些特殊的要求，包括：
-    *  遍历所有属性，不仅是 own properties 也包括原型链上的所有属性。
+    * 遍历所有属性，不仅是 own properties 也包括原型链上的所有属性。
     * 忽略 enumerable 为 false 的属性。
-    *  必须按特定顺序遍历，先遍历所有数字键，然后按照创建属性的顺序遍历剩下的。
+    * 必须按特定顺序遍历，先遍历所有数字键，然后按照创建属性的顺序遍历剩下的。
 
 * for of ，迭代器，Generator
 

@@ -229,24 +229,24 @@ console.log(Math.max.myBind(obj, 1, 2, 3)(4)) // 4
 Promise.all = function (promises) {
     return new Promise((resolve, reject) => {
         if (!promises || promises.length === 0) {
-            resolve([])
-        } else {
-            let count = 0;
-            let result = [];
-            for (let i = 0; i < promises.length; i++) {
-                // 考虑到promises[i]可能是普通对象，则统一包装为Promise对象
-                Promise.resolve(promises[i]).then(res => {
-                    result[i] = res;
-                    if (++count === promises.length) {
-                        resolve(result);
-                    }
-                }).catch((err) => {
-                    reject(err); // 任何一个Promise对象执行失败，则调用reject()方法
-                    return
-                })
-            }
+            resolve([]);
         }
-    })
+        let count = 0;
+        const result = [];
+        for (let i = 0; i < promises[i].length; i++) {
+            // 考虑到promises[i]可能是普通对象，则统一包装为Promise对象
+            Promise.resolve(promises[i]).then(res => {
+                result[i] = res;
+                if (++count === promises.length) {
+                    resolve(res);
+                }
+            }).catch(err => {
+                // 任何一个Promise对象执行失败，则调用reject()方法
+                reject(err);
+                return;
+            });
+        }
+    });
 }
 ```
 
