@@ -199,26 +199,27 @@
 
 ## CSS基础
 
-  * [盒模型](https://jinjingxuan.github.io/2020/11/26/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/)
-  * [居中一个元素的方法](https://jinjingxuan.github.io/2018/08/04/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%89%EF%BC%89/#toc-heading-6)
+  * [盒模型](/css/box.html#盒子模型)
+  * [居中一个元素的方法](/interview/interview-3.html#简述居中一个元素的方法)
     * 水平2种，垂直3种，垂直水平5种
     * 单行文本水平垂直居中（text-align + line-height），多行文本水平垂直居中（table-cell）
-  * [BFC布局规则，如何创建BFC](https://jinjingxuan.github.io/2020/11/26/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/)
+  * [BFC布局规则，如何创建BFC](/css/bfc.html#什么是bfc-bfc的布局规则是什么-如何创建bfc)
   * [Grid 网格布局](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)，实现一个宽度1：2：3的网格布局
   * 两栏布局（右侧自适应） 
-    * [浮动，触发BFC](https://jinjingxuan.github.io/2020/11/26/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/)
+    * [浮动，触发BFC](/css/bfc.html#什么是bfc-bfc的布局规则是什么-如何创建bfc)
     * flex布局，左侧固定宽度，右侧`flex: 1`
     * 左侧浮动，右侧设置左边距
   * 三栏布局（中间自适应）
     * 左右侧浮动，中间设置左右边距，左右高度400，中间高度300，body高度？如何清除浮动？
     * 左右侧绝对定位，中间设置左右边距
     * 中间 `flex: 1`
+    * grid 布局，`grid-template-columns: 200px auto 200px;`
     * [圣杯布局与双飞翼布局](https://www.jianshu.com/p/81ef7e7094e8)，`margin-left: -100%;`相对于父元素宽度的百分比
-  * [Flex 布局，三个值的含义](https://jinjingxuan.github.io/2020/11/22/CSS-flex%E5%B8%83%E5%B1%80/)
+  * [Flex 布局，三个值的含义](/css/flex.html#flex布局)
   * margin写两个值，三个值，四个值
-  * [css选择器的优先级规则](https://jinjingxuan.github.io/2018/08/04/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%89%EF%BC%89/)
-  * [脱离文档流 / 定位 / 浮动的区别](https://jinjingxuan.github.io/2020/11/26/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/)
-  * [清除浮动的方法](https://jinjingxuan.github.io/2020/11/26/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/)
+  * [css选择器的优先级规则](/interview/interview-3.html#简述css选择器的优先级规则)
+  * [脱离文档流 / 定位 / 浮动的区别](/interview/interview-6.html#什么是脱离文档流-定位与浮动)
+  * [清除浮动的方法](/css/box.html#清除浮动)
   * [link 与 @import 的区别](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%8D%81%EF%BC%89/#toc-heading-24)
   * [画一个三角形 / 扇形](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%9B%9B%EF%BC%89/#toc-heading-11)
   * [隐藏一个元素的方法](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%9B%9B%EF%BC%89/#toc-heading-3)

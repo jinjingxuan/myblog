@@ -82,6 +82,24 @@ categories: CSS
 </body>
 ```
 
+```html
+<style>
+	.box {
+		display: grid;
+    	grid-template-columns: 200px auto 200px;
+	}
+</style>
+
+</head>
+<body>
+	<div class="box">
+		<div class="left"></div>
+		<div class="middle"></div>
+		<div class="right"></div>
+	</div>
+</body>
+```
+
 圣杯布局跟双飞翼布局的实现，目的都是左右两栏固定宽度，中间部分自适应。
 中间栏放在最前面优先渲染。 
 
