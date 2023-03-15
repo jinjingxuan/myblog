@@ -68,6 +68,9 @@ clip-path: polygon(00,00,00,00);
 <div aria-hidden="true">
 </div>
 ```
+* display:none 关闭元素的布局，所以元素不被渲染
+* visibility:hidden 隐藏元素，而不改变它们的布局
+* opacity:0 使元素非常透明，但是用户依然可以和元素交互
 
 ##  说一下你对JS执行上下文栈和作用域链的理解
 

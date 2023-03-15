@@ -270,10 +270,8 @@ g(3);
 
 ## link 与 @import 的区别
 
-* `link`功能较多，可以定义 RSS，定义 Rel 等作用，而`@import`只能用于加载 css
-* 当解析到`link`时，页面会同步加载所引的 css，而`@import`所引用的 css 会等到页面加载完才被加载
-* `@import`需要 IE5 以上才能使用
-* `link`可以使用 js 动态引入，`@import`不行
+* link是HTML提供的标签，不仅可以加载CSS 文件，还可以定义RSS、rel 连接属性等。 @import是CSS 提供的语法规则，只有导入CSS的作用。 
+* 加载页面时，link 标签引入的 CSS 被同时加载。 @import 引入的 CSS 将在页面加载完毕后被加载。
 
 ## 数组 `map()` 和 `forEach()` 方法的区别？
 

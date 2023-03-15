@@ -292,5 +292,7 @@ Vue.prototype.$watch = function (
 
 ## js执行会阻塞DOM树的解析和渲染，那么css加载会阻塞DOM树的解析和渲染吗？css会阻塞js吗
 
-* [浏览器渲染相关](https://www.jinjingxuan.com/2020/11/23/%E6%B5%8F%E8%A7%88%E5%99%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/)
+* css加载不会阻塞DOM树的解析
+* css加载会阻塞DOM树的渲染
+* css加载会阻塞后面js语句的执行
 

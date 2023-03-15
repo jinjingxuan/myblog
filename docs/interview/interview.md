@@ -220,19 +220,21 @@
   * [css选择器的优先级规则](/interview/interview-3.html#简述css选择器的优先级规则)
   * [脱离文档流 / 定位 / 浮动的区别](/interview/interview-6.html#什么是脱离文档流-定位与浮动)
   * [清除浮动的方法](/css/box.html#清除浮动)
-  * [link 与 @import 的区别](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%8D%81%EF%BC%89/#toc-heading-24)
-  * [画一个三角形 / 扇形](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%9B%9B%EF%BC%89/#toc-heading-11)
-  * [隐藏一个元素的方法](https://jinjingxuan.github.io/2018/03/09/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E5%9B%9B%EF%BC%89/#toc-heading-3)
-  * [逻辑像素与物理像素](https://jinjingxuan.github.io/2020/11/16/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/#toc-heading-7)
+  * [link 与 @import 的区别](/interview/interview-10.html#link-与-import-的区别)
+  * [js执行会阻塞DOM树的解析和渲染，那么css加载会阻塞DOM树的解析和渲染吗？css会阻塞js吗](/interview/interview-1.html#js执行会阻塞dom树的解析和渲染-那么css加载会阻塞dom树的解析和渲染吗-css会阻塞js吗)
+  * [DOMContentLoaded](https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event) 和 [window.onload](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/load_event) 区别
+  * [画一个三角形 / 扇形](/interview/interview-4.html#css画三角形和扇形)
+  * [隐藏一个元素的方法](/interview/interview-4.html#隐藏页面中某个元素的方法)
+  * [逻辑像素与物理像素](/mobile/adaptation.html#逻辑像素与物理像素)
   * [DPR](https://juejin.cn/post/6844903839452102670)
-  * [em / rem / rpx / vw / vh](https://jinjingxuan.github.io/2020/11/16/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/#toc-heading-7)
+  * [em / rem / rpx / vw / vh](/mobile/adaptation.html#常见长度单位)
   * rpx如何计算的，iphone6上`750rpx = 375px（逻辑像素）`iphone5上`750rpx = 320px（逻辑像素）`
-  * [移动端 1px 问题](https://jinjingxuan.github.io/2020/11/16/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/#toc-heading-7)
-  * [display / position / transform有哪些属性](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%83%EF%BC%89/#toc-heading-2)
-  * [如何实现图片懒加载](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%83%EF%BC%89/#toc-heading-18)
+  * [移动端 1px 问题](/mobile/adaptation.html#移动端-1px)
+  * [display / position / transform有哪些属性](/interview/interview-7.html#display有哪些属性)
+  * [如何实现图片懒加载](/interview/interview-7.html#图片懒加载)
     
     * 监听事件在哪个阶段写？（mounted，真实DOM挂载完毕，beforeDestroy销毁）
-  * [伪类和伪元素](https://jinjingxuan.github.io/2018/08/03/%E9%9D%A2%E8%AF%95-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E4%B8%83%EF%BC%89/#toc-heading-14)
+  * [伪类和伪元素](/interview/interview-7.html#伪类和伪元素)
   * [css硬件加速](https://juejin.cn/post/6844903649974435854)
   * [哪些css属性会触发回流与重绘](https://blog.csdn.net/qq_36337754/article/details/103773474)
 
