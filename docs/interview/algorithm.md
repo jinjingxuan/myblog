@@ -29,7 +29,7 @@ categories: 面试
 * [路径总和](https://leetcode-cn.com/problems/path-sum/solution/)
 * [路径总和ii](https://leetcode-cn.com/problems/path-sum-ii/)
 
-## [栈](https://jinjingxuan.github.io/2020/10/22/%E7%AE%97%E6%B3%95-%E6%A0%88/)
+## 栈
 
 * [最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)
 * [去除重复字母](https://leetcode-cn.com/problems/remove-duplicate-letters/)

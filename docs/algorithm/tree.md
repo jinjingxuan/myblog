@@ -21,6 +21,7 @@ categories: 算法
 * 二叉树展开为链表
 * 最近公共祖先
 * 根据边构造二叉树
+* 扁平数据结构转Tree
 
 ## 二叉树的前序遍历，中序遍历，后序遍历的递归与非递归
 
@@ -678,12 +679,12 @@ var widthOfBinaryTree = function(root) {
 
 ```js
 var buildTree = function(preorder, inorder) {
-    if(!inorder.length) return null
-    let tmp = preorder[0], mid = inorder.indexOf(tmp)
-    let root = new TreeNode(tmp)
-    root.left = buildTree(preorder.slice(1, mid + 1), inorder.slice(0, mid))
-    root.right = buildTree(preorder.slice(mid + 1), inorder.slice(mid + 1))
-    return root
+    if (!preorder.length) return null;
+    const root = new TreeNode(preorder[0]);
+    const mid = inorder.indexOf(preorder[0]);
+    root.left = buildTree(preorder.slice(1, 1 + mid), inorder.slice(0, mid));
+    root.right = buildTree(preorder.slice(1 + mid), inorder.slice(mid + 1));
+    return root;
 };
 ```
 
@@ -793,7 +794,7 @@ var lowestCommonAncestor = function(root, p, q) {
 ## 根据边构造二叉树
 
 ```js
-[[1, 2], [1, 3], [3, 4], [3,5], [1,6]]
+[[1, 2], [1, 3], [3, 4], [3, 5], [1, 6]]
 
 {  
     value: 1,
@@ -807,4 +808,152 @@ var lowestCommonAncestor = function(root, p, q) {
 	]
 }
 ```
+```js
+// O(2n)
+function build(sides) {
+    const map = {};
+    // 找到根节点
+    const pids = sides.map(s => s[0]);
+    const ids = sides.map(s => s[1]);
+    const root = pids.find(p => !ids.includes(p));
+    // 初始化 map
+    for (const side of sides) {
+        for (const id of side) {
+            map[id] = {val: id, children: []};
+        }
+    }
+    // 根据边构造
+    for (const side of sides) {
+        const pid = side[0];
+        const id = side[1];
+        const node = map[id];
+        map[pid].children.push(node);
+    }
+    return map[root];
+}
 
+// O(n): 边遍历边初始化 map
+function builds(sides) {
+    const map = {};
+    // 找到根节点
+    const pids = sides.map(s => s[0]);
+    const ids = sides.map(s => s[1]);
+    const root = pids.find(p => !ids.includes(p));
+    for (const side of sides) {
+        const pid = side[0];
+        const id = side[1];
+        if (!map[id]) {
+            map[id] = {val: id, children: []};
+        }
+        const node = map[id];
+        if (!map[pid]) {
+            map[pid] = {val: pid, children: []};
+        }
+        map[pid].children.push(node);
+    }
+    return map[root];
+}
+```
+
+## 扁平数据结构转Tree
+```js
+// 输入
+[
+    {id: 1, name: '部门1', pid: 0},
+    {id: 2, name: '部门2', pid: 1},
+    {id: 3, name: '部门3', pid: 1},
+    {id: 4, name: '部门4', pid: 3},
+    {id: 5, name: '部门5', pid: 4},
+]
+// 输出
+[
+    {
+        "id": 1,
+        "name": "部门1",
+        "pid": 0,
+        "children": [
+            {
+                "id": 2,
+                "name": "部门2",
+                "pid": 1,
+                "children": []
+            },
+            {
+                "id": 3,
+                "name": "部门3",
+                "pid": 1,
+                "children": [
+                    // 结果 ,,,
+                ]
+            }
+        ]
+    }
+]
+```
+```js
+// 递归
+const fn = function(arr, id) {
+    const nodes = arr.filter(item => item.pid === id);
+    const res = [];
+    nodes.forEach(n => {
+        res.push({
+            ...n,
+            children: this.fn(arr, n.id),
+        })
+    })
+    return res;
+}
+fn(arr, 0);
+
+// 非递归 O(2n)
+fn(arr) {
+    const result = [];
+    const map = {};
+    // 初始化 map
+    for (const item of arr) {
+        map[item.id] = {
+            ...item,
+            children: [],
+        };
+    }
+    for(const item of arr) {
+        const node = map[item.id];
+        if (item.pid === 0) {
+            result.push(node);
+        }
+        else {
+            map[item.pid].children.push(node);
+        }
+    }
+    return result;
+}
+fn(arr);
+
+// 非递归 O(n): 边遍历边初始化 map
+fn(arr) {
+    const result = [];
+    const map = {};
+    for(const item of arr) {
+        if (!map[item.id]) {
+            map[item.id] = {
+                ...item,
+                children: [],
+            };
+        }
+        const node = map[item.id];
+        if (item.pid === 0) {
+            result.push(node);
+        }
+        else {
+            if (!map[item.pid]) {
+                map[item.pid] = {
+                    ...item,
+                    children: [],
+                };
+            }
+            map[item.pid].children.push(node);
+        }
+    }
+    return result;
+}
+```

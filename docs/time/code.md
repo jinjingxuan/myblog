@@ -55,3 +55,5 @@
   * http 状态码、cookie 和 session 区别、小程序原理
 * 2023.3
   * [面试题整理](/interview/interview.html)
+  * 前序中序构造二叉树：[leetcode105](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+  * [扁平数据结构转Tree](/algorithm/tree.html#扁平数据结构转tree)、[根据边构造二叉树](/algorithm/tree.html#根据边构造二叉树)
