@@ -240,7 +240,7 @@
 
 ## Vue相关
 
-  * [Vue 响应式原理 2.x](https://jinjingxuan.github.io/2020/11/12/Vue-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/)
+  * [Vue 响应式原理 2.x](/vue/responsive.html#响应式的整体流程)
     * 发布订阅模式（手写）
     * 观察者模式（手写）
     * Vue 实例初始化过程

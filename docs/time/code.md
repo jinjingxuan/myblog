@@ -57,3 +57,8 @@
   * [面试题整理](/interview/interview.html)
   * 前序中序构造二叉树：[leetcode105](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
   * [扁平数据结构转Tree](/algorithm/tree.html#扁平数据结构转tree)、[根据边构造二叉树](/algorithm/tree.html#根据边构造二叉树)
+  * [两个栈实现队列](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)
+  * background-size: 100%、cover、contain 的区别
+    * 100%: 按容器比例撑满，图片变形；
+    * cover: 图片宽高比不变，把背景图片放大到适合元素容器的尺寸，但是超出容器的部分可能会裁掉。
+    * contain: 图片宽高比不变，缩放至整个图片自身能完全显示出来，所以容器会有留白区域。

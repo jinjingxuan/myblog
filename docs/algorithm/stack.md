@@ -557,27 +557,27 @@ var dailyTemperatures = function(T) {
 ```js
 class CQueue {
     constructor () {
-        this.pushStack = [] // 存储入队的值   模拟入队行为
-        this.deleStack = [] // 存储待出队的项 模拟出队行为
+        this.pushStack = []; // 存储入队的值   模拟入队行为
+        this.deleStack = []; // 存储待出队的项 模拟出队行为
     }
     appendTail(v) {
-        this.pushStack.push(v)
+        this.pushStack.push(v);
     }
     deleteHead() {
         // 若待删除栈中有值则直接pop 模拟出队行为
         if (this.deleStack.length) {
-            return this.deleStack.pop()
+            return this.deleStack.pop();
         }
         // 若 push 栈中有值 则全部推入 delete 栈中
         while (this.pushStack.length) {
-            this.deleStack.push(this.pushStack.pop())
+            this.deleStack.push(this.pushStack.pop());
         }
         // 此时出栈对还无内容，返回 -1
         if(!this.deleStack.length) {
-            return -1
+            return -1;
         // 有内容，弹出栈顶，且返回即可
         } else {
-            return this.deleStack.pop()
+            return this.deleStack.pop();
         }
     }
 }
