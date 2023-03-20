@@ -6,16 +6,17 @@ categories: 算法
 # 栈的应用
 * 括号匹配问题
 * 最长有效括号
+* 最大宽度坡
 * 表现良好的最长时间段
 * 字符串解码
 * 去除重复字母
-*  移掉 k 位数字
-*  接雨水
-*  柱状图中的最大矩形
-*  最大矩形
-*  每日温度
-*  两个栈实现队列
-*  最小栈
+* 移掉 k 位数字
+* 接雨水
+* 柱状图中的最大矩形
+* 最大矩形
+* 每日温度
+* 两个栈实现队列
+* 最小栈
 
 ## 括号匹配问题
 
@@ -105,20 +106,35 @@ var longestValidParentheses = function(s) {
 };
 ```
 
+## 最大宽度坡
+[leetcode962:最大宽度坡](https://leetcode-cn.com/problems/maximum-width-ramp/)
+
+```js
+var maxWidthRamp = function(nums) {
+    const stack = [0];
+    let res = 0;
+    // 构造单调栈，坡的起点必定在此栈中
+    // 反证法: 假设存在某个元素位置 k 不存在于上面的递减序列中，且有最大宽度 j-k，
+    // 这也就说明 k 位置的元素一定是小于 k 前面所有的元素的，否则就会有更长的宽度，
+    // 但是既然 k 小于前面所有的元素，那么 k 就一定会被加入到序列中，与假设矛盾，所以不存在k，那么解一定存在递减序列中
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] < nums[stack[stack.length - 1]]) {
+            stack.push(i);
+        }
+    }
+    // nums 从后向前遍历，每一个元素都与单调栈中的可能的坡起点进行计算，取最大即可
+    for (let i = nums.length - 1; i >= 0; i--) {
+        while (stack.length && nums[i] >= nums[stack[stack.length - 1]]) {
+            res = Math.max(res, i - stack.pop());
+        }
+    }
+    return res;
+};
+```
+
 ## 表现良好的最长时间段
 
 [leetcode1124](https://leetcode-cn.com/problems/longest-well-performing-interval/)
-
-```js
-给你一份工作时间表 hours，上面记录着某一位员工每天的工作小时数。
-我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。
-所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。
-请你返回「表现良好时间段」的最大长度。
-
-输入：hours = [9,9,6,0,6,6,9]
-输出：3
-解释：最长的表现良好时间段是 [9,9,6]。
-```
 
 ### 前置知识：前缀和，单调栈
 
@@ -126,24 +142,23 @@ var longestValidParentheses = function(s) {
 
 ```js
 hours = [9, 9, 6, 0, 6, 6, 9]
-score = [1, 1, -1, -1, -1, -1, 1] // 大于8记1，小于8记-1
+score = [1, 1, -1, -1, -1, -1, 1] // 大于 8 记 1，小于 8 记 -1
 presum = [0, 1, 2, 1, 0, -1, -2, -1] // 前缀和
 
-// presum[j] - presum[i] 代表的是 score[i] 到 score[j-1] 的区间元素和
+// presum[j] - presum[i] 代表的是 score[i] 到 score[j - 1] 的区间元素和
 ```
 
-* 单调栈：就是栈中元素,按递增顺序或者递减顺序排列，最大好处就是时间复杂度是线性的,每个元素遍历一次
+* 单调栈：就是栈中元素，按递增顺序或者递减顺序排列，最大好处就是时间复杂度是线性的，每个元素遍历一次
 * 单调递增栈可以找到左起第一个比当前数字小的元素
-* 比如数组:`[3,5,4,1]`,我们如何要找每一个元素下一个最小数.例如:`3` 下一个最小的数为`1`,`5`下一个是`4`.我们先构造栈,把`3`压入栈中,`5`入栈时候,发现栈顶元素`3`比它小,也依次压入;当`4`时候,栈顶元素`5`大于`4`,于是得到,`5`**左起第一个小的元素**为`4`.将`5`弹出,压入`4`.接下来元素`1`,也比栈顶元素小,于是得到`4`第一个小的元素为`1`,弹出`4`,依次类推,`3`也是`1`...栈中的元素**一直保持单调递增的状态**.
+* 比如数组:`[3, 5, 4, 1]` 的单调递减栈为 `[3, 1]`
 
 ****
 
 ### 回归题目
 
 * 我们要找的是：一个最长的区间 能使 score的区间元素和大于 0
-* 有了前缀和就变成了：寻找最长的区间使得 presum[j] - presum[i] >0"
-* 以任意元素presum[i]为起始点，找最右边往左找第一个满足presum[j]大于presum[i]的元素下标A[j]，找(j – i)的最大值，即最大区间。那么可以按照元素从左到右建单调递减的栈，然后从右到左找满足要求的最区间。
-
+* 有了前缀和就变成了：寻找最长的区间使得 presum[j] - presum[i] > 0
+* 即求 presum 的最大宽度坡
 
 ```js
 /**
@@ -152,48 +167,31 @@ presum = [0, 1, 2, 1, 0, -1, -2, -1] // 前缀和
  */
 
 var longestWPI = function(hours) {
-    // 转换成: [1,  1, -1, -1, -1, -1, 1]
-    for (let i in hours) {
-        if (hours[i] > 8) {
-            hours[i] = 1
-        } else {
-            hours[i] = -1
-        }
+    // 简化数组：[9, 9, 6, 0, 6, 6, 9] => [1, 1, -1, -1, -1, -1, 1]
+    hours = hours.map(h => h > 8 ? 1 : -1);
+    // 构造前缀和：[1, 1, -1, -1, -1, -1, 1] => [0, 1, 2, 1, 0, -1, -2, -1]
+    const presum = [0];
+    for (let i = 0; i < hours.length; i++) {
+        presum[i + 1] = hours[i] + presum[i];
     }
-    // 求前缀和: [0, 1, 2, 1, 0, -1, -2, -1]
-    let presum = []
-    presum[0] = 0
-    for (let i = 1;i <= hours.length;i++) {
-        presum[i] = presum[i-1] + hours[i-1]
-    }
-    // 构造单调递减栈：存储的是索引 [0, 5, 6]，对应前缀和中的 [0, -1, -2]
-    // 我们最后要求的最大的宽度坡一定是以这个序列中的某一个i为坡底的(自己理解一下)
-    // 最大宽度坡：假设存在某个元素位置k不存在于上面的递减序列中，且有最大宽度j-k，
-    // 这也就说明k位置的元素一定是小于k前面所有的元素的，否则就会有更长的宽度，但是既然k小于前面所有的元素，
-    // 那么k就一定会被加入到序列中，与假设矛盾，所以不存在k，解一定存在递减序列中
-    let stack = []
-    stack[0] = presum[0]
-    for (let i = 1;i < presum.length;i++) {
-        // 小于栈顶则 push
+    // 求前缀和数组的最大宽度坡
+    const stack = [0];
+    // 构造单调栈
+    for (let i = 1; i < presum.length; i++) {
         if (presum[i] < presum[stack[stack.length - 1]]) {
-            stack.push(i)
+            stack.push(i);
         }
     }
-    //  从尾部遍历presum
-    //  如果该位置元素比stack中存储的位置的元素高，则表明为上坡路
-    //  弹出栈顶元素（因为再往前遍历长度会减小），并记录坐标差，该坐标差即为上坡路的长度
-    let ans = 0
-    for (let i = presum.length - 1;i > ans;i--){
-        // 注意此处是 while，满足条件 pop 之后会继续比较
-        while(stack.length > 0 && presum[i] > presum[stack[stack.length - 1]]){
-            ans = Math.max(ans, i - stack.pop())
+    let res = 0;
+    // presum 从后向前遍历，每一个元素都与单调栈中的可能的坡起点进行计算，取最大即可
+    for (let i = presum.length - 1; i >= 0; i--) {
+        while (stack.length && presum[i] > presum[stack[stack.length - 1]]) {
+            res = Math.max(res, i - stack.pop());
         }
     }
-    return ans
-};
+    return res;
+}
 ```
-
-类似题目：[leetcode962:最大宽度坡](https://leetcode-cn.com/problems/maximum-width-ramp/)
 
 ## 字符串解码
 
