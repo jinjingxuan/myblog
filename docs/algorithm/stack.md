@@ -8,6 +8,7 @@ categories: 算法
 * 最长有效括号
 * 最大宽度坡
 * 表现良好的最长时间段
+* 下一个更大元素
 * 字符串解码
 * 去除重复字母
 * 移掉 k 位数字
@@ -151,6 +152,15 @@ presum = [0, 1, 2, 1, 0, -1, -2, -1] // 前缀和
 * 单调栈：就是栈中元素，按递增顺序或者递减顺序排列，最大好处就是时间复杂度是线性的，每个元素遍历一次
 * 单调递增栈可以找到左起第一个比当前数字小的元素
 * 比如数组:`[3, 5, 4, 1]` 的单调递减栈为 `[3, 1]`
+
+```js
+// 单调栈伪代码
+insert x
+while (stack.length && stack[stack.length - 1] < x) {
+    stack.pop()
+}
+stack.push(x)
+```
 
 ****
 
@@ -350,22 +360,34 @@ function removeKdigits(num, k) {
 * 数据结构：单调栈
 * 当后面的柱子高度比前面的低时，是无法接雨水的，当找到一根比前面高的柱子，就可以计算接到的雨水，所以使用单调递减栈
 * 当出现高于栈顶的柱子时，说明可以对前面的柱子结算了，计算已经到手的雨水，然后出栈前面更低的柱子
+* 相当于构造单调递减栈，每一次找到下一个更大元素，就是结算的时机。
 
 ```js
 var trap = function(height) {
-    if (!height || height.length == 0) return 0
-    const stack = []
-    let res = 0
-    for (let i = 0; i < height.length; i++) {
-        while (stack.length && height[i] > height[stack[stack.length-1]]) {
-            let tmp = stack.pop()
-            if (stack.length === 0) break
-            res += (Math.min(height[i], height[stack[stack.length-1]]) - height[tmp]) * (i - stack[stack.length-1] -1)
-        }
-        stack.push(i)
+    if (!height || !height.length) {
+        return 0;
     }
-    return res
-};
+    const stack = [];
+    let res = 0;
+    for (let i = 0; i < height.length; i++) {
+        while (stack.length && height[i] > height[stack[stack.length - 1]]) {
+            // 有低洼则弹出
+            let bottom = stack.pop();
+            // 有右墙有低洼但是栈为空说明没有左墙, 则没有用直接 break
+            if (!stack.length) {
+                break;
+            }
+            let left = stack[stack.length - 1]; // 左墙索引
+            let leftHeight = height[left]; // 左墙高度
+            let rightHeight = height[i]; // 右墙高度
+            let bottomHight = height[bottom]; // 低洼高度
+            // 能积攒的水 = (右墙索引 - 左墙索引 - 1) * (min(左墙高度, 右墙高度) - 低洼高度)
+            res += (i - left - 1) * (Math.min(leftHeight, rightHeight) - bottomHight);
+        }
+        stack.push(i);
+    }
+    return res;
+}
 ```
 
 ## 柱状图中的最大矩形
@@ -536,17 +558,37 @@ var dailyTemperatures = function(T) {
 * [图示](https://leetcode-cn.com/problems/daily-temperatures/solution/tu-jie-suan-fa-739mei-ri-wen-du-javascriptjie-ti-b/)
 
 ```js
+// 可以理解为数组中找到右侧第一个比自己大的数
 var dailyTemperatures = function(T) {
-    let len = T.length
-    let res = new Array(len).fill(0), stack = []
-    for (let i = 0; i < len; i++) {
-        while (stack.length && T[i] > T[stack[stack.length-1]]) {
-            res[stack[stack.length-1]] = i - stack[stack.length-1]
-            stack.pop()
+    const res = new Array(T.length).fill(0);
+    const stack = [];
+    for (let i = 0; i < T.length; i++) {
+        while (stack.length && T[i] > T[stack[stack.length - 1]]) {
+            res[stack[stack.length - 1]] = i - stack.pop();
         }
-        stack.push(i)
+        stack.push(i);
     }
-    return res
+    return res;
+}
+```
+
+## 下一个更大元素
+
+* [leetcode496](https://leetcode.cn/problems/next-greater-element-i/submissions/)
+
+```js
+var nextGreaterElement = function(nums1, nums2) {
+    const map = new Array(nums2.length).fill(-1);
+    const stack = [];
+    // 求 nums2 中每个元素的下一最大元素
+    for (let i = 0; i < nums2.length; i++) {
+        while (stack.length && nums2[i] > nums2[stack[stack.length - 1]]) {
+            map[stack[stack.length - 1]] = nums2[i];
+            stack.pop();
+        }
+        stack.push(i);
+    }
+    return nums1.map(n => map[nums2.indexOf(n)]);
 };
 ```
 
@@ -586,3 +628,33 @@ class CQueue {
 * [leetcode155](https://leetcode-cn.com/problems/min-stack/)
 * [题解](https://leetcode-cn.com/problems/min-stack/solution/fu-zhu-zhan-zui-xiao-zhan-by-demigodliu-wnpk/)
 
+```js
+class MinStack {
+    // 定义一个辅助栈记录最小值
+    constructor() {
+        this.stack = [];
+        this.helper = [];
+    }
+    push(val) {
+        this.stack.push(val);
+        if (!this.helper.length) {
+            this.helper.push(val);
+        }
+        else {
+            const helperTop = this.helper[this.helper.length - 1];
+            const min = helperTop < val ? helperTop : val;
+            this.helper.push(min);
+        }
+    }
+    pop() {
+        this.stack.pop();
+        this.helper.pop();
+    }
+    top() {
+        return this.stack[this.stack.length - 1];
+    }
+    getMin() {
+        return this.helper[this.helper.length - 1];
+    }
+}
+```
