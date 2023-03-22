@@ -364,9 +364,7 @@ function removeKdigits(num, k) {
 
 ```js
 var trap = function(height) {
-    if (!height || !height.length) {
-        return 0;
-    }
+    if (!height || !height.length) return 0;
     const stack = [];
     let res = 0;
     for (let i = 0; i < height.length; i++) {
@@ -413,21 +411,21 @@ var trap = function(height) {
 
 ```js
 var largestRectangleArea = function(heights) {
-    if (heights.length === 0) return 0
-    if (heights.length === 1) return heights[0]
-    heights.unshift(0)
-    heights.push(0)
-    const stack = []
-    stack.push(0)
-    let res = 0
+    if (heights.length === 0) return 0;
+    if (heights.length === 1) return heights[0];
+    heights.unshift(0);
+    heights.push(0);
+    const stack = [0];
+    let res = 0;
     for (let i = 1; i < heights.length; i++) {
         while (stack.length && heights[i] < heights[stack[stack.length - 1]]) {
-            let tmp = stack.pop()
-            res = Math.max(res, heights[tmp] * (i - stack[stack.length - 1] - 1))
+            // 计算以 tmp 为中心的最大面积
+            let tmp = stack.pop();
+            res = Math.max(res, heights[tmp] * (i - stack[stack.length - 1] - 1));
         }
-        stack.push(i)
+        stack.push(i);
     }
-    return res
+    return res;
 }
 ```
 
@@ -457,21 +455,22 @@ const maxArea = function(heights) {
 
 // 针对每一行求最大高度
 var maximalRectangle = function(matrix) {
-    if (!matrix.length) return 0
-    const m = matrix.length, n = matrix[0].length
-    const arr = Array.from(new Array(m), () => new Array(n).fill(0))
+    if (!matrix.length) return 0;
+    const m = matrix.length
+    const n = matrix[0].length;
+    const arr = Array.from(new Array(m), () => new Array(n).fill(0));
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
-            if (matrix[i][j] == '1') {
-                arr[i][j] = i == 0 ? +matrix[i][j]: arr[i - 1][j] + 1
+            if (matrix[i][j] === '1') {
+                arr[i][j] = i === 0 ? +matrix[i][j] : arr[i - 1][j] + 1;
             }
         }
     }
-    let res = 0
+    let res = 0;
     for (let i = 0; i < arr.length; i++) {
-        res = Math.max(maxArea(arr[i]), res)
+        res = Math.max(maxArea(arr[i]), res);
     }
-    return res
+    return res;
 };
 ```
 

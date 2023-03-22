@@ -63,4 +63,4 @@
     * cover: 图片宽高比不变，把背景图片放大到适合元素容器的尺寸，但是超出容器的部分可能会裁掉。
     * contain: 图片宽高比不变，缩放至整个图片自身能完全显示出来，所以容器会有留白区域。
   * 最大宽度坡: [leetcode962](https://leetcode-cn.com/problems/maximum-width-ramp/)、表现良好的最长时间段: [leetcode1124](https://leetcode-cn.com/problems/longest-well-performing-interval/)
-  * 最小栈: [leetcode155](https://leetcode-cn.com/problems/min-stack/)、每日温度: [leetcode739](https://leetcode-cn.com/problems/daily-temperatures/)、下一个更大元素: [leetcode496](https://leetcode.cn/problems/next-greater-element-i/submissions/)、接雨水: [leetcode42](https://leetcode-cn.com/problems/trapping-rain-water/)
+  * 最小栈: [leetcode155](https://leetcode-cn.com/problems/min-stack/)、每日温度: [leetcode739](https://leetcode-cn.com/problems/daily-temperatures/)、下一个更大元素: [leetcode496](https://leetcode.cn/problems/next-greater-element-i/submissions/)、接雨水: [leetcode42](https://leetcode-cn.com/problems/trapping-rain-water/)、柱状图中的最大矩形: [leetcode84](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)、最大矩形: [leetcode85](https://leetcode-cn.com/problems/maximal-rectangle/)
