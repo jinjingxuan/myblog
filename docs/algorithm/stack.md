@@ -324,25 +324,25 @@ num 不会包含任何前导零。
 * 问题： num 是一个增序序列，则不会出栈；是一个降序序列，则会一直出栈。
 * 解决：
   * 每次丢弃一次，k 减去 1。当 k 减到 0 ，我们可以提前终止遍历。
-  * 而当遍历完成，如果 k 仍然大于 0。不妨假设最终还剩下 x 个需要丢弃，那么我们需要选择删除末尾 x 个元素。
+  * 而当遍历完成，如果 k 仍然大于 0。不妨假设最终还剩下 x 个需要丢弃，那么我们需要选择删除末尾 x 个元素 (因为剩下的元素肯定为递增序列，所以优先删除后面的)。。
 
 * 若输入为("1234567890", 9)，按照以上逻辑最后输出的 stack 为 [1,2,3,4,5,6,7,8,0]，所以要设置 while 循环，当 num[i] 一直比栈顶元素小时，则继续出栈
-* 保证数字范围使用 BigInt
+* 使用 Number 处理 0200 => 200，但是保证数字范围使用 BigInt
 * 若 num.length === k，说明全部删除，直接返回 "0"
 
 ```js
-function removeKdigits(num, k) {
-    let stack = []
-    let n = k
-    if (num.length === k) return "0"
-    for (let item of num) {
-        while (stack.length && item < stack[stack.length - 1] && n) {
-            stack.pop()
-            n--
+var removeKdigits = function(num, k) {
+    if (num.length === k) return "0";
+    let n = k;
+    const stack = [num[0]];
+    for (let i = 1; i < num.length; i++) {
+        while (stack.length && num[i] < stack[stack.length - 1] && n) {
+            stack.pop();
+            n--;
         }
-        stack.push(item)
+        stack.push(num[i]);
     }
-    return (BigInt(stack.join("")) + "").slice(0, num.length - k)
+    return BigInt(stack.slice(0, num.length - k).join('')) + '';
 }
 ```
 

@@ -123,9 +123,9 @@ const coinChange = (coins, amount) => {
 
 ****
 
-* 最优子结构：组合n只是在组合n-1的基础上每一个数组后面添加1个数字num，然后增加一个只有第n个数字的数组[num]，只需要比较前一个组合的最大值+num和num
+* 最优子结构：组合 n 只是在组合 n-1 的基础上每一个数组后面添加 1 个数字 num，然后增加一个只有第 n 个数字的数组[num]，只需要比较前一个组合的最大值 + num 和 num
 * 边界：`dp[0] = nums[0] `
-* 状态转移方程：`dp[i] = max(dp[i-1] + nums[i], nums[i])`
+* 状态转移方程：`dp[i] = max(dp[i-1] + nums[i], nums[i])` 或者 `dp[i - 1]  > 0 ? dp[i - 1] + nums[i] : nums[i]`
 
 ```js
 // 组合3只是在组合2的基础上每一个数组后面添加第3个数字，也就是3，然后增加一个只有第三个数字的数组[3]
@@ -133,13 +133,12 @@ const coinChange = (coins, amount) => {
 // 计算出九个组合的最大值，再取最大的即可
 
 var maxSubArray = function(nums) {
-    let len = nums.length
-    let dp = new Array(len).fill(0)
-    dp[0] = nums[0]
-    for (let i = 1; i < len; i++) {
-        dp[i] = Math.max(nums[i], dp[i-1] + nums[i])
+    const dp = new Array(nums.length).fill(0);
+    dp[0] = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        dp[i] = Math.max(nums[i], dp[i - 1] + nums[i]);
     }
-    return Math.max(...dp)
+    return Math.max(...dp);
 };
 ```
 
@@ -274,6 +273,13 @@ var findLength = function(nums1, nums2) {
 ```
 
 * `dp[i]`：以`nums[i]`结尾的最长子序列长度
+* `i === 0`: `nums[0] = 10`，`dp[0] = 1`
+* `i === 1`: `nums[1] = 9`， (9<10, 不能形成递增序列)，`dp[1] = 1`
+* `i === 2`: `nums[2] = 2`，(2<9 且 2<10, 不能与任何一个形成递增序列)，`dp[2] = 1`
+* `i === 3`: `nums[3] = 5`，(5<10, 5<9, 但是5>2，所以5可以拼到2后面)，`dp[3] = 1 + dp[2] = 2`
+* `i === 4`: `nums[4] = 3`，(3<10,3<9,3>2,3<5, 所以3可以拼到2后面)，`dp[4] = 1 + dp[2] = 2`
+* `i === 5`: `nums[5] = 7`，(7>2,7>5,7>3 所以7可以拼到2或5或3后面，所以要找一个最大的)，`dp[5] = 1 + max(dp[2], dp[3], dp[4]) = 3`
+* 依次类推
 * 转移方程： 设` j∈[0,i)`，考虑每轮计算新 `dp[i]` 时，遍历 `[0,i)` 列表区间，做以下判断：
   * 当 `nums[i] > nums[j]` 时： `nums[i]`可以接在 `nums[j]`之后（此题要求严格递增），此情况下最长上升子序列长度为 `dp[j] + 1` ；
   * 当 `nums[i] <= nums[j]` 时：` nums[i]` 无法接在 `nums[j]`之后，此情况上升子序列不成立，跳过。
@@ -281,17 +287,16 @@ var findLength = function(nums1, nums2) {
 
 ```js
 var lengthOfLIS = function(nums) {
-    let len = nums.length
-    let dp = new Array(len).fill(1)
-    for (let i = 1; i < len ; i++) {
+    const dp = new Array(nums.length).fill(1);
+    for (let i = 1; i < nums.length; i++) {
         for (let j = 0; j < i; j++) {
             if (nums[i] > nums[j]) {
-                dp[i] = Math.max(dp[i], dp[j] + 1)
+                dp[i] = Math.max(1 + dp[j], dp[i]);
             }
         }
     }
-    return Math.max(...dp)
-};
+    return Math.max(...dp);
+}
 ```
 
 ## 最长公共子序列(LCS)
