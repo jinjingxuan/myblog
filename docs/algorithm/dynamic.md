@@ -329,27 +329,27 @@ var lengthOfLIS = function(nums) {
 
 ```js
 var longestCommonSubsequence = function (text1, text2) {
-    let m = text1.length
-    let n = text2.length
-    let dp = Array.from(new Array(m + 1), () => new Array(n + 1).fill(0))
+    const m = text1.length;
+    const n = text2.length;
+    const dp = Array.from(new Array(m + 1), () => new Array(n + 1).fill(0));
     for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
             if (text1[i - 1] === text2[j - 1]) {
-                dp[i][j] = 1 + dp[i - 1][j - 1]
-            } else {
-                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            }
+            else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
     }
-    return dp[m][n]
-};
+    return dp[m][n];
+}
 ```
 
 ## 编辑距离(SES)
 
 * [leetcode72](https://leetcode.cn/problems/edit-distance/)
-* [题解:微软又考了这道题](https://mp.weixin.qq.com/s/JDfm9uWF7zKhQJL4mbCSeQ)、[题解2](https://leetcode.cn/problems/edit-distance/solution/jsshua-ti-mian-shi-ti-jie-by-distracted-5dc5t/)
-
+* [题解:微软又考了这道题](https://mp.weixin.qq.com/s/JDfm9uWF7zKhQJL4mbCSeQ)
 ```js
 输入：word1 = "horse", word2 = "ros"
 输出：3
@@ -379,30 +379,29 @@ rose -> ros (删除 'e')
 | e           | 5    | 4    | 4    | 3    |
 
 ```js
-var minDistance = function(wonrd1, word2) {
-    let m = word1.length;
-    let n = word2.length;
-    let dp = Array.from(new Array(m + 1), () => new Array(n + 1).fill(0))
-    // 初始化
-    for (let i = 1; i <= m; i++) { 
+var minDistance = function(word1, word2) {
+    const m = word1.length;
+    const n = word2.length;
+    const dp = Array.from(new Array(m + 1), () => new Array(n + 1).fill(0));
+    for (let i = 0; i <= m; i++) {
         dp[i][0] = i;
     }
-    for (let j = 1; j <= n; j++) {
+    for (let j = 0; j <= n; j++) {
         dp[0][j] = j;
     }
-
     for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
-            if (word1[i - 1] === word2[j - 1]) {// 最后一位字符一样，不需要任何操作
-                dp[i][j] = dp[i - 1][j - 1]
+            if (word1[i - 1] === word2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
             }
-          	else { // 插入、删除、替换
-                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+            else {
+                // 插入、删除、替换
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
             }
         }
     }
     return dp[m][n];
-};
+}
 ```
 
 ## LCS和SES的关系

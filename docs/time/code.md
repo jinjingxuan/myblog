@@ -74,3 +74,5 @@
  * 动态规划：
    * 最大子序列和（连续）: [leetcode53](https://leetcode-cn.com/problems/maximum-subarray/)
    * 最长递增子序列: [leetcode300](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
+   * 最长公共子序列(LCS): [leetcode1143](https://leetcode-cn.com/problems/longest-common-subsequence/)
+   * 编辑距离(SES): [leetcode72](https://leetcode.cn/problems/edit-distance/)
