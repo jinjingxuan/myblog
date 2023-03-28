@@ -691,39 +691,21 @@ var minimumTotal = function(triangle) {
 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
 ```
 
-> 设 `dp[i]`为`i`支股票的最大利润，若已知前`i-1`支股票的最大利润为 `dp[i-1]`，怎么建立动态转移方程？
->
-> 如果记录了前`i-1`支股票的最小值 min，那么最大利润一定是第`i`支股票的价格减去min所得的值与`dp[i-1]`之间的最大值，所以只需计算一下 `price[i] - min` 与` dp[i]` 的最大值
-
-* 动态规划的三要素：最优子结构，边界，状态转移方程
-* `dp[i]` 的 最优子结构就是 `dp[i-1]`
-* 边界：`dp[0] = 0`
-* 状态转移方程：`dp[i] = Math.max(dp[i-1], prices[i] - min);`
+> 设 `dp[i]` 为以第 `i` 支股票卖出的最大利润，需要维护一个股票最小值 `min`，因为卖出时的最大利润一定是与最小值做计算，最后返回 dp 数组中的最大值。
 
 ```js
 var maxProfit = function(prices) {
-    const len = prices.length
-    const dp = new Array(len).fill(0)
-    let min = prices[0]
-    dp[0] = 0
-    for (let i = 1; i < len; i++) {
-        dp[i] = Math.max(prices[i] - min, dp[i - 1])
-        min = Math.min(min, prices[i])
+    const dp = new Array(prices.length).fill(0);
+    let min = prices[0];
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i] > min) {
+            dp[i] = prices[i] - min;
+        }
+        else {
+            min = prices[i];
+        }
     }
-    return dp [len - 1]
-};
-```
-
-代码优化之后（看了[官方题解](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-by-leetcode-/)才领悟到不用 dp 也可直接写出如下）
-
-```js
-let maxProfit = function(prices) {
-    let max = 0, min = prices[0]
-    for(let i = 1; i < prices.length; i++) {
-        min = Math.min(prices[i], min)
-        max = Math.max(max, prices[i] - min)
-    }
-    return max
+    return Math.max(...dp);
 }
 ```
 
@@ -737,17 +719,19 @@ let maxProfit = function(prices) {
 ```
 
 > 由于可以无限次的买入和卖出，我们都知道炒股想要挣钱的话当然是低价买入，高价卖出，那么这里我们只需要从第二天开始，如果当天价格比之前的价格高，则把差价加入利润中，因为我们可以昨天买入，今日卖出，若明天价格更高的话，还可以今日买入，明天再抛出，以此类推遍历完整个数组，即可求出最大利润。
+> 即使是连续上涨交易日： 设此上涨交易日股票价格分别为 p1,p2,...,pn​，则第一天买最后一天卖收益最大，即 pn−p1；等价于每天都买卖，即 pn−p1=(p2−p1)+(p3−p2)+...+(pn−pn−1)
 
 ```js
+// 贪心
 var maxProfit = function(prices) {
-    let res = 0
-    for (let i = 0; i < prices.length - 1; i++) {
-        if (prices[i] < prices[i + 1]) {
-            res += prices[i + 1] - prices[i] 
+    let res = 0;
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i] > prices[i - 1]) {
+            res += prices[i] - prices[i - 1];
         }
     }
-    return res
-};
+    return res;
+}
 ```
 
 ## 买卖股票的最佳时机iii（含冷冻期）
