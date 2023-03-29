@@ -155,9 +155,7 @@ var numIslands = function(grid) {
     const m = grid.length;
     const n = grid[0].length;
     const dfs = function(i, j) {
-        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === '0') {
-            return;
-        }
+        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === '0') return;
         grid[i][j] = '0';
         dfs(i - 1, j);
         dfs(i + 1, j);
@@ -184,30 +182,31 @@ var numIslands = function(grid) {
 * 思路：和上题一样，在dfs的过程中计算面积即可
 
 ```js
-var numIslands = function(grid) {
+var maxAreaOfIsland = function(grid) {
     const m = grid.length;
     const n = grid[0].length;
     const dfs = function(i, j) {
-        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === '0') {
-            return;
+        if (i < 0 || j < 0 || i > m - 1 || j > n - 1 || grid[i][j] === 0) {
+            return 0;
         }
-        grid[i][j] = '0';
-        dfs(i - 1, j);
-        dfs(i + 1, j);
-        dfs(i, j + 1);
-        dfs(i, j - 1);
+        grid[i][j] = 0;
+        let area = 1;
+        area += dfs(i - 1, j);
+        area += dfs(i + 1, j);
+        area += dfs(i, j + 1);
+        area += dfs(i, j - 1);
+        return area;
     };
 
-    let count = 0;
+    let res = 0;
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
-            if (grid[i][j] === '1') {
-                dfs(i, j);
-                count++;
+            if (grid[i][j] === 1) {
+                res = Math.max(dfs(i, j), res);
             }
         }
     }
-    return count;
+    return res;
 };
 ```
 

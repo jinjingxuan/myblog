@@ -78,3 +78,5 @@
    * 编辑距离(SES): [leetcode72](https://leetcode.cn/problems/edit-distance/)
    * 买卖股票的最佳时机: [leetcode121](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
  * 顺时针打印矩阵: [leetcode54](https://leetcode-cn.com/problems/spiral-matrix/)
+ * 岛屿数量: [leetcode200](https://leetcode-cn.com/problems/number-of-islands/)
+ * 岛屿最大面积: [leetcode695](https://leetcode-cn.com/problems/max-area-of-island/)
