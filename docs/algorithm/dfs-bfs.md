@@ -18,48 +18,45 @@ categories: 算法
 
 ```js
 //深度优先的递归实现
-function deepTraversal(node,nodeList) {  
-    if (node) {    
-            nodeList.push(node);    
-            var children = node.children;    
-            for (var i = 0; i < children.length; i++) 
-      //每次递归的时候将  需要遍历的节点  和 节点所存储的数组传下去
-                deepTraversal(children[i],nodeList);    
-        }    
-    return nodeList;  
-} 
+const deepTraversal = function(root) {
+    const res = [];
+    const dfs = function(node) {
+        res.push(node.val);
+        for (let i = 0; i < node.children.length; i++) {
+            dfs(node.children[i]);
+        }
+    }
+    dfs(root);
+    return res;
+}
 
 // 深度优先非递归
-function deepTraversal(node) {  
-    const res = []
-    const stack = []
-    stack.push(node)
+const deepTraversal = function(root) {
+    const res = [];
+    const stack = [root];
     while (stack.length) {
-        let tmp = stack.pop()
-        res.push(tmp)
-        let childrenList = tmp.children
-        for (let i = 0; i < childrenList.length; i++) {
-            stack.push(childrenList[i])
+        const tmp = stack.pop();
+        res.push(tmp.val);
+        for (let i = tmp.children.length - 1; i >= 0; i--) {
+            stack.push(tmp.children[i]);
         }
     }
-    return res
-}
+    return res;
+};
 
 // 广度非递归
-function wideTraversal(node) {
-    const res = []
-    const queue = []
-    queue.push(node)
+const wideTraversal = function(root) {
+    const res = [];
+    const queue = [root];
     while (queue.length) {
-        let tmp = queue.shift()
-        res.push(tmp)
-        let childrenList = tmp.children
-        for (let i = 0; i < childrenList.length; i++) {
-            queue.push(childrenList[i])
+        const tmp = queue.shift();
+        res.push(tmp.val);
+        for (let i = 0; i < tmp.children.length; i++) {
+            queue.push(tmp.children[i]);
         }
     }
-    return res
-}
+    return res;
+};
 ```
 
 ## 求根到叶子节点数字之和
@@ -118,6 +115,26 @@ var sumNumbers = function(root) {
     }
     return dfs(root, 0);
 };
+
+// 另一种写法
+var sumNumbers = function(root) {
+    let res = 0;
+    const fn = function(root, sum) {
+        // 到叶子节点即结算一次
+        if (!root.left && !root.right) {
+            res += sum;
+            return;
+        }
+        if (root.left) {
+            fn(root.left, sum * 10 + root.left.val);
+        }
+        if (root.right) {
+            fn(root.right, sum * 10 + root.right.val);
+        }
+    };
+    fn(root, root.val);
+    return res;
+}
 ```
 
 ## 路径总和
@@ -143,6 +160,25 @@ var hasPathSum = function(root, targetSum) {
     dfs(root, 0);
     return res.includes(targetSum);
 };
+
+// 另一种写法
+var hasPathSum = function(root, targetSum) {
+    if (!root) return false;
+    const res = [];
+    const fn = function(root, sum) {
+        if (!root.left && !root.right) {
+            res.push(sum);
+        }
+        if (root.left) {
+            fn(root.left, sum + root.left.val);
+        }
+        if (root.right) {
+            fn(root.right, sum + root.right.val);
+        }
+    };
+    fn(root, root.val);
+    return res.includes(targetSum);
+}
 ```
 
 ## 岛屿数量
