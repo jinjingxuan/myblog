@@ -224,19 +224,19 @@ var rob = function(nums) {
 
 ```js
 var lengthOfLongestSubstring = function(s) {
-    if (s.length === 0) return 0
-    const len = s.length
-    const dp = new Array(len).fill("")
-    dp[0] = s[0]
-    for (let i = 1; i < len; i++) {
-        if (dp[i - 1].includes(s[i])) {
-            dp[i] = dp[i - 1].slice(dp[i - 1].indexOf(s[i]) + 1) + s[i]       
-        } else {
-            dp[i] = dp[i - 1] + s[i]
+    if (!s.length) return 0;
+    const dp = new Array(s.length).fill('');
+    dp[0] = s[0];
+    for (let i = 1; i < s.length; i++) {
+        if (!dp[i - 1].includes(s[i])) {
+            dp[i] = dp[i - 1] + s[i];
+        }
+        else {
+            dp[i] = dp[i - 1].slice(dp[i - 1].indexOf(s[i]) + 1) + s[i];
         }
     }
-    return Math.max(...dp.map(s => s.length))
-};
+    return Math.max(...dp.map(s => s.length));
+}
 ```
 
 ## 最长重复子数组

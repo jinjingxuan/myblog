@@ -75,6 +75,7 @@
     * 最大子序列和（连续）: [leetcode53](https://leetcode-cn.com/problems/maximum-subarray/)
     * 最长递增子序列: [leetcode300](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
     * 最长公共子序列(LCS): [leetcode1143](https://leetcode-cn.com/problems/longest-common-subsequence/)
+    * 最长非重复子串: [剑指offer48](https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/)
     * 编辑距离(SES): [leetcode72](https://leetcode.cn/problems/edit-distance/)
     * 买卖股票的最佳时机: [leetcode121](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
   * 顺时针打印矩阵: [leetcode54](https://leetcode-cn.com/problems/spiral-matrix/)
