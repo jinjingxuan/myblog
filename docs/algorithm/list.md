@@ -168,14 +168,14 @@ var swapPairs = function(head) {
 
 ```js
 var hasCycle = function(head) {
-    let slow = head
-    let fast = head
-    while (fast !== null && fast.next !== null) {
-        slow = slow.next
-        fast = fast.next.next
-        if (slow === fast) return true
+    let slow = head;
+    let fast = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow === fast) return true;
     }
-    return false
+    return false;
 };
 ```
 
@@ -198,21 +198,21 @@ var hasCycle = function(head) {
 
 ```js
 var detectCycle = function(head) {
-    let slow = head
-    let fast = head
-    while (fast !== null && fast.next !== null) {
-      slow = slow.next      
-      fast = fast.next.next  
-      if (slow == fast) {      
-        fast = head          
-        while (true) {        
-          if (slow == fast) return slow
-          slow = slow.next
-          fast = fast.next    
+    let fast = head;
+    let slow = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow === fast) {
+            let slow = head;
+            while (slow !== fast) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+            return slow;
         }
-      }
     }
-    return null
+    return null;
 };
 ```
 

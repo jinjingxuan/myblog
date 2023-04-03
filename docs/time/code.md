@@ -82,3 +82,5 @@
   * 岛屿最大面积: [leetcode695](https://leetcode-cn.com/problems/max-area-of-island/)
   * 求根到叶子节点数字之和: [leetcode129](https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/)
   * 路径总和: [leetcode112](https://leetcode-cn.com/problems/path-sum/)
+  * 环形链表: [leetcode141](https://leetcode-cn.com/problems/linked-list-cycle/)
+  * 环形链表2: [leetcode142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
