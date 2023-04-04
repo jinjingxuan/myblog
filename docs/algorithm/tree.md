@@ -205,15 +205,15 @@ var isSameTree = function(p, q) {
 
 ```js
 var isSymmetric = function(root) {
-    let p = root.left
-    let q = root.right
+    let p = root.left;
+    let q = root.right;
     const fn = (p, q) => {
-        if (p === null && q=== null) return true
-        else if ((p === null && q !== null) || (p !== null && q === null)) return false
-        else if (p.val !== q.val) return false
-        else return isSameTree(p.left, q.right) && isSameTree(p.right, q.left)
+        if (!p && !q) return true;
+        else if ((p && !q) || (!p && q)) return false;
+        else if (p.val !== q.val) return false;
+        else return fn(p.left, q.right) && fn(p.right, q.left);
     }
-    return fn(p, q)
+    return fn(p, q);
 };
 ```
 
@@ -224,13 +224,13 @@ var isSymmetric = function(root) {
 ```js
 var mergeTrees = function(root1, root2) {
     // 有一个树为 null 就直接替换
-    if (root1 === null || root2 === null) return root1 || root2
-    else{
-        root1.val += root2.val
-        root1.left = mergeTrees(root1.left, root2.left)
-        root1.right = mergeTrees(root1.right, root2.right)
+    if (!root1 || !root2) return root1 || root2;
+    else {
+        root1.val = root1.val + root2.val;
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
     }
-    return root1
+    return root1;
 };
 ```
 
@@ -260,36 +260,26 @@ var mergeTrees = function(root1, root2) {
 ```js
 // 递归
 var maxDepth = function(root) {
-    if (!root) {
-        return 0;
-    }
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
-};
+    if (!root) return 0;
+    else return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+}
 
 // BFS
 var maxDepth = function(root) {
-    if (!root) {
-        return 0;
-    }
+    if (!root) return 0;
     const queue = [root];
-    let depth = 1;
+    let depth = 0;
     while (queue.length) {
         const len = queue.length;
         for (let i = 0; i < len; i++) {
             const tmp = queue.shift();
-            if (tmp.left) {
-                queue.push(tmp.left);
-            }
-            if (tmp.right) {
-                queue.push(tmp.right);
-            }
+            if (tmp.left) queue.push(tmp.left);
+            if (tmp.right) queue.push(tmp.right);
         }
-        if (queue.length) {
-            depth++;
-        }
+        depth++;
     }
     return depth;
-};
+}
 ```
 
 给定一个二叉树，找出其最小深度。
@@ -311,59 +301,41 @@ var maxDepth = function(root) {
 
 返回它的最小深度  2.
 ```
-* 递归
 
 ```js
-// 需要考虑斜着下来的树，例如left为null时，左侧虽然深度为0，但没有叶子结点，所以需要去计算右侧的深度
+// 递归
+// 对比最大深度，需要考虑斜着下来的树，例如left为null时，左侧虽然深度为0，但没有叶子结点，所以需要去计算右侧的深度
 var minDepth = function(root) {
-    if (!root) {
-        return 0;
-    }
-    if (!root.left) {
-        return 1 + minDepth(root.right);
-    }
-    if (!root.right) {
-        return 1 + minDepth(root.left);
-    }
-    return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+    if (!root) return 0;
+    else if (!root.left) return 1 + minDepth(root.right);
+    else if (!root.right) return 1 + minDepth(root.left);
+    else return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+}
+
+// 优化后
+var minDepth = function(root) {
+    if (!root) return 0;
+    else if (!root.left || !root.right) return minDepth(root.left) + minDepth(root.right) + 1;
+    else return 1 + Math.min(minDepth(root.left), minDepth(root.right));
 };
 
 // BFS
 var minDepth = function(root) {
-    if (!root) {
-        return 0;
-    }
+    if (!root) return 0;
     const queue = [root];
     let depth = 1;
     while (queue.length) {
         const len = queue.length;
         for (let i = 0; i < len; i++) {
             const tmp = queue.shift();
-            if (!tmp.left && !tmp.right) {
-                return depth;
-            }
-            if (tmp.left) {
-                queue.push(tmp.left);
-            }
-            if (tmp.right) {
-                queue.push(tmp.right);
-            }
+            // 遍历到一层时，只要该层有叶子节点则返回最小值
+            if (!tmp.left && !tmp.right) return depth;
+            if (tmp.left) queue.push(tmp.left);
+            if (tmp.right) queue.push(tmp.right);
         }
         depth++;
     }
-};
-```
-
-**优化之后**
-
-```js
-var minDepth = function(root) {
-    if(!root) return 0
-    if(root.left == null || root.right == null) {
-        return leftDepth + rightDepth + 1
-    }
-    return 1 + Math.min(minDepth(root.left), minDepth(root.right))
-};
+}
 ```
 
 ## 翻转二叉树
@@ -372,11 +344,8 @@ var minDepth = function(root) {
 
 ```js
 var invertTree = function(root) {
-    if (!root) {
-        return null;
-    }
-    let tmp = new TreeNode();
-    [root.left, root.right] = [root.right, root.left]
+    if (!root) return null;
+    [root.left, root.right] = [root.right, root.left];
     invertTree(root.left);
     invertTree(root.right);
     return root;
