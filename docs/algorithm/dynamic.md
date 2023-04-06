@@ -549,22 +549,22 @@ var longestPalindrome = function(s) {
 
 ```js
 var minPathSum = function(grid) {
-    let m = grid.length
-    let n = grid[0].length
-    let dp = Array.from(new Array(m),()=>(new Array(n).fill(0)))
-    dp[0][0] = grid[0][0]
+    const m = grid.length;
+    const n = grid[0].length;
+    const dp = Array.from(new Array(m), () => new Array(m).fill(0));
+    dp[0][0] = grid[0][0];
     for (let i = 1; i < m; i++) {
-        dp[i][0] = dp[i-1][0] + grid[i][0];
+        dp[i][0] = dp[i - 1][0] + grid[i][0];
     }
     for (let j = 1; j < n; j++) {
-        dp[0][j] = dp[0][j-1] + grid[0][j];
+        dp[0][j] = dp[0][j - 1] + grid[0][j];
     }
     for (let i = 1; i < m; i++) {
         for (let j = 1; j < n; j++) {
-            dp[i][j] = Math.min(dp[i][j-1], dp[i-1][j]) + grid[i][j];
+            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
         }
     }
-    return dp[m-1][n-1]
+    return dp[m - 1][n - 1];
 };
 ```
 
@@ -656,17 +656,21 @@ var canPartition = function(nums) {
 
 ```js
 var minimumTotal = function(triangle) {
-    const len = triangle.length
-    let dp = Array.from(new Array(len),()=>(new Array(len).fill(0)))
-    dp[0][0] = triangle[0][0]
-    for (let i = 1; i < len; i++) {
-        dp[i][0] = dp[i-1][0] + triangle[i][0]
-        for (let j = 1; j < i; j++) {
-            dp[i][j] = Math.min(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j]
-        }
-        dp[i][i] = dp[i-1][i-1] + triangle[i][i]
+    const len = triangle.length;
+    // 初始化 dp 数组
+    const dp = new Array(len);
+    for (let i = 0; i < len; i++) {
+        dp[i] = new Array(i + 1).fill(0);
     }
-    return Math.min(...dp[len-1])
+    dp[0][0] = triangle[0][0];
+    for (let i = 1; i < len; i++) {
+        dp[i][0] = dp[i - 1][0] + triangle[i][0];
+        for (let j = 1; j < i; j++) {
+            dp[i][j] = Math.min(dp[i - 1][j], dp[i - 1][j - 1]) + triangle[i][j];
+        }
+        dp[i][i] = dp[i - 1][i - 1] + triangle[i][i];
+    }
+    return Math.min(...dp[len - 1]);
 };
 ```
 
