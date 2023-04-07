@@ -94,3 +94,5 @@
     * 求二叉树的深度(最大): [leetcode104](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
     * 求二叉树的深度(最小): [leetcode111](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
     * 翻转二叉树: [leetcode226](https://leetcode-cn.com/problems/invert-binary-tree/)
+  * 数组第k大元素: [leetcode215](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+    * 堆排序、快排、冒泡

@@ -41,16 +41,19 @@ categories: 算法
 4. 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
 
 ```js
-const bubbleSort = arr => {
-    let len = arr.length
+const bubbleSort = function(arr) {
+    const len = arr.length;
     for (let i = 0; i < len; i++) {
+        // i 每循环一次后都会选出最大的放到最后
+        // 所以是 j 只需判断 len - i, 又因为下面是 j + 1 和 j 比较, 所以是 len - i - 1
         for (let j = 0; j < len - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]] // 交换
+                // 交换
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
             }
         }
     }
-    return arr
+    return arr;
 }
 ```
 
@@ -182,29 +185,29 @@ function merge(left, right)
 // 快排的基本思想是分治，选择一个枢纽，小的放它左面，大的右面，这样pivot放在了最终位置
 // 然后再对 pivot 左右两个子表排序
 
-const sortArray = arr => {
-    quickSort(arr, 0, arr.length - 1)
-    return arr
+const partition = (arr, low, high) => {
+    const pivot = arr[low];
+    while (low < high) {
+        while (low < high && arr[high] >= pivot) high--;
+        arr[low] = arr[high];
+        while (low < high && arr[low] <= pivot) low++;
+        arr[high] = arr[low];
+    }
+    arr[low] = pivot;
+    return low;
 }
 
 const quickSort = (arr, low, high) => {
     if (low < high) {
-        let index = partition(arr, low, high)
-        quickSort(arr, low, index - 1)
-        quickSort(arr, index + 1, high)
-    }   
+        const index = partition(arr, low, high);
+        quickSort(arr, low, index - 1);
+        quickSort(arr, index + 1, high);
+    }
 }
 
-const partition = (arr, low, high) => {
-    let pivot = arr[low]
-    while (low < high) {
-        while (low < high && arr[high] >= pivot) --high
-        arr[low] = arr[high]
-        while (low < high && arr[low] <= pivot) ++low
-        arr[high] = arr[low] 
-    }
-    arr[low] = pivot
-    return low
+const sortArray = arr => {
+    quickSort(arr, 0, arr.length - 1);
+    return arr;
 }
 
 [4, 7, 6, 5, 3, 2, 8, 1]
@@ -233,7 +236,8 @@ const partition = (arr, low, high) => {
 2. 将其与末尾元素进行交换，此时末尾就是最大值
 3. 然后将剩余n-1个元素重新构造成一个堆，就会得到n个元素的次小值，如此反复执行，便能得到一个有序序列
 
-* [堆排序图示](https://user-gold-cdn.xitu.io/2016/11/29/d1ac550a097055f65ed10a50d408f40d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+* [堆排序图示](https://www.runoob.com/wp-content/uploads/2019/03/heapSort.gif)
+* [原理解析](https://www.cnblogs.com/chengxiao/p/6129630.html)
 * 时间复杂度：`O(n*logn)`，每次构造堆都需要`O(logn)`，一共构造`n`次
 * 堆的插入与删除？删除从根节点删，插入从最后插
 
@@ -242,16 +246,16 @@ const partition = (arr, low, high) => {
 @param  array 待排序数组*/
 function heapSort(array) {
     // 建堆
-    let heapSize = array.length
+    let heapSize = array.length;
     for (let i = Math.floor(heapSize / 2) - 1; i >= 0; i--) {
-      heapify(array, i, heapSize)
+      heapify(array, i, heapSize);
     }
     // 堆排序
     for (let j = heapSize - 1; j >= 1; j--) {
-        [array[0], array[j]] = [array[j], array[0]]
-        heapify(array, 0, --heapSize)
+        [array[0], array[j]] = [array[j], array[0]];
+        heapify(array, 0, --heapSize);
     }
-    return array
+    return array;
 }
 
 /*方法说明：维护堆的性质
@@ -259,21 +263,21 @@ function heapSort(array) {
 @param  x   数组下标
 @param  len 堆大小*/
 function heapify(arr, x, len) {
-    let l = 2 * x + 1, r = 2 * x + 2, largest = x
+    let l = 2 * x + 1, r = 2 * x + 2, largest = x;
     if (l < len && arr[l] > arr[largest]) {
-        largest = l
+        largest = l;
     }
     if (r < len && arr[r] > arr[largest]) {
-        largest = r
+        largest = r;
     }
     if (largest !== x) {
-        [arr[x], arr[largest]] = [arr[largest], arr[x]]
-        heapify(arr, largest, len)
+        [arr[x], arr[largest]] = [arr[largest], arr[x]];
+        heapify(arr, largest, len);
     }
 }
 ```
 
-* [leetcode215](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+* 数组第k大元素: [leetcode215](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
 
 ```js
 var findKthLargest = function(nums, k) {
