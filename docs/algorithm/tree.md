@@ -484,25 +484,23 @@ var sortedListToBST = function(head) {
 > 所有左子树和右子树自身必须也是二叉搜索树。
 
 ```js
+// 结合中序遍历即可
 var isValidBST = function(root) {
-    let stack = []
-    let inorder = -Infinity
-
-    while (stack.length || root !== null) {
-        while (root !== null) {
-            stack.push(root)
-            root = root.left
+    const res = [-Infinity];
+    const stack = [];
+    while (true) {
+        while (root) {
+            stack.push(root);
+            root = root.left;
         }
-        root = stack.pop()
-        // 如果中序遍历得到的节点的值小于等于前一个 inorder，说明不是二叉搜索树
-        if (root.val <= inorder) {
-            return false
-        }
-        inorder = root.val
-        root = root.right
+        if (!stack.length) break;
+        const tmp = stack.pop();
+        if (tmp.val <= res[res.length - 1]) return false;
+        res.push(tmp.val);
+        root = tmp.right;
     }
-    return true
-};
+    return true;
+}
 ```
 
 ## 判断平衡二叉树

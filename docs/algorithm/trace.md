@@ -79,7 +79,7 @@ def backtrack(路径, 选择列表):
 ```js
 var permute = function(nums) {
     const res = [];
-    const backtrack = (path) => {
+    const fn = (path) => {
         if (path.length === nums.length) {
             // slice 的原因是防止 push 到 res 中的结果是引用类型，后面 path 改变时会影响 res
             res.push(path.slice());
@@ -89,11 +89,11 @@ var permute = function(nums) {
                 continue;
             }
             path.push(item); // 比如目前 path 是 [1]，push(2), 变成 [1, 2]
-            backtrack(path); // 递归到头了：[1,2,3] 就 return 
+            fn(path); // 递归到头了：[1,2,3] 就 return 
             path.pop(); // [1,2] pop 变为 [1]， 继续下一轮 for 循环, push(3)
         }
     }
-    backtrack([]);
+    fn([]);
     return res;
 };
 ```
