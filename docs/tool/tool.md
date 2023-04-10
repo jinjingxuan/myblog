@@ -116,6 +116,19 @@ and the repository exists.
 
 则配置下 `hosts` 中的 github ip 地址即可
 
+****
+
+```js
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+
+// 删除下 know_hosts 重新 push
+ssh-keygen -R github.com
+```
+
 ## github访问慢
 
 [解决GitHub下载速度太慢问题](https://www.jianshu.com/p/238f8242e1a6)
