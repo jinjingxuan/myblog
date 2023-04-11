@@ -97,3 +97,4 @@
     * 验证二叉搜索树: [leetcode98](https://leetcode-cn.com/problems/validate-binary-search-tree/)
   * 数组第k大元素: [leetcode215](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
     * 堆排序、快排、冒泡
+  * 合并两个有序链表: [leetcode21](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
