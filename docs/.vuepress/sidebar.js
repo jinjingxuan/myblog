@@ -192,6 +192,7 @@ module.exports = {
         '/chrome/gc',
         '/chrome/render',
         '/chrome/cross',
+        '/chrome/performance',
     ],
     '/computer': [
         '/computer/computer',

@@ -371,6 +371,10 @@ module.exports = [{
                         text: '跨域',
                         link: '/chrome/cross'
                     },
+                    {
+                        text: 'Chrome性能分析',
+                        link: '/chrome/performance'
+                    },
                 ]
             },
             {
