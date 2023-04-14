@@ -47,3 +47,5 @@
 
 * record button：录制按钮，点击后开启录制然后点击停止按钮。
 * reload button：页面会重新加载，记录页面加载过程中的性能分析，会自动停止。
+
+功能面板介绍：[Chrome DevTools Performance 功能详解](https://juejin.cn/post/7112544960934576136)

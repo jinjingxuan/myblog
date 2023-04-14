@@ -1,24 +1,4 @@
----
-title: 栈的应用
-date: 2020-10-22 16:00:54
-categories: 算法
----
 # 栈的应用
-* 括号匹配问题
-* 最长有效括号
-* 最大宽度坡
-* 表现良好的最长时间段
-* 下一个更大元素
-* 字符串解码
-* 去除重复字母
-* 移掉 k 位数字
-* 接雨水
-* 柱状图中的最大矩形
-* 最大矩形
-* 每日温度
-* 两个栈实现队列
-* 最小栈
-
 ## 括号匹配问题
 
 大致思路是遇到左括号入栈，遇到右括号将左括号出栈，复杂度为O(n)
@@ -656,4 +636,47 @@ class MinStack {
         return this.helper[this.helper.length - 1];
     }
 }
+```
+
+## 滑动窗口最大值（单调队列）
+* [leetcode239](https://leetcode.cn/problems/sliding-window-maximum/submissions/)
+* [题解](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.md)
+
+```js
+var maxSlidingWindow = function(nums, k) {
+    class Queue {
+        constructor() {
+            this.queue = [];
+        }
+        appendTail(val) {
+            // 保证队列单调递减
+            while (this.queue.length && val > this.queue[this.queue.length - 1]) {
+                this.queue.pop();
+            }
+            this.queue.push(val);
+        }
+        deleteHead(val) {
+            if (this.queue[0] === val) {
+                this.queue.shift();
+            }
+        }
+        head() {
+            return this.queue[0];
+        }
+    }
+    const queue = new Queue();
+    const res = [];
+    // 先放进去 k 个
+    for (let i = 0; i < k; i++) {
+        queue.appendTail(nums[i]);
+    }
+    res.push(queue.head());
+    for (let i = k; i < nums.length; i++) {
+        // 移动窗口并计算最大值
+        queue.deleteHead(nums[i - k]);
+        queue.appendTail(nums[i]);
+        res.push(queue.head());
+    }
+    return res;
+};
 ```

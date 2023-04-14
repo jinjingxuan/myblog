@@ -234,7 +234,7 @@ var detectCycle = function(head) {
 
 ```js
 var removeNthFromEnd = function(head, n) {
-    // 创建头节点, 保证输入为 [1], 1 时，不会出现错误
+    // 创建头节点, 保证输入为 [1], 1 时不会出现错误，
     let pre = new ListNode()
     pre.next = head
     let slow = pre
@@ -250,6 +250,7 @@ var removeNthFromEnd = function(head, n) {
     }
     // 删除
     slow.next = slow.next.next
+    // 为什么不直接返回 head，因为 head 可能是被删除的节点
     return pre.next
 };
 ```
