@@ -43,7 +43,8 @@ categories: 算法
 ```js
 const bubbleSort = function(arr) {
     const len = arr.length;
-    for (let i = 0; i < len; i++) {
+    // len 长度只需循环 len - 1 次，就会把 len - 1 个大元素放在后面，即排序成功
+    for (let i = 0; i < len - 1; i++) {
         // i 每循环一次后都会选出最大的放到最后
         // 所以是 j 只需判断 len - i, 又因为下面是 j + 1 和 j 比较, 所以是 len - i - 1
         for (let j = 0; j < len - i - 1; j++) {
@@ -64,21 +65,17 @@ const bubbleSort = function(arr) {
 3. 以此类推，直到所有元素均排序完毕
 
 ```js
-function selectionSort(arr) {
-    var len = arr.length;
-    var minIndex, temp;
-    for (var i = 0; i < len - 1; i++) {
-        minIndex = i;
-        for (var j = i + 1; j < len; j++) {
-            if (arr[j] < arr[minIndex]) {     //寻找最小的数
-                minIndex = j;                 //将最小数的索引保存
+const selectSort = nums => {
+    for (let i = 0; i < nums.length - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[j] < nums[minIndex]) {
+                minIndex = j;
             }
         }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+        [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
     }
-    return arr;
+    return nums;
 }
 ```
 
@@ -412,8 +409,6 @@ function insertionSort(array) {
 1. 取得数组中的最大数，并取得位数；
 2. arr为原始数组，从最低位开始取每个位组成radix数组；
 3. 对radix进行计数排序（利用计数排序适用于小范围数的特点）；
-
-* [基数排序图示](https://user-gold-cdn.xitu.io/2016/11/29/54c03e0f47fcb8203389f99f65860ee6?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 ```js
 /**
