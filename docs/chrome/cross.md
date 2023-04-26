@@ -115,6 +115,12 @@ CORS 最初要求浏览器具有该行为，不过在后续的[修订](https://g
 >
 > 问题：http://aaa.com/getuser 接口的请求头中加了 Content-Type：application/json，使得发送了预检请求，然后在 chrome 中预检请求直接重定向有问题从而报错，把 application/json 删掉即可。
 
+## 常见跨域错误
+
+> Access to XMLHttpRequest at 'xxxx' from origin 'yyyy' has been blocked by CORS policy: Request header field zzz is not allowed by Access-Control-Allow-Headers in preflight response.
+
+这种问题的是因为后端配置的 access-control-allow-header 里面不允许 zzz，要么后端配置下，要么删一下请求头。表现形式一般是 options 请求可以请求成功，但是正式请求会报跨域错误。
+
 ## axios 请求的三种错误
 
 * 网络异常错误：当网络出现异常（比如网络不通）的时候，再比如上述所说的预检请求不允许重定向

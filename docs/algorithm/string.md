@@ -45,26 +45,25 @@ categories: 算法
 ```js
 // 1234654
 var nextPermutation = function(nums) {
-    let flag = true
+    let flag = false;
     for (let i = nums.length - 2; i >= 0; i--) {
         if (nums[i] < nums[i + 1]) {
-            flag = false
-            for (let j = nums.length - 1; j >= i + 1 ; j--) {
+            flag = true;
+            for (let j = nums.length - 1; j > i; j--) {
                 if (nums[j] > nums[i]) {
-                    [nums[j], nums[i]] = [nums[i], nums[j]]
-                    break
+                    [nums[i], nums[j]] = [nums[j], nums[i]];
+                    break;
                 }
             }
-            const head = nums.splice(0, i + 1)
-            console.log(head, nums)
-            nums.sort((a, b) => a - b)
-            for (let i = head.length - 1; i >= 0; i--) {
-                nums.unshift(head[i])
+            const head = nums.splice(0, i + 1);
+            nums.sort((a, b) => a - b);
+            for (let i = head.length - 1; i >= 0 ; i--) {
+                nums.unshift(head[i]);
             }
-            break
+            break;
         }
     }
-    if (flag) nums.reverse()
+    if (!flag) nums.reverse();
 };
 ```
 

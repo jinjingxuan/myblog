@@ -87,6 +87,34 @@ var longestValidParentheses = function(s) {
 };
 ```
 
+## 有效的括号
+https://leetcode.cn/problems/valid-parentheses/submissions/
+```js
+var isValid = function(s) {
+    const map = new Map([
+        ['}', '{'],
+        [']', '['],
+        [')', '('],
+    ]);
+    const stack = [];
+    for (let i = 0; i < s.length; i++) {
+        // 如果是左括号则入栈
+        if (!map.has(s[i])) {
+            stack.push(s[i]);
+        }
+        // 如果是右括号则出栈
+        else {
+            // 栈里没有可出的 或 出栈的元素不匹配则返回 false
+            if (!stack.length || map.get(s[i]) !== stack[stack.length - 1]) {
+                 return false;
+            }
+            stack.pop();
+        }
+    }
+    return stack.length === 0;
+};
+```
+
 ## 最大宽度坡
 [leetcode962:最大宽度坡](https://leetcode-cn.com/problems/maximum-width-ramp/)
 
