@@ -4,6 +4,7 @@ module.exports = {
         '/css/box',
         '/css/flex',
         '/css/layout',
+        '/css/problem',
     ],
     '/javascript': [
         '/javascript/asynchronous',
