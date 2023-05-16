@@ -10,6 +10,13 @@ module.exports = [{
         }]
     },
     {
+        text: '区块链',
+        items: [{
+                text: '北大公开课学习',
+                link: '/blockchain/learn'
+        }]
+    },
+    {
         text: 'node',
         items: [{
                 text: 'Node基础',

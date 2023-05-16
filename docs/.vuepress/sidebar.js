@@ -221,6 +221,9 @@ module.exports = {
     '/read': [
         '/read/read',
     ],
+    '/blockchain': [
+        '/blockchain/learn',
+    ],
     '/re': [
         '/re/development',
         '/re/mongodb',
