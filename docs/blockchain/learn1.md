@@ -1,5 +1,9 @@
 # 北大肖臻老师《区块链技术与应用》公开课学习 1
 * 学习地址：[https://www.bilibili.com/video/BV1Vt411X7JF](https://www.bilibili.com/video/BV1Vt411X7JF)
+* 参考文章：
+  * [https://blog.nowcoder.net/n/30cbdb37108b4d93b3a5a93b8226ae31](https://blog.nowcoder.net/n/30cbdb37108b4d93b3a5a93b8226ae31)
+  * [https://blog.csdn.net/weixin_47692652/category_11702107.html](https://blog.csdn.net/weixin_47692652/category_11702107.html)
+
 
 ## 区块链
 20 世纪经济学家 哈耶克 认为：欧美通货膨胀的根源在于货币是政府发行的，是中心化的，注定会为了铸币税而滥发。比特币是一种虚拟货币，它是为了解决哈耶克提出来的中心化货币必然会超发贬值的问题，而被创造出来的去中心化货币。
