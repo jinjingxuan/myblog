@@ -124,6 +124,7 @@
 * Root: 状态树的根哈希值
 * Txhash: 交易树的根哈希值
 * Receipthash: 收据树的根哈希值
+* Bloom: 整个区块块头的 Bloom filter
 * Difficulty: 挖矿难度
 * GasLimit: 汽油费（类似于比特币中的交易费）相关
 * GasUsed: 汽油费（类似于比特币中的交易费）相关
@@ -150,3 +151,105 @@ type extblock struct {
 ```
 
 > 状态树中保存 `Key-value` 对，`key` 就是地址，而 `value` 状态通过 `RLP(Recursive Length Prefix，一种进行序列化的方法)` 编码序列号之后再进行存储。
+
+## ETH 交易树和收据树
+
+每次发布一个区块时，区块中的交易会形成一颗 `Merkle Tree`，即交易树。此外以太坊还添加了一个收据树，每个交易执行完之后形成一个收据，记录交易相关信息。交易树和收据树上的节点是一一对应的，且都是 `MPT`。`MPT` 的好处是支持查找操作，通过键值沿着树进行查找即可。
+* 对于状态树，查找键值为账户地址。
+* 对于交易树和收据树，查找键值为交易在发布的区块中的序号。
+
+收据树作用：在以太坊中最重要的功能是加入了智能合约，而智能合约的执行过程比较复杂，收据树的作用是利于系统快速查询执行结果。
+
+### 布隆过滤器(Bloom filter)
+作用：布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。
+
+> 给定一个数据集，其中含义元素 `a、b、c`，通过一个哈希函数 `H()` 对其进行计算，将其映射到一个其初始全为 `0` 的 `128` 位的向量的某个位置，将该位置置为 `1`。将所有元素处理完，就可以得到一个向量，则称该向量为原集合的 `摘要`。该 `摘要` 比原集合是要小很多的。
+> 假定想要查询一个元素 `d` 是否在集合中，假设 `H(d)` 映射到向量中的位置处为 `0`，说明 `d`一定不在集合中；假设 `H(d)`映射到向量中的位置处为 `1`，可能集合中确实有 `d`，也有可能因为哈希碰撞产生误报。
+> 个人理解就是：他会告诉你某样东西一定不存在或者可能存在。
+
+#### Bloom filter 在以太坊中的应用
+
+每个交易完成后会产生一个收据，收据包含一个 `Bloom filter` 记录交易类型、地址等信息。在区块 `block header` 中也包含一个`Bloom filter`，其为该区块中所有交易的 `Bloom filter` 的一个并集。
+所以，查找时候先查找块头中的 `Bloom filter`，如果块头中包含。再查看区块中包含的交易的 `Bloom filter`，如果存在，再查看交易进行确认；如果不存在，则说明发生了 `碰撞`。
+好处就是通过 `Bloom filter` 这样一个结构，快速大量过滤掉大量无关区块，从而提高了查找效率。
+
+### 补充
+以太坊对于给定的当前状态和给定一组交易可以确定性的转移到下一状态，这一运行过程可以视为**交易驱动的状态机**，通过执行当前区块中包含的交易，驱动系统从当前状态转移到下一状态。当然，`BTC` 我们也可以视为交易驱动的状态机，其状态为 `UTXO`。
+
+问题1：A转账到B，有没有可能收款账户不包含再状态树中？
+> 可能。因为以太坊中账户可以节点自己产生，只有在产生交易时才会被系统知道。
+问题2：可否将每个区块中状态树更改为只包含和区块中交易相关的账户状态？(大幅削减状态树大小，且和交易树、收据树保持一致)
+> 不能。首先，这样设计要查找账户状态很不方便，因为不存在某个区块包含所有状态。其次，如果要向一个新创建账户转账，因为需要知道收款账户的状态，才能给其添加金额，但由于其是新创建的账户，所有需要一直找到创世纪块才能知道该账户为新建账户。
+
+### 代码实现
+```go
+func NewBlock(header *Header, txs []*Transaction, uncles []*Header, receipts []*Receipt, hasher TrieHasher) *Block {
+	b := &Block{header: CopyHeader(header)}
+
+	// 交易列表是否为空
+	if len(txs) == 0 {
+        // 块头里的交易树的根哈希值为空哈希值
+		b.header.TxHash = EmptyTxsHash
+	} else {
+        // 调用 DeriveSha 获得根哈希值
+		b.header.TxHash = DeriveSha(Transactions(txs), hasher)
+        // 创建交易列表
+		b.transactions = make(Transactions, len(txs))
+		copy(b.transactions, txs)
+	}
+
+    // 收据列表是否为空
+	if len(receipts) == 0 {
+        // 块头里的收据树的根哈希值为空哈希值
+		b.header.ReceiptHash = EmptyReceiptsHash
+	} else {
+        // 调用 DeriveSha 获得根哈希值
+		b.header.ReceiptHash = DeriveSha(Receipts(receipts), hasher)
+        // 创建 Bloom Filter
+        // CreateBloom 函数用来创建 Block Header 中的 Bloom 域,
+        // 这个 Bloom Filter 由这个块中所有 receiptes 的 Bloom Filter 组合得到
+		b.header.Bloom = CreateBloom(receipts)
+	}
+
+    // 叔父列表是否为空
+	if len(uncles) == 0 {
+        // 块头里的叔父区块的哈希值为空哈希值
+		b.header.UncleHash = EmptyUncleHash
+	} else {
+        // 通过 CalcUncleHash 计算出哈希值
+		b.header.UncleHash = CalcUncleHash(uncles)
+        // 通过循环构造出叔父数组
+		b.uncles = make([]*Header, len(uncles))
+		for i := range uncles {
+			b.uncles[i] = CopyHeader(uncles[i])
+		}
+	}
+
+	return b
+}
+
+// DeriveSha 函数
+func DeriveSha(list DerivableList) common.Hash {
+	keybuf := new(bytes.Buffer)
+	trie := new(trie.Trie)
+	for i := 0; i < list.Len(); i++ {
+		keybuf.Reset()
+		rlp.Encode(keybuf, uint(i))
+		trie.Update(keybuf.Bytes(), list.GetRlp(i))
+	}
+	return trie.Hash()
+}
+
+// 收据数据结构
+type Receipt struct {
+	PostState         []byte `json:"root"`
+	Status            uint64 `json:"status"`
+	CumulativeGasUsed uint64 `json:"cumulativeGasUsed" gencodec:"required"`
+	Bloom             Bloom  `json:"logsBloom"         gencodec:"required"`
+	Logs              []*Log `json:"logs"              gencodec:"required"`
+
+	TxHash          common.Hash    `json:"transactionHash" gencodec:"required"`
+	ContractAddress common.Address `json:"contractAddress"`
+	GasUsed         uint64         `json:"gasUsed" gencodec:"required"`
+}
+```
