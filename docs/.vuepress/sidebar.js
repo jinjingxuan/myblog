@@ -226,6 +226,8 @@ module.exports = {
         '/blockchain/learn2',
         '/blockchain/learn3',
         '/blockchain/learn4',
+        '/blockchain/learn5',
+        '/blockchain/learn6',
     ],
     '/re': [
         '/re/development',
