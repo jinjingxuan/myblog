@@ -222,12 +222,14 @@ module.exports = {
         '/read/read',
     ],
     '/blockchain': [
+        '/blockchain/info',
         '/blockchain/learn1',
         '/blockchain/learn2',
         '/blockchain/learn3',
         '/blockchain/learn4',
         '/blockchain/learn5',
         '/blockchain/learn6',
+        '/blockchain/learn7',
     ],
     '/re': [
         '/re/development',
