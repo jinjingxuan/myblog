@@ -129,6 +129,21 @@ Someone could be eavesdropping on you right now (man-in-the-middle attack)!
 ssh-keygen -R github.com
 ```
 
+****
+
+```js
+Unable to negotiate with xx.xx.xx.xx port xxxx: no matching host key type found. Their offer: ssh-rsa
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+// config 中增加配置
+Host *
+HostkeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
+```
+
 ## github访问慢
 
 [解决GitHub下载速度太慢问题](https://www.jianshu.com/p/238f8242e1a6)
