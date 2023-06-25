@@ -9,6 +9,7 @@
 :pencil: 前端开发工程师
 
 ## 更新日志
+* [区块链公开课学习](/blockchain/learn1.html)
 
 * [面试准备](/time/code.html)
 

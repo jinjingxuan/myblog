@@ -265,3 +265,10 @@ https://www.macwk.com/
 ## JSDoc
 
 js注释工具：https://www.jsdoc.com.cn/
+
+## HomeBrew 清华镜像
+
+[https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
+
+brew 安装 php：https://stackoverflow.com/questions/70417377/error-php7-3-has-been-disabled-because-it-is-a-versioned-formula、https://github.com/shivammathur/homebrew-php/discussions/743
+
