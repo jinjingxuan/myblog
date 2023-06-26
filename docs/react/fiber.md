@@ -133,4 +133,4 @@ react fiber是在弥补更新时“无脑”刷新，不够精确带来的缺陷
 
 并不是。孰优孰劣是一个很有争议的话题，在此不做评价。因为vue实现精准更新也是有代价的，一方面是需要给每一个组件配置一个“监视器”，管理着视图的依赖收集和数据更新时的发布通知，这对性能同样是有消耗的；另一方面vue能实现依赖收集得益于它的模版语法，实现静态编译，这是使用更灵活的 JSX 语法的 react 做不到的。
 
-在react fiber出现之前，react也提供了PureComponent、shouldComponentUpdate、useMemo,useCallback等方法给我们，来声明哪些是不需要连带更新子组件。
+在react fiber出现之前，react也提供了PureComponent、shouldComponentUpdate、useMemo、useCallback等方法给我们，来声明哪些是不需要连带更新子组件。

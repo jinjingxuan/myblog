@@ -323,7 +323,7 @@ function App() {
 }
 
 function Foo() {
-	const value = useContext(countContext);
+  const value = useContext(countContext);
   return <div>{value}</div>
 }
 ```
@@ -344,8 +344,8 @@ function App() {
   }, [count]);
   return (
   	<div>
-    	<span>{count} {result}</span>
-			<button onClick={() => setCount(count + 1)}>+1</button>
+      <span>{count} {result}</span>
+      <button onClick={() => setCount(count + 1)}>+1</button>
     </div>
   )
 }
@@ -401,7 +401,7 @@ function App() {
   	<div>
     	<span>{count}</span>
 			<button onClick={() => setCount(count + 1)}>+1</button>
-			<Foo resetCount={resetount}/>
+			<Foo resetCount={resetCount}/>
     </div>
   )
 }
@@ -422,7 +422,7 @@ export default App;
 使用 useCallback 改写 resetCount
 
 ```js
-const restCount = useCallback(() => setCount(0), [setCount]);
+const resetCount = useCallback(() => setCount(0), [setCount]);
 // setCount 不会改变，resetCount 也不会改变
 ```
 
@@ -439,7 +439,7 @@ function App() {
   const box = useRef();
   return (
   	<div ref={box}>
-			<button onClick={() => console.log(box)}>获取DIV</button>
+      <button onClick={() => console.log(box)}>获取DIV</button>
     </div>
   )
 }

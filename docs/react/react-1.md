@@ -14,7 +14,7 @@ React 使用组件的方式构建用户界面。
 
 它是一种 JavaScript 语法的扩展，React 使用它来描述用户界面长成什么样子。在 React 代码执行之前，Babel 会对将 JSX 编译为 React API。`React.createElement`会返回`Virtual DOM`，然后再转换为真实DOM
 
-```html
+```jsx
 <!-- JSX -->
 <div className="container">
   <h3>Hello React</h3>
@@ -196,6 +196,41 @@ eventHandler () {}
 ```
 
 [React事件处理函数必须使用bind(this)的原因](https://blog.csdn.net/qq_34829447/article/details/81705977)
+
+```react
+// 上面链接中的例子详解
+export default class Demo extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            count:4
+        };
+    }
+    render(){
+        return (
+            <div>
+                <button onClick={this.handleAdd}>点击一下</button>
+                <button onClick={this.handleClick.bind(this)}>点击一下</button>
+                <p>{this.state.count}</p>
+            </div>
+        )
+    }
+    // 要么使用箭头函数 此时 this 指向是当前实例对象
+    handleAdd = () => {
+        console.log(this)
+        this.setState({
+            count:5
+        })
+    }
+    // 要么使用普通函数，但是需要 bind(this)
+    handleClick() {
+        console.log(this)
+        this.setState({
+            count:6
+        })
+    }
+}
+```
 
 #### 2.9 样式
 
@@ -758,7 +793,7 @@ function App() {
 
 #### 5.1.2 路由嵌套
 
-```html
+```jsx
 function News(props) {
   return (
     <div>
@@ -784,19 +819,16 @@ function IndustryNews() {
 
 #### 5.1.3 路由传参
 
-```html
+```jsx
 import url from 'url';
 class News extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [{
-        id: 1,
-        title: '新闻1'
-      }, {
-        id: 2,
-        title: '新闻2'
-      }]
+      list: [
+        {id: 1, title: '新闻1'},
+        {id: 2, title: '新闻2'},
+      ]
     }
   }
     
