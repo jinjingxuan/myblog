@@ -231,6 +231,7 @@ module.exports = {
         '/blockchain/learn6',
         '/blockchain/learn7',
         '/blockchain/learn8',
+        '/blockchain/base',
     ],
     '/re': [
         '/re/development',

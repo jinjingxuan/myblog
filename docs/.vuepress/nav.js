@@ -14,6 +14,10 @@ module.exports = [{
         items: [{
                 text: '北大公开课学习',
                 link: '/blockchain/learn1'
+        },
+        {
+            text: '常见概念',
+            link: '/blockchain/base'
         }]
     },
     {
