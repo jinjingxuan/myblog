@@ -204,7 +204,7 @@ watch: {
     'user': {
         handler: function (newValue, oldValue) {
         	this.user.fullName = this.user.firstName + '' + this.user.lastName
-    	},
+    	  },
         deep: true,
         immediate: true
     }

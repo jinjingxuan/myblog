@@ -96,13 +96,37 @@ rem不是依据父元素——而是依据根元素（root element）来确定�
 如果在一个元素上使用`scale`时会导致整个元素同时缩放，所以应该在该元素的伪元素下设置`scale`属性。
 
 ```css
-.scale::after {
-    display: block;
+// 通过伪元素实现 0.5px border
+.border::after {
+    content: "";
+    box-sizing: border-box; // 为了与原元素等大
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%; 
+    height: 200%; 
+    border: 1px solid gray;
+    transform: scale(0.5); 
+    transform-origin: 0 0;
+}
+
+// 通过伪元素实现 0.5px 细线
+.line::after {
     content: '';
-    border-bottom: 1px solid #000;
-    transform: scaleY(.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 1px;
+    background: #b3b4b8;
+    transform: scale(0.5);
+    transform-origin: 0 0;
 }
 ```
+
+> **为什么要先放大 200% 再缩小 0.5？**
+>
+> 为了只缩放 `border` 1px 的粗细，而保证 `border` 的大小不变。如果直接 `scale(0.5)` 的话 `border` 整体大小也会变成二分之一，所以先放大 200%（放大的时候 `border` 的粗细是不会被放大的）再缩放，就能保持原大小不变了。
 
 ##### linear-gradient
 
