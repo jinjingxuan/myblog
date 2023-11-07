@@ -109,6 +109,8 @@ ps -ef | grep nginx
 
 > 启动nginx以后，有两个nginx进程，一个master进程，一个worker进程，worker进程的父进程 ID 即是master进程，可以在输出的第2列和第3列验证。
 
+根据进程号重启nginx：kill -HUP 进程号（master 的进程号）
+
 ## Nginx 主要应用
 
 ### 动静分离

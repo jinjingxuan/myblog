@@ -272,3 +272,45 @@ js注释工具：https://www.jsdoc.com.cn/
 
 brew 安装 php：https://stackoverflow.com/questions/70417377/error-php7-3-has-been-disabled-because-it-is-a-versioned-formula、https://github.com/shivammathur/homebrew-php/discussions/743
 
+## python
+
+在跑项目时报了这个错：
+
+> "Can't find Python executable "python", you can set the PYTHON env variable."
+
+问题是找不到 python 命令，然而我的电脑中装了 python3，输入 python3 ok 但是输入 python 时确实没有。于是按照[stackoverflow](https://stackoverflow.com/questions/70098133/npm-error-cant-find-python-executable-in-macos-big-sur)解决了下。
+
+*pyenv* 是Python 版本管理工具。 *pyenv* 可以改变全局的Python 版本，在系统中安装多个版本的Python
+
+> npm ERR! gyp info it worked if it ends with ok
+> npm ERR! gyp info using node-gyp@3.8.0
+> npm ERR! gyp info using node@16.0.0 | darwin | x64
+> npm ERR! gyp ERR! configure error 
+> npm ERR! gyp ERR! stack Error: Command failed: /Users/jinjingxuan/.pyenv/shims/python -c import sys; print "%s.%s.%s" % sys.version_info[:3];
+> npm ERR! gyp ERR! stack   File "<string>", line 1
+> npm ERR! gyp ERR! stack     import sys; print "%s.%s.%s" % sys.version_info[:3];
+
+原因一般是本机安装了python3，但依赖的脚本有python2的
+
+### 查看可安装 Python 版本
+
+使用如下命令查看可安装版本
+
+```shell
+$ pyenv install -l
+$ pyenv install 2.7.3   # 安装 python
+$ pyenv uninstall 2.7.3 # 卸载 python
+$ pyenv global 2.7.3  # 设置全局的 Python 版本，通过将版本号写入 ~/.pyenv/version 文件的方式。
+$ pyenv local 2.7.3 # 设置 Python 本地版本，通过将版本号写入当前目录下的 .python-version 文件的方式。通过这种方式设置的 Python 版本优先级较 global 高。
+```
+
+还遇到了这个问题
+
+> BUILD FAILED (OS X 13.4 using python-build 20180424)
+
+```sh
+# 最后这样安装成功了
+brew intall gcc 
+CC=/usr/bin/gcc pyenv install 2.7.18
+```
+
