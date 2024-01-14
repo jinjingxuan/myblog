@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress build docs",
     "deploy": "bash scripts/deploy-gh.sh"
   }
 }

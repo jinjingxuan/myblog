@@ -10,6 +10,10 @@
     <source id="mp4" src="./imgs/3.mp4" type="video/mp4">
 </video>
 
+<video id="video" controls="" preload="none" poster="作者(图片地址)">
+    <source id="mp4" src="./imgs/3.mp4" type="video/mp4">
+</video>
+
 ![](./imgs/1.jpg)
 ![](./imgs/2.jpg)
 ![](./imgs/3.jpg)
