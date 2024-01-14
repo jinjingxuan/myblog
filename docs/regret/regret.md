@@ -11,7 +11,7 @@
 </video>
 
 <video id="video" controls="" preload="none" poster="作者(图片地址)">
-    <source id="mp4" src="./imgs/3.mp4" type="video/mp4">
+    <source id="mp4" src="./imgs/4.mp4" type="video/mp4">
 </video>
 
 ![](./imgs/1.jpg)
