@@ -207,6 +207,7 @@ module.exports = {
     '/tool': [
         '/tool/tool',
         '/tool/npm',
+        '/tool/camera',
         {
             title: '第三方npm包',
             collapsable: true,

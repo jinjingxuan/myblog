@@ -447,6 +447,10 @@ module.exports = [{
                 link: '/tool/npm'
             },
             {
+                text: '相机基础',
+                link: '/tool/camera'
+            },
+            {
                 text: '第三方包',
                 items: [{
                         text: 'postcss',
