@@ -381,7 +381,57 @@ export default App;
 
 ### useCallback
 
-> 性能优化，缓存函数，是组件重新渲染时得到相同的函数实例。
+> useCallback 是 React 中的一个 Hook，它的核心作用是缓存函数引用，避免组件重新渲染时重新创建函数。
+
+1. useCallback 接受两个参数：
+
+一个需要缓存的函数；
+一个依赖数组（dependencies）。 只有当依赖项发生变化时，才会返回新的函数；否则，返回上一次缓存的函数。
+
+```jsx
+const memoizedCallback = useCallback(
+  () => {
+    // 函数逻辑（依赖某些变量，例如 state 或 props）
+  },
+  [dependency1, dependency2] // 依赖项数组
+);
+```
+
+2. 解决的问题: 避免子组件不必要的渲染
+
+当父组件传递一个函数作为 props 给子组件（尤其是用 React.memo 优化的子组件）时，如果父组件每次渲染都生成新函数，子组件会认为 props 变化，从而触发重新渲染。
+useCallback 可以缓存函数，确保子组件只在依赖项变化时才会重新渲染。
+jsx
+
+```jsx
+// 父组件
+const Parent = () => {
+  const [count, setCount] = useState(0);
+  // 使用 useCallback 缓存函数
+  const handleClick = useCallback(() => {
+    console.log("Count:", count);
+  }, [count]); // 依赖 count
+  return <Child onClick={handleClick} />;
+};
+// 子组件（用 React.memo 优化）
+const Child = React.memo(({ onClick }) => {
+  // 只有在 onClick 函数变化时才会重新渲染
+  return <button onClick={onClick}>Click</button>;
+});
+```
+
+3. 性能优化的代价
+
+useCallback 本身需要内存缓存函数，滥用可能导致性能反而下降。
+
+只在必要场景使用：
+* 函数作为 props 传递给 React.memo 优化的子组件；
+* 函数作为其他 Hook 的依赖项（如 useEffect）；
+* 需要稳定的函数引用（例如事件监听器的绑定与解绑）。
+
+4. 与 useMemo 的区别
+* useCallback 缓存的是函数本身。
+* useMemo 缓存的是函数执行后的返回值。
 
 ```js
 // 代码功能：App 组件中 setCount，Foo 组件中 resetCount

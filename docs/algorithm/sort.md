@@ -184,10 +184,10 @@ function merge(left, right)
 
 const partition = (arr, low, high) => {
     const pivot = arr[low];
-    while (low < high) {
-        while (low < high && arr[high] >= pivot) high--;
+    while (low < high) { // 循环直到左右指针相遇
+        while (low < high && arr[high] >= pivot) high--; // 从右向左找第一个小于pivot的数
         arr[low] = arr[high];
-        while (low < high && arr[low] <= pivot) low++;
+        while (low < high && arr[low] <= pivot) low++; // 从左向右找第一个大于pivot的数
         arr[high] = arr[low];
     }
     arr[low] = pivot;
@@ -195,7 +195,7 @@ const partition = (arr, low, high) => {
 }
 
 const quickSort = (arr, low, high) => {
-    if (low < high) {
+    if (low < high) { // 递归终止条件：子数组长度为1时，无需排序
         const index = partition(arr, low, high);
         quickSort(arr, low, index - 1);
         quickSort(arr, index + 1, high);
