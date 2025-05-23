@@ -2,7 +2,7 @@
 
 ☀️ Breeze
 
-:sparkles: 年龄：25
+:sparkles: 年龄：27
 
 :mag: 毕业院校：BIT
 
@@ -12,13 +12,5 @@
 * [区块链公开课学习](/blockchain/learn1.html)
 
 * [面试准备](/time/code.html)
-
-* [2023年 1-6月](/time/2023a.html)
-
-* [2022年 7-12月](/time/2022b.html)
-  
-* [2022年 1-6月](/time/2022a.html)
-  
-* [2021年 9-12月](/time/2021.html)
 
 * [英语学习](/interview/english.html)

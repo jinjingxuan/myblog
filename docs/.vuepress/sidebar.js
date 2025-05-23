@@ -233,6 +233,8 @@ module.exports = {
         '/blockchain/learn7',
         '/blockchain/learn8',
         '/blockchain/base',
+        '/blockchain/js',
+        '/blockchain/ethersjs',
     ],
     '/re': [
         '/re/development',
@@ -246,10 +248,6 @@ module.exports = {
         '/product/abtest',
     ],
     '/': [
-        '/time/2023a',
-        '/time/2022b',
-        '/time/2022a',
-        '/time/2021',
         '/time/code',
     ],
 }

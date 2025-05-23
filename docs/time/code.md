@@ -1,5 +1,5 @@
 # 面试准备
-* 2022.12
+* part1
   * 最长递增子序列：[leetcode300](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
   * 最长公共子序列(LCS)：[leetcode1143](https://leetcode-cn.com/problems/longest-common-subsequence/)
   * 编辑距离：[leetcode72](https://leetcode.cn/problems/edit-distance/)
@@ -9,7 +9,7 @@
   * 前序遍历：[leetcode144](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
   * 中序遍历：[leetcode94](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
   * 后序遍历：[leetcode145](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
-* 2023.1
+* part2
   * 实现 map、reduce、'abcd'.f() 返回 'd-c-b-a'
   * this 指向
   * new 实现
@@ -19,7 +19,7 @@
   * osi七层协议，TCP/IP五层协议，arp/rarp协议
   * BFC 概念
   * 跨平台与跨端技术
-* 2023.2
+* part3
   * 闭包：概念、优缺点、应用(Vue diff 算法、nodeOps)
   * 函数式编程：纯函数、递归与尾递归、记忆函数、高阶函数、柯里化与偏函数、函数组合
   * 垃圾回收机制（GC算法、内存泄露、内存溢出、V8引擎的内存分配与垃圾回收）
@@ -53,7 +53,7 @@
   * 路径总和：[leetcode112](https://leetcode.cn/problems/path-sum/submissions/)、路径总和II：[leetcode112](https://leetcode.cn/problems/path-sum-ii/submissions/)
   * 组合总和：[leetcode39](https://leetcode.cn/problems/combination-sum/submissions/)、组合总和II：[leetcode40](https://leetcode.cn/problems/combination-sum-ii/submissions/)
   * http 状态码、cookie 和 session 区别、小程序原理
-* 2023.3
+* part4
   * [面试题整理](/interview/interview.html)
   * 前序中序构造二叉树：[leetcode105](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
   * [扁平数据结构转Tree](/algorithm/tree.html#扁平数据结构转tree)、[根据边构造二叉树](/algorithm/tree.html#根据边构造二叉树)
@@ -99,3 +99,17 @@
     * 堆排序、快排、冒泡、选择排序
   * 合并两个有序链表: [leetcode21](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
   * 滑动窗口最大值: [leetcode239](https://leetcode.cn/problems/sliding-window-maximum/submissions/)
+* part5
+  * 什么是 promise?promise.all/allsettled/race/any
+  * 宏任务/微任务/事件循环，UI渲染在事件循环的哪个阶段？
+  * 虚拟DOM 的作用是什么？与真实DOM的区别？虚拟DOM的性能一定优于真实DOM吗？
+  * 如何优化 React 组件性能？
+  * useEffect是用来干什么的， 有几个参数，依赖数组（deps）有什么作用？ 执行时机
+  * 介绍下 useMemo， useCallback，React.memo
+  * React组件渲染的两个阶段？
+  * 什么是 React Fiber？解决了什么问题？什么是双缓存fiber tree
+  * 为什么没有 Vue Fiber？vue 和 react 的渲染流程有什么区别？
+* part6
+  * 介绍下你理解的区块链（铸币，牺牲隐私，大型账本，不被篡改，哈希算法，哈希指针）
+  * 什么是共识机制，pos和pow
+  * 什么是智能合约，什么是汽油费（解决了什么问题，以太坊原子性）

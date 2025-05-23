@@ -18,7 +18,16 @@ module.exports = [{
         {
             text: '常见概念',
             link: '/blockchain/base'
-        }]
+        },
+        {
+            text: 'web3.js和Ethers.js',
+            link: '/blockchain/js'
+        },
+        {
+            text: 'Ethers.js',
+            link: '/blockchain/ethersjs'
+        }
+    ]
     },
     {
         text: 'node',
