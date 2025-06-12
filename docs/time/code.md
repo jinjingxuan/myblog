@@ -103,7 +103,7 @@
   * 什么是 promise?promise.all/allsettled/race/any
   * 宏任务/微任务/事件循环，UI渲染在事件循环的哪个阶段？
   * 虚拟DOM 的作用是什么？与真实DOM的区别？虚拟DOM的性能一定优于真实DOM吗？
-  * 如何优化 React 组件性能？
+  * 如何优化 React 组件性能？虚拟列表，懒加载，批量状态更新，css代替js动画
   * useEffect是用来干什么的， 有几个参数，依赖数组（deps）有什么作用？ 执行时机
   * 介绍下 useMemo， useCallback，React.memo
   * React组件渲染的两个阶段？
