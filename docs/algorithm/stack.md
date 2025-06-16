@@ -67,7 +67,7 @@ const isBalanced = str => {
 
 ```js
 var longestValidParentheses = function(s) {
-    const stack = [-1];
+    const stack = [-1]; // 栈中始终保存的是无法匹配的位置
     let res = 0;
     for (let i = 0; i < s.length; i++) {
         if (s[i] === '(') {
@@ -637,20 +637,18 @@ class CQueue {
 
 ```js
 class MinStack {
-    // 定义一个辅助栈记录最小值
+    // 定义一个辅助栈记录最小值，长度和主栈长度一致
     constructor() {
         this.stack = [];
         this.helper = [];
     }
     push(val) {
         this.stack.push(val);
-        if (!this.helper.length) {
+        // 如果空 或者 当前值小于等于辅助栈栈顶 则直接入队
+        if (!this.helper.length || val <= this.helper[this.helper.length - 1]) {
             this.helper.push(val);
-        }
-        else {
-            const helperTop = this.helper[this.helper.length - 1];
-            const min = helperTop < val ? helperTop : val;
-            this.helper.push(min);
+        } else {
+            this.helper.push(this.helper[this.helper.length - 1]);
         }
     }
     pop() {

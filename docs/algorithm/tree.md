@@ -741,8 +741,8 @@ var lowestCommonAncestor = function(root, p, q) {
     if (root === null || root === p || root === q) {
         return root;
     }
-    const left = lowestCommonAncestor(root.left, p ,q);
-    const right = lowestCommonAncestor(root.right, p ,q);
+    const left = lowestCommonAncestor(root.left, p, q);
+    const right = lowestCommonAncestor(root.right, p, q);
     // 左右子树都找到，说明左子树和右子树各有一个寻找的节点，此时 root 就是最近公共祖先
     if (left && right) {
         return root;
