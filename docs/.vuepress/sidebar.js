@@ -55,6 +55,7 @@ module.exports = {
         '/react/react-hooks',
         '/react/redux',
         '/react/fiber',
+        '/react/time',
     ],
     '/virtual-dom': [
         '/virtual-dom/virtualdom',

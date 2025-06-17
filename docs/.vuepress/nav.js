@@ -217,6 +217,10 @@ module.exports = [{
                         text: 'React Fiber',
                         link: '/react/fiber'
                     },
+                    {
+                        text: 'React 版本',
+                        link: '/react/time'
+                    },
                 ]
             },
             {
