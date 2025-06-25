@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm | Breeze blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.65b23aee.css" as="style"><link rel="preload" href="/myblog/assets/js/app.a487b0bd.js" as="script"><link rel="preload" href="/myblog/assets/js/2.2ba0dbd6.js" as="script"><link rel="preload" href="/myblog/assets/js/1.6a37df0b.js" as="script"><link rel="preload" href="/myblog/assets/js/156.205576d1.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.9998971e.js"><link rel="prefetch" href="/myblog/assets/js/100.1ab6cdeb.js"><link rel="prefetch" href="/myblog/assets/js/101.719e6ff6.js"><link rel="prefetch" href="/myblog/assets/js/102.a9e8b8b4.js"><link rel="prefetch" href="/myblog/assets/js/103.9159ab43.js"><link rel="prefetch" href="/myblog/assets/js/104.b22821cb.js"><link rel="prefetch" href="/myblog/assets/js/105.4185df89.js"><link rel="prefetch" href="/myblog/assets/js/106.7a26f3a7.js"><link rel="prefetch" href="/myblog/assets/js/107.bfffbf36.js"><link rel="prefetch" href="/myblog/assets/js/108.89b2b1e4.js"><link rel="prefetch" href="/myblog/assets/js/109.1cba98da.js"><link rel="prefetch" href="/myblog/assets/js/11.2533e55f.js"><link rel="prefetch" href="/myblog/assets/js/110.3e8150f5.js"><link rel="prefetch" href="/myblog/assets/js/111.fcce9524.js"><link rel="prefetch" href="/myblog/assets/js/112.f9e67cc9.js"><link rel="prefetch" href="/myblog/assets/js/113.b45f3e98.js"><link rel="prefetch" href="/myblog/assets/js/114.104078e1.js"><link rel="prefetch" href="/myblog/assets/js/115.1966bc69.js"><link rel="prefetch" href="/myblog/assets/js/116.625e97f9.js"><link rel="prefetch" href="/myblog/assets/js/117.989f312f.js"><link rel="prefetch" href="/myblog/assets/js/118.4d8910ee.js"><link rel="prefetch" href="/myblog/assets/js/119.90376dde.js"><link rel="prefetch" href="/myblog/assets/js/12.cb857302.js"><link rel="prefetch" href="/myblog/assets/js/120.e3c9fcb9.js"><link rel="prefetch" href="/myblog/assets/js/121.acb24b9b.js"><link rel="prefetch" href="/myblog/assets/js/122.8a16ed5b.js"><link rel="prefetch" href="/myblog/assets/js/123.6ae97b69.js"><link rel="prefetch" href="/myblog/assets/js/124.b324ddf4.js"><link rel="prefetch" href="/myblog/assets/js/125.0eea13d9.js"><link rel="prefetch" href="/myblog/assets/js/126.5bd08cd5.js"><link rel="prefetch" href="/myblog/assets/js/127.6fc4d8b8.js"><link rel="prefetch" href="/myblog/assets/js/128.a71b4fed.js"><link rel="prefetch" href="/myblog/assets/js/129.a28e3770.js"><link rel="prefetch" href="/myblog/assets/js/13.fb14774e.js"><link rel="prefetch" href="/myblog/assets/js/130.e191a796.js"><link rel="prefetch" href="/myblog/assets/js/131.b03b8202.js"><link rel="prefetch" href="/myblog/assets/js/132.fed8d944.js"><link rel="prefetch" href="/myblog/assets/js/133.7f50b945.js"><link rel="prefetch" href="/myblog/assets/js/134.be935ad9.js"><link rel="prefetch" href="/myblog/assets/js/135.b26fe95b.js"><link rel="prefetch" href="/myblog/assets/js/136.4aa30c85.js"><link rel="prefetch" href="/myblog/assets/js/137.86a16ee7.js"><link rel="prefetch" href="/myblog/assets/js/138.19f55137.js"><link rel="prefetch" href="/myblog/assets/js/139.b081807c.js"><link rel="prefetch" href="/myblog/assets/js/14.ce3bd928.js"><link rel="prefetch" href="/myblog/assets/js/140.4f3d0c4e.js"><link rel="prefetch" href="/myblog/assets/js/141.5ee45804.js"><link rel="prefetch" href="/myblog/assets/js/142.cfa6345f.js"><link rel="prefetch" href="/myblog/assets/js/143.1c335e36.js"><link rel="prefetch" href="/myblog/assets/js/144.19b8e55b.js"><link rel="prefetch" href="/myblog/assets/js/145.1761c405.js"><link rel="prefetch" href="/myblog/assets/js/146.c073728b.js"><link rel="prefetch" href="/myblog/assets/js/147.5e2d3f1f.js"><link rel="prefetch" href="/myblog/assets/js/148.c19e5e1d.js"><link rel="prefetch" href="/myblog/assets/js/149.11c32e79.js"><link rel="prefetch" href="/myblog/assets/js/15.4691b6f6.js"><link rel="prefetch" href="/myblog/assets/js/150.974f7b9c.js"><link rel="prefetch" href="/myblog/assets/js/151.092405ac.js"><link rel="prefetch" href="/myblog/assets/js/152.93fd4a39.js"><link rel="prefetch" href="/myblog/assets/js/153.d680c1c0.js"><link rel="prefetch" href="/myblog/assets/js/154.6ea7eef3.js"><link rel="prefetch" href="/myblog/assets/js/155.a1b5da10.js"><link rel="prefetch" href="/myblog/assets/js/157.489328e3.js"><link rel="prefetch" href="/myblog/assets/js/158.d1f6df40.js"><link rel="prefetch" href="/myblog/assets/js/159.17955c05.js"><link rel="prefetch" href="/myblog/assets/js/16.f7e6eca1.js"><link rel="prefetch" href="/myblog/assets/js/160.ada343c2.js"><link rel="prefetch" href="/myblog/assets/js/161.498c830a.js"><link rel="prefetch" href="/myblog/assets/js/162.c9f39493.js"><link rel="prefetch" href="/myblog/assets/js/163.cd602ef1.js"><link rel="prefetch" href="/myblog/assets/js/164.4b3d388b.js"><link rel="prefetch" href="/myblog/assets/js/165.f3973857.js"><link rel="prefetch" href="/myblog/assets/js/166.3ee88146.js"><link rel="prefetch" href="/myblog/assets/js/167.95b554e8.js"><link rel="prefetch" href="/myblog/assets/js/168.2bec420b.js"><link rel="prefetch" href="/myblog/assets/js/169.d019e8f5.js"><link rel="prefetch" href="/myblog/assets/js/17.d5210e05.js"><link rel="prefetch" href="/myblog/assets/js/170.05ee93be.js"><link rel="prefetch" href="/myblog/assets/js/171.9fbf93af.js"><link rel="prefetch" href="/myblog/assets/js/172.0e9ae568.js"><link rel="prefetch" href="/myblog/assets/js/173.21ec8e3b.js"><link rel="prefetch" href="/myblog/assets/js/174.3c0a5088.js"><link rel="prefetch" href="/myblog/assets/js/175.fc6a8c35.js"><link rel="prefetch" href="/myblog/assets/js/176.b56aa263.js"><link rel="prefetch" href="/myblog/assets/js/177.a054572e.js"><link rel="prefetch" href="/myblog/assets/js/18.5b607d63.js"><link rel="prefetch" href="/myblog/assets/js/19.dea94587.js"><link rel="prefetch" href="/myblog/assets/js/20.3faead9d.js"><link rel="prefetch" href="/myblog/assets/js/21.b8066239.js"><link rel="prefetch" href="/myblog/assets/js/22.be051931.js"><link rel="prefetch" href="/myblog/assets/js/23.fb286d86.js"><link rel="prefetch" href="/myblog/assets/js/24.967bac3d.js"><link rel="prefetch" href="/myblog/assets/js/25.0b1abe53.js"><link rel="prefetch" href="/myblog/assets/js/26.5b9ed9cf.js"><link rel="prefetch" href="/myblog/assets/js/27.38ea36e3.js"><link rel="prefetch" href="/myblog/assets/js/28.b9f38d23.js"><link rel="prefetch" href="/myblog/assets/js/29.d2586bd6.js"><link rel="prefetch" href="/myblog/assets/js/3.190fc66c.js"><link rel="prefetch" href="/myblog/assets/js/30.90ba402c.js"><link rel="prefetch" href="/myblog/assets/js/31.459dfbaa.js"><link rel="prefetch" href="/myblog/assets/js/32.ef887861.js"><link rel="prefetch" href="/myblog/assets/js/33.86e00d1d.js"><link rel="prefetch" href="/myblog/assets/js/34.c239157e.js"><link rel="prefetch" href="/myblog/assets/js/35.c9d225de.js"><link rel="prefetch" href="/myblog/assets/js/36.b2e69337.js"><link rel="prefetch" href="/myblog/assets/js/37.c29b3fdf.js"><link rel="prefetch" href="/myblog/assets/js/38.965926f9.js"><link rel="prefetch" href="/myblog/assets/js/39.845934cd.js"><link rel="prefetch" href="/myblog/assets/js/4.bd5e923c.js"><link rel="prefetch" href="/myblog/assets/js/40.f686e159.js"><link rel="prefetch" href="/myblog/assets/js/41.e8cb0897.js"><link rel="prefetch" href="/myblog/assets/js/42.471f61f8.js"><link rel="prefetch" href="/myblog/assets/js/43.2980d525.js"><link rel="prefetch" href="/myblog/assets/js/44.735e69db.js"><link rel="prefetch" href="/myblog/assets/js/45.d024cc63.js"><link rel="prefetch" href="/myblog/assets/js/46.76389814.js"><link rel="prefetch" href="/myblog/assets/js/47.1b091dd0.js"><link rel="prefetch" href="/myblog/assets/js/48.94afe63d.js"><link rel="prefetch" href="/myblog/assets/js/49.fc8a5e17.js"><link rel="prefetch" href="/myblog/assets/js/5.637c9609.js"><link rel="prefetch" href="/myblog/assets/js/50.906c7261.js"><link rel="prefetch" href="/myblog/assets/js/51.048b7dfc.js"><link rel="prefetch" href="/myblog/assets/js/52.3ff1ffa1.js"><link rel="prefetch" href="/myblog/assets/js/53.48ec41db.js"><link rel="prefetch" href="/myblog/assets/js/54.70e819a8.js"><link rel="prefetch" href="/myblog/assets/js/55.596f78e1.js"><link rel="prefetch" href="/myblog/assets/js/56.c8576881.js"><link rel="prefetch" href="/myblog/assets/js/57.5df8d8bf.js"><link rel="prefetch" href="/myblog/assets/js/58.dc46dff8.js"><link rel="prefetch" href="/myblog/assets/js/59.5e538ae5.js"><link rel="prefetch" href="/myblog/assets/js/6.eff1197e.js"><link rel="prefetch" href="/myblog/assets/js/60.6d91da42.js"><link rel="prefetch" href="/myblog/assets/js/61.fea14320.js"><link rel="prefetch" href="/myblog/assets/js/62.d70e0ee4.js"><link rel="prefetch" href="/myblog/assets/js/63.57bdd024.js"><link rel="prefetch" href="/myblog/assets/js/64.574304b8.js"><link rel="prefetch" href="/myblog/assets/js/65.f3754067.js"><link rel="prefetch" href="/myblog/assets/js/66.ee14d851.js"><link rel="prefetch" href="/myblog/assets/js/67.420d9e3d.js"><link rel="prefetch" href="/myblog/assets/js/68.d46501e1.js"><link rel="prefetch" href="/myblog/assets/js/69.660daae6.js"><link rel="prefetch" href="/myblog/assets/js/7.dbafb28e.js"><link rel="prefetch" href="/myblog/assets/js/70.0b6b46a8.js"><link rel="prefetch" href="/myblog/assets/js/71.04b17311.js"><link rel="prefetch" href="/myblog/assets/js/72.8cb0ad9d.js"><link rel="prefetch" href="/myblog/assets/js/73.1b7f75a5.js"><link rel="prefetch" href="/myblog/assets/js/74.0826f968.js"><link rel="prefetch" href="/myblog/assets/js/75.392c94c3.js"><link rel="prefetch" href="/myblog/assets/js/76.f48e6f65.js"><link rel="prefetch" href="/myblog/assets/js/77.5de53710.js"><link rel="prefetch" href="/myblog/assets/js/78.9b1464f6.js"><link rel="prefetch" href="/myblog/assets/js/79.7bc4e1fa.js"><link rel="prefetch" href="/myblog/assets/js/80.30eb30a7.js"><link rel="prefetch" href="/myblog/assets/js/81.b8c26c70.js"><link rel="prefetch" href="/myblog/assets/js/82.d777e4b4.js"><link rel="prefetch" href="/myblog/assets/js/83.fead9f9a.js"><link rel="prefetch" href="/myblog/assets/js/84.b3f163ba.js"><link rel="prefetch" href="/myblog/assets/js/85.5eaccd15.js"><link rel="prefetch" href="/myblog/assets/js/86.584256c2.js"><link rel="prefetch" href="/myblog/assets/js/87.7889edb1.js"><link rel="prefetch" href="/myblog/assets/js/88.9234bfe7.js"><link rel="prefetch" href="/myblog/assets/js/89.35df326e.js"><link rel="prefetch" href="/myblog/assets/js/90.0f2c4eaf.js"><link rel="prefetch" href="/myblog/assets/js/91.ea275e41.js"><link rel="prefetch" href="/myblog/assets/js/92.05d721a9.js"><link rel="prefetch" href="/myblog/assets/js/93.7a28276f.js"><link rel="prefetch" href="/myblog/assets/js/94.6b6a7fcf.js"><link rel="prefetch" href="/myblog/assets/js/95.94a0c8f4.js"><link rel="prefetch" href="/myblog/assets/js/96.4f2accb2.js"><link rel="prefetch" href="/myblog/assets/js/97.0f9bd5db.js"><link rel="prefetch" href="/myblog/assets/js/98.7b8e2a8b.js"><link rel="prefetch" href="/myblog/assets/js/99.3635e164.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.1e04e93a.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.65b23aee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">Breeze blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myblog/tool/tool.html" class="sidebar-link">常用工具和插件</a></li><li><a href="/myblog/tool/npm.html" aria-current="page" class="active sidebar-link">npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#npm-cnpm" class="sidebar-link">npm &amp;&amp; cnpm</a></li><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#nrm" class="sidebar-link">nrm</a></li><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#nvm" class="sidebar-link">nvm</a></li><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#yarn-tyarn" class="sidebar-link">yarn &amp;&amp; tyarn</a></li><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#npx" class="sidebar-link">npx</a></li><li class="sidebar-sub-header"><a href="/myblog/tool/npm.html#pnpm" class="sidebar-link">pnpm</a></li></ul></li><li><a href="/myblog/tool/camera.html" class="sidebar-link">单反和微单</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第三方npm包</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm"><a href="#npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm" class="header-anchor">#</a> npm、cnpm、nvm、nrm、yarn、tyarn、npx、pnpm</h1> <p>这么多工具还分不清楚，看这篇文章就够了。</p> <h2 id="npm-cnpm"><a href="#npm-cnpm" class="header-anchor">#</a> npm &amp;&amp; cnpm</h2> <p>下载完 node 就自动有了 npm，但是 npm 源访问可能比较慢，这就有了 cnpm</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> cnpm <span class="token parameter variable">--registry</span><span class="token operator">=</span>https://registry.npm.taobao.org
+</code></pre></div><p>这样就全局创建了命令 <code>cnpm</code>，使用淘宝镜像源，当然也可以直接这样使用：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> <span class="token function">install</span> xxx <span class="token parameter variable">--registry</span><span class="token operator">=</span>https://registry.npm.taobao.org
+</code></pre></div><h2 id="nrm"><a href="#nrm" class="header-anchor">#</a> nrm</h2> <p><strong>npm包有很多的镜像源，有的源有的时候访问失败，有的源可能没有最新的包,有的要使用公司内部的源，所以有时需要切换npm的源，nrm包就是解决快速切换问题的。</strong></p> <div class="language-sh extra-class"><pre class="language-sh"><code>nrm <span class="token function">ls</span> <span class="token comment"># 列出可选择的源</span>
+nrm use <span class="token operator">&lt;</span>registry<span class="token operator">&gt;</span> <span class="token comment"># 切换使用的源</span>
+nrm <span class="token function">add</span> <span class="token operator">&lt;</span>registry<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>url<span class="token operator">&gt;</span> <span class="token comment"># 添加一个源</span>
+nrm del <span class="token operator">&lt;</span>registry<span class="token operator">&gt;</span> <span class="token comment"># 删除一个源</span>
+nrm <span class="token builtin class-name">test</span> <span class="token function">npm</span> <span class="token comment"># 测试源速度</span>
+</code></pre></div><p>其实这种方式相当于</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> <span class="token function">install</span> xxx <span class="token parameter variable">--registry</span><span class="token operator">=</span><span class="token operator">&lt;</span>url<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="nvm"><a href="#nvm" class="header-anchor">#</a> nvm</h2> <p><a href="https://juejin.cn/post/6844904056024989710" target="_blank" rel="noopener noreferrer">nvm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是管理 node 版本的工具，类似的还有 <a href="https://www.jianshu.com/p/c641dcc47b48" target="_blank" rel="noopener noreferrer">n<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="yarn-tyarn"><a href="#yarn-tyarn" class="header-anchor">#</a> yarn &amp;&amp; tyarn</h2> <p>yarn 是 FaceBook 开源的一个新的包管理器， 和npm的作用是一样的。它和npm最大区别是，yarn是并行下载的，所以下载速度很快</p> <p>tyarn 即是对应的淘宝镜像源</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> i <span class="token function">yarn</span> tyarn <span class="token parameter variable">-g</span>
+</code></pre></div><h2 id="npx"><a href="#npx" class="header-anchor">#</a> npx</h2> <p>npx 会自动查找当前目录依赖包中的可执行文件，如果找不到，就会去 PATH 里找。如果依然找不到，就会帮你安装。</p> <div class="language-sh extra-class"><pre class="language-sh"><code>npx create-react-app my-app
+<span class="token comment"># 这条命令会临时安装 create-react-app 包，命令完成后会删掉。</span>
+</code></pre></div><ul><li>npx --no-install：不尝试下载，这时 npx 的作用就是首先会在当前目录寻找命令，不存在则去全局中去找。</li> <li>npx --ignore-existing：必须下载，无论本地是否存在都去下载。</li></ul> <h2 id="pnpm"><a href="#pnpm" class="header-anchor">#</a> pnpm</h2> <p>performant npm ，意味&quot;高性能的 npm&quot;。pnpm由npm/yarn衍生而来，解决了npm/yarn内部潜在的bug，极大的优化了性能，扩展了使用场景。被誉为“最先进的包管理工具”，pnpm比传统方案(yarn, npm)安装包的速度快了两倍：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> <span class="token function">pnpm</span>
+<span class="token function">pnpm</span> <span class="token function">add</span> package
+<span class="token function">pnpm</span> remove package
+</code></pre></div><blockquote><p>当使用npm或者yarn时，如果你有100个项目使用了某个依赖，就会有100份依赖的副本保存在磁盘上，对于pnpm，依赖项将存储在一个内容可寻址的仓库中。</p> <p>所有文件都会在存储在硬盘上的同一个位置，当多个包被安装时，所有文件都会从同一位置创建硬链接，不会占用额外的磁盘空间，允许跨项目共享同一版本依赖。</p></blockquote> <p><a href="https://zhuanlan.zhihu.com/p/419399115" target="_blank" rel="noopener noreferrer">为什么推荐使用pnpm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">7/7/2022, 6:20:47 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/tool/tool.html" class="prev">
+        常用工具和插件
+      </a></span> <span class="next"><a href="/myblog/tool/camera.html">
+        单反和微单
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.a487b0bd.js" defer></script><script src="/myblog/assets/js/2.2ba0dbd6.js" defer></script><script src="/myblog/assets/js/1.6a37df0b.js" defer></script><script src="/myblog/assets/js/156.205576d1.js" defer></script>
+  </body>
+</html>
