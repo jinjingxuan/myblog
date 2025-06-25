@@ -19,10 +19,20 @@ categories: 面试
 * webpack 热更新原理
 * js执行会阻塞DOM树的解析和渲染，那么css加载会阻塞DOM树的解析和渲染吗？css会阻塞js吗
 
-## Vue的组件传值的方式（8种）
+## Vue的组件传值的方式（12种）
 
-* [Vue组件通信的方式](https://www.jinjingxuan.com/2020/11/12/Vue-Vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F/)
-* [如何实现发布订阅模式](https://www.jinjingxuan.com/2020/11/12/Vue-Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/)
+props
+$emit
+.sync
+v-model
+ref
+$children / $parent
+$attrs / $listeners
+provide / inject
+EventBus
+Vuex
+$root
+slot
 
 ## props的写法
 

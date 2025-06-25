@@ -1,8 +1,3 @@
----
-title: 回溯算法
-date: 2020-11-30 16:00:54
-categories: 算法
----
 # 回溯算法
 * 全排列
 * 括号生成
@@ -613,5 +608,35 @@ var sumNumbers = function(root) {
     backTrack(root, root.val)
     return res
 };
+```
+
+## 变式
+
+根据已有数据，实现一个find函数查找当前与所有父级的id(路径查找)
+
+```js
+const data = [{id: 1, children: [{id: 2,children: [{id: 3},{id: 4}]}]}];
+const find = id => {}
+find(0) // []
+find(3) // [1, 2, 3]
+```
+
+其实可以把这个结构看成多叉树，也适用回溯
+
+```js
+const find = id => {
+    const map = {};
+    const backtrack = (path, arr) => {
+        map[path.id] = arr.slice().concat(path.id);
+        if (!path.children) return;
+        for (let i = 0; i < path.children.length; i++) {
+            arr.push(path.id);
+            backtrack(path.children[i], arr);
+            arr.pop();
+        }
+    }
+    backtrack(data[0], []);
+    return map[id] || [];
+}
 ```
 

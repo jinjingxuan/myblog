@@ -1,8 +1,3 @@
----
-title: Vue组件通信的方式
-date: 2020-11-12 10:27:54
-categories: Vue
----
 # Vue组件通信的方式
 * $root / $parent / $children
 * $refs

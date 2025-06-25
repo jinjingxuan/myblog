@@ -221,6 +221,10 @@ module.exports = [{
                         text: 'React 版本',
                         link: '/react/time'
                     },
+                    {
+                        text: 'React Diff',
+                        link: '/react/diff'
+                    },
                 ]
             },
             {

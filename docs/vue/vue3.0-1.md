@@ -415,25 +415,51 @@ console.log(a.value) // 0
 
 ### WatchEffect
 
-> `watchEffect`的用法与`watch`有所不同，`watchEffect`会传入一个函数，然后立即执行这个函数，对于函数里面的响应式依赖会进行监听，然后当依赖发生变化时，会重新调用传入的函数
+场景：自动记录操作日志
+假设你有一个按钮，每点一次计数器 count +1，同时你希望自动记录每次点击的时间，不需要手动写监听逻辑。
 
-```js
-import { ref, watchEffect } from 'vue'
+#### 🔧 代码示例
+
+```javascript
+import { ref, watchEffect } from 'vue';
+ 
 export default {
   setup() {
-    const id = ref('0')
-    
+    const count = ref(0);
+    const log = ref([]); // 用来存储操作日志
+ 
+    // 使用 watchEffect 自动追踪 count 的变化
     watchEffect(() => {
-      // 先输出 0 然后两秒后输出 1
-      console.log(id.value)
-    })
-
-    setTimeout(() => {
-      id.value = '1'
-    }, 2000)
+      log.value.push(`点击了 ${count.value} 次，时间：${new Date().toLocaleTimeString()}`);
+    });
+ 
+    const increment = () => {
+      count.value++;
+    };
+ 
+    return { count, increment, log };
   }
-}
+};
 ```
+#### 🤔 发生了什么？
+1. 自动追踪依赖：watchEffect 会自动检测回调函数中用到的响应式变量（这里是 count），当 count 变化时，自动重新执行回调。
+
+2. 立即执行一次：组件加载时，watchEffect 会立即执行一次回调，记录初始状态（此时 count 是 0）。
+
+3. 依赖变化时触发：每次点击按钮 count 增加，watchEffect 会自动触发，记录新的日志。
+
+#### 🌰 对比 watch 的区别
+如果用 watch 实现同样的功能，需要显式指定监听目标：
+
+```javascript
+watch(count, (newVal) => {
+  log.value.push(`点击了 ${newVal} 次，时间：${new Date().toLocaleTimeString()}`);
+});
+```
+#### 💡 核心总结
+* watchEffect 的作用：自动追踪回调函数中用到的响应式变量，当这些变量变化时，自动重新执行回调。
+* 适用场景：当你需要基于多个响应式变量的变化执行副作用操作（如日志、数据同步、异步请求等），且不想手动管理监听逻辑时。
+* 对比 watch：watch 需要明确指定监听的变量，而 watchEffect 会自动收集依赖，代码更简洁。
 
 ### 进阶
 
