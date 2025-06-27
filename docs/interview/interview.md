@@ -851,12 +851,6 @@
     * 如果每次 setData 的数据量过大，会非常损耗性能，最好是增量更新。uni-app、taro 都在调用setData之前自动做diff计算，每次仅传递变动的数据。
     * 而且基于微信自定义组件实现组件开发的框架（uni-app/taro），组件数据通讯性能接近于微信原生框架，远高于基于template实现组件开发的框架（wepy/mpvue）性能。
     * 跨端能力，uni-app 比较优秀，同时支持H5、多家小程序、跨平台App，但是一套代码横跨 iOS Android Web 和小程序比较复杂，可能会存在大量兼容性问题。
-
-  * 后台
-
-    * [动态路由，权限控制](https://jinjingxuan.github.io/2020/09/11/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1-history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F/)
-    * [什么是RABC](https://shuwoom.com/?p=3041)：Who是否可以对What进行How的访问操作，并对这个逻辑表达式进行判断是否为True的求解过程，也即是将权限问题转换为What、How的问题，Who、What、How构成了访问权限三元组。
-    * [视频模块功能介绍]()
   
 * [el-select的使用](https://element.eleme.io/#/zh-CN/component/select)，[vue自定义指令](https://cn.vuejs.org/v2/guide/custom-directive.html)
   
@@ -899,5 +893,26 @@
   * SanLoaderPlugin 在 webpack 正式构建之前修改原有的配置 rules。 
   * webpack 从入口文件出发, 遇到`.san`文件，第一次调用 san-loader 来处理 san 单文件, 这个过程会调用 san-sfc-compiler 的 parseSFC 方法来解析文件内容生成 import 语句，对于每一条 import 语句再遍历 rules 进行规则匹配。最后提取代码块交给对应 loader 处理
 
+## 权限管理
 
+### RABC 
+基于角色的访问控制（Role-Based Access Control，简称 RBAC），指的是通过用户的角色（Role）授权其相关权限，实现了灵活的访问控制，相比直接授予用户权限，要更加简单、高效、可扩展。
+* 用户（User）：系统实际使用者（如员工、管理员）
+* 角色（Role）：职级或职能的抽象集合（如「财务专员」「部门主管」）
+* 权限（Permission）：对系统资源的操作许可（如「查看报表」「导出数据」）
 
+### 前端权限控制流程
+1. 用户登录与权限初始化
+用户登录后，后端返回角色标识（如roles: ["finance_staff"]）和权限清单（如permissions: ["invoice:view", "budget:edit"]）前端将权限数据存入状态管理工具（如Vuex/Pinia），为后续控制提供依据
+2. 动态路由生成
+* 路由分级配置：
+  * 基础路由（公共页面：登录页、404）
+  * 动态路由（需权限控制：仪表盘、订单管理）
+  * 每个动态路由配置meta.permissions字段标记所需权限（如{ path: "/pay", meta: { permissions: ["payment:access"] } }）
+* 路由过滤逻辑：根据用户权限清单过滤动态路由，仅保留用户有权访问的路由配置，通过router.addRoute()动态挂载
+3. 前置守卫校验
+* 全局路由守卫：在vue-router的beforeEach钩子中，对每次路由跳转进行三重校验：
+  * 是否已登录（未登录跳转至登录页）
+  * 是否已获取权限（防止页面刷新后权限丢失）
+  * 目标路由是否在用户权限范围内（无权限跳转至403页）
+* 嵌套路由处理：对父级路由设置alwaysShow: true，确保即使子路由无权限，父级菜单仍可展示（但子菜单项置灰或隐藏）
