@@ -62,6 +62,9 @@ module.exports = {
         '/virtual-dom/virtualdom',
         '/virtual-dom/example',
     ],
+    '/webgl': [
+        '/webgl/canvas',
+    ],
     '/webpack': [{
             title: 'webpack基础',
             collapsable: true,

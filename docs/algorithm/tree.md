@@ -589,36 +589,30 @@ var isBalanced = function(root) {
 
 ```js
 var widthOfBinaryTree = function(root) {
-    if (!root) {
-        return 0;
-    }
-    // 防止计算溢出, 均用BigInt类型表示
-    let res = 0n;
+    if (!root) return [];
+    const stack = [root];
+    let res = 0n; // 防止计算溢出, 均用BigInt类型表示
     root.val = 0n;
-    const queue = [root];
-    while (queue.length) {
-        const len = queue.length;
-        let left = queue[0].val;
-        let right = 0n;
-        for (let i = 0; i < len; i++) {
-            const tmp = queue.shift();
-            if (i === len - 1) {
-                right = tmp.val;
-            }
-            if (tmp.left) {
-                queue.push(tmp.left);
-                tmp.left.val = 2n * tmp.val;
-            }
-            if (tmp.right) {
-                queue.push(tmp.right);
-                tmp.right.val = 2n * tmp.val + 1n;
-            }
-        }
+    while (stack.length) {
+        const len = stack.length;
+        const left = stack[0].val;
+        const right = stack[len - 1].val;
         if (right - left + 1n > res) {
             res = right - left + 1n;
         }
+        for (let i = 0; i < len; i++) {
+            const tmp = stack.shift();
+            if (tmp.left) {
+                stack.push(tmp.left)
+                tmp.left.val = 2n * tmp.val
+            }
+            if (tmp.right) {
+                stack.push(tmp.right)
+                tmp.right.val = 2n * tmp.val + 1n
+            }
+        }
     }
-    return res;
+    return Number(res);
 };
 ```
 

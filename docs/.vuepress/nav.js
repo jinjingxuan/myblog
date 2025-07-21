@@ -451,6 +451,14 @@ module.exports = [{
                     }
                 ]
             },
+            {
+                text: '渲染相关',
+                items: [{
+                        text: 'canvas 和 svg',
+                        link: '/webgl/canvas'
+                    }
+                ]
+            },
         ]
     },
     {
