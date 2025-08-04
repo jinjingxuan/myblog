@@ -18,7 +18,7 @@ categories: 面试
 * promise封装ajax
 * 发布订阅模式
 * Symbol.iterator
-* 数组扁平化带参数
+* 数组扁平化
 * 数组去重
 * 并发请求控制
 * 实现 map 和 reduce
@@ -507,9 +507,22 @@ for (let item of todos) {
 }
 ```
 
-## 数组扁平化带参数
+## 数组扁平化
 
 ```js
+// 不带参数
+function flattern(arr) {
+    let res = [];
+    for (const item of arr) {
+        if (Array.isArray(item)) {
+            res = res.concat(flattern(item));
+        } else {
+            res.push(item);
+        }
+    }
+    return res;
+}
+// 带参数
 function flattern(arr, depth) {
     let res = []
     for(let item of arr){

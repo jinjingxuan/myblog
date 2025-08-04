@@ -58,6 +58,9 @@ module.exports = {
         '/react/time',
         '/react/diff',
     ],
+    '/micro': [
+        '/micro/micro',
+    ],
     '/virtual-dom': [
         '/virtual-dom/virtualdom',
         '/virtual-dom/example',
@@ -213,6 +216,7 @@ module.exports = {
         '/tool/tool',
         '/tool/npm',
         '/tool/camera',
+        '/tool/performance',
         {
             title: '第三方npm包',
             collapsable: true,

@@ -372,7 +372,6 @@ var removeKdigits = function(num, k) {
 
 ```js
 var trap = function(height) {
-    if (!height || !height.length) return 0;
     const stack = [];
     let res = 0;
     for (let i = 0; i < height.length; i++) {

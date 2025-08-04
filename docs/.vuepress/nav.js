@@ -239,6 +239,15 @@ module.exports = [{
                         link: '/san/san-loader'
                     }
                 ]
+            },
+            {
+                text: '微前端',
+                items: [
+                    {
+                        text: '微前端',
+                        link: '/micro/micro'
+                    }
+                ]
             }
         ]
     },
@@ -474,6 +483,10 @@ module.exports = [{
             {
                 text: '相机基础',
                 link: '/tool/camera'
+            },
+            {
+                text: 'performance',
+                link: '/tool/performance'
             },
             {
                 text: '第三方包',

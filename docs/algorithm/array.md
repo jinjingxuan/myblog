@@ -1,8 +1,3 @@
----
-title: 数组操作
-date: 2020-11-16 16:00:54
-categories: 算法
----
 # 数组操作
 * 合并两个有序数组
 * 合并区间
@@ -21,6 +16,7 @@ categories: 算法
 * 寻找两个正序数组的中位数
 * 从两个数组中找出共有的元素
 * 二分查找（有重复元素）
+* 和为k的子数组
 
 ## 合并两个有序数组
 
@@ -596,6 +592,39 @@ function search(arr, target) {
         }
     }
     return res.length ? res : [-1]
+}
+```
+
+## 和为k的子数组
+
+* [leetcode560](https://leetcode.cn/problems/subarray-sum-equals-k/description/)
+* 前缀和 + 哈希表
+
+```js
+// k = 7
+// 数组：    3, 4, 2,  3,  2
+// 前缀和    3, 7, 9, 12, 14
+// map
+// key   0, 3, 7, 9, 12, 14
+// value 1, 1, 1, 1,  1,  1
+
+// 为什么有个初值{0, 1}，因为第一次要记录[3, 4]的结果，sum - key = 7 - 7 = 0,
+// 而表中是没有0对应的次数的，所以要设置一个初值，用于记录第一个值。
+// 第二次要记录 [2, 3, 2]的结果，sum - key = 14 - 7 = 7
+
+function subarraySum(nums, k) {
+  const map = new Map();
+  map.set(0, 1);
+  let count = 0;
+  let currentSum = 0;
+  for (const num of nums) {
+    currentSum += num;
+    if (map.get(currentSum - k)) {
+      count += map.get(currentSum - k);
+    }
+    map.set(currentSum, (map.get(currentSum) || 0) + 1);
+  }
+  return count;
 }
 ```
 

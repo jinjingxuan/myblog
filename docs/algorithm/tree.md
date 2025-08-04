@@ -264,6 +264,25 @@ var maxDepth = function(root) {
     else return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 }
 
+//递归2
+var maxDepth = function(root) {
+    if (!root) return 0;
+    let res = [];
+    const fn = (path, depth) => {
+        if (!path.left && !path.right) {
+            res.push(depth);
+        }
+        if (path.left) {
+            fn(path.left, depth + 1);
+        }
+        if (path.right) {
+            fn(path.right, depth + 1);
+        }
+    }
+    fn(root, 1);
+    return Math.max(...res);
+}
+
 // BFS
 var maxDepth = function(root) {
     if (!root) return 0;
@@ -304,20 +323,23 @@ var maxDepth = function(root) {
 
 ```js
 // 递归
-// 对比最大深度，需要考虑斜着下来的树，例如left为null时，左侧虽然深度为0，但没有叶子结点，所以需要去计算右侧的深度
 var minDepth = function(root) {
     if (!root) return 0;
-    else if (!root.left) return 1 + minDepth(root.right);
-    else if (!root.right) return 1 + minDepth(root.left);
-    else return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+    let res = [];
+    const fn = (path, depth) => {
+        if (!path.left && !path.right) {
+            res.push(depth);
+        }
+        if (path.left) {
+            fn(path.left, depth + 1);
+        }
+        if (path.right) {
+            fn(path.right, depth + 1);
+        }
+    }
+    fn(root, 1);
+    return Math.min(...res);
 }
-
-// 优化后
-var minDepth = function(root) {
-    if (!root) return 0;
-    else if (!root.left || !root.right) return minDepth(root.left) + minDepth(root.right) + 1;
-    else return 1 + Math.min(minDepth(root.left), minDepth(root.right));
-};
 
 // BFS
 var minDepth = function(root) {
@@ -335,6 +357,38 @@ var minDepth = function(root) {
         }
         depth++;
     }
+}
+```
+
+求数组的最大深度
+
+```js
+// 递归1
+const getMaxDepth = arr => {
+    if (!Array.isArray(arr)) return 0; // 非数组深度为 0
+
+    let maxDepth = 0;
+    for (const item of arr) {
+        maxDepth = Math.max(maxDepth, getMaxDepth(item));
+    }
+    return maxDepth + 1;
+}
+
+// 递归2
+const getMaxDepth = arr => {
+    const res = [];
+    const fn = (path, depth) => {
+        for (let i = 0; i < path.length; i++) {
+            if (Array.isArray(path[i])) {
+                fn(path[i], depth + 1);
+            }
+            else {
+                res.push(depth);
+            }
+        }
+    }
+    fn(arr, 1);
+    return Math.max(...res);
 }
 ```
 
