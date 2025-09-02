@@ -174,6 +174,26 @@ module.exports = [{
                         link: '/ts/decorator'
                     },
                 ]
+            },
+            {
+                text: 'Threejs',
+                items: [{
+                        text: 'three基础',
+                        link: '/three/three1'
+                    },
+                    {
+                        text: '乒乓球游戏',
+                        link: '/three/three2'
+                    },
+                    {
+                        text: 'react three',
+                        link: '/three/three3'
+                    },
+                    {
+                        text: '一些实践',
+                        link: '/three/three4'
+                    },
+                ]
             }
         ]
     },

@@ -90,6 +90,12 @@ module.exports = {
         '/ts/book',
         '/ts/decorator',
     ],
+    '/three': [
+        '/three/three1',
+        '/three/three2',
+        '/three/three3',
+        '/three/three4',
+    ],
     '/ssr': [
         '/ssr/ssr',
     ],
