@@ -249,7 +249,7 @@ const CosineValue = A.dot(B) / (A.length() * B.length())
 
 3D游戏或者3D电影中，比如[黑客帝国](https://www.zhihu.com/search?q=黑客帝国&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A"236284413"})中酷炫的旋转是怎么实现的？旋转的算法有很多，这里主要介绍其中一种：欧拉角。
 
-![img](./imgs/14.webp)
+![img](./imgs/14.png)
 
 欧拉角是飞控系统中用于描述飞行器姿态的方式，使用三个角度来表示，分别是`yaw`偏航角、`pitch`俯仰角、`roll` 滚转角。
 
