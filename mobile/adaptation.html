@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>移动端适配 | Breeze blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.65b23aee.css" as="style"><link rel="preload" href="/myblog/assets/js/app.9f4db6d8.js" as="script"><link rel="preload" href="/myblog/assets/js/2.08803d47.js" as="script"><link rel="preload" href="/myblog/assets/js/1.a370845a.js" as="script"><link rel="preload" href="/myblog/assets/js/132.b13e1261.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.564253ef.js"><link rel="prefetch" href="/myblog/assets/js/100.c35b9817.js"><link rel="prefetch" href="/myblog/assets/js/101.c6a8c814.js"><link rel="prefetch" href="/myblog/assets/js/102.88236ccf.js"><link rel="prefetch" href="/myblog/assets/js/103.67c936e1.js"><link rel="prefetch" href="/myblog/assets/js/104.8fc3204b.js"><link rel="prefetch" href="/myblog/assets/js/105.58194991.js"><link rel="prefetch" href="/myblog/assets/js/106.40f7a133.js"><link rel="prefetch" href="/myblog/assets/js/107.8e7a3cbd.js"><link rel="prefetch" href="/myblog/assets/js/108.85a56101.js"><link rel="prefetch" href="/myblog/assets/js/109.e8350503.js"><link rel="prefetch" href="/myblog/assets/js/11.141e02ca.js"><link rel="prefetch" href="/myblog/assets/js/110.c44ed8f7.js"><link rel="prefetch" href="/myblog/assets/js/111.1b5062ea.js"><link rel="prefetch" href="/myblog/assets/js/112.61191925.js"><link rel="prefetch" href="/myblog/assets/js/113.0a3dc942.js"><link rel="prefetch" href="/myblog/assets/js/114.bda2b561.js"><link rel="prefetch" href="/myblog/assets/js/115.adace76f.js"><link rel="prefetch" href="/myblog/assets/js/116.8b2a6290.js"><link rel="prefetch" href="/myblog/assets/js/117.c0e5e0cf.js"><link rel="prefetch" href="/myblog/assets/js/118.6b430d21.js"><link rel="prefetch" href="/myblog/assets/js/119.5eaa5de1.js"><link rel="prefetch" href="/myblog/assets/js/12.c43cf55f.js"><link rel="prefetch" href="/myblog/assets/js/120.17910a89.js"><link rel="prefetch" href="/myblog/assets/js/121.fb6ccf62.js"><link rel="prefetch" href="/myblog/assets/js/122.a57b91f6.js"><link rel="prefetch" href="/myblog/assets/js/123.37dd985e.js"><link rel="prefetch" href="/myblog/assets/js/124.0fddbe5d.js"><link rel="prefetch" href="/myblog/assets/js/125.65d7027f.js"><link rel="prefetch" href="/myblog/assets/js/126.c5a821cb.js"><link rel="prefetch" href="/myblog/assets/js/127.3b3ef1fc.js"><link rel="prefetch" href="/myblog/assets/js/128.d78bc2aa.js"><link rel="prefetch" href="/myblog/assets/js/129.51a1a88e.js"><link rel="prefetch" href="/myblog/assets/js/13.1dee1651.js"><link rel="prefetch" href="/myblog/assets/js/130.729b0572.js"><link rel="prefetch" href="/myblog/assets/js/131.ac6f9726.js"><link rel="prefetch" href="/myblog/assets/js/133.4759f2f2.js"><link rel="prefetch" href="/myblog/assets/js/134.4ca33894.js"><link rel="prefetch" href="/myblog/assets/js/135.eee995e6.js"><link rel="prefetch" href="/myblog/assets/js/136.0dec144e.js"><link rel="prefetch" href="/myblog/assets/js/137.4f794e1a.js"><link rel="prefetch" href="/myblog/assets/js/138.287f26dc.js"><link rel="prefetch" href="/myblog/assets/js/139.9f0c6e77.js"><link rel="prefetch" href="/myblog/assets/js/14.2970adac.js"><link rel="prefetch" href="/myblog/assets/js/140.1c5bf392.js"><link rel="prefetch" href="/myblog/assets/js/141.18013a51.js"><link rel="prefetch" href="/myblog/assets/js/142.ad961356.js"><link rel="prefetch" href="/myblog/assets/js/143.e6d314ef.js"><link rel="prefetch" href="/myblog/assets/js/144.2c0d38d4.js"><link rel="prefetch" href="/myblog/assets/js/145.ef4a83a0.js"><link rel="prefetch" href="/myblog/assets/js/146.629f8b70.js"><link rel="prefetch" href="/myblog/assets/js/147.b46d65fb.js"><link rel="prefetch" href="/myblog/assets/js/148.524bf7db.js"><link rel="prefetch" href="/myblog/assets/js/149.164af466.js"><link rel="prefetch" href="/myblog/assets/js/15.47e79098.js"><link rel="prefetch" href="/myblog/assets/js/150.cc678031.js"><link rel="prefetch" href="/myblog/assets/js/151.eb336eb5.js"><link rel="prefetch" href="/myblog/assets/js/152.f0bed21e.js"><link rel="prefetch" href="/myblog/assets/js/153.37c5472f.js"><link rel="prefetch" href="/myblog/assets/js/154.028e1db1.js"><link rel="prefetch" href="/myblog/assets/js/155.d5fd774f.js"><link rel="prefetch" href="/myblog/assets/js/156.d1d9a355.js"><link rel="prefetch" href="/myblog/assets/js/157.f9f4ede3.js"><link rel="prefetch" href="/myblog/assets/js/158.2a231f1b.js"><link rel="prefetch" href="/myblog/assets/js/159.0d569bfc.js"><link rel="prefetch" href="/myblog/assets/js/16.7f32b066.js"><link rel="prefetch" href="/myblog/assets/js/160.89d06450.js"><link rel="prefetch" href="/myblog/assets/js/161.1918e7a6.js"><link rel="prefetch" href="/myblog/assets/js/162.d272494d.js"><link rel="prefetch" href="/myblog/assets/js/163.4fe631fe.js"><link rel="prefetch" href="/myblog/assets/js/164.40a5d0a3.js"><link rel="prefetch" href="/myblog/assets/js/165.1a34a9e4.js"><link rel="prefetch" href="/myblog/assets/js/166.7c784998.js"><link rel="prefetch" href="/myblog/assets/js/167.8a3d563d.js"><link rel="prefetch" href="/myblog/assets/js/168.94bc381d.js"><link rel="prefetch" href="/myblog/assets/js/169.b9cc0fe2.js"><link rel="prefetch" href="/myblog/assets/js/17.39279ba9.js"><link rel="prefetch" href="/myblog/assets/js/170.b2cd295c.js"><link rel="prefetch" href="/myblog/assets/js/171.d59f35fa.js"><link rel="prefetch" href="/myblog/assets/js/172.5db5ca48.js"><link rel="prefetch" href="/myblog/assets/js/173.df8bb8d9.js"><link rel="prefetch" href="/myblog/assets/js/174.67bfb9a4.js"><link rel="prefetch" href="/myblog/assets/js/175.20444ba4.js"><link rel="prefetch" href="/myblog/assets/js/176.218dea39.js"><link rel="prefetch" href="/myblog/assets/js/177.1c8a3d47.js"><link rel="prefetch" href="/myblog/assets/js/178.4aa5e430.js"><link rel="prefetch" href="/myblog/assets/js/179.0d2c3f09.js"><link rel="prefetch" href="/myblog/assets/js/18.5420b8ce.js"><link rel="prefetch" href="/myblog/assets/js/180.cb18eea2.js"><link rel="prefetch" href="/myblog/assets/js/181.da6e1f74.js"><link rel="prefetch" href="/myblog/assets/js/182.140f2683.js"><link rel="prefetch" href="/myblog/assets/js/183.ed45cd62.js"><link rel="prefetch" href="/myblog/assets/js/184.2c972959.js"><link rel="prefetch" href="/myblog/assets/js/185.6f4edb76.js"><link rel="prefetch" href="/myblog/assets/js/186.0907fa31.js"><link rel="prefetch" href="/myblog/assets/js/19.c0bf9dd5.js"><link rel="prefetch" href="/myblog/assets/js/20.cdc096d5.js"><link rel="prefetch" href="/myblog/assets/js/21.c15da32c.js"><link rel="prefetch" href="/myblog/assets/js/22.2bbe2c16.js"><link rel="prefetch" href="/myblog/assets/js/23.eeb36d86.js"><link rel="prefetch" href="/myblog/assets/js/24.41feb9df.js"><link rel="prefetch" href="/myblog/assets/js/25.930d64a8.js"><link rel="prefetch" href="/myblog/assets/js/26.5307a77c.js"><link rel="prefetch" href="/myblog/assets/js/27.4a948b1f.js"><link rel="prefetch" href="/myblog/assets/js/28.bbc3bf81.js"><link rel="prefetch" href="/myblog/assets/js/29.b7a67a8a.js"><link rel="prefetch" href="/myblog/assets/js/3.dcb80023.js"><link rel="prefetch" href="/myblog/assets/js/30.330bc25e.js"><link rel="prefetch" href="/myblog/assets/js/31.25f35abb.js"><link rel="prefetch" href="/myblog/assets/js/32.a7c33843.js"><link rel="prefetch" href="/myblog/assets/js/33.d13de414.js"><link rel="prefetch" href="/myblog/assets/js/34.126d6be8.js"><link rel="prefetch" href="/myblog/assets/js/35.e963fb93.js"><link rel="prefetch" href="/myblog/assets/js/36.7cb8c866.js"><link rel="prefetch" href="/myblog/assets/js/37.b3474fca.js"><link rel="prefetch" href="/myblog/assets/js/38.eecfa05c.js"><link rel="prefetch" href="/myblog/assets/js/39.6a80f40a.js"><link rel="prefetch" href="/myblog/assets/js/4.90bd5023.js"><link rel="prefetch" href="/myblog/assets/js/40.b0beb471.js"><link rel="prefetch" href="/myblog/assets/js/41.530597a8.js"><link rel="prefetch" href="/myblog/assets/js/42.785f9606.js"><link rel="prefetch" href="/myblog/assets/js/43.e9c9f9f4.js"><link rel="prefetch" href="/myblog/assets/js/44.be01cfaa.js"><link rel="prefetch" href="/myblog/assets/js/45.a18f09d2.js"><link rel="prefetch" href="/myblog/assets/js/46.7458026c.js"><link rel="prefetch" href="/myblog/assets/js/47.95b924b1.js"><link rel="prefetch" href="/myblog/assets/js/48.0f18d045.js"><link rel="prefetch" href="/myblog/assets/js/49.c6955b79.js"><link rel="prefetch" href="/myblog/assets/js/5.aac70c1c.js"><link rel="prefetch" href="/myblog/assets/js/50.3353848b.js"><link rel="prefetch" href="/myblog/assets/js/51.afa43e50.js"><link rel="prefetch" href="/myblog/assets/js/52.7d2ab80d.js"><link rel="prefetch" href="/myblog/assets/js/53.4374eb9c.js"><link rel="prefetch" href="/myblog/assets/js/54.600b5fc3.js"><link rel="prefetch" href="/myblog/assets/js/55.8d7c9286.js"><link rel="prefetch" href="/myblog/assets/js/56.a2b7aaec.js"><link rel="prefetch" href="/myblog/assets/js/57.762096ae.js"><link rel="prefetch" href="/myblog/assets/js/58.617a72f5.js"><link rel="prefetch" href="/myblog/assets/js/59.945d9369.js"><link rel="prefetch" href="/myblog/assets/js/6.cb4a535e.js"><link rel="prefetch" href="/myblog/assets/js/60.c72295ad.js"><link rel="prefetch" href="/myblog/assets/js/61.973e7b17.js"><link rel="prefetch" href="/myblog/assets/js/62.319a300f.js"><link rel="prefetch" href="/myblog/assets/js/63.f08654c5.js"><link rel="prefetch" href="/myblog/assets/js/64.68d2cc61.js"><link rel="prefetch" href="/myblog/assets/js/65.b1b2a254.js"><link rel="prefetch" href="/myblog/assets/js/66.531fba3e.js"><link rel="prefetch" href="/myblog/assets/js/67.c3f68f3a.js"><link rel="prefetch" href="/myblog/assets/js/68.ffd2b4d9.js"><link rel="prefetch" href="/myblog/assets/js/69.12142fca.js"><link rel="prefetch" href="/myblog/assets/js/7.16f464c2.js"><link rel="prefetch" href="/myblog/assets/js/70.375b5e76.js"><link rel="prefetch" href="/myblog/assets/js/71.dd79fc2d.js"><link rel="prefetch" href="/myblog/assets/js/72.d6376070.js"><link rel="prefetch" href="/myblog/assets/js/73.d40bfbcf.js"><link rel="prefetch" href="/myblog/assets/js/74.ae8198d7.js"><link rel="prefetch" href="/myblog/assets/js/75.6c535169.js"><link rel="prefetch" href="/myblog/assets/js/76.4342f65a.js"><link rel="prefetch" href="/myblog/assets/js/77.d384c6ce.js"><link rel="prefetch" href="/myblog/assets/js/78.456c5622.js"><link rel="prefetch" href="/myblog/assets/js/79.f351ce94.js"><link rel="prefetch" href="/myblog/assets/js/80.d8f1fdfc.js"><link rel="prefetch" href="/myblog/assets/js/81.189da1dd.js"><link rel="prefetch" href="/myblog/assets/js/82.288dce1a.js"><link rel="prefetch" href="/myblog/assets/js/83.2b313f1f.js"><link rel="prefetch" href="/myblog/assets/js/84.c0f2d51f.js"><link rel="prefetch" href="/myblog/assets/js/85.f4395185.js"><link rel="prefetch" href="/myblog/assets/js/86.51058c54.js"><link rel="prefetch" href="/myblog/assets/js/87.de8e8b37.js"><link rel="prefetch" href="/myblog/assets/js/88.18284846.js"><link rel="prefetch" href="/myblog/assets/js/89.9e892ed0.js"><link rel="prefetch" href="/myblog/assets/js/90.98585e36.js"><link rel="prefetch" href="/myblog/assets/js/91.0e7d737f.js"><link rel="prefetch" href="/myblog/assets/js/92.ef614598.js"><link rel="prefetch" href="/myblog/assets/js/93.c06259bc.js"><link rel="prefetch" href="/myblog/assets/js/94.414ae13c.js"><link rel="prefetch" href="/myblog/assets/js/95.25b3964d.js"><link rel="prefetch" href="/myblog/assets/js/96.472fa650.js"><link rel="prefetch" href="/myblog/assets/js/97.6b5c5419.js"><link rel="prefetch" href="/myblog/assets/js/98.c5925425.js"><link rel="prefetch" href="/myblog/assets/js/99.b4635e29.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.9ef1a0ca.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.65b23aee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">Breeze blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myblog/mobile/cross.html" class="sidebar-link">跨平台与跨端技术简介</a></li><li><a href="/myblog/mobile/adaptation.html" aria-current="page" class="active sidebar-link">移动端适配</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#移动端适配" class="sidebar-link">移动端适配</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#逻辑像素与物理像素" class="sidebar-link">逻辑像素与物理像素</a></li><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#常见长度单位" class="sidebar-link">常见长度单位</a></li><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#移动端-1px" class="sidebar-link">移动端 1px</a></li><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#适配案例" class="sidebar-link">适配案例</a></li><li class="sidebar-sub-header"><a href="/myblog/mobile/adaptation.html#常见移动端适配方案" class="sidebar-link">常见移动端适配方案</a></li></ul></li></ul></li><li><a href="/myblog/mobile/h5.html" class="sidebar-link">移动端h5开发</a></li><li><a href="/myblog/mobile/long-list.html" class="sidebar-link">小程序长列表优化</a></li><li><a href="/myblog/mobile/galacean.html" class="sidebar-link">galacean</a></li><li><a href="/myblog/mobile/gc-3d.html" class="sidebar-link">galacean 3d</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="移动端适配"><a href="#移动端适配" class="header-anchor">#</a> 移动端适配</h2> <h3 id="逻辑像素与物理像素"><a href="#逻辑像素与物理像素" class="header-anchor">#</a> 逻辑像素与物理像素</h3> <ul><li><p>pt: html css中的使用的单位像素px: 实际上指的是逻辑像素pt</p></li> <li><p>px: photoshop测量中的但是实际上指的是物理像素, 物理像素即表示的是一个点, 大小固定</p></li> <li><p>一个pt可以包含多个物理像素px</p></li> <li><p>在iphone6中一个单位的逻辑像素包含2个物理像素，iphone的分辨率为<code>375*667</code>实际上指的是逻辑像素为<code>375*667</code>, 所以一般移动端的设计图纸一般是给的是<code>750*1334</code>,  是因为一个逻辑像素pt包含两个物理像素px</p></li> <li><p>不同设备下的分辨率不同, 在iphone6s中 一个逻辑像素pt包含三个物理像素px  即 1pt = 3px</p></li></ul> <h3 id="常见长度单位"><a href="#常见长度单位" class="header-anchor">#</a> 常见长度单位</h3> <h4 id="em"><a href="#em" class="header-anchor">#</a> em</h4> <p>em是相对长度单位。它的单位长度是根据元素的文本垂直长度来决定的。可以作用在width、height、line-height、margin、padding、border等样式的设置上。 如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。 默认1em=16px。如果在body选择器中声明font-size=62.5%,则1em=10px。</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+	<span class="token selector">.parent</span><span class="token punctuation">{</span> 
+			<span class="token property">font-size</span><span class="token punctuation">:</span>5em<span class="token punctuation">;</span> <span class="token comment">/*80px*/</span>
+			<span class="token property">height</span><span class="token punctuation">:</span>10em<span class="token punctuation">;</span><span class="token comment">/*800px*/</span>
+	<span class="token punctuation">}</span>
+  <span class="token selector">.child</span><span class="token punctuation">{</span>
+			<span class="token property">font-size</span><span class="token punctuation">:</span>2em<span class="token punctuation">;</span><span class="token comment">/*160px*/</span>
+			<span class="token property">height</span><span class="token punctuation">:</span>2em<span class="token punctuation">;</span><span class="token comment">/*320px*/</span>
+	<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>parent<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>child<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>在不设置元素font-size的情况下，em总是根据父元素的font-size来确定长度；即使元素设置了font-size，多次嵌套使用em也往往会造成疏忽，不仅使用前需要大量计算，而且不能保证没有漏网之鱼。这将是一个繁杂而低效率的工作。 于是有了rem.</p> <h4 id="rem"><a href="#rem" class="header-anchor">#</a> rem</h4> <p>rem不是依据父元素——而是依据根元素（root element）来确定其长度。</p> <p>我们一般给根元素设置一个容易计算的font-size</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+    <span class="token selector">html</span> <span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> 62.5%<span class="token punctuation">;</span>   <span class="token comment">/* 10px */</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">div</span> <span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> 2.4rem<span class="token punctuation">;</span>  <span class="token comment">/* 24px */</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> 64rem<span class="token punctuation">;</span>   <span class="token comment">/* 640px */</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> 0.1rem solid #ccc<span class="token punctuation">;</span>  <span class="token comment">/* 1px */</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>div1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>div2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="rpx"><a href="#rpx" class="header-anchor">#</a> rpx</h4> <table><thead><tr><th style="text-align:left;">设备</th> <th style="text-align:left;">rpx换算px (屏幕宽度/750)</th> <th style="text-align:left;">px换算rpx (750/屏幕宽度)</th></tr></thead> <tbody><tr><td style="text-align:left;">iPhone5</td> <td style="text-align:left;">1rpx = 0.42px</td> <td style="text-align:left;">1px = 2.34rpx</td></tr> <tr><td style="text-align:left;">iPhone6</td> <td style="text-align:left;">1rpx = 0.5px</td> <td style="text-align:left;">1px = 2rpx</td></tr> <tr><td style="text-align:left;">iPhone6 Plus</td> <td style="text-align:left;">1rpx = 0.552px</td> <td style="text-align:left;">1px = 1.81rpx</td></tr></tbody></table> <ul><li>rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</li> <li>建议小程序的设计稿以750 x 1334 的物理分辨率进行设计</li></ul> <h4 id="vw-vh"><a href="#vw-vh" class="header-anchor">#</a> vw,vh</h4> <ul><li>vw和vh是css3中的新单位，是一种视窗单位，在小程序中也同样适用。</li> <li>小程序中，窗口宽度固定为100vw，将窗口宽度平均分成100份，1份是1vw</li> <li>小程序中，窗口高度固定为100vh ，将窗口高度平均分成100份，1份是1vh</li> <li>所以，我们在小程序中也可以使用vw、vh作为尺寸单位使用在布局中进行布局，但是一般情况下，百分比+rpx就已经足够使用了,所以它们的出场机会很少。</li></ul> <h3 id="移动端-1px"><a href="#移动端-1px" class="header-anchor">#</a> 移动端 1px</h3> <h4 id="原因"><a href="#原因" class="header-anchor">#</a> 原因</h4> <ul><li>DPR(devicePixelRatio) 设备像素比 = 物理像素 / css像素 ，它是默认缩放为100%的屏幕下，设备像素和css像素的比值。</li> <li>目前比较主流的设备的DPR=2或3，所以： 当我们的DPR为2，也就是2倍屏时，当物理像素（设备像素）为1px的时候，我们的css像素应该是0.5px。当DPR=3，物理像素为1px时，css像素应该为1/3px。</li></ul> <h4 id="解决方案"><a href="#解决方案" class="header-anchor">#</a> 解决方案</h4> <h5 id="scale"><a href="#scale" class="header-anchor">#</a> scale</h5> <p>如果在一个元素上使用<code>scale</code>时会导致整个元素同时缩放，所以应该在该元素的伪元素下设置<code>scale</code>属性。</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">// 通过伪元素实现 0.5px border
+.border::after</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> // 为了与原元素等大
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span> 
+    <span class="token property">height</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span> 
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid gray<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> 0 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">// 通过伪元素实现 0.5px 细线
+.line::after</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #b3b4b8<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> 0 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p><strong>为什么要先放大 200% 再缩小 0.5？</strong></p> <p>为了只缩放 <code>border</code> 1px 的粗细，而保证 <code>border</code> 的大小不变。如果直接 <code>scale(0.5)</code> 的话 <code>border</code> 整体大小也会变成二分之一，所以先放大 200%（放大的时候 <code>border</code> 的粗细是不会被放大的）再缩放，就能保持原大小不变了。</p></blockquote> <h5 id="linear-gradient"><a href="#linear-gradient" class="header-anchor">#</a> linear-gradient</h5> <p>通过线性渐变，也可以实现移动端1px的线。原理大致是使用渐变色，上部分为白色，下部分为黑色。这样就可以将线从视觉上看只有1px。</p> <p>由于是通过背景颜色渐变实现的，所以这里要使用伪元素并且设置伪元素的高度。 当然，也可以不使用伪元素，但是就会增加一个没有任何意义的空标签了。</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">div.linear::after</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> #fff<span class="token punctuation">,</span> #000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="box-shadow"><a href="#box-shadow" class="header-anchor">#</a> box-shadow</h5> <p>通过<code>box-shaodow</code>来实现1px也可以，实现原理是将纵坐标的shadow设置为0.5px即可。<code>box-shadow</code>属性在Chrome和Firefox下支持小数设置，但是在Safari下不支持。所以使用该方法设置移动端1px时应该慎重使用。</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">div.shadow</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0.5px 0 0 #000<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="适配案例"><a href="#适配案例" class="header-anchor">#</a> 适配案例</h3> <p><strong>设计给出750px的设计稿，也按照750px来开发h5页面，怎么在小程序的 webview 页面中适配？</strong></p> <ul><li>transform: scale</li> <li>hack 为占满全屏的透明盒子，因为小程序存在顶部栏，所以不能用 screenHeight</li> <li>toFixed 是为了取整，防止小数出现 bug</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">autoAdapt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> screenWidth <span class="token operator">=</span> hack<span class="token punctuation">.</span>offsetWidth
+  <span class="token keyword">var</span> screenHeight <span class="token operator">=</span> hack<span class="token punctuation">.</span>offsetHeight
+  <span class="token keyword">var</span> scale <span class="token operator">=</span> <span class="token punctuation">(</span>screenWidth <span class="token operator">/</span> <span class="token number">750</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>scale <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span>screenWidth <span class="token operator">/</span> scale<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px</span><span class="token template-punctuation string">`</span></span>
+    main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span>screenHeight <span class="token operator">/</span> scale<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">px</span><span class="token template-punctuation string">`</span></span>
+    main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>overflow <span class="token operator">=</span> <span class="token string">'auto'</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">scale(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>scale<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transformOrigin <span class="token operator">=</span> <span class="token string">'0% 0%'</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>overflow <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">hidden</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">scale(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>scale<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
+    main<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transformOrigin <span class="token operator">=</span> <span class="token string">'50% 0%'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">autoAdapt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+window<span class="token punctuation">.</span><span class="token function-variable function">onresize</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">autoAdapt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="常见移动端适配方案"><a href="#常见移动端适配方案" class="header-anchor">#</a> 常见移动端适配方案</h3> <ul><li>media queries</li> <li>flex 布局</li> <li>rem + viewport</li> <li>vh vw</li> <li>百分比</li></ul> <h5 id="一、meida-queries"><a href="#一、meida-queries" class="header-anchor">#</a> 一、Meida Queries</h5> <p>meida queries 的方式可以说是我早期采用的布局方式，它主要是通过查询设备的宽度来执行不同的 css 代码，最终达到界面的配置。</p> <p><strong>核心语法:</strong></p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 374px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* iphone5 或者更小的尺寸，以 iphone5 的宽度（320px）比例设置样式*/</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 375px<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 413px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* iphone6/7/8 和 iphone x */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 414px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* iphone6p 或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置样式 */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>优点：</strong></p> <ul><li>media query 可以做到设备像素比的判断，方法简单，成本低，特别是针对移动端和 PC 端维护同一套代码的时候。目前像 Bootstrap 等框架使用这种方式布局</li> <li>图片便于修改，只需修改 css 文件</li> <li>调整屏幕宽度的时候不用刷新页面即可响应式展示</li></ul> <p><strong>缺点：</strong></p> <ul><li>代码量比较大，维护不方便</li> <li>为了兼顾大屏幕或高清设备，会造成其他设备资源浪费，特别是加载图片资源</li> <li>为了兼顾移动端和 PC 端各自响应式的展示效果，难免会损失各自特有的交互方式</li></ul> <h5 id="二、flex-弹性布局"><a href="#二、flex-弹性布局" class="header-anchor">#</a> 二、Flex 弹性布局</h5> <p>以天猫的实现方式进行说明：</p> <p>它的 viewport 是固定的：<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no&quot;&gt;</code></p> <p>高度定死，宽度自适应，元素都采用 px 做单位。</p> <p>随着屏幕宽度变化，页面也会跟着变化，效果就和 PC 页面的流体布局差不多，在哪个宽度需要调整的时候使用响应式布局调调就行（比如网易新闻），这样就实现了『适配』。</p> <h5 id="三、rem-viewport-缩放"><a href="#三、rem-viewport-缩放" class="header-anchor">#</a> 三、rem+viewport 缩放</h5> <p><strong>实现原理：</strong></p> <p>根据 rem 将页面放大 dpr 倍, 然后 viewport 设置为 1/dpr.</p> <ul><li>如 iphone6 plus 的 dpr 为 3, 则页面整体放大 3 倍, 1px(css 单位)在 plus 下默认为 3px(物理像素)</li> <li>然后 viewport 设置为 1/3, 这样页面整体缩回原始大小. 从而实现高清。</li></ul> <p>这样整个网页在设备内显示时的页面宽度就会等于设备逻辑像素大小，也就是 device-width。这个 device-width 的计算公式为：</p> <p><code>设备的物理分辨率/(devicePixelRatio * scale)</code>，在 scale 为 1 的情况下，<code>device-width = 设备的物理分辨率/devicePixelRatio</code>。</p> <h5 id="四、rem-实现"><a href="#四、rem-实现" class="header-anchor">#</a> 四、rem 实现</h5> <p><code>rem</code>是相对长度单位，<code>rem</code>方案中的样式设计为相对于根元素<code>font-size</code>计算值的倍数。根据屏幕宽度设置<code>html</code>标签的<code>font-size</code>，在布局时使用 <strong>rem</strong> 单位布局，达到自适应的目的。</p> <p>viewport 是固定的：<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no&quot;&gt;</code>。</p> <p>通过以下代码来控制 rem 基准值(设计稿以 720px 宽度量取实际尺寸)</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">d</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> c <span class="token operator">=</span> d<span class="token punctuation">.</span>document<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> c<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> b <span class="token operator">=</span> d<span class="token punctuation">.</span>devicePixelRatio<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> f<span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">e</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> h <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>width<span class="token punctuation">,</span>
+      g<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      h <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>h <span class="token operator">&gt;</span> <span class="token number">720</span><span class="token punctuation">)</span> h <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span> <span class="token comment">//设置基准值的极限值</span>
+    g <span class="token operator">=</span> h <span class="token operator">/</span> <span class="token number">7.2</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> g <span class="token operator">+</span> <span class="token string">&quot;px&quot;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">&gt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  a<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;data-dpr&quot;</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  d<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>
+    <span class="token string">&quot;resize&quot;</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">clearTimeout</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      f <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token boolean">false</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">e</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>css 通过 sass 预编译，设置量取的 px 值转化 rem 的变量<code>$px: (1/100)+rem;</code></p> <p>优点：</p> <ul><li>兼容性好，页面不会因为伸缩发生变形，自适应效果更佳。</li></ul> <p>缺点：</p> <ul><li>不是纯 css 移动适配方案，需要在头部内嵌一段 <code>js</code>脚本监听分辨率的变化来动态改变根元素的字体大小，<code>css</code>样式和 <code>js</code> 代码有一定耦合性，并且必须将改变<code>font-size</code>的代码放在 <code>css</code> 样式之前。</li> <li>小数像素问题，浏览器渲染最小的单位是像素，元素根据屏幕宽度自适应，通过 <code>rem</code> 计算后可能会出现小数像素，浏览器会对这部分小数四舍五入，按照整数渲染，有可能没那么准确。</li></ul> <h5 id="五、纯-vw-方案"><a href="#五、纯-vw-方案" class="header-anchor">#</a> 五、纯 vw 方案</h5> <p>视口是浏览器中用于呈现网页的区域。</p> <ul><li><strong>vw</strong> : <strong>1vw</strong> 等于 <strong>视口宽度</strong> 的 <strong>1%</strong></li> <li><strong>vh</strong> : <strong>1vh</strong>  等于 <strong>视口高度</strong> 的 **1% **</li> <li><strong>vmin</strong> : 选取 <strong>vw</strong> 和 <strong>vh</strong> 中 <strong>最小</strong> 的那个</li> <li><strong>vmax</strong> : 选取 <strong>vw</strong> 和 <strong>vh</strong> 中 <strong>最大</strong> 的那个</li></ul> <p>虽然 vw 能更优雅的适配，但是还是有点小问题，就是宽，高没法限制。</p> <div class="language-js extra-class"><pre class="language-js"><code>$base_vw <span class="token operator">=</span> <span class="token number">375</span><span class="token punctuation">;</span>
+@<span class="token keyword">function</span> <span class="token function">vw</span> <span class="token punctuation">(</span><span class="token parameter">$px</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>$px<span class="token operator">/</span>$base_vw<span class="token punctuation">)</span> <span class="token operator">*</span> 100vw
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>优点：</p> <ul><li>纯 <code>css</code> 移动端适配方案，不存在脚本依赖问题。</li> <li>相对于 <code>rem</code> 以根元素字体大小的倍数定义元素大小，逻辑清晰简单。</li></ul> <p>缺点：</p> <ul><li>存在一些兼容性问题，有些浏览器不支持</li></ul> <h5 id="六、vw-rem-方案"><a href="#六、vw-rem-方案" class="header-anchor">#</a> 六、vw + rem 方案</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// scss 语法</span>
+<span class="token comment">// 设置html根元素的大小 750px-&gt;75 640px-&gt;64</span>
+<span class="token comment">// 将屏幕分成10份，每份作为根元素的大小。</span>
+<span class="token literal-property property">$vw_fontsize</span><span class="token operator">:</span> <span class="token number">75</span>
+@<span class="token keyword">function</span> <span class="token function">rem</span><span class="token punctuation">(</span><span class="token parameter">$px</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 例如：一个div的宽度为100px，那么它对应的rem单位就是（100/根元素的大小）* 1rem</span>
+    @<span class="token keyword">return</span> <span class="token punctuation">(</span>$px <span class="token operator">/</span> $vw_fontsize<span class="token punctuation">)</span> <span class="token operator">*</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token literal-property property">$base_design</span><span class="token operator">:</span> <span class="token number">750</span>
+html <span class="token punctuation">{</span>
+    <span class="token comment">// rem与vw相关联</span>
+    font<span class="token operator">-</span>size<span class="token operator">:</span> <span class="token punctuation">(</span>$vw_fontsize <span class="token operator">/</span> <span class="token punctuation">(</span>$base_design <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> 100vw<span class="token punctuation">;</span>
+    <span class="token comment">// 同时，通过Media Queries 限制根元素最大最小值</span>
+    @media screen <span class="token function">and</span> <span class="token punctuation">(</span><span class="token parameter">max<span class="token operator">-</span>width<span class="token operator">:</span> 320px</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        font<span class="token operator">-</span>size<span class="token operator">:</span> 64px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    @media screen <span class="token function">and</span> <span class="token punctuation">(</span><span class="token parameter">min<span class="token operator">-</span>width<span class="token operator">:</span> 540px</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        font<span class="token operator">-</span>size<span class="token operator">:</span> 108px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小</span>
+body <span class="token punctuation">{</span>
+    max<span class="token operator">-</span>width<span class="token operator">:</span> 540px<span class="token punctuation">;</span>
+    min<span class="token operator">-</span>width<span class="token operator">:</span> 320px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h5 id="七、百分比"><a href="#七、百分比" class="header-anchor">#</a> 七、百分比</h5> <p>使用百分比%定义宽度，高度用<code>px</code>固定，根据可视区域实时尺寸进行调整，尽可能适应各种分辨率，通常使用<code>max-width</code>/<code>min-width</code>控制尺寸范围过大或者过小。</p> <p>优点：</p> <ul><li>原理简单，不存在兼容性问题</li></ul> <p>缺点：</p> <ul><li>如果屏幕尺度跨度太大，相对设计稿过大或者过小的屏幕不能正常显示，在大屏手机或横竖屏切换场景下可能会导致页面元素被拉伸变形，字体大小无法随屏幕大小发生变化。</li> <li>设置盒模型的不同属性时，其百分比设置的参考元素不唯一，容易使布局问题变得复杂。</li></ul> <blockquote><p>作者：前端先锋
+链接：https://juejin.cn/post/6899291168891207688
+来源：掘金</p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">11/2/2023, 2:16:23 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/mobile/cross.html" class="prev">
+        跨平台与跨端技术简介
+      </a></span> <span class="next"><a href="/myblog/mobile/h5.html">
+        移动端h5开发
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.9f4db6d8.js" defer></script><script src="/myblog/assets/js/2.08803d47.js" defer></script><script src="/myblog/assets/js/1.a370845a.js" defer></script><script src="/myblog/assets/js/132.b13e1261.js" defer></script>
+  </body>
+</html>

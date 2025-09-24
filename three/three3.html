@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>react three fiber | Breeze blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.65b23aee.css" as="style"><link rel="preload" href="/myblog/assets/js/app.9f4db6d8.js" as="script"><link rel="preload" href="/myblog/assets/js/2.08803d47.js" as="script"><link rel="preload" href="/myblog/assets/js/1.a370845a.js" as="script"><link rel="preload" href="/myblog/assets/js/15.47e79098.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.564253ef.js"><link rel="prefetch" href="/myblog/assets/js/100.c35b9817.js"><link rel="prefetch" href="/myblog/assets/js/101.c6a8c814.js"><link rel="prefetch" href="/myblog/assets/js/102.88236ccf.js"><link rel="prefetch" href="/myblog/assets/js/103.67c936e1.js"><link rel="prefetch" href="/myblog/assets/js/104.8fc3204b.js"><link rel="prefetch" href="/myblog/assets/js/105.58194991.js"><link rel="prefetch" href="/myblog/assets/js/106.40f7a133.js"><link rel="prefetch" href="/myblog/assets/js/107.8e7a3cbd.js"><link rel="prefetch" href="/myblog/assets/js/108.85a56101.js"><link rel="prefetch" href="/myblog/assets/js/109.e8350503.js"><link rel="prefetch" href="/myblog/assets/js/11.141e02ca.js"><link rel="prefetch" href="/myblog/assets/js/110.c44ed8f7.js"><link rel="prefetch" href="/myblog/assets/js/111.1b5062ea.js"><link rel="prefetch" href="/myblog/assets/js/112.61191925.js"><link rel="prefetch" href="/myblog/assets/js/113.0a3dc942.js"><link rel="prefetch" href="/myblog/assets/js/114.bda2b561.js"><link rel="prefetch" href="/myblog/assets/js/115.adace76f.js"><link rel="prefetch" href="/myblog/assets/js/116.8b2a6290.js"><link rel="prefetch" href="/myblog/assets/js/117.c0e5e0cf.js"><link rel="prefetch" href="/myblog/assets/js/118.6b430d21.js"><link rel="prefetch" href="/myblog/assets/js/119.5eaa5de1.js"><link rel="prefetch" href="/myblog/assets/js/12.c43cf55f.js"><link rel="prefetch" href="/myblog/assets/js/120.17910a89.js"><link rel="prefetch" href="/myblog/assets/js/121.fb6ccf62.js"><link rel="prefetch" href="/myblog/assets/js/122.a57b91f6.js"><link rel="prefetch" href="/myblog/assets/js/123.37dd985e.js"><link rel="prefetch" href="/myblog/assets/js/124.0fddbe5d.js"><link rel="prefetch" href="/myblog/assets/js/125.65d7027f.js"><link rel="prefetch" href="/myblog/assets/js/126.c5a821cb.js"><link rel="prefetch" href="/myblog/assets/js/127.3b3ef1fc.js"><link rel="prefetch" href="/myblog/assets/js/128.d78bc2aa.js"><link rel="prefetch" href="/myblog/assets/js/129.51a1a88e.js"><link rel="prefetch" href="/myblog/assets/js/13.1dee1651.js"><link rel="prefetch" href="/myblog/assets/js/130.729b0572.js"><link rel="prefetch" href="/myblog/assets/js/131.ac6f9726.js"><link rel="prefetch" href="/myblog/assets/js/132.b13e1261.js"><link rel="prefetch" href="/myblog/assets/js/133.4759f2f2.js"><link rel="prefetch" href="/myblog/assets/js/134.4ca33894.js"><link rel="prefetch" href="/myblog/assets/js/135.eee995e6.js"><link rel="prefetch" href="/myblog/assets/js/136.0dec144e.js"><link rel="prefetch" href="/myblog/assets/js/137.4f794e1a.js"><link rel="prefetch" href="/myblog/assets/js/138.287f26dc.js"><link rel="prefetch" href="/myblog/assets/js/139.9f0c6e77.js"><link rel="prefetch" href="/myblog/assets/js/14.2970adac.js"><link rel="prefetch" href="/myblog/assets/js/140.1c5bf392.js"><link rel="prefetch" href="/myblog/assets/js/141.18013a51.js"><link rel="prefetch" href="/myblog/assets/js/142.ad961356.js"><link rel="prefetch" href="/myblog/assets/js/143.e6d314ef.js"><link rel="prefetch" href="/myblog/assets/js/144.2c0d38d4.js"><link rel="prefetch" href="/myblog/assets/js/145.ef4a83a0.js"><link rel="prefetch" href="/myblog/assets/js/146.629f8b70.js"><link rel="prefetch" href="/myblog/assets/js/147.b46d65fb.js"><link rel="prefetch" href="/myblog/assets/js/148.524bf7db.js"><link rel="prefetch" href="/myblog/assets/js/149.164af466.js"><link rel="prefetch" href="/myblog/assets/js/150.cc678031.js"><link rel="prefetch" href="/myblog/assets/js/151.eb336eb5.js"><link rel="prefetch" href="/myblog/assets/js/152.f0bed21e.js"><link rel="prefetch" href="/myblog/assets/js/153.37c5472f.js"><link rel="prefetch" href="/myblog/assets/js/154.028e1db1.js"><link rel="prefetch" href="/myblog/assets/js/155.d5fd774f.js"><link rel="prefetch" href="/myblog/assets/js/156.d1d9a355.js"><link rel="prefetch" href="/myblog/assets/js/157.f9f4ede3.js"><link rel="prefetch" href="/myblog/assets/js/158.2a231f1b.js"><link rel="prefetch" href="/myblog/assets/js/159.0d569bfc.js"><link rel="prefetch" href="/myblog/assets/js/16.7f32b066.js"><link rel="prefetch" href="/myblog/assets/js/160.89d06450.js"><link rel="prefetch" href="/myblog/assets/js/161.1918e7a6.js"><link rel="prefetch" href="/myblog/assets/js/162.d272494d.js"><link rel="prefetch" href="/myblog/assets/js/163.4fe631fe.js"><link rel="prefetch" href="/myblog/assets/js/164.40a5d0a3.js"><link rel="prefetch" href="/myblog/assets/js/165.1a34a9e4.js"><link rel="prefetch" href="/myblog/assets/js/166.7c784998.js"><link rel="prefetch" href="/myblog/assets/js/167.8a3d563d.js"><link rel="prefetch" href="/myblog/assets/js/168.94bc381d.js"><link rel="prefetch" href="/myblog/assets/js/169.b9cc0fe2.js"><link rel="prefetch" href="/myblog/assets/js/17.39279ba9.js"><link rel="prefetch" href="/myblog/assets/js/170.b2cd295c.js"><link rel="prefetch" href="/myblog/assets/js/171.d59f35fa.js"><link rel="prefetch" href="/myblog/assets/js/172.5db5ca48.js"><link rel="prefetch" href="/myblog/assets/js/173.df8bb8d9.js"><link rel="prefetch" href="/myblog/assets/js/174.67bfb9a4.js"><link rel="prefetch" href="/myblog/assets/js/175.20444ba4.js"><link rel="prefetch" href="/myblog/assets/js/176.218dea39.js"><link rel="prefetch" href="/myblog/assets/js/177.1c8a3d47.js"><link rel="prefetch" href="/myblog/assets/js/178.4aa5e430.js"><link rel="prefetch" href="/myblog/assets/js/179.0d2c3f09.js"><link rel="prefetch" href="/myblog/assets/js/18.5420b8ce.js"><link rel="prefetch" href="/myblog/assets/js/180.cb18eea2.js"><link rel="prefetch" href="/myblog/assets/js/181.da6e1f74.js"><link rel="prefetch" href="/myblog/assets/js/182.140f2683.js"><link rel="prefetch" href="/myblog/assets/js/183.ed45cd62.js"><link rel="prefetch" href="/myblog/assets/js/184.2c972959.js"><link rel="prefetch" href="/myblog/assets/js/185.6f4edb76.js"><link rel="prefetch" href="/myblog/assets/js/186.0907fa31.js"><link rel="prefetch" href="/myblog/assets/js/19.c0bf9dd5.js"><link rel="prefetch" href="/myblog/assets/js/20.cdc096d5.js"><link rel="prefetch" href="/myblog/assets/js/21.c15da32c.js"><link rel="prefetch" href="/myblog/assets/js/22.2bbe2c16.js"><link rel="prefetch" href="/myblog/assets/js/23.eeb36d86.js"><link rel="prefetch" href="/myblog/assets/js/24.41feb9df.js"><link rel="prefetch" href="/myblog/assets/js/25.930d64a8.js"><link rel="prefetch" href="/myblog/assets/js/26.5307a77c.js"><link rel="prefetch" href="/myblog/assets/js/27.4a948b1f.js"><link rel="prefetch" href="/myblog/assets/js/28.bbc3bf81.js"><link rel="prefetch" href="/myblog/assets/js/29.b7a67a8a.js"><link rel="prefetch" href="/myblog/assets/js/3.dcb80023.js"><link rel="prefetch" href="/myblog/assets/js/30.330bc25e.js"><link rel="prefetch" href="/myblog/assets/js/31.25f35abb.js"><link rel="prefetch" href="/myblog/assets/js/32.a7c33843.js"><link rel="prefetch" href="/myblog/assets/js/33.d13de414.js"><link rel="prefetch" href="/myblog/assets/js/34.126d6be8.js"><link rel="prefetch" href="/myblog/assets/js/35.e963fb93.js"><link rel="prefetch" href="/myblog/assets/js/36.7cb8c866.js"><link rel="prefetch" href="/myblog/assets/js/37.b3474fca.js"><link rel="prefetch" href="/myblog/assets/js/38.eecfa05c.js"><link rel="prefetch" href="/myblog/assets/js/39.6a80f40a.js"><link rel="prefetch" href="/myblog/assets/js/4.90bd5023.js"><link rel="prefetch" href="/myblog/assets/js/40.b0beb471.js"><link rel="prefetch" href="/myblog/assets/js/41.530597a8.js"><link rel="prefetch" href="/myblog/assets/js/42.785f9606.js"><link rel="prefetch" href="/myblog/assets/js/43.e9c9f9f4.js"><link rel="prefetch" href="/myblog/assets/js/44.be01cfaa.js"><link rel="prefetch" href="/myblog/assets/js/45.a18f09d2.js"><link rel="prefetch" href="/myblog/assets/js/46.7458026c.js"><link rel="prefetch" href="/myblog/assets/js/47.95b924b1.js"><link rel="prefetch" href="/myblog/assets/js/48.0f18d045.js"><link rel="prefetch" href="/myblog/assets/js/49.c6955b79.js"><link rel="prefetch" href="/myblog/assets/js/5.aac70c1c.js"><link rel="prefetch" href="/myblog/assets/js/50.3353848b.js"><link rel="prefetch" href="/myblog/assets/js/51.afa43e50.js"><link rel="prefetch" href="/myblog/assets/js/52.7d2ab80d.js"><link rel="prefetch" href="/myblog/assets/js/53.4374eb9c.js"><link rel="prefetch" href="/myblog/assets/js/54.600b5fc3.js"><link rel="prefetch" href="/myblog/assets/js/55.8d7c9286.js"><link rel="prefetch" href="/myblog/assets/js/56.a2b7aaec.js"><link rel="prefetch" href="/myblog/assets/js/57.762096ae.js"><link rel="prefetch" href="/myblog/assets/js/58.617a72f5.js"><link rel="prefetch" href="/myblog/assets/js/59.945d9369.js"><link rel="prefetch" href="/myblog/assets/js/6.cb4a535e.js"><link rel="prefetch" href="/myblog/assets/js/60.c72295ad.js"><link rel="prefetch" href="/myblog/assets/js/61.973e7b17.js"><link rel="prefetch" href="/myblog/assets/js/62.319a300f.js"><link rel="prefetch" href="/myblog/assets/js/63.f08654c5.js"><link rel="prefetch" href="/myblog/assets/js/64.68d2cc61.js"><link rel="prefetch" href="/myblog/assets/js/65.b1b2a254.js"><link rel="prefetch" href="/myblog/assets/js/66.531fba3e.js"><link rel="prefetch" href="/myblog/assets/js/67.c3f68f3a.js"><link rel="prefetch" href="/myblog/assets/js/68.ffd2b4d9.js"><link rel="prefetch" href="/myblog/assets/js/69.12142fca.js"><link rel="prefetch" href="/myblog/assets/js/7.16f464c2.js"><link rel="prefetch" href="/myblog/assets/js/70.375b5e76.js"><link rel="prefetch" href="/myblog/assets/js/71.dd79fc2d.js"><link rel="prefetch" href="/myblog/assets/js/72.d6376070.js"><link rel="prefetch" href="/myblog/assets/js/73.d40bfbcf.js"><link rel="prefetch" href="/myblog/assets/js/74.ae8198d7.js"><link rel="prefetch" href="/myblog/assets/js/75.6c535169.js"><link rel="prefetch" href="/myblog/assets/js/76.4342f65a.js"><link rel="prefetch" href="/myblog/assets/js/77.d384c6ce.js"><link rel="prefetch" href="/myblog/assets/js/78.456c5622.js"><link rel="prefetch" href="/myblog/assets/js/79.f351ce94.js"><link rel="prefetch" href="/myblog/assets/js/80.d8f1fdfc.js"><link rel="prefetch" href="/myblog/assets/js/81.189da1dd.js"><link rel="prefetch" href="/myblog/assets/js/82.288dce1a.js"><link rel="prefetch" href="/myblog/assets/js/83.2b313f1f.js"><link rel="prefetch" href="/myblog/assets/js/84.c0f2d51f.js"><link rel="prefetch" href="/myblog/assets/js/85.f4395185.js"><link rel="prefetch" href="/myblog/assets/js/86.51058c54.js"><link rel="prefetch" href="/myblog/assets/js/87.de8e8b37.js"><link rel="prefetch" href="/myblog/assets/js/88.18284846.js"><link rel="prefetch" href="/myblog/assets/js/89.9e892ed0.js"><link rel="prefetch" href="/myblog/assets/js/90.98585e36.js"><link rel="prefetch" href="/myblog/assets/js/91.0e7d737f.js"><link rel="prefetch" href="/myblog/assets/js/92.ef614598.js"><link rel="prefetch" href="/myblog/assets/js/93.c06259bc.js"><link rel="prefetch" href="/myblog/assets/js/94.414ae13c.js"><link rel="prefetch" href="/myblog/assets/js/95.25b3964d.js"><link rel="prefetch" href="/myblog/assets/js/96.472fa650.js"><link rel="prefetch" href="/myblog/assets/js/97.6b5c5419.js"><link rel="prefetch" href="/myblog/assets/js/98.c5925425.js"><link rel="prefetch" href="/myblog/assets/js/99.b4635e29.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.9ef1a0ca.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.65b23aee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">Breeze blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myblog/three/three1.html" class="sidebar-link">Three.js</a></li><li><a href="/myblog/three/three2.html" class="sidebar-link">乒乓球游戏</a></li><li><a href="/myblog/three/three3.html" aria-current="page" class="active sidebar-link">react three fiber</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#react-three-fiber" class="sidebar-link">react three fiber</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#mesh-网格" class="sidebar-link">Mesh 网格</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#material-材质" class="sidebar-link">Material 材质</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#texture-纹理" class="sidebar-link">Texture 纹理</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#useframe" class="sidebar-link">useFrame</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#useloader" class="sidebar-link">useLoader</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#usegltf" class="sidebar-link">useGLTF</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#gltf格式" class="sidebar-link">GLTF格式</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#gltf-动画" class="sidebar-link">GLTF 动画</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#three-scene-traverse" class="sidebar-link">THREE.Scene.traverse()</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#光源介绍" class="sidebar-link">光源介绍</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#阴影相机" class="sidebar-link">阴影相机</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#参数写法" class="sidebar-link">参数写法</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#attach" class="sidebar-link">attach</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#事件" class="sidebar-link">事件</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#shadows" class="sidebar-link">Shadows</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#react-three-rapier-物理引擎" class="sidebar-link">react three rapier 物理引擎</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#physics-组件" class="sidebar-link">Physics 组件</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#rigidbody-刚体" class="sidebar-link">RigidBody 刚体</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#automatic-colliders-自动碰撞体" class="sidebar-link">Automatic Colliders 自动碰撞体</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#collision-events-碰撞事件" class="sidebar-link">Collision Events 碰撞事件</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#configuring-collision-and-solver-groups-配置碰撞组" class="sidebar-link">Configuring collision and solver groups 配置碰撞组</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#contact-force-events-碰撞力事件" class="sidebar-link">Contact force events 碰撞力事件</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#sensor-传感器" class="sidebar-link">Sensor 传感器</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#userapier" class="sidebar-link">useRapier</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#ray-casting-光线投射" class="sidebar-link">Ray-casting 光线投射</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#小球弹跳案例" class="sidebar-link">小球弹跳案例</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#react-相关" class="sidebar-link">React 相关</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#createroot" class="sidebar-link">createRoot</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#suspense" class="sidebar-link">Suspense</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#zustand" class="sidebar-link">Zustand</a></li><li class="sidebar-sub-header"><a href="/myblog/three/three3.html#将-jsx-作为子组件传递" class="sidebar-link">将 JSX 作为子组件传递</a></li></ul></li></ul></li><li><a href="/myblog/three/three4.html" class="sidebar-link">贴图</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="react-three-fiber"><a href="#react-three-fiber" class="header-anchor">#</a> react three fiber</h2> <p><strong>React</strong>-<strong>three</strong>-<strong>fiber 是</strong>一个基于 React 的3D 渲染库，它将three.js 的强大渲染能力与React 的声明式编程模型相结合。</p> <p>https://docs.pmnd.rs/react-three-fiber/getting-started/introduction</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 创建项目</span>
+<span class="token function">npm</span> create vite 3d-app
+
+<span class="token comment"># 安装依赖</span>
+<span class="token builtin class-name">cd</span> 3d-app
+<span class="token function">yarn</span>
+<span class="token function">yarn</span> <span class="token function">add</span> three @react-three/fiber
+
+<span class="token comment"># Start</span>
+<span class="token function">npm</span> run dev
+</code></pre></div><h3 id="mesh-网格"><a href="#mesh-网格" class="header-anchor">#</a> Mesh 网格</h3> <p>在Three.js中，网格（Mesh）是由几何体（Geometry）和材质（Material）组成的对象。要缩放网格对象，您可以使用网格对象的scale属性。</p> <p>因此在定义一个物体时，我们需要依次指定一个物体的「形状」和「材质」，通过一种特殊的类「<a href="https://threejs.org/docs/index.html?q=Mesh#api/en/objects/Mesh" target="_blank" rel="noopener noreferrer">Mesh<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>」，我将其称为「<strong>网格材料</strong>」，在 Three.js 中，Mesh 是表示三维物体的基础类，它将接收两个参数：</p> <ul><li><code>geometry</code>：定义物体的形状；</li> <li><code>material</code>：定义物体的材质；</li></ul> <p>现在，让我们创建一个简单的立方体：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> geometry <span class="token operator">=</span> newTHREE<span class="token punctuation">.</span><span class="token function">BoxGeometry</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> material <span class="token operator">=</span> newTHREE<span class="token punctuation">.</span><span class="token function">MeshBasicMaterial</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> mesh <span class="token operator">=</span> newTHREE<span class="token punctuation">.</span><span class="token function">Mesh</span><span class="token punctuation">(</span>geometry<span class="token punctuation">,</span> material<span class="token punctuation">)</span>
+scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>mesh<span class="token punctuation">)</span>
+</code></pre></div><p><img src="/myblog/assets/img/3-1.5ad8c45c.png" alt="img"></p> <h3 id="material-材质"><a href="#material-材质" class="header-anchor">#</a> Material 材质</h3> <p>https://threejs.org/docs/index.html?q=mater#api/zh/materials/Material</p> <p>材质是**几何体表面的材料，**用来定义物体外观的属性。它包含如何渲染物体的信息，如颜色，光照，反射等等。材质可以被赋予不同的属性，以便实现各种不同的外观效果。</p> <ul><li><a href="https://threejs.org/docs/index.html?q=mesh#api/zh/materials/MeshBasicMaterial" target="_blank" rel="noopener noreferrer">MeshBasicMaterial 基础网格材质<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>：一个以简单着色（平面或线框）方式来绘制几何体的材质，这种材质不受光照的影响。</li> <li><a href="https://threejs.org/docs/#api/zh/materials/MeshStandardMaterial.map" target="_blank" rel="noopener noreferrer">MeshStandardMaterial 标准网格材质<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>：一种基于物理的标准材质。</li></ul> <p>更多材质可以看这篇文章：https://juejin.cn/post/7224112064461144123</p> <h3 id="texture-纹理"><a href="#texture-纹理" class="header-anchor">#</a> Texture 纹理</h3> <p>Texture 用于创建一个纹理贴图，将其应用到一个表面，或者作为反射/折射贴图。就类似将一个商标图片粘贴到一个商品上。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 通过TextureLoader 加载贴图，并生成纹理对象，交给材质的map属性。</span>
+  <span class="token keyword">const</span> ballTexture <span class="token operator">=</span> <span class="token function">useLoader</span><span class="token punctuation">(</span>
+    <span class="token constant">THREE</span><span class="token punctuation">.</span>TextureLoader<span class="token punctuation">,</span>
+    <span class="token string">&quot;./textures/beach_ball_texture.png&quot;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token operator">&lt;</span>mesh castShadow receiveShadow<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>sphereGeometry args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meshStandardMaterial map<span class="token operator">=</span><span class="token punctuation">{</span>ballTexture<span class="token punctuation">}</span> flatShading <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>mesh<span class="token operator">&gt;</span>
+</code></pre></div><p>这张贴图会按照<a href="https://juejin.cn/post/7067424887601627166" target="_blank" rel="noopener noreferrer">等距圆柱投影<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的原理映射到球体上</p> <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhYAAAEJCAMAAAD/8Z4yAAAAM1BMVEX/+NdLjf+ItP////////9Giv/////6yQD81TmCsP////9Giv/7yQD/PjL/j4j81Tj/g3voLmPNAAAACnRSTlPN+M/y6efc4ee+0VOUAwAAA0tJREFUeNrs0rkBAkAIAMHz1/Ptv1oJgA7IZlvYWe+RftepHpepzlOt21D301RDLD57quNzqMOear2G+u6psMACCyywwAILLLCIsMACCyywwAILLLDAosMiL2KBBRZYYIEFFlhggUWFBRZYYIEFFlhggQUWERZYYIEFFlhggQUWWHRY5EUssMACCyywwAILLLCosMACCyywwAILLLDAIsICCyywwAILLLDAAosOi7yIBRZYYIEFFlhggQUWFRZYYIEFFlhggQUWWERYYIEFFlhggQUWWGDRYZEXscACCyywwAILLLDAosICCyywwAILLLDAAosICyywwAILLLDAAgssOizyIhZYYIEFFlhggQUWWFRYYIEFFlhggQUWWGARYYEFFlhggQUWWGCBRYdFXsQCCyywwAILLLDAAosKCyywwAILLLDAAgssIiywwAILLLDAAgsssOiwyItYYIEFFlhggQUWWGBRYYEFFlhggQUWWGCBRYQFFlhggQUWf3bpmAAAAAZhmH/X2wGoSC00WGCBBRYLi1zEAgsssMACCyywwAKLhgUWWGCBBRZYYIEFFh8WWGCBBRZYYIEFFlgsLHIRCyywwAILLLDAAgssGhZYYIEFFlhggQUWWHxYYIEFFlhggQUWWGCxsMhFLLDAAgsssMACCyywaFhggQUWWGCBBRZYYPFhgQUWWGCBBRZYYIHFwiIXscACCyywwAILLLDAomGBBRZYYIEFFlhggcWHBRZYYIEFFlhggQUWC4tcxAILLLDAAgsssMACi4YFFlhggQUWWGCBBRYfFlhggQUWWGCBBRZYLCxyEQsssMACCyywwAILLBoWWGCBBRZYYIEFFlh8WGCBBRZYYIEFFlhgsbDIRSywwAILLLDAAgsssGhYYIEFFlhggQUWWGDxYYEFFlhggQUWWGCBxcIiF7HAAgsssMACCyywwKJhgQUWWFy7dEwAAADCMMy/a3bANHCkFhossMACCyywSFhggQUWWGCBBRZYYNGw2ItYYIEFFlhggQUWWGBxYYEFFlhggQUWWGCBRcICCyywwAILLLDAAouGxV7EAgsssMACCyywwAKLCwsssMACCyywwAILLBIWWGCBBRZYYPGSxQCNA5kjyme6SgAAAABJRU5ErkJggg==" alt="img"></p> <p><img src="/myblog/assets/img/3-3.3c951bc7.png" alt="img"></p> <h3 id="useframe"><a href="#useframe" class="header-anchor">#</a> useFrame</h3> <p>此<code>hook</code>允许在页面每一帧渲染的时候运行代码，比如更新渲染效果、控件等，与<code>Three.js</code>中调用<code>requestAnimationFrame</code>实行重绘动画效果是一样的。你将接收到状*态值<code>state</code>和时钟增量<code>delta</code>。回调函数将在渲染帧之前被调用，当组件卸载时，它会自动从渲染循环中注销。</p> <ul><li>delta：若设备的屏幕刷新频率问 60Hz，即每秒钟屏幕刷新60次，每次刷新为 1/60 = 0.016s，这里的 delta 值即为 0.016</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">useFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> delta<span class="token punctuation">,</span> xrFrame</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span><span class="token comment">// 此函数在共享渲染循环内以本机刷新率运行});</span>
+</code></pre></div><h3 id="useloader"><a href="#useloader" class="header-anchor">#</a> useLoader</h3> <p>https://docs.pmnd.rs/react-three-fiber/tutorials/loading-models</p> <p>如果你想在 Three.js Fiber 应用程序中加载模型，可以使用 Three.js 的<code>useLoader</code>钩子来实现。这个钩子允许你在 React 组件中异步加载 Three.js 中的资源，包括模型、纹理和其他文件。然后，你可以在组件中使用 <code>useLoader</code> 钩子来异步加载 glTF 模型。在加载完成后，钩子将返回一个包含加载的模型的 <code>THREE.Group</code> 实例。你可以将这个实例添加到场景中，或者在组件的 JSX 中使用它：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useLoader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-three/fiber'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> GLTFLoader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'three/examples/jsm/loaders/GLTFLoader'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Model</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> gltf <span class="token operator">=</span> <span class="token function">useLoader</span><span class="token punctuation">(</span>GLTFLoader<span class="token punctuation">,</span> <span class="token string">'/path/to/model.gltf'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>primitive object<span class="token operator">=</span><span class="token punctuation">{</span>gltf<span class="token punctuation">.</span>scene<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &lt;primitive object={...} /&gt; can mount any existing, foreign threejs object into the scene.</span>
+</code></pre></div><h3 id="usegltf"><a href="#usegltf" class="header-anchor">#</a> useGLTF</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>// 加载模型可以使用 useGLTF
+<span class="token function">import</span> <span class="token punctuation">{</span> useGLTF <span class="token punctuation">}</span> from <span class="token string">'@react-three/drei'</span>
+const gltf <span class="token operator">=</span> useGLTF<span class="token punctuation">(</span><span class="token string">'/test.glb'</span><span class="token punctuation">)</span>
+
+useGLTF.preload<span class="token punctuation">(</span><span class="token string">'/test.glb'</span><span class="token punctuation">)</span> // 预加载
+</code></pre></div><h3 id="gltf格式"><a href="#gltf格式" class="header-anchor">#</a> GLTF格式</h3> <p><a href="https://github.com/KhronosGroup/glTF-Tutorials/blob/main/gltfTutorial/README.md" target="_blank" rel="noopener noreferrer">GLTF 文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>代码中打印引入的 GLTF 是如下格式：</p> <p><img src="/myblog/assets/img/3-4.0479017a.png" alt="img"></p> <ul><li>scenes：一个GLTF 可能包含多个场景</li> <li>scene：<code>scene</code>属性指示这些场景中的哪一个应该是加载资产时显示的默认场景，它通过引用node来定义场景图。</li> <li>nodes：每个场景都对应一个 nodes 数组</li> <li>node：场景图中的一个结点。它可以包含一个变换(比如旋转或平移)，引用更多的子结点。它可以引用 mesh 和 camera。</li> <li>animation：animation 可以用来描述节点的<code>translation</code>、<code>rotation</code>或<code>scale</code>属性如何随时间变化。</li> <li>materials：包含定义材质及其属性的元素，这里是 <a href="https://threejs.org/docs/#api/zh/materials/MeshBasicMaterial" target="_blank" rel="noopener noreferrer">MeshBasicMaterial<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <p><img src="/myblog/assets/img/3-5.6b2084a2.png" alt="img"></p> <h3 id="gltf-动画"><a href="#gltf-动画" class="header-anchor">#</a> GLTF 动画</h3> <p><code>Three.js</code>的最基础的动画系统，由以下几部分组成：</p> <ul><li><code>KeyFrameTrack</code></li> <li><code>AnimationClip</code></li> <li><code>AnimitionMixer</code></li> <li><code>AnimationAction</code></li></ul> <h4 id="animationclip"><a href="#animationclip" class="header-anchor">#</a> AnimationClip</h4> <p>在建模软件制作好动画之后，可以导出模型文件；通过<code>Loader</code>将模型文件加载之后，建模软件制作的动画就会被保存在<code>animations</code>中。这个<code>animations</code>就是一个<code>AnimationClip</code>的数组。</p> <p>例如，常见的对人进行建模时，通常会包含一些动作动画：走路、跑步、挥手等。导出模型后，被<code>Loader</code>载入之后，每一个动作都会变成一个<code>AnimationClip</code>对象。</p> <p>下面这个例子里只有一个 <code>AnimationClip</code> 对象，说明只有一个动画。如果有多个动画时，可能需要用户做某些操作来播放不同的动画。</p> <p><img src="/myblog/assets/img/3-6.bf5f7a08.png" alt="img"></p> <h4 id="keyframetrack"><a href="#keyframetrack" class="header-anchor">#</a> KeyFrameTrack</h4> <p>对于每个<code>AnimationClip</code>（可以理解为每个动作），都包含了很多对象属性的变化。例如，跑步这个动作包含：左胳膊、右胳膊、左腿、右腿等对象的属性变化。对于每一个属性，可以通过<strong>关键帧</strong>（<code>KeyFrameTrack</code>）来描述它的变化。如这个 AnimationClip 中包含了许多 KeyFrameTrack：</p> <p><img src="/myblog/assets/img/3-7.b5a84f6b.png" alt="img"></p> <h4 id="animationmixer"><a href="#animationmixer" class="header-anchor">#</a> AnimationMixer</h4> <p>https://threejs.org/docs/#api/zh/animation/AnimationMixer</p> <ul><li>描述：动画混合器是用于场景中特定对象的动画的播放器。当场景中的多个对象独立动画时，每个对象都可以使用同一个动画混合器。可以理解成一个<strong>总控制台</strong>，它的作用，就是用来<strong>控制“时刻”</strong> 。可以形象的理解为是一个动画播放的<strong>进度条</strong>。</li> <li>参数：<code>rootObject</code> 混合器播放的动画所属的对象。就是包含动画模型的场景对象。</li> <li>常用属性：
+<ul><li><code>.time</code> 全局的混合器时间。</li> <li><code>.clipAction(AnimationClip)</code> 返回所传入的剪辑参数的<code>AnimationAction</code>对象。</li> <li><code>.getRoot()</code> 返回混合器的根对象。</li> <li><code>.update()</code> 推进混合器时间并更新动画。在渲染函数中调用更新动画。</li></ul></li></ul> <h4 id="animationaction"><a href="#animationaction" class="header-anchor">#</a> AnimationAction</h4> <p>https://threejs.org/docs/#api/zh/animation/AnimationAction</p> <p>AnimationActions 用来调度存储在<a href="https://threejs.org/docs/index.html#api/zh/animation/AnimationClip" target="_blank" rel="noopener noreferrer">AnimationClips<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中的动画。通过<code>AnimationMixer.clipAction()</code>进行创建。这个动作可以理解为把<code>AnimationClip</code>放进控制台进行播放。<code>AnimationAction</code>提供了一系列的<code>API</code>来控制对应的<code>AnimationClip</code>的播放。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 引入 gltf</span>
+<span class="token keyword">const</span> meta <span class="token operator">=</span> <span class="token function">useGLTF</span><span class="token punctuation">(</span><span class="token string">'./models/dazhaohu.glb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 获取 场景和动画</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> scene<span class="token punctuation">,</span> animations <span class="token punctuation">}</span> <span class="token operator">=</span> meta<span class="token punctuation">;</span>
+<span class="token comment">// 创建动画混合器</span>
+<span class="token keyword">const</span> mixer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>AnimationMixer</span><span class="token punctuation">(</span>scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 遍历动画</span>
+animations<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">clip</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// animationMixer.clipAction 来生成 animationAction ，然后进行 play</span>
+    mixer<span class="token punctuation">.</span><span class="token function">clipAction</span><span class="token punctuation">(</span>clip<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> clock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>animate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> delta <span class="token operator">=</span> clock<span class="token punctuation">.</span><span class="token function">getDelta</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mixer <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 推进混合器时间并更新动画</span>
+        mixer<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>delta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="three-scene-traverse"><a href="#three-scene-traverse" class="header-anchor">#</a> THREE.Scene.traverse()</h3> <p>我们可以将一个方法作为参数传递给 traverse() 方法，这个传递来的方法将会在每一个子对象上执行。由于THREE.Scene对象存储的是对象树，所以如果子对象本身还有子对象，traverse()方法会在所有的子对象上执行，直到遍历完场景树中的所有对象为止。</p> <h3 id="光源介绍"><a href="#光源介绍" class="header-anchor">#</a> 光源介绍</h3> <p><a href="https://hicc.pro/p/three.js/threejs-lighting#threepointlight%E7%82%B9%E5%85%89%E6%BA%90" target="_blank" rel="noopener noreferrer">https://hicc.pro/p/three.js/threejs-lighting#threepointlight%E7%82%B9%E5%85%89%E6%BA%90<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>Ambient Light：环境光可以照亮三维场景中的所有物体，没有阴影；只有两个属性，color和intensity</li> <li>DirectionalLight：方向是从一个平行光的位置 <a href="https://threejs.org/docs/index.html#api/zh/core/Object3D.position" target="_blank" rel="noopener noreferrer">position<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 到 <a href="https://threejs.org/docs/index.html#api/zh/lights/DirectionalLight.target" target="_blank" rel="noopener noreferrer">target<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的位置
+<ul><li>target：灯光从它的位置（<a href="https://threejs.org/docs/index.html#api/zh/lights/DirectionalLight.position" target="_blank" rel="noopener noreferrer">position<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）指向目标位置。默认的目标位置 target 为<code>(0, 0, 0)</code>。</li></ul></li></ul> <h3 id="阴影相机"><a href="#阴影相机" class="header-anchor">#</a> 阴影相机</h3> <p>为了在three.js中使用阴影，您需要创建一个阴影相机。</p> <p>阴影相机（Shadow Camera）是一个用于生成阴影图像的虚拟相机。它不会在屏幕上渲染图像，而是在后台计算阴影贴图。阴影相机类似于场景中的主相机，但是需要一些不同的设置和参数。</p> <p><img src="/myblog/assets/img/3-8.3d62003c.png" alt="img"></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> light <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span>directionalLight
+    ref<span class="token operator">=</span><span class="token punctuation">{</span>light<span class="token punctuation">}</span>
+    castShadow
+    position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+    intensity<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.5</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>mapSize<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>near<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>far<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>top<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>right<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>bottom<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">}</span>
+    shadow<span class="token operator">-</span>camera<span class="token operator">-</span>left<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">}</span>
+ <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><h3 id="参数写法"><a href="#参数写法" class="header-anchor">#</a> 参数写法</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>SphereGeometry</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span>
+<span class="token comment">// 在 React Three Fiber 中，构造函数参数始终通过 args 作为数组传递</span>
+
+<span class="token comment">// 球体几何体，参数为：半径，水平分段数，垂直分段数，详见 https://threejs.org/docs/#api/zh/geometries/SphereGeometry</span>
+<span class="token operator">&lt;</span>sphereGeometry args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// 类似地 &lt;meshStandardMaterial color={new THREE.Color('hotpink')} /&gt; 可以直接写成</span>
+<span class="token operator">&lt;</span>meshStandardMaterial color<span class="token operator">=</span><span class="token string">&quot;hotpink&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// 缩放 mesh 的 scale 参数可以写成 &lt;mesh scale={[1, 1, 1]} /&gt;</span>
+<span class="token operator">&lt;</span>mesh scale<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// 嵌套属性 mesh.rotation.x 用破折号</span>
+<span class="token operator">&lt;</span>mesh rotation<span class="token operator">-</span>x<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> material<span class="token operator">-</span>uniforms<span class="token operator">-</span>resolution<span class="token operator">-</span>value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><h3 id="attach"><a href="#attach" class="header-anchor">#</a> attach</h3> <p>https://docs.pmnd.rs/react-three-fiber/api/objects#attach</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>mesh<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>meshNormalMaterial attach<span class="token operator">=</span><span class="token string">&quot;material&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>boxGeometry attach<span class="token operator">=</span><span class="token string">&quot;geometry&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>mesh<span class="token operator">&gt;</span>
+
+<span class="token comment">// equal to</span>
+
+mesh<span class="token punctuation">.</span>material <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>MeshNormalMaterial</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+mesh<span class="token punctuation">.</span>geometry <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>BoxGeometry</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="事件"><a href="#事件" class="header-anchor">#</a> 事件</h3> <p>和浏览器事件类似：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>mesh
+  onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onContextMenu<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'context menu'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onDoubleClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'double click'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onWheel<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'wheel spins 滚轮'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerUp<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'up'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerDown<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'down'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerOver<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'over'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerOut<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'out'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerEnter<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'enter'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerLeave<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'leave'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerMove<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'move'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  onPointerMissed<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'missed'</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment">// fires on clicks that haven't hit any meshes.</span>
+  onUpdate<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">self</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'props have been updated'</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment">// that is called every time the object gets fresh props,</span>
+<span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><h3 id="shadows"><a href="#shadows" class="header-anchor">#</a> Shadows</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// shadows 属性代表全局允许添加阴影</span>
+<span class="token operator">&lt;</span>Canvas shadows <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// castShadow 代表允许投射阴影</span>
+<span class="token operator">&lt;</span>mesh castShadow <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// receiveShadow 代表允许接收阴影</span>
+<span class="token operator">&lt;</span>mesh receiveShadow <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><p>一个例子</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>Canvas shadows camera<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">position</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+  <span class="token comment">// 物体投射阴影</span>
+  <span class="token operator">&lt;</span>mesh rotation<span class="token operator">-</span>y<span class="token operator">=</span><span class="token punctuation">{</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">}</span> castShadow<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>boxGeometry <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meshStandardMaterial color<span class="token operator">=</span><span class="token string">&quot;white&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>mesh<span class="token operator">&gt;</span>
+    
+  <span class="token comment">// 平面接收阴影</span>
+  <span class="token operator">&lt;</span>mesh rotation<span class="token operator">-</span>x<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">-</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">}</span> position<span class="token operator">-</span>y<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">}</span> receiveShadow<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>planeGeometry args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meshStandardMaterial color<span class="token operator">=</span><span class="token string">&quot;white&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>mesh<span class="token operator">&gt;</span>
+  
+  <span class="token comment">// 除此之外，还有添加灯光 castShadow，不然不会展示阴影</span>
+  <span class="token operator">&lt;</span>directionalLight position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">}</span> intensity<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0.5</span><span class="token punctuation">}</span> castShadow <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>directionalLight position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">}</span> intensity<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0.5</span><span class="token punctuation">}</span> color<span class="token operator">=</span><span class="token string">&quot;red&quot;</span> castShadow <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>Canvas<span class="token operator">&gt;</span>
+</code></pre></div><p><img src="/myblog/assets/img/3-9.1db6fe0c.png" alt="img"></p> <h2 id="react-three-rapier-物理引擎"><a href="#react-three-rapier-物理引擎" class="header-anchor">#</a> react three rapier 物理引擎</h2> <p>https://github.com/pmndrs/react-three-rapier</p> <h3 id="physics-组件"><a href="#physics-组件" class="header-anchor">#</a> Physics 组件</h3> <p>https://github.com/pmndrs/react-three-rapier?tab=readme-ov-file#the-physics-component</p> <ul><li><strong>gravity 重力：默认为 [0, -9.81, 0]，用来模拟真实物理世界</strong></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">Scene</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Canvas<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Suspense<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Physics gravity<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span> interpolation<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span> colliders<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+          <span class="token operator">...</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>Physics<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Suspense<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Canvas<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="rigidbody-刚体"><a href="#rigidbody-刚体" class="header-anchor">#</a> RigidBody 刚体</h3> <ul><li>restitution={0.2}：弹性系数 ，衡量两个物体在碰撞后的反弹程度</li> <li>friction={1}：摩擦力，摩擦力是对抗碰撞体接触的两个刚体之间相对切向运动的力</li> <li>linearDamping={0.5}：线性阻尼，用于减小刚体的线性速率，值越大物体移动越慢</li> <li>angulularDamping={0.5}：角阻尼，用于减小刚体的旋转速率，值越大刚体旋转越慢</li></ul> <p>刚体组件常用于在 physics 中添加一个 mesh ，基于 mesh 的形状会默认生成一个 Colliders。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">RigidBodyMesh</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>RigidBody<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>mesh <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="automatic-colliders-自动碰撞体"><a href="#automatic-colliders-自动碰撞体" class="header-anchor">#</a> Automatic Colliders 自动碰撞体</h3> <p>默认情况下，RigidBody 会为其包含的所有网格体生成自动碰撞体。您可以通过在 <RigidBody></RigidBody> 上设置 colliders 属性来控制碰撞体，或者通过在 <Physics></Physics> 上设置 colliders 来全局更改它。设置 Colliders={false} 会禁止自动生成。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">Scene</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>Physics colliders<span class="token operator">=</span><span class="token string">&quot;hull&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>RigidBody<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Box <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>RigidBody position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Sphere <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Physics<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 关闭 physics 设置全局碰撞体，在每个 RigidBody 上设置</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Scene</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>Physics colliders<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">{</span><span class="token comment">/* Use an automatic CuboidCollider for all meshes inside this RigidBody */</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>RigidBody colliders<span class="token operator">=</span><span class="token string">&quot;cuboid&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Box <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+
+    <span class="token punctuation">{</span><span class="token comment">/* Use an automatic BallCollider for all meshes inside this RigidBody */</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>RigidBody position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span> colliders<span class="token operator">=</span><span class="token string">&quot;ball&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Sphere <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Physics<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>碰撞体包括几种类型：cuboid（长方体）、ball（球体）、trimesh、hull</p> <p>一个直观的例子：https://codesandbox.io/p/sandbox/react-three-rapier-auto-colliders-b4coz1?file=%2Fsrc%2FApp.tsx%3A35%2C29-35%2C36</p> <p><img src="/myblog/assets/img/3-10.131536c0.png" alt="img"></p> <p>当然我们也可以在 RigidBody 中手动创建 colliders</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">Scene</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span>
+  <span class="token punctuation">{</span><span class="token comment">/* 创建自定义的碰撞体 */</span><span class="token punctuation">}</span>
+  <span class="token operator">&lt;</span>RigidBody position<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>BallCollider args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token comment">// 球体，参数为半径</span>
+    
+    <span class="token operator">&lt;</span>CuboidCollider args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">]</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token comment">// 长方体，参数为长宽高</span>
+    
+    <span class="token operator">&lt;</span>MeshCollider type<span class="token operator">=</span><span class="token string">&quot;trimesh&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>mesh <span class="token operator">...</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>MeshCollider<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span>MeshCollider type<span class="token operator">=</span><span class="token string">&quot;hull&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>mesh <span class="token operator">...</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>MeshCollider<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="collision-events-碰撞事件"><a href="#collision-events-碰撞事件" class="header-anchor">#</a> Collision Events 碰撞事件</h3> <ul><li>onCollisionEnter：开始碰撞
+<ul><li>target：触发碰撞的物体</li> <li>other：被碰撞的物体</li> <li>manifold：碰撞产生的接触流形（<a href="https://rapier.rs/javascript3d/classes/TempContactManifold.html" target="_blank" rel="noopener noreferrer">contact manifold<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）</li></ul></li> <li>onCollisionExit：碰撞结束</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">RigidBottle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>isAsleep<span class="token punctuation">,</span> setIsAsleep<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>RigidBody
+      colliders<span class="token operator">=</span><span class="token string">&quot;hull&quot;</span>
+      onSleep<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setIsAsleep</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      onWake<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setIsAsleep</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      name<span class="token operator">=</span><span class="token string">&quot;Bally McBallFace&quot;</span>
+      onCollisionEnter<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> manifold<span class="token punctuation">,</span> target<span class="token punctuation">,</span> other <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+          <span class="token string">&quot;Collision at world position &quot;</span><span class="token punctuation">,</span>
+          manifold<span class="token punctuation">.</span><span class="token function">solverContactPoint</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>other<span class="token punctuation">.</span>rigidBodyObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+            <span class="token comment">// this rigid body's Object3D</span>
+            target<span class="token punctuation">.</span>rigidBodyObject<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+            <span class="token string">&quot; collided with &quot;</span><span class="token punctuation">,</span>
+            <span class="token comment">// the other rigid body's Object3D</span>
+            other<span class="token punctuation">.</span>rigidBodyObject<span class="token punctuation">.</span>name
+          <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Sphere<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>meshPhysicalMaterial color<span class="token operator">=</span><span class="token punctuation">{</span>isAsleep <span class="token operator">?</span> <span class="token string">&quot;white&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;blue&quot;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Sphere<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="configuring-collision-and-solver-groups-配置碰撞组"><a href="#configuring-collision-and-solver-groups-配置碰撞组" class="header-anchor">#</a> Configuring collision and solver groups 配置碰撞组</h3> <p>最有效防止碰撞体直接相互碰撞的方法就是给出碰撞体所属的碰撞组。<a href="https://github.com/pmndrs/react-three-rapier?tab=readme-ov-file#configuring-collision-and-solver-groups" target="_blank" rel="noopener noreferrer">详见文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="contact-force-events-碰撞力事件"><a href="#contact-force-events-碰撞力事件" class="header-anchor">#</a> Contact force events 碰撞力事件</h3> <p>在碰撞体发生碰撞时会触发碰撞力事件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>RigidBody
+  colliders<span class="token operator">=</span><span class="token string">&quot;ball&quot;</span>
+  onContactForce<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">payload</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The total force generated was: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>payload<span class="token punctuation">.</span>totalForce<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>Sphere<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>meshPhysicalMaterial color<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&quot;grey&quot;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Sphere<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+</code></pre></div><ul><li>payload：
+<ul><li>target：触发碰撞的物体</li> <li>other：被碰撞的物体</li> <li>totalForce：两个碰撞体之间所有力的总和</li> <li>totalForceMagnitude：两个碰撞体之间所有力大小总和</li> <li>maxForceDirection：接触点处最大力的方向</li> <li>maxForceMagnitude：接触点处最大力的大小</li></ul></li></ul> <p><img src="/myblog/assets/img/3-11.ca68f2e3.png" alt="img"></p> <h3 id="sensor-传感器"><a href="#sensor-传感器" class="header-anchor">#</a> Sensor 传感器</h3> <p>https://github.com/pmndrs/react-three-rapier?tab=readme-ov-file#sensors</p> <p>碰撞体可以设置传感器，它可以用于监测一个碰撞体进入或者离开另一个碰撞体，在此过程中不会经历碰撞。</p> <ul><li>onIntersectionEnter</li> <li>onIntersectionExit</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>RigidBody<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>GoalPosts <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>CuboidCollider
+    args<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+    sensor
+    onIntersectionEnter<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Goal!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>RigidBody<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="userapier"><a href="#userapier" class="header-anchor">#</a> useRapier</h3> <p>https://github.com/pmndrs/react-three-rapier?tab=readme-ov-file#advanced-hooks-usage</p> <p>如果想要对物理世界更加精细的控制，可能需要用到 useRapier</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> rapier<span class="token punctuation">,</span> world <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useRapier</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="ray-casting-光线投射"><a href="#ray-casting-光线投射" class="header-anchor">#</a> Ray-casting 光线投射</h3> <p>https://rapier.rs/docs/user_guides/javascript/scene_queries/#ray-casting</p> <p>光线投射可查找与光线相交的一个或多个碰撞体。光线投射是一种极其常见的操作，涵盖了多种用例：发射子弹、角色控制器、渲染。</p> <p>射线：https://threejs.org/docs/#api/zh/math/Ray</p> <ul><li><a href="https://threejs.org/docs/index.html#api/zh/math/Vector3" target="_blank" rel="noopener noreferrer">origin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> - 射线的原点，默认值是一个位于(0, 0, 0)的<a href="https://threejs.org/docs/index.html#api/zh/math/Vector3" target="_blank" rel="noopener noreferrer">Vector3<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</li> <li><a href="https://threejs.org/docs/index.html#api/zh/math/Vector3" target="_blank" rel="noopener noreferrer">direction<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> - 射线的方向。该向量必须经过标准化使向量长度为1（使用<a href="https://threejs.org/docs/index.html#api/zh/math/Vector3.normalize" target="_blank" rel="noopener noreferrer">Vector3.normalize<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>），这样才能使方法正常运行。 默认值是一个位于(0, 0, -1)的<a href="https://threejs.org/docs/index.html#api/zh/math/Vector3" target="_blank" rel="noopener noreferrer">Vector3<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 光线由 origin [1, 2, 3] 和 direction [0, 1, 0] 定义：</span>
+<span class="token keyword">let</span> ray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RAPIER<span class="token punctuation">.</span>Ray</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token number">3.0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token number">0.0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> maxToi <span class="token operator">=</span> <span class="token number">4.0</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> solid <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+<span class="token comment">// maxToi: max time of impact</span>
+<span class="token comment">// solid: considers everything as solid (如果光线起点在一个固体内，那么光线则无法继续传播，toi 为 0， 若设置为false那么会继续传播直到触碰到固体边界)</span>
+<span class="token keyword">let</span> hit <span class="token operator">=</span> world<span class="token punctuation">.</span><span class="token function">castRay</span><span class="token punctuation">(</span>ray<span class="token punctuation">,</span> maxToi<span class="token punctuation">,</span> solid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 如果光线发生碰撞</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hit <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 光线传播的距离 = ray.dir * toi</span>
+    <span class="token comment">// 撞击点 = ray.origin + ray.dir * toi</span>
+    <span class="token keyword">let</span> hitPoint <span class="token operator">=</span> ray<span class="token punctuation">.</span><span class="token function">pointAt</span><span class="token punctuation">(</span>hit<span class="token punctuation">.</span>toi<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hit.toi 即为发生碰撞所经历的时间</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Collider&quot;</span><span class="token punctuation">,</span> hit<span class="token punctuation">.</span>colliderHandle<span class="token punctuation">,</span> <span class="token string">&quot;hit at point&quot;</span><span class="token punctuation">,</span> hitPoint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="小球弹跳案例"><a href="#小球弹跳案例" class="header-anchor">#</a> 小球弹跳案例</h2> <p><img src="/myblog/assets/img/3-12.0036e401.png" alt="img"></p> <p>需要实现点击【跳】小球弹起，已知：</p> <ol><li>底部反弹平面所处位置为 y = -0.1，高度为 0.1，所以若小球静止在平面上小球底部则正好处于 y = 0</li> <li>小球在空中不能弹跳，只能处在平面上时进行跳跃</li></ol> <p>思路：利用光线投射计算小球与底部平面的距离，在底部平面或者离底部平台很近时则进行弹跳。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">jump</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 设 orgin 为小球的球心坐标，为射线 ray 的起点</span>
+    <span class="token keyword">const</span> origin <span class="token operator">=</span> body<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">translation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// origin 坐标向下移动 0.31，小球半径为 0.3，若初始位置小球就在平面上，那么 orgin 则在底部反弹面的内部，此时若进行光线投射则会直接碰撞，toi 为 0</span>
+    origin<span class="token punctuation">.</span>y <span class="token operator">-=</span> <span class="token number">0.31</span><span class="token punctuation">;</span>
+    <span class="token comment">// direction 设为 y 轴负方向的单位向量，即射线 ray 的方向</span>
+    <span class="token keyword">const</span> direction <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// 射线 rag 从 orgin 出发，方向为正下方</span>
+    <span class="token keyword">const</span> ray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">rapier<span class="token punctuation">.</span>Ray</span><span class="token punctuation">(</span>origin<span class="token punctuation">,</span> direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 射线与物体碰撞，则返回碰撞结果</span>
+    <span class="token keyword">const</span> hit <span class="token operator">=</span> world<span class="token punctuation">.</span><span class="token function">castRay</span><span class="token punctuation">(</span>ray<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    <span class="token comment">// 进行弹跳操作</span>
+    <span class="token comment">// toi = 0 代表小球正处于平面上</span>
+    <span class="token comment">// 0 &lt; toi &lt; 0.15 代表小球即将落到平面上也可以进行弹跳</span>
+    <span class="token comment">// toi &gt; 0.15 代表小球仍在空中比较高的地方，不能弹跳</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hit<span class="token punctuation">.</span>toi <span class="token operator">&lt;</span> <span class="token number">0.15</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 施加一个向上的冲量</span>
+      body<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">applyImpulse</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">0.75</span><span class="token punctuation">,</span> <span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="react-相关"><a href="#react-相关" class="header-anchor">#</a> React 相关</h2> <h3 id="createroot"><a href="#createroot" class="header-anchor">#</a> createRoot</h3> <p>https://zh-hans.react.dev/reference/react-dom/client/createRoot</p> <h3 id="suspense"><a href="#suspense" class="header-anchor">#</a> Suspense</h3> <p>https://zh-hans.react.dev/reference/react/Suspense</p> <h3 id="zustand"><a href="#zustand" class="header-anchor">#</a> Zustand</h3> <p>Zustand 状态库：轻便、简洁、强大的 React 状态管理工具</p> <p>https://awesomedevin.github.io/zustand-vue/</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> create <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'zustand'</span>
+
+<span class="token comment">// Store 初始化</span>
+<span class="token keyword">const</span> useBearStore <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">set</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">bears</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">increasePopulation</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">bears</span><span class="token operator">:</span> state<span class="token punctuation">.</span>bears <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">removeAllBears</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">bears</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Store 绑定组件</span>
+<span class="token keyword">function</span> <span class="token function">BearCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> bears <span class="token operator">=</span> <span class="token function">useBearStore</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>bears<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>h1<span class="token operator">&gt;</span><span class="token punctuation">{</span>bears<span class="token punctuation">}</span> around here <span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 更新目标状态</span>
+<span class="token keyword">function</span> <span class="token function">Controls</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> increasePopulation <span class="token operator">=</span> <span class="token function">useBearStore</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>increasePopulation<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>increasePopulation<span class="token punctuation">}</span><span class="token operator">&gt;</span>one up<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>监听 store 状态：https://awesomedevin.github.io/zustand-vue/docs/advanced/read-set-state-outside-of-component</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> useDogStore <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">paw</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">snout</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">fur</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 获取非反应性最新状态</span>
+<span class="token keyword">const</span> paw <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>paw
+<span class="token comment">// 监听所有更改，对每个更改同步触发</span>
+<span class="token keyword">const</span> unsub1 <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>console<span class="token punctuation">.</span>log<span class="token punctuation">)</span>
+<span class="token comment">// 更新状态，将触发监听器</span>
+useDogStore<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">paw</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 取消监听</span>
+<span class="token function">unsub1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 当然，你可以像往常一样使用钩子</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> paw <span class="token operator">=</span> <span class="token function">useDogStore</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>paw<span class="token punctuation">)</span>
+  <span class="token operator">...</span>
+</code></pre></div><p>subscribeWithSelector</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> subscribeWithSelector <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'zustand/middleware'</span>
+<span class="token keyword">const</span> useDogStore <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span>
+  <span class="token function">subscribeWithSelector</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">paw</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">snout</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">fur</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 仅限 `paw` 修改时，触发监听</span>
+<span class="token keyword">const</span> unsub2 <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>paw<span class="token punctuation">,</span> console<span class="token punctuation">.</span>log<span class="token punctuation">)</span>
+<span class="token comment">// subscribe 还可以监听到旧值</span>
+<span class="token keyword">const</span> unsub3 <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>paw<span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">paw<span class="token punctuation">,</span> previousPaw</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>paw<span class="token punctuation">,</span> previousPaw<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// subscribe 也支持自定义相等函数</span>
+<span class="token keyword">const</span> unsub4 <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>state<span class="token punctuation">.</span>paw<span class="token punctuation">,</span> state<span class="token punctuation">.</span>fur<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  console<span class="token punctuation">.</span>log<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">equalityFn</span><span class="token operator">:</span> shallow <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// 立即订阅并触发</span>
+<span class="token keyword">const</span> unsub5 <span class="token operator">=</span> useDogStore<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>paw<span class="token punctuation">,</span> console<span class="token punctuation">.</span>log<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">fireImmediately</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="将-jsx-作为子组件传递"><a href="#将-jsx-作为子组件传递" class="header-anchor">#</a> 将 JSX 作为子组件传递</h3> <p>https://zh-hans.react.dev/learn/passing-props-to-a-component#passing-jsx-as-children</p> <p><img src="/myblog/assets/img/3-13.0b2d2988.png" alt="img"></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Avatar <span class="token keyword">from</span> <span class="token string">'./Avatar.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Card</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;card&quot;</span><span class="token operator">&gt;</span>
+      <span class="token punctuation">{</span>children<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Card<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Avatar
+        size<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">100</span><span class="token punctuation">}</span>
+        person<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> 
+          <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Katsuko Saruhashi'</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">imageId</span><span class="token operator">:</span> <span class="token string">'YfeOqp2'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Card<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">9/2/2025, 11:24:35 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/three/three2.html" class="prev">
+        乒乓球游戏
+      </a></span> <span class="next"><a href="/myblog/three/three4.html">
+        贴图
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.9f4db6d8.js" defer></script><script src="/myblog/assets/js/2.08803d47.js" defer></script><script src="/myblog/assets/js/1.a370845a.js" defer></script><script src="/myblog/assets/js/15.47e79098.js" defer></script>
+  </body>
+</html>

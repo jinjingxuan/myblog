@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>设计模式 | Breeze blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.65b23aee.css" as="style"><link rel="preload" href="/myblog/assets/js/app.9f4db6d8.js" as="script"><link rel="preload" href="/myblog/assets/js/2.08803d47.js" as="script"><link rel="preload" href="/myblog/assets/js/1.a370845a.js" as="script"><link rel="preload" href="/myblog/assets/js/88.18284846.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.564253ef.js"><link rel="prefetch" href="/myblog/assets/js/100.c35b9817.js"><link rel="prefetch" href="/myblog/assets/js/101.c6a8c814.js"><link rel="prefetch" href="/myblog/assets/js/102.88236ccf.js"><link rel="prefetch" href="/myblog/assets/js/103.67c936e1.js"><link rel="prefetch" href="/myblog/assets/js/104.8fc3204b.js"><link rel="prefetch" href="/myblog/assets/js/105.58194991.js"><link rel="prefetch" href="/myblog/assets/js/106.40f7a133.js"><link rel="prefetch" href="/myblog/assets/js/107.8e7a3cbd.js"><link rel="prefetch" href="/myblog/assets/js/108.85a56101.js"><link rel="prefetch" href="/myblog/assets/js/109.e8350503.js"><link rel="prefetch" href="/myblog/assets/js/11.141e02ca.js"><link rel="prefetch" href="/myblog/assets/js/110.c44ed8f7.js"><link rel="prefetch" href="/myblog/assets/js/111.1b5062ea.js"><link rel="prefetch" href="/myblog/assets/js/112.61191925.js"><link rel="prefetch" href="/myblog/assets/js/113.0a3dc942.js"><link rel="prefetch" href="/myblog/assets/js/114.bda2b561.js"><link rel="prefetch" href="/myblog/assets/js/115.adace76f.js"><link rel="prefetch" href="/myblog/assets/js/116.8b2a6290.js"><link rel="prefetch" href="/myblog/assets/js/117.c0e5e0cf.js"><link rel="prefetch" href="/myblog/assets/js/118.6b430d21.js"><link rel="prefetch" href="/myblog/assets/js/119.5eaa5de1.js"><link rel="prefetch" href="/myblog/assets/js/12.c43cf55f.js"><link rel="prefetch" href="/myblog/assets/js/120.17910a89.js"><link rel="prefetch" href="/myblog/assets/js/121.fb6ccf62.js"><link rel="prefetch" href="/myblog/assets/js/122.a57b91f6.js"><link rel="prefetch" href="/myblog/assets/js/123.37dd985e.js"><link rel="prefetch" href="/myblog/assets/js/124.0fddbe5d.js"><link rel="prefetch" href="/myblog/assets/js/125.65d7027f.js"><link rel="prefetch" href="/myblog/assets/js/126.c5a821cb.js"><link rel="prefetch" href="/myblog/assets/js/127.3b3ef1fc.js"><link rel="prefetch" href="/myblog/assets/js/128.d78bc2aa.js"><link rel="prefetch" href="/myblog/assets/js/129.51a1a88e.js"><link rel="prefetch" href="/myblog/assets/js/13.1dee1651.js"><link rel="prefetch" href="/myblog/assets/js/130.729b0572.js"><link rel="prefetch" href="/myblog/assets/js/131.ac6f9726.js"><link rel="prefetch" href="/myblog/assets/js/132.b13e1261.js"><link rel="prefetch" href="/myblog/assets/js/133.4759f2f2.js"><link rel="prefetch" href="/myblog/assets/js/134.4ca33894.js"><link rel="prefetch" href="/myblog/assets/js/135.eee995e6.js"><link rel="prefetch" href="/myblog/assets/js/136.0dec144e.js"><link rel="prefetch" href="/myblog/assets/js/137.4f794e1a.js"><link rel="prefetch" href="/myblog/assets/js/138.287f26dc.js"><link rel="prefetch" href="/myblog/assets/js/139.9f0c6e77.js"><link rel="prefetch" href="/myblog/assets/js/14.2970adac.js"><link rel="prefetch" href="/myblog/assets/js/140.1c5bf392.js"><link rel="prefetch" href="/myblog/assets/js/141.18013a51.js"><link rel="prefetch" href="/myblog/assets/js/142.ad961356.js"><link rel="prefetch" href="/myblog/assets/js/143.e6d314ef.js"><link rel="prefetch" href="/myblog/assets/js/144.2c0d38d4.js"><link rel="prefetch" href="/myblog/assets/js/145.ef4a83a0.js"><link rel="prefetch" href="/myblog/assets/js/146.629f8b70.js"><link rel="prefetch" href="/myblog/assets/js/147.b46d65fb.js"><link rel="prefetch" href="/myblog/assets/js/148.524bf7db.js"><link rel="prefetch" href="/myblog/assets/js/149.164af466.js"><link rel="prefetch" href="/myblog/assets/js/15.47e79098.js"><link rel="prefetch" href="/myblog/assets/js/150.cc678031.js"><link rel="prefetch" href="/myblog/assets/js/151.eb336eb5.js"><link rel="prefetch" href="/myblog/assets/js/152.f0bed21e.js"><link rel="prefetch" href="/myblog/assets/js/153.37c5472f.js"><link rel="prefetch" href="/myblog/assets/js/154.028e1db1.js"><link rel="prefetch" href="/myblog/assets/js/155.d5fd774f.js"><link rel="prefetch" href="/myblog/assets/js/156.d1d9a355.js"><link rel="prefetch" href="/myblog/assets/js/157.f9f4ede3.js"><link rel="prefetch" href="/myblog/assets/js/158.2a231f1b.js"><link rel="prefetch" href="/myblog/assets/js/159.0d569bfc.js"><link rel="prefetch" href="/myblog/assets/js/16.7f32b066.js"><link rel="prefetch" href="/myblog/assets/js/160.89d06450.js"><link rel="prefetch" href="/myblog/assets/js/161.1918e7a6.js"><link rel="prefetch" href="/myblog/assets/js/162.d272494d.js"><link rel="prefetch" href="/myblog/assets/js/163.4fe631fe.js"><link rel="prefetch" href="/myblog/assets/js/164.40a5d0a3.js"><link rel="prefetch" href="/myblog/assets/js/165.1a34a9e4.js"><link rel="prefetch" href="/myblog/assets/js/166.7c784998.js"><link rel="prefetch" href="/myblog/assets/js/167.8a3d563d.js"><link rel="prefetch" href="/myblog/assets/js/168.94bc381d.js"><link rel="prefetch" href="/myblog/assets/js/169.b9cc0fe2.js"><link rel="prefetch" href="/myblog/assets/js/17.39279ba9.js"><link rel="prefetch" href="/myblog/assets/js/170.b2cd295c.js"><link rel="prefetch" href="/myblog/assets/js/171.d59f35fa.js"><link rel="prefetch" href="/myblog/assets/js/172.5db5ca48.js"><link rel="prefetch" href="/myblog/assets/js/173.df8bb8d9.js"><link rel="prefetch" href="/myblog/assets/js/174.67bfb9a4.js"><link rel="prefetch" href="/myblog/assets/js/175.20444ba4.js"><link rel="prefetch" href="/myblog/assets/js/176.218dea39.js"><link rel="prefetch" href="/myblog/assets/js/177.1c8a3d47.js"><link rel="prefetch" href="/myblog/assets/js/178.4aa5e430.js"><link rel="prefetch" href="/myblog/assets/js/179.0d2c3f09.js"><link rel="prefetch" href="/myblog/assets/js/18.5420b8ce.js"><link rel="prefetch" href="/myblog/assets/js/180.cb18eea2.js"><link rel="prefetch" href="/myblog/assets/js/181.da6e1f74.js"><link rel="prefetch" href="/myblog/assets/js/182.140f2683.js"><link rel="prefetch" href="/myblog/assets/js/183.ed45cd62.js"><link rel="prefetch" href="/myblog/assets/js/184.2c972959.js"><link rel="prefetch" href="/myblog/assets/js/185.6f4edb76.js"><link rel="prefetch" href="/myblog/assets/js/186.0907fa31.js"><link rel="prefetch" href="/myblog/assets/js/19.c0bf9dd5.js"><link rel="prefetch" href="/myblog/assets/js/20.cdc096d5.js"><link rel="prefetch" href="/myblog/assets/js/21.c15da32c.js"><link rel="prefetch" href="/myblog/assets/js/22.2bbe2c16.js"><link rel="prefetch" href="/myblog/assets/js/23.eeb36d86.js"><link rel="prefetch" href="/myblog/assets/js/24.41feb9df.js"><link rel="prefetch" href="/myblog/assets/js/25.930d64a8.js"><link rel="prefetch" href="/myblog/assets/js/26.5307a77c.js"><link rel="prefetch" href="/myblog/assets/js/27.4a948b1f.js"><link rel="prefetch" href="/myblog/assets/js/28.bbc3bf81.js"><link rel="prefetch" href="/myblog/assets/js/29.b7a67a8a.js"><link rel="prefetch" href="/myblog/assets/js/3.dcb80023.js"><link rel="prefetch" href="/myblog/assets/js/30.330bc25e.js"><link rel="prefetch" href="/myblog/assets/js/31.25f35abb.js"><link rel="prefetch" href="/myblog/assets/js/32.a7c33843.js"><link rel="prefetch" href="/myblog/assets/js/33.d13de414.js"><link rel="prefetch" href="/myblog/assets/js/34.126d6be8.js"><link rel="prefetch" href="/myblog/assets/js/35.e963fb93.js"><link rel="prefetch" href="/myblog/assets/js/36.7cb8c866.js"><link rel="prefetch" href="/myblog/assets/js/37.b3474fca.js"><link rel="prefetch" href="/myblog/assets/js/38.eecfa05c.js"><link rel="prefetch" href="/myblog/assets/js/39.6a80f40a.js"><link rel="prefetch" href="/myblog/assets/js/4.90bd5023.js"><link rel="prefetch" href="/myblog/assets/js/40.b0beb471.js"><link rel="prefetch" href="/myblog/assets/js/41.530597a8.js"><link rel="prefetch" href="/myblog/assets/js/42.785f9606.js"><link rel="prefetch" href="/myblog/assets/js/43.e9c9f9f4.js"><link rel="prefetch" href="/myblog/assets/js/44.be01cfaa.js"><link rel="prefetch" href="/myblog/assets/js/45.a18f09d2.js"><link rel="prefetch" href="/myblog/assets/js/46.7458026c.js"><link rel="prefetch" href="/myblog/assets/js/47.95b924b1.js"><link rel="prefetch" href="/myblog/assets/js/48.0f18d045.js"><link rel="prefetch" href="/myblog/assets/js/49.c6955b79.js"><link rel="prefetch" href="/myblog/assets/js/5.aac70c1c.js"><link rel="prefetch" href="/myblog/assets/js/50.3353848b.js"><link rel="prefetch" href="/myblog/assets/js/51.afa43e50.js"><link rel="prefetch" href="/myblog/assets/js/52.7d2ab80d.js"><link rel="prefetch" href="/myblog/assets/js/53.4374eb9c.js"><link rel="prefetch" href="/myblog/assets/js/54.600b5fc3.js"><link rel="prefetch" href="/myblog/assets/js/55.8d7c9286.js"><link rel="prefetch" href="/myblog/assets/js/56.a2b7aaec.js"><link rel="prefetch" href="/myblog/assets/js/57.762096ae.js"><link rel="prefetch" href="/myblog/assets/js/58.617a72f5.js"><link rel="prefetch" href="/myblog/assets/js/59.945d9369.js"><link rel="prefetch" href="/myblog/assets/js/6.cb4a535e.js"><link rel="prefetch" href="/myblog/assets/js/60.c72295ad.js"><link rel="prefetch" href="/myblog/assets/js/61.973e7b17.js"><link rel="prefetch" href="/myblog/assets/js/62.319a300f.js"><link rel="prefetch" href="/myblog/assets/js/63.f08654c5.js"><link rel="prefetch" href="/myblog/assets/js/64.68d2cc61.js"><link rel="prefetch" href="/myblog/assets/js/65.b1b2a254.js"><link rel="prefetch" href="/myblog/assets/js/66.531fba3e.js"><link rel="prefetch" href="/myblog/assets/js/67.c3f68f3a.js"><link rel="prefetch" href="/myblog/assets/js/68.ffd2b4d9.js"><link rel="prefetch" href="/myblog/assets/js/69.12142fca.js"><link rel="prefetch" href="/myblog/assets/js/7.16f464c2.js"><link rel="prefetch" href="/myblog/assets/js/70.375b5e76.js"><link rel="prefetch" href="/myblog/assets/js/71.dd79fc2d.js"><link rel="prefetch" href="/myblog/assets/js/72.d6376070.js"><link rel="prefetch" href="/myblog/assets/js/73.d40bfbcf.js"><link rel="prefetch" href="/myblog/assets/js/74.ae8198d7.js"><link rel="prefetch" href="/myblog/assets/js/75.6c535169.js"><link rel="prefetch" href="/myblog/assets/js/76.4342f65a.js"><link rel="prefetch" href="/myblog/assets/js/77.d384c6ce.js"><link rel="prefetch" href="/myblog/assets/js/78.456c5622.js"><link rel="prefetch" href="/myblog/assets/js/79.f351ce94.js"><link rel="prefetch" href="/myblog/assets/js/80.d8f1fdfc.js"><link rel="prefetch" href="/myblog/assets/js/81.189da1dd.js"><link rel="prefetch" href="/myblog/assets/js/82.288dce1a.js"><link rel="prefetch" href="/myblog/assets/js/83.2b313f1f.js"><link rel="prefetch" href="/myblog/assets/js/84.c0f2d51f.js"><link rel="prefetch" href="/myblog/assets/js/85.f4395185.js"><link rel="prefetch" href="/myblog/assets/js/86.51058c54.js"><link rel="prefetch" href="/myblog/assets/js/87.de8e8b37.js"><link rel="prefetch" href="/myblog/assets/js/89.9e892ed0.js"><link rel="prefetch" href="/myblog/assets/js/90.98585e36.js"><link rel="prefetch" href="/myblog/assets/js/91.0e7d737f.js"><link rel="prefetch" href="/myblog/assets/js/92.ef614598.js"><link rel="prefetch" href="/myblog/assets/js/93.c06259bc.js"><link rel="prefetch" href="/myblog/assets/js/94.414ae13c.js"><link rel="prefetch" href="/myblog/assets/js/95.25b3964d.js"><link rel="prefetch" href="/myblog/assets/js/96.472fa650.js"><link rel="prefetch" href="/myblog/assets/js/97.6b5c5419.js"><link rel="prefetch" href="/myblog/assets/js/98.c5925425.js"><link rel="prefetch" href="/myblog/assets/js/99.b4635e29.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.9ef1a0ca.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.65b23aee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">Breeze blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" class="nav-link">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myblog/design-pattern/design-pattern.html" aria-current="page" class="active sidebar-link">设计模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#工厂模式-factory-pattern" class="sidebar-link">工厂模式(Factory pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#工厂模式的实例" class="sidebar-link">工厂模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#工厂模式的优势" class="sidebar-link">工厂模式的优势</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#抽象工厂模式-abstract-factory-pattern" class="sidebar-link">抽象工厂模式(abstract Factory Pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#抽象工厂模式的实例" class="sidebar-link">抽象工厂模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#抽象工厂模式的优势" class="sidebar-link">抽象工厂模式的优势</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#单例模式-singleton-pattern" class="sidebar-link">单例模式(Singleton Pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#单例模式的实例" class="sidebar-link">单例模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#单例模式的优势" class="sidebar-link">单例模式的优势</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#单例模式的使用场景" class="sidebar-link">单例模式的使用场景</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#建造者模式" class="sidebar-link">建造者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#白话解释" class="sidebar-link">白话解释</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#适配器模式-adapter-pattern" class="sidebar-link">适配器模式(Adapter Pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#适配器模式的实例" class="sidebar-link">适配器模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#适配器模式的优势" class="sidebar-link">适配器模式的优势</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#装饰器模式-decorator-pattern" class="sidebar-link">装饰器模式(Decorator Pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#装饰器模式的实例" class="sidebar-link">装饰器模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#装饰器模式的优势" class="sidebar-link">装饰器模式的优势</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#过滤器模式-filter-pattern" class="sidebar-link">过滤器模式(Filter Pattern)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#过滤器模式的实例" class="sidebar-link">过滤器模式的实例</a></li><li class="sidebar-sub-header"><a href="/myblog/design-pattern/design-pattern.html#过滤器模式优势" class="sidebar-link">过滤器模式优势</a></li></ul></li></ul></li><li><a href="/myblog/design-pattern/object.html" class="sidebar-link">面向对象编程</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="设计模式"><a href="#设计模式" class="header-anchor">#</a> 设计模式</h1> <p>JavaScript 设计模式，设计模式是一种思想，和语言无关。</p> <ul><li>开发效率</li> <li>可维护性</li></ul> <p>相关书籍</p> <ul><li>《大话设计模式》</li> <li>《设计模式：可服用面向对象软件的基础》</li> <li>《headfirst 设计模式》</li> <li>《JavaScript 设计模式》</li> <li><a href="https://www.bookstack.cn/books/design-pattern-in-javascript?tab=comment" target="_blank" rel="noopener noreferrer">《JavaScript中的设计模式》<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h1 id="面向对象的-javascript"><a href="#面向对象的-javascript" class="header-anchor">#</a> 面向对象的 JavaScript</h1> <ul><li>类</li> <li>实例</li> <li>构造函数</li> <li>继承</li> <li>多态</li> <li>封装</li> <li>原型</li> <li>class语法</li> <li>具体看<a href="https://www.jinjingxuan.com/2019/01/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" target="_blank" rel="noopener noreferrer">面向对象编程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h1 id="设计模式-2"><a href="#设计模式-2" class="header-anchor">#</a> 设计模式</h1> <ul><li><p>创建型模式</p> <ul><li>工厂模式</li> <li>抽象工厂模式</li> <li>单例模式</li> <li>建造者模式</li> <li>原型模式</li></ul></li> <li><p>结构型模式</p> <ul><li>适配器模式</li> <li>桥接模式</li> <li>过滤器模式</li> <li>组合模式</li> <li>装饰器模式</li> <li>外观模式</li> <li>享元模式</li> <li>代理模式</li></ul></li> <li><p>行为型模式</p> <ul><li>责任链模式</li> <li>命令模式</li> <li>解释器模式</li> <li>迭代器模式</li> <li>中介者模式</li> <li>备忘录模式</li> <li>观察者模式</li> <li>状态模式</li> <li>空对象模式</li> <li>策略模式</li> <li>模板模式</li> <li>访问者模式</li></ul></li> <li><p>适配器模式</p></li> <li><p>装饰器模式</p></li></ul> <h2 id="工厂模式-factory-pattern"><a href="#工厂模式-factory-pattern" class="header-anchor">#</a> 工厂模式(Factory pattern)</h2> <p>工厂模式是比较常用的设计模式之一，那么什么叫工厂模式呢？简单来说，就是你需要什么东西不直接使用new的方法生成实例，然后统一通过工厂进行生产加工再生成实例。</p> <h3 id="工厂模式的实例"><a href="#工厂模式的实例" class="header-anchor">#</a> 工厂模式的实例</h3> <p>比如我们现在有很多形状比如圆形，矩形和正方形。这类都是属于形状，那我们是不是可以通过专门生产形状的工厂来生成它们的实例么？</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a circle&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a rectangle&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a square&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么接下来，我们可以建立一个专门生产形状的工厂来生产它们了。即根据字符串来产生对应需要的类。你在这里可以看到类的出口都已经在一个方法中了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">ShapeFactory</span> <span class="token punctuation">{</span>
+    <span class="token function">getShape</span><span class="token punctuation">(</span><span class="token parameter">shapeType</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>shapeType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'CIRCLE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'RECTANGLE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'SQUARE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么我们需要使用的时候，就可以直接只需要new出一个工厂，在根据字符串就能拿到对应的需要生产的类了。而不需要分别对类进行new。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> shapeFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ShapeFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 通过工厂拿各种形状</span>
+<span class="token keyword">const</span> shape1 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'CIRCLE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape1<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> shape2 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'RECTANGLE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape2<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> shape3 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'SQUARE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape3<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * output:
+ * I'm a circle
+ * I'm a rectangle
+ * I'm a square
+ */</span>
+</code></pre></div><h3 id="工厂模式的优势"><a href="#工厂模式的优势" class="header-anchor">#</a> 工厂模式的优势</h3> <p>那么使用工厂模式的好处也是显而易见的，比如实例的生产比较复杂，或者说生成实例后还需要额外加工，这个时候工厂给了我们一个统一的出入口，也方便了日后对这个实例的修改。比如你要修改工厂产出是一个单例的时候，就不需要在所有的类中修改，而只要在工厂出口修改即可达到目标。</p> <h2 id="抽象工厂模式-abstract-factory-pattern"><a href="#抽象工厂模式-abstract-factory-pattern" class="header-anchor">#</a> 抽象工厂模式(abstract Factory Pattern)</h2> <p>上文讲到了工厂模式，这篇文章将抽象工厂，抽象工厂的名字是真的很抽象，也很容易让人抽象的理解，那么什么是抽象工厂呢？</p> <p>其实抽象工厂，简单来说就是工厂的工厂，因为一般来说一个工厂只负责加载一类组件，那么你有很多小类组件需要生产，那么势必会有很多小类的工厂。那么你最终生产一个大类，那就要很多小类的工厂负责生产。那么如何更方便的管理或者说生产这些工厂呢？那就用生产工厂的工厂来生成吧。</p> <h3 id="抽象工厂模式的实例"><a href="#抽象工厂模式的实例" class="header-anchor">#</a> 抽象工厂模式的实例</h3> <p>先把上文说的形状工厂搬过来</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 这是之前上文说的形状工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a circle&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a rectangle&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;I'm a square&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ShapeFactory</span> <span class="token punctuation">{</span>
+    <span class="token function">getShape</span><span class="token punctuation">(</span><span class="token parameter">shapeType</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>shapeType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'CIRCLE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'RECTANGLE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'SQUARE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这时候你已经有形状了，但你觉得不美观，你还需要颜色，那么你这个时候，你又搞了个颜色工厂，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 再新加一个颜色工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">Red</span> <span class="token punctuation">{</span>
+    <span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;fill red&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Blue</span> <span class="token punctuation">{</span>
+    <span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;fill blue&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Green</span> <span class="token punctuation">{</span>
+    <span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;fill green&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">ColorFactory</span> <span class="token punctuation">{</span>
+    <span class="token function">getColor</span><span class="token punctuation">(</span><span class="token parameter">color</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'RED'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Red</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'BLUE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Blue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'GREEN'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Green</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>颜色工厂好了，但是你担心，以后工厂多了，不好管理咋办，那还是走之前的套路，把工厂通过抽象工厂生产出来。如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 最后添加抽象工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">FactoryProducer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token function">getFactory</span><span class="token punctuation">(</span><span class="token parameter">choice</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>choice<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'SHAPE'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ShapeFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'COLOR'</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ColorFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么这个时候和上文一样只需要new出一个抽象工厂，就能把所有需要的东西拿到手了:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//通过抽象工厂拿形状工厂</span>
+<span class="token keyword">const</span> shapeFactory <span class="token operator">=</span> FactoryProducer<span class="token punctuation">.</span><span class="token function">getFactory</span><span class="token punctuation">(</span><span class="token string">'SHAPE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 通过工厂拿各种形状</span>
+<span class="token keyword">const</span> shape1 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'CIRCLE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape1<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> shape2 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'RECTANGLE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape2<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> shape3 <span class="token operator">=</span> shapeFactory<span class="token punctuation">.</span><span class="token function">getShape</span><span class="token punctuation">(</span><span class="token string">'SQUARE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape3<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//通过抽象工厂拿颜色工厂</span>
+<span class="token keyword">const</span> colorFactory <span class="token operator">=</span> FactoryProducer<span class="token punctuation">.</span><span class="token function">getFactory</span><span class="token punctuation">(</span><span class="token string">'COLOR'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 通过工厂拿各种颜色</span>
+<span class="token keyword">const</span> color1 <span class="token operator">=</span> colorFactory<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token string">'RED'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+color1<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> color2 <span class="token operator">=</span> colorFactory<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token string">'BLUE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+color2<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> color3 <span class="token operator">=</span> colorFactory<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token string">'GREEN'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+color3<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * output：
+ * I'm a circle
+ * I'm a rectangle
+ * I'm a square
+ * fill red
+ * fill blue
+ * fill green
+ */</span>
+</code></pre></div><h3 id="抽象工厂模式的优势"><a href="#抽象工厂模式的优势" class="header-anchor">#</a> 抽象工厂模式的优势</h3> <p>那么使用抽象工厂模式的好处和工厂模式的好处很相似，给工厂做了一个统一的出入口，也方便了日后对这个工厂的修改。</p> <h2 id="单例模式-singleton-pattern"><a href="#单例模式-singleton-pattern" class="header-anchor">#</a> 单例模式(Singleton Pattern)</h2> <p>什么叫单例模式，简单来说就是一个实例只生产一次。</p> <h3 id="单例模式的实例"><a href="#单例模式的实例" class="header-anchor">#</a> 单例模式的实例</h3> <p>这个很简单，我觉得可以直接看代码。</p> <p>这是一种“懒汉式”写法，还有一种叫饿汉式写法，区别是懒汉使用时才初始化，饿汉则先初始化，用的时候直接给。</p> <p>由于js不需要考虑线程安全，所以推荐使用懒汉式写法，饿汉在JS中反而容易产生没必要的垃圾。</p> <blockquote><p>惰性单例是指在需要的时候才创建</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">SingleObject</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 防止调用new初始化</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token punctuation">.</span>target <span class="token operator">!=</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> errorMsg <span class="token operator">=</span> <span class="token string">&quot;This is single object,Can't use keyword new!&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> tipMsg <span class="token operator">=</span> <span class="token string">&quot;You should use method getInstance to get instance。&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>errorMsg<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tipMsg<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 生产单例</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>SingleObject<span class="token punctuation">.</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> SingleObject<span class="token punctuation">.</span>instance<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        SingleObject<span class="token punctuation">.</span>instance <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        SingleObject<span class="token punctuation">.</span>instance<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> <span class="token class-name">SingleObject</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> SingleObject<span class="token punctuation">.</span>instance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">showMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> instance <span class="token operator">=</span> SingleObject<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+instance<span class="token punctuation">.</span><span class="token function">showMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * output:
+ * Hello World!
+ */</span>
+</code></pre></div><h3 id="单例模式的优势"><a href="#单例模式的优势" class="header-anchor">#</a> 单例模式的优势</h3> <p>对于频繁使用且可重复使用的对象，可以极大来减少内存消耗和没必要的垃圾回收。</p> <h3 id="单例模式的使用场景"><a href="#单例模式的使用场景" class="header-anchor">#</a> 单例模式的使用场景</h3> <p>在一个系统中，要求一个类有且仅有一个对象，如果出现多个对象就会出现”不良反应“，可以采用单例模式，具体的场景如下：</p> <ul><li>在整个项目中需要一个共享访问点或共享数据，例如一个Web上的计数器，可以不用每次把刷新都记录到数据库中，使用单例模式保持计数器的值，并确保是线程安全的；</li> <li>需要定义大量的静态常量和静态方法（如工具类）的环境，可以采用单例模式（当然，也可以直接声明为static的方式）。</li> <li>在项目开发时有一些对象其实我们只需要一个，比如：线程池、缓存、日志对象等等。</li></ul> <h2 id="建造者模式"><a href="#建造者模式" class="header-anchor">#</a> 建造者模式</h2> <p>在软件系统中，有时候面临着“一个复杂对象”的创建工作，其通常由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂对象的各个部分经常面临着剧烈的变化，但是将它们组合在一起的算法确相对稳定。如何应对这种变化？如何提供一种“封装机制”来隔离出“复杂对象的各个部分”的变化，从而保持系统中的“稳定构建算法”不随着需求改变而改变？这就是要说的建造者模式。</p> <p><strong>建造者模式</strong>(Builder pattern)，将一个复杂对象的构建层与其表示层相互分离，使得同样的构建过程可以采用不同的表示。也就是说如果我们用了建造者模式，那么用户就需要指定需要建造的类型就可以得到它们，而具体建造的过程和细节就不需要知道了。</p> <p>在<strong>工厂模式</strong>中，对创建的结果都是一个完整的个体，我们对参见的过程不为所知，只了解创建的结果对象。而在建造者模式中我们关心的是对象的创建过程，因此我们通常将创建对象的类模块化，这样使被创建的类的每一个模块都可以得到灵活的运用和高质量的复用。</p> <h3 id="白话解释"><a href="#白话解释" class="header-anchor">#</a> 白话解释</h3> <blockquote><p>在建造者模式里，有个指导者(Director)，由指导者来管理建造者，用户是与指导者联系的，指导者联系建造者最后得到产品。即建造者模式可以强制实行一种分步骤进行的建造过程。</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token comment">//产品——产品类</span>
+    <span class="token keyword">function</span> <span class="token function">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>design <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>db <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>front <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>back <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//产品经理——指导类</span>
+    <span class="token keyword">function</span> <span class="token function">ProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">startWork</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">engineer</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            engineer<span class="token punctuation">.</span><span class="token function">productDesign</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            engineer<span class="token punctuation">.</span><span class="token function">frontEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            engineer<span class="token punctuation">.</span><span class="token function">backEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            engineer<span class="token punctuation">.</span><span class="token function">dbManageer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//工程师——建造者类</span>
+    <span class="token keyword">function</span> <span class="token function">Engineer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">productDesign</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;产品设计好了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">dbManageer</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;数据库设计好了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">backEnd</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;后台写好了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">frontEnd</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;前台写好了&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">done</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">var</span> product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            product<span class="token punctuation">.</span>design <span class="token operator">=</span> <span class="token string">&quot;done&quot;</span><span class="token punctuation">;</span>
+            product<span class="token punctuation">.</span>db <span class="token operator">=</span> <span class="token string">&quot;done&quot;</span><span class="token punctuation">;</span>
+            product<span class="token punctuation">.</span>back <span class="token operator">=</span> <span class="token string">&quot;done&quot;</span><span class="token punctuation">;</span>
+            product<span class="token punctuation">.</span>front <span class="token operator">=</span> <span class="token string">&quot;done&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> product<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+		<span class="token keyword">let</span> engineer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Engineer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> productmanager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    productmanager<span class="token punctuation">.</span><span class="token function">startWork</span><span class="token punctuation">(</span>engineer<span class="token punctuation">)</span>
+		<span class="token comment">// 产品设计好了</span>
+    <span class="token comment">// 前台写好了</span>
+		<span class="token comment">// 后台写好了</span>
+		<span class="token comment">// 数据库设计好了</span>
+		<span class="token keyword">let</span> product <span class="token operator">=</span> engineer<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>product<span class="token punctuation">)</span>
+		<span class="token comment">/**
+			Product
+        back: &quot;done&quot;
+        db: &quot;done&quot;
+        design: &quot;done&quot;
+        front: &quot;done&quot;
+		*/</span>
+</code></pre></div><h2 id="适配器模式-adapter-pattern"><a href="#适配器模式-adapter-pattern" class="header-anchor">#</a> 适配器模式(Adapter Pattern)</h2> <p>适配器模式是作为两个不同接口的一种聚合，把比如说SD卡适配器，无论使用TF或SD卡或者其它卡，对外输出都是USB接口。</p> <h3 id="适配器模式的实例"><a href="#适配器模式的实例" class="header-anchor">#</a> 适配器模式的实例</h3> <p>首先我们有两个设备一个是Vlc播放器，一个是Mp4播放器，一个需要使用playVlc按钮来播放，一个要使用playMp4来播放。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">VlcPlayer</span> <span class="token punctuation">{</span>
+    <span class="token function">playVlc</span><span class="token punctuation">(</span><span class="token parameter">fileName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Playing vlc file. Name: &quot;</span><span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>      
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Mp4Player</span>  <span class="token punctuation">{</span>
+    <span class="token function">playMp4</span><span class="token punctuation">(</span><span class="token parameter">fileName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Playing mp4 file. Name: &quot;</span><span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>      
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>但是我就想通过一个播放按钮来播放，我不管他是什么播放设备，这个时候，我们就需要一个适配器来做这个事情。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">MediaAdapter</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">audioType</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>audioType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'vlc'</span><span class="token operator">:</span>
+                MediaAdapter<span class="token punctuation">.</span>advancedMusicPlayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VlcPlayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'mp4'</span><span class="token operator">:</span>
+                MediaAdapter<span class="token punctuation">.</span>advancedMusicPlayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Mp4Player</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">play</span><span class="token punctuation">(</span><span class="token parameter">audioType<span class="token punctuation">,</span> fileName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>audioType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'vlc'</span><span class="token operator">:</span>
+                MediaAdapter<span class="token punctuation">.</span>advancedMusicPlayer<span class="token punctuation">.</span><span class="token function">playVlc</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'mp4'</span><span class="token operator">:</span>
+                MediaAdapter<span class="token punctuation">.</span>advancedMusicPlayer<span class="token punctuation">.</span><span class="token function">playMp4</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre></div><p>通过适配器我们可以把各种设备桥接到一个音频设备上。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">AudioPlayer</span><span class="token punctuation">{</span>
+    <span class="token function">play</span><span class="token punctuation">(</span><span class="token parameter">audioType<span class="token punctuation">,</span> fileName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>audioType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token string">'mp3'</span><span class="token operator">:</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Playing mp3 file. Name: &quot;</span><span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">'vlc'</span><span class="token operator">:</span>
+            <span class="token keyword">case</span> <span class="token string">'mp4'</span><span class="token operator">:</span>
+                    AudioPlayer<span class="token punctuation">.</span>mediaAdapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaAdapter</span><span class="token punctuation">(</span>audioType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    AudioPlayer<span class="token punctuation">.</span>mediaAdapter<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span>audioType<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Invalid media. &quot;</span><span class="token operator">+</span>
+                    audioType <span class="token operator">+</span> <span class="token string">&quot; format not supported&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>  
+ <span class="token punctuation">}</span>
+</code></pre></div><p>那么这个时候我们就可以直接通过这个音频设备来播放我们想要播放的音频了</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> audioPlayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioPlayer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ audioPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token string">&quot;mp3&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;beyond the horizon.mp3&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ audioPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token string">&quot;mp4&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;alone.mp4&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ audioPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token string">&quot;vlc&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;far far away.vlc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ audioPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token string">&quot;avi&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;mind me.avi&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/**
+  * output:
+  * Playing mp3 file. Name: beyond the horizon.mp3
+  * Playing mp4 file. Name: alone.mp4
+  * Playing vlc file. Name: far far away.vlc
+  * Invalid media. avi format not supported
+  */</span>
+</code></pre></div><h3 id="适配器模式的优势"><a href="#适配器模式的优势" class="header-anchor">#</a> 适配器模式的优势</h3> <p>可以让两个不同接口作为一个适配的接口使用，这样对下层的关心可以减少.</p> <h2 id="装饰器模式-decorator-pattern"><a href="#装饰器模式-decorator-pattern" class="header-anchor">#</a> 装饰器模式(Decorator Pattern)</h2> <p>装饰器模式实现了不改变原有对象，在原有对象上实现功能的添加。这是一种对原有对象的一种包装。</p> <h3 id="装饰器模式的实例"><a href="#装饰器模式的实例" class="header-anchor">#</a> 装饰器模式的实例</h3> <p>假设现在有两个形状，一个矩形一个圆形，这时候我们希望能在形状上实现一些特殊的功能，但又不改变原来的类，我们要如何做呢？</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Shape: Rectangle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">{</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Shape: Circle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这时我们可以用装饰器来实现，假设我们要给形状添加颜色功能</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">RedShapeDecorator</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">decoratedShape</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>decoratedShape <span class="token operator">=</span> decoratedShape<span class="token punctuation">;</span>    
+    <span class="token punctuation">}</span>
+    <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>decoratedShape<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+       <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setRedBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">setRedBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Border Color: Red&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么在使用装饰器的类，在画圆的时候就实现了了画边框的颜色。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> circle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> redCircle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedShapeDecorator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> redRectangle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedShapeDecorator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Circle with normal border&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+circle<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;\nCircle of red border&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+redCircle<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;\nRectangle of red border&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+redRectangle<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * output:
+ * Circle with normal border
+ * Shape: Circle
+ * 
+ * Circle of red border
+ * Shape: Circle
+ * Border Color: Red
+ * 
+ * Rectangle of red border
+ * Shape: Rectangle
+ * Border Color: Red
+ */</span>
+</code></pre></div><h3 id="装饰器模式的优势"><a href="#装饰器模式的优势" class="header-anchor">#</a> 装饰器模式的优势</h3> <p>即使原有对象发生改变，装饰器是种非侵入式功能添加，对原有对象的影响也能降低到最小。</p> <h2 id="过滤器模式-filter-pattern"><a href="#过滤器模式-filter-pattern" class="header-anchor">#</a> 过滤器模式(Filter Pattern)</h2> <p>通过多个单一的功能筛选构建出一个复杂的筛选功能。</p> <h3 id="过滤器模式的实例"><a href="#过滤器模式的实例" class="header-anchor">#</a> 过滤器模式的实例</h3> <p>首先定义一个对象，我们后续可以通过名字(name)，性别(gender)，婚姻状况(maritalStatus)</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 定义对象</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> gender<span class="token punctuation">,</span> maritalStatus</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>gender <span class="token operator">=</span> gender<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>maritalStatus <span class="token operator">=</span> maritalStatus<span class="token punctuation">;</span>    
+    <span class="token punctuation">}</span>
+    <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">getGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>gender<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">getMaritalStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>maritalStatus<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre></div><p>定义一些单一功能的筛选条件，比如啊判断是男，是女，是不是单身。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 添加筛选条件</span>
+<span class="token keyword">class</span> <span class="token class-name">CriteriaMale</span> <span class="token punctuation">{</span>
+    <span class="token function">meetCriteria</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> malePersons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> person <span class="token keyword">of</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">&quot;MALE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             malePersons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> malePersons<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">CriteriaFemale</span> <span class="token punctuation">{</span>
+    <span class="token function">meetCriteria</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> femalePersons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> person <span class="token keyword">of</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">&quot;FEMALE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             femalePersons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> femalePersons<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">CriteriaSingle</span> <span class="token punctuation">{</span>
+    <span class="token function">meetCriteria</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> singlePersons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> person <span class="token keyword">of</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getMaritalStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">&quot;SINGLE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             singlePersons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> singlePersons<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>将单一功能增加对应的操作符，使单一功能筛选条件能通过组合来实现复杂的筛选。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 添加筛选操作符</span>
+<span class="token keyword">class</span> <span class="token class-name">AndCriteria</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">criteria<span class="token punctuation">,</span> otherCriteria</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>criteria <span class="token operator">=</span> criteria<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>otherCriteria <span class="token operator">=</span> otherCriteria<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">meetCriteria</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> firstCriteriaPersons <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>criteria<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>otherCriteria<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>firstCriteriaPersons<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">class</span> <span class="token class-name">OrCriteria</span><span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">criteria<span class="token punctuation">,</span> otherCriteria</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>criteria <span class="token operator">=</span> criteria<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>otherCriteria <span class="token operator">=</span> otherCriteria<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">meetCriteria</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> firstCriteriaItems <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>criteria<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">const</span> otherCriteriaItems <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>otherCriteria<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> person <span class="token keyword">of</span> otherCriteriaItems<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>firstCriteriaItems<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            firstCriteriaItems<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> firstCriteriaItems<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre></div><p>使用单一筛选条件或是组合单一筛选条件来筛选，达到复杂筛选目的</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">printPersons</span><span class="token punctuation">(</span><span class="token parameter">persons</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span>  person <span class="token keyword">of</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> persons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;Robert&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Male&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Single&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;John&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Male&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Married&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;Laura&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Female&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Married&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;Diana&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Female&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Single&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;Mike&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Male&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Single&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+persons<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">&quot;Bobby&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Male&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Single&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> male <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CriteriaMale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> female <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CriteriaFemale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> single <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CriteriaSingle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> singleMale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AndCriteria</span><span class="token punctuation">(</span>single<span class="token punctuation">,</span> male<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> singleOrFemale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OrCriteria</span><span class="token punctuation">(</span>single<span class="token punctuation">,</span> female<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Males: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printPersons</span><span class="token punctuation">(</span>male<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;\nFemales: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printPersons</span><span class="token punctuation">(</span>female<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;\nSingle Males: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printPersons</span><span class="token punctuation">(</span>singleMale<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;\nSingle Or Females: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printPersons</span><span class="token punctuation">(</span>singleOrFemale<span class="token punctuation">.</span><span class="token function">meetCriteria</span><span class="token punctuation">(</span>persons<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * output:
+ * Males: 
+ * Person { name: 'Robert', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'John', gender: 'Male', maritalStatus: 'Married' }
+ * Person { name: 'Mike', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Bobby', gender: 'Male', maritalStatus: 'Single' }
+ * 
+ * Females: 
+ * Person { name: 'Laura', gender: 'Female', maritalStatus: 'Married' }
+ * Person { name: 'Diana', gender: 'Female', maritalStatus: 'Single' }
+ * 
+ * Single Males: 
+ * Person { name: 'Robert', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Mike', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Bobby', gender: 'Male', maritalStatus: 'Single' }
+ * 
+ * Single Or Females: 
+ * Person { name: 'Robert', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Diana', gender: 'Female', maritalStatus: 'Single' }
+ * Person { name: 'Mike', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Bobby', gender: 'Male', maritalStatus: 'Single' }
+ * Person { name: 'Laura', gender: 'Female', maritalStatus: 'Married' }
+ */</span>
+</code></pre></div><h3 id="过滤器模式优势"><a href="#过滤器模式优势" class="header-anchor">#</a> 过滤器模式优势</h3> <p>在需要做类的筛选的时候，通过每次单一功能的筛选，再做聚合能极大的降低筛选功能的复杂性。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">9/3/2021, 7:07:07 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/myblog/design-pattern/object.html">
+        面向对象编程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.9f4db6d8.js" defer></script><script src="/myblog/assets/js/2.08803d47.js" defer></script><script src="/myblog/assets/js/1.a370845a.js" defer></script><script src="/myblog/assets/js/88.18284846.js" defer></script>
+  </body>
+</html>

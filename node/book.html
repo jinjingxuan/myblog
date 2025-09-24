@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>精读《深入浅出NodeJs》 | Breeze blog</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.65b23aee.css" as="style"><link rel="preload" href="/myblog/assets/js/app.9f4db6d8.js" as="script"><link rel="preload" href="/myblog/assets/js/2.08803d47.js" as="script"><link rel="preload" href="/myblog/assets/js/1.a370845a.js" as="script"><link rel="preload" href="/myblog/assets/js/39.6a80f40a.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.564253ef.js"><link rel="prefetch" href="/myblog/assets/js/100.c35b9817.js"><link rel="prefetch" href="/myblog/assets/js/101.c6a8c814.js"><link rel="prefetch" href="/myblog/assets/js/102.88236ccf.js"><link rel="prefetch" href="/myblog/assets/js/103.67c936e1.js"><link rel="prefetch" href="/myblog/assets/js/104.8fc3204b.js"><link rel="prefetch" href="/myblog/assets/js/105.58194991.js"><link rel="prefetch" href="/myblog/assets/js/106.40f7a133.js"><link rel="prefetch" href="/myblog/assets/js/107.8e7a3cbd.js"><link rel="prefetch" href="/myblog/assets/js/108.85a56101.js"><link rel="prefetch" href="/myblog/assets/js/109.e8350503.js"><link rel="prefetch" href="/myblog/assets/js/11.141e02ca.js"><link rel="prefetch" href="/myblog/assets/js/110.c44ed8f7.js"><link rel="prefetch" href="/myblog/assets/js/111.1b5062ea.js"><link rel="prefetch" href="/myblog/assets/js/112.61191925.js"><link rel="prefetch" href="/myblog/assets/js/113.0a3dc942.js"><link rel="prefetch" href="/myblog/assets/js/114.bda2b561.js"><link rel="prefetch" href="/myblog/assets/js/115.adace76f.js"><link rel="prefetch" href="/myblog/assets/js/116.8b2a6290.js"><link rel="prefetch" href="/myblog/assets/js/117.c0e5e0cf.js"><link rel="prefetch" href="/myblog/assets/js/118.6b430d21.js"><link rel="prefetch" href="/myblog/assets/js/119.5eaa5de1.js"><link rel="prefetch" href="/myblog/assets/js/12.c43cf55f.js"><link rel="prefetch" href="/myblog/assets/js/120.17910a89.js"><link rel="prefetch" href="/myblog/assets/js/121.fb6ccf62.js"><link rel="prefetch" href="/myblog/assets/js/122.a57b91f6.js"><link rel="prefetch" href="/myblog/assets/js/123.37dd985e.js"><link rel="prefetch" href="/myblog/assets/js/124.0fddbe5d.js"><link rel="prefetch" href="/myblog/assets/js/125.65d7027f.js"><link rel="prefetch" href="/myblog/assets/js/126.c5a821cb.js"><link rel="prefetch" href="/myblog/assets/js/127.3b3ef1fc.js"><link rel="prefetch" href="/myblog/assets/js/128.d78bc2aa.js"><link rel="prefetch" href="/myblog/assets/js/129.51a1a88e.js"><link rel="prefetch" href="/myblog/assets/js/13.1dee1651.js"><link rel="prefetch" href="/myblog/assets/js/130.729b0572.js"><link rel="prefetch" href="/myblog/assets/js/131.ac6f9726.js"><link rel="prefetch" href="/myblog/assets/js/132.b13e1261.js"><link rel="prefetch" href="/myblog/assets/js/133.4759f2f2.js"><link rel="prefetch" href="/myblog/assets/js/134.4ca33894.js"><link rel="prefetch" href="/myblog/assets/js/135.eee995e6.js"><link rel="prefetch" href="/myblog/assets/js/136.0dec144e.js"><link rel="prefetch" href="/myblog/assets/js/137.4f794e1a.js"><link rel="prefetch" href="/myblog/assets/js/138.287f26dc.js"><link rel="prefetch" href="/myblog/assets/js/139.9f0c6e77.js"><link rel="prefetch" href="/myblog/assets/js/14.2970adac.js"><link rel="prefetch" href="/myblog/assets/js/140.1c5bf392.js"><link rel="prefetch" href="/myblog/assets/js/141.18013a51.js"><link rel="prefetch" href="/myblog/assets/js/142.ad961356.js"><link rel="prefetch" href="/myblog/assets/js/143.e6d314ef.js"><link rel="prefetch" href="/myblog/assets/js/144.2c0d38d4.js"><link rel="prefetch" href="/myblog/assets/js/145.ef4a83a0.js"><link rel="prefetch" href="/myblog/assets/js/146.629f8b70.js"><link rel="prefetch" href="/myblog/assets/js/147.b46d65fb.js"><link rel="prefetch" href="/myblog/assets/js/148.524bf7db.js"><link rel="prefetch" href="/myblog/assets/js/149.164af466.js"><link rel="prefetch" href="/myblog/assets/js/15.47e79098.js"><link rel="prefetch" href="/myblog/assets/js/150.cc678031.js"><link rel="prefetch" href="/myblog/assets/js/151.eb336eb5.js"><link rel="prefetch" href="/myblog/assets/js/152.f0bed21e.js"><link rel="prefetch" href="/myblog/assets/js/153.37c5472f.js"><link rel="prefetch" href="/myblog/assets/js/154.028e1db1.js"><link rel="prefetch" href="/myblog/assets/js/155.d5fd774f.js"><link rel="prefetch" href="/myblog/assets/js/156.d1d9a355.js"><link rel="prefetch" href="/myblog/assets/js/157.f9f4ede3.js"><link rel="prefetch" href="/myblog/assets/js/158.2a231f1b.js"><link rel="prefetch" href="/myblog/assets/js/159.0d569bfc.js"><link rel="prefetch" href="/myblog/assets/js/16.7f32b066.js"><link rel="prefetch" href="/myblog/assets/js/160.89d06450.js"><link rel="prefetch" href="/myblog/assets/js/161.1918e7a6.js"><link rel="prefetch" href="/myblog/assets/js/162.d272494d.js"><link rel="prefetch" href="/myblog/assets/js/163.4fe631fe.js"><link rel="prefetch" href="/myblog/assets/js/164.40a5d0a3.js"><link rel="prefetch" href="/myblog/assets/js/165.1a34a9e4.js"><link rel="prefetch" href="/myblog/assets/js/166.7c784998.js"><link rel="prefetch" href="/myblog/assets/js/167.8a3d563d.js"><link rel="prefetch" href="/myblog/assets/js/168.94bc381d.js"><link rel="prefetch" href="/myblog/assets/js/169.b9cc0fe2.js"><link rel="prefetch" href="/myblog/assets/js/17.39279ba9.js"><link rel="prefetch" href="/myblog/assets/js/170.b2cd295c.js"><link rel="prefetch" href="/myblog/assets/js/171.d59f35fa.js"><link rel="prefetch" href="/myblog/assets/js/172.5db5ca48.js"><link rel="prefetch" href="/myblog/assets/js/173.df8bb8d9.js"><link rel="prefetch" href="/myblog/assets/js/174.67bfb9a4.js"><link rel="prefetch" href="/myblog/assets/js/175.20444ba4.js"><link rel="prefetch" href="/myblog/assets/js/176.218dea39.js"><link rel="prefetch" href="/myblog/assets/js/177.1c8a3d47.js"><link rel="prefetch" href="/myblog/assets/js/178.4aa5e430.js"><link rel="prefetch" href="/myblog/assets/js/179.0d2c3f09.js"><link rel="prefetch" href="/myblog/assets/js/18.5420b8ce.js"><link rel="prefetch" href="/myblog/assets/js/180.cb18eea2.js"><link rel="prefetch" href="/myblog/assets/js/181.da6e1f74.js"><link rel="prefetch" href="/myblog/assets/js/182.140f2683.js"><link rel="prefetch" href="/myblog/assets/js/183.ed45cd62.js"><link rel="prefetch" href="/myblog/assets/js/184.2c972959.js"><link rel="prefetch" href="/myblog/assets/js/185.6f4edb76.js"><link rel="prefetch" href="/myblog/assets/js/186.0907fa31.js"><link rel="prefetch" href="/myblog/assets/js/19.c0bf9dd5.js"><link rel="prefetch" href="/myblog/assets/js/20.cdc096d5.js"><link rel="prefetch" href="/myblog/assets/js/21.c15da32c.js"><link rel="prefetch" href="/myblog/assets/js/22.2bbe2c16.js"><link rel="prefetch" href="/myblog/assets/js/23.eeb36d86.js"><link rel="prefetch" href="/myblog/assets/js/24.41feb9df.js"><link rel="prefetch" href="/myblog/assets/js/25.930d64a8.js"><link rel="prefetch" href="/myblog/assets/js/26.5307a77c.js"><link rel="prefetch" href="/myblog/assets/js/27.4a948b1f.js"><link rel="prefetch" href="/myblog/assets/js/28.bbc3bf81.js"><link rel="prefetch" href="/myblog/assets/js/29.b7a67a8a.js"><link rel="prefetch" href="/myblog/assets/js/3.dcb80023.js"><link rel="prefetch" href="/myblog/assets/js/30.330bc25e.js"><link rel="prefetch" href="/myblog/assets/js/31.25f35abb.js"><link rel="prefetch" href="/myblog/assets/js/32.a7c33843.js"><link rel="prefetch" href="/myblog/assets/js/33.d13de414.js"><link rel="prefetch" href="/myblog/assets/js/34.126d6be8.js"><link rel="prefetch" href="/myblog/assets/js/35.e963fb93.js"><link rel="prefetch" href="/myblog/assets/js/36.7cb8c866.js"><link rel="prefetch" href="/myblog/assets/js/37.b3474fca.js"><link rel="prefetch" href="/myblog/assets/js/38.eecfa05c.js"><link rel="prefetch" href="/myblog/assets/js/4.90bd5023.js"><link rel="prefetch" href="/myblog/assets/js/40.b0beb471.js"><link rel="prefetch" href="/myblog/assets/js/41.530597a8.js"><link rel="prefetch" href="/myblog/assets/js/42.785f9606.js"><link rel="prefetch" href="/myblog/assets/js/43.e9c9f9f4.js"><link rel="prefetch" href="/myblog/assets/js/44.be01cfaa.js"><link rel="prefetch" href="/myblog/assets/js/45.a18f09d2.js"><link rel="prefetch" href="/myblog/assets/js/46.7458026c.js"><link rel="prefetch" href="/myblog/assets/js/47.95b924b1.js"><link rel="prefetch" href="/myblog/assets/js/48.0f18d045.js"><link rel="prefetch" href="/myblog/assets/js/49.c6955b79.js"><link rel="prefetch" href="/myblog/assets/js/5.aac70c1c.js"><link rel="prefetch" href="/myblog/assets/js/50.3353848b.js"><link rel="prefetch" href="/myblog/assets/js/51.afa43e50.js"><link rel="prefetch" href="/myblog/assets/js/52.7d2ab80d.js"><link rel="prefetch" href="/myblog/assets/js/53.4374eb9c.js"><link rel="prefetch" href="/myblog/assets/js/54.600b5fc3.js"><link rel="prefetch" href="/myblog/assets/js/55.8d7c9286.js"><link rel="prefetch" href="/myblog/assets/js/56.a2b7aaec.js"><link rel="prefetch" href="/myblog/assets/js/57.762096ae.js"><link rel="prefetch" href="/myblog/assets/js/58.617a72f5.js"><link rel="prefetch" href="/myblog/assets/js/59.945d9369.js"><link rel="prefetch" href="/myblog/assets/js/6.cb4a535e.js"><link rel="prefetch" href="/myblog/assets/js/60.c72295ad.js"><link rel="prefetch" href="/myblog/assets/js/61.973e7b17.js"><link rel="prefetch" href="/myblog/assets/js/62.319a300f.js"><link rel="prefetch" href="/myblog/assets/js/63.f08654c5.js"><link rel="prefetch" href="/myblog/assets/js/64.68d2cc61.js"><link rel="prefetch" href="/myblog/assets/js/65.b1b2a254.js"><link rel="prefetch" href="/myblog/assets/js/66.531fba3e.js"><link rel="prefetch" href="/myblog/assets/js/67.c3f68f3a.js"><link rel="prefetch" href="/myblog/assets/js/68.ffd2b4d9.js"><link rel="prefetch" href="/myblog/assets/js/69.12142fca.js"><link rel="prefetch" href="/myblog/assets/js/7.16f464c2.js"><link rel="prefetch" href="/myblog/assets/js/70.375b5e76.js"><link rel="prefetch" href="/myblog/assets/js/71.dd79fc2d.js"><link rel="prefetch" href="/myblog/assets/js/72.d6376070.js"><link rel="prefetch" href="/myblog/assets/js/73.d40bfbcf.js"><link rel="prefetch" href="/myblog/assets/js/74.ae8198d7.js"><link rel="prefetch" href="/myblog/assets/js/75.6c535169.js"><link rel="prefetch" href="/myblog/assets/js/76.4342f65a.js"><link rel="prefetch" href="/myblog/assets/js/77.d384c6ce.js"><link rel="prefetch" href="/myblog/assets/js/78.456c5622.js"><link rel="prefetch" href="/myblog/assets/js/79.f351ce94.js"><link rel="prefetch" href="/myblog/assets/js/80.d8f1fdfc.js"><link rel="prefetch" href="/myblog/assets/js/81.189da1dd.js"><link rel="prefetch" href="/myblog/assets/js/82.288dce1a.js"><link rel="prefetch" href="/myblog/assets/js/83.2b313f1f.js"><link rel="prefetch" href="/myblog/assets/js/84.c0f2d51f.js"><link rel="prefetch" href="/myblog/assets/js/85.f4395185.js"><link rel="prefetch" href="/myblog/assets/js/86.51058c54.js"><link rel="prefetch" href="/myblog/assets/js/87.de8e8b37.js"><link rel="prefetch" href="/myblog/assets/js/88.18284846.js"><link rel="prefetch" href="/myblog/assets/js/89.9e892ed0.js"><link rel="prefetch" href="/myblog/assets/js/90.98585e36.js"><link rel="prefetch" href="/myblog/assets/js/91.0e7d737f.js"><link rel="prefetch" href="/myblog/assets/js/92.ef614598.js"><link rel="prefetch" href="/myblog/assets/js/93.c06259bc.js"><link rel="prefetch" href="/myblog/assets/js/94.414ae13c.js"><link rel="prefetch" href="/myblog/assets/js/95.25b3964d.js"><link rel="prefetch" href="/myblog/assets/js/96.472fa650.js"><link rel="prefetch" href="/myblog/assets/js/97.6b5c5419.js"><link rel="prefetch" href="/myblog/assets/js/98.c5925425.js"><link rel="prefetch" href="/myblog/assets/js/99.b4635e29.js"><link rel="prefetch" href="/myblog/assets/js/vendors~docsearch.9ef1a0ca.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.65b23aee.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><!----> <span class="site-name">Breeze blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="产品与数据" class="dropdown-title"><span class="title">产品与数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="产品与数据" class="mobile-dropdown-title"><span class="title">产品与数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/product/abtest.html" class="nav-link">
+  AB test
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="区块链" class="dropdown-title"><span class="title">区块链</span> <span class="arrow down"></span></button> <button type="button" aria-label="区块链" class="mobile-dropdown-title"><span class="title">区块链</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/blockchain/learn1.html" class="nav-link">
+  北大公开课学习
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/base.html" class="nav-link">
+  常见概念
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/js.html" class="nav-link">
+  web3.js和Ethers.js
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/blockchain/ethersjs.html" class="nav-link">
+  Ethers.js
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow down"></span></button> <button type="button" aria-label="node" class="mobile-dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/node/node-1.html" class="nav-link">
+  Node基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/book.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  《深入浅出NodeJs》
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/node/express.html" class="nav-link">
+  express
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/algorithm/array.html" class="nav-link">
+  数组
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dfs-bfs.html" class="nav-link">
+  dfs/bfs
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/dynamic.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/greedy.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/list.html" class="nav-link">
+  链表
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/sort.html" class="nav-link">
+  排序
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/stack.html" class="nav-link">
+  栈
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/string.html" class="nav-link">
+  字符串
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/trace.html" class="nav-link">
+  回溯
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/tree.html" class="nav-link">
+  树
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/two-pointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/algorithm/scene.html" class="nav-link">
+  场景题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="css" class="dropdown-title"><span class="title">css</span> <span class="arrow down"></span></button> <button type="button" aria-label="css" class="mobile-dropdown-title"><span class="title">css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/css/bfc.html" class="nav-link">
+  BFC
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/box.html" class="nav-link">
+  盒子模型
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/css/problem.html" class="nav-link">
+  problem
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          JavaScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/javascript/clone.html" class="nav-link">
+  浅/深拷贝
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/closure.html" class="nav-link">
+  闭包
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/datatype.html" class="nav-link">
+  数据类型
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/ES6.html" class="nav-link">
+  ES6
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/prototype.html" class="nav-link">
+  原型与原型链
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/scope.html" class="nav-link">
+  作用域
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/this.html" class="nav-link">
+  this
+</a></li><li class="dropdown-subitem"><a href="/myblog/javascript/function.html" class="nav-link">
+  函数式编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/ts/ts-base.html" class="nav-link">
+  基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/ts-advance.html" class="nav-link">
+  进阶
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/book.html" class="nav-link">
+  《深入理解TypeScript》
+</a></li><li class="dropdown-subitem"><a href="/myblog/ts/decorator.html" class="nav-link">
+  TypeScript中的装饰器
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Threejs
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/three/three1.html" class="nav-link">
+  three基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three2.html" class="nav-link">
+  乒乓球游戏
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three3.html" class="nav-link">
+  react three
+</a></li><li class="dropdown-subitem"><a href="/myblog/three/three4.html" class="nav-link">
+  一些实践
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端框架" class="dropdown-title"><span class="title">前端框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端框架" class="mobile-dropdown-title"><span class="title">前端框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Vue
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/vue/code-1.html" class="nav-link">
+  源码解析
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/responsive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vue3.0-1.html" class="nav-link">
+  vue3
+</a></li><li class="dropdown-subitem"><a href="/myblog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li></ul></li><li class="dropdown-item"><h4>
+          React
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/react/react-1.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/react-hooks.html" class="nav-link">
+  react hooks
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/redux.html" class="nav-link">
+  redux
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/fiber.html" class="nav-link">
+  React Fiber
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/time.html" class="nav-link">
+  React 版本
+</a></li><li class="dropdown-subitem"><a href="/myblog/react/diff.html" class="nav-link">
+  React Diff
+</a></li></ul></li><li class="dropdown-item"><h4>
+          San
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/san/eslint-plugin-san.html" class="nav-link">
+  eslint-plugin-san
+</a></li><li class="dropdown-subitem"><a href="/myblog/san/san-loader.html" class="nav-link">
+  san-loader
+</a></li></ul></li><li class="dropdown-item"><h4>
+          微前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/micro/micro.html" class="nav-link">
+  微前端
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/webpack/webpack1.html" class="nav-link">
+  webpack基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/webpack/hmr.html" class="nav-link">
+  hmr原理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/webpack.html" class="nav-link">
+  webpack模块化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端工程化" class="dropdown-title"><span class="title">前端工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端工程化" class="mobile-dropdown-title"><span class="title">前端工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/engineering/engineering.html" class="nav-link">
+  yeoman
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/eslint.html" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/grunt.html" class="nav-link">
+  grunt
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/gulp.html" class="nav-link">
+  gulp
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/rollup.html" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><h4>
+          cli工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/engineering/env.html" class="nav-link">
+  环境变量
+</a></li><li class="dropdown-subitem"><a href="/myblog/engineering/commander.html" class="nav-link">
+  命令行交互工具
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/myblog/engineering/test.html" class="nav-link">
+  单元测试
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="面试题" class="dropdown-title"><span class="title">面试题</span> <span class="arrow down"></span></button> <button type="button" aria-label="面试题" class="mobile-dropdown-title"><span class="title">面试题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/interview/interview.html" class="nav-link">
+  面试题整理
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/algorithm.html" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/code-1.html" class="nav-link">
+  手写代码
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/interview-1.html" class="nav-link">
+  面试题精选
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/interview/iq.html" class="nav-link">
+  智力题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端系列" class="dropdown-title"><span class="title">后端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端系列" class="mobile-dropdown-title"><span class="title">后端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/re/development.html" class="nav-link">
+  开发机相关
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/mongodb.html" class="nav-link">
+  mongodb
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/devops.html" class="nav-link">
+  devops
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/shell.html" class="nav-link">
+  shell
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/re/docker.html" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端系列" class="dropdown-title"><span class="title">前端系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端系列" class="mobile-dropdown-title"><span class="title">前端系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/git/git.html" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/ssr/ssr.html" class="nav-link">
+  ssr
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/computer/computer.html" class="nav-link">
+  计算机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/regular/regular.html" class="nav-link">
+  正则表达式
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/route/route.html" class="nav-link">
+  前端路由
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/safe/safe.html" class="nav-link">
+  前端安全
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/module/module.html" class="nav-link">
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/code-style/code-style.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具
+</a></li><li class="dropdown-item"><h4>
+          浏览器
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/chrome/gc.html" class="nav-link">
+  GC算法
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/render.html" class="nav-link">
+  浏览器渲染
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/cross.html" class="nav-link">
+  跨域
+</a></li><li class="dropdown-subitem"><a href="/myblog/chrome/performance.html" class="nav-link">
+  Chrome性能分析
+</a></li></ul></li><li class="dropdown-item"><h4>
+          移动端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/mobile/cross.html" class="nav-link">
+  跨端技术
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/adaptation.html" class="nav-link">
+  移动端适配
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/h5.html" class="nav-link">
+  移动端h5开发
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/long-list.html" class="nav-link">
+  长列表优化
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/galacean.html" class="nav-link">
+  galacean
+</a></li><li class="dropdown-subitem"><a href="/myblog/mobile/gc-3d.html" class="nav-link">
+  galacean 3d
+</a></li></ul></li><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/design-pattern/design-pattern.html" class="nav-link">
+  设计模式简介
+</a></li><li class="dropdown-subitem"><a href="/myblog/design-pattern/object.html" class="nav-link">
+  面向对象编程
+</a></li></ul></li><li class="dropdown-item"><h4>
+          虚拟DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/virtual-dom/virtualdom.html" class="nav-link">
+  Virtual DOM
+</a></li><li class="dropdown-subitem"><a href="/myblog/virtual-dom/example.html" class="nav-link">
+  实例
+</a></li></ul></li><li class="dropdown-item"><h4>
+          渲染相关
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/webgl/canvas.html" class="nav-link">
+  canvas 和 svg
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具系列" class="dropdown-title"><span class="title">工具系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具系列" class="mobile-dropdown-title"><span class="title">工具系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myblog/tool/tool.html" class="nav-link">
+  常用工具和插件
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/npm.html" class="nav-link">
+  依赖管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/camera.html" class="nav-link">
+  相机基础
+</a></li><li class="dropdown-item"><!----> <a href="/myblog/tool/performance.html" class="nav-link">
+  performance
+</a></li><li class="dropdown-item"><h4>
+          第三方包
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myblog/tool/postcss.html" class="nav-link">
+  postcss
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/htmlparser2.html" class="nav-link">
+  htmlparser2
+</a></li><li class="dropdown-subitem"><a href="/myblog/tool/yaml.html" class="nav-link">
+  yaml
+</a></li></ul></li></ul></div></div> <a href="https://github.com/jinjingxuan" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Node基础</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/node/node-1.html" class="sidebar-link">初识Node.js</a></li><li><a href="/myblog/node/node-2.html" class="sidebar-link">模块化编程</a></li><li><a href="/myblog/node/node-3.html" class="sidebar-link">Node.js异步资源和包资源管理</a></li><li><a href="/myblog/node/node-4.html" class="sidebar-link">Node.js网络编程</a></li><li><a href="/myblog/node/node-5.html" class="sidebar-link">Node.js文件操作</a></li><li><a href="/myblog/node/node-6.html" class="sidebar-link">Node.js中处理数据I/O</a></li></ul></section></li><li><a href="/myblog/node/book.html" aria-current="page" class="active sidebar-link">精读《深入浅出NodeJs》</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/node/book.html#第一章-node-简介" class="sidebar-link">第一章 Node 简介</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#第二章-模块机制" class="sidebar-link">第二章 模块机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/node/book.html#基本概念" class="sidebar-link">基本概念</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#模块实现" class="sidebar-link">模块实现</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#缓存策略" class="sidebar-link">缓存策略</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#模块路径" class="sidebar-link">模块路径</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#模块编译" class="sidebar-link">模块编译</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#npm" class="sidebar-link">npm</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#第三章-异步-i-o" class="sidebar-link">第三章 异步 I/O</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/node/book.html#事件循环" class="sidebar-link">事件循环</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#观察者" class="sidebar-link">观察者</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#请求对象" class="sidebar-link">请求对象</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#执行回调" class="sidebar-link">执行回调</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#非-i-o-的异步-api" class="sidebar-link">非 I/O 的异步 API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/node/book.html#定时器" class="sidebar-link">定时器</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#process-nexttick" class="sidebar-link">process.nextTick</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#setimmediate" class="sidebar-link">setImmediate</a></li></ul></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#第五章-内存控制" class="sidebar-link">第五章 内存控制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/node/book.html#v8内存限制" class="sidebar-link">V8内存限制</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#v8的对象分配" class="sidebar-link">V8的对象分配</a></li><li class="sidebar-sub-header"><a href="/myblog/node/book.html#v8的垃圾回收机制" class="sidebar-link">V8的垃圾回收机制</a></li></ul></li></ul></li><li><a href="/myblog/node/express.html" class="sidebar-link">express</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="精读《深入浅出nodejs》"><a href="#精读《深入浅出nodejs》" class="header-anchor">#</a> 精读《深入浅出NodeJs》</h1> <h2 id="第一章-node-简介"><a href="#第一章-node-简介" class="header-anchor">#</a> 第一章 Node 简介</h2> <p>异步IO</p> <blockquote><p>Node 底层构建了许多异步 IO 的 API，从文件读取到网络请求，这样的意义在于，我们可以从语言层面很自然地进行并行 IO 操作，每个调用之前无须等待之前的 IO 调用结束，极大提升效率。</p></blockquote> <p>事件驱动</p> <blockquote><p>Node 将前端浏览器中广泛且成熟的事件引入后端，配合异步 IO，将事件点暴露给业务逻辑。事件编程的方式具有轻量级，松耦合，只关注事务点等优势。</p></blockquote> <p>单线程</p> <blockquote><p>优点：单线程的最大好处是不用像多线程编程那样处处在意状态的同步问题，这里没有死锁的存在，也没有线程上下文交换所带来性能上的开销。</p> <p>缺点：像浏览器中 js 与 UI 共用一个线程，js 长期执行会导致 UI 的渲染和响应被中断。在 Node 中，长时间的 CPU 占用也会导致后续的异步 IO 发不出调用，已完成的异步 IO 回调函数得不到及时执行。</p></blockquote> <p>跨平台</p> <blockquote><p>Node 在 v0.6.0 版本支持了 windows 平台，这主要得益于 Node 架构层面的改动，它在操作系统与 Node 上层模块系统之间构建了一层平台层架构，即 libuv。</p></blockquote> <h2 id="第二章-模块机制"><a href="#第二章-模块机制" class="header-anchor">#</a> 第二章 模块机制</h2> <h3 id="基本概念"><a href="#基本概念" class="header-anchor">#</a> 基本概念</h3> <p><strong>模块引用</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> math <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'math'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>模块定义</strong>：在 Node 中一个文件就是一个模块，将方法挂载在 exports 对象上作为属性即可定义导出的方式</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// math.js</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// program.js</span>
+<span class="token keyword">var</span> math <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'math'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">increment</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>模块标识</strong></p> <p>模块标识其实就是传递给 require 方法的参数，必须符合小驼峰命名，可以是相对路径，绝对路径，可以没有后缀 .js</p> <h3 id="模块实现"><a href="#模块实现" class="header-anchor">#</a> 模块实现</h3> <p>在 Node 中引入模块，需要经历以下三个步骤：</p> <ul><li>路径分析</li> <li>文件定位</li> <li>编译执行</li></ul> <p>在 Node 中，模块又分为两类</p> <ul><li>核心模块：Node 提供的模块</li> <li>文件模块：用户编写的模块</li></ul> <blockquote><p>核心模块部分在 Node 源代码的编译过程中，编译进了二进制执行文件，在 Node 进程启动时，部分核心模块就被直接加载进内存中，省略掉了文件定位和编译执行的步骤，且在路径分析中优先判断，故加载最快。</p> <p>文件模块则需要完整的路径分析，文件定位，编译执行，速度比核心模块慢。</p></blockquote> <h3 id="缓存策略"><a href="#缓存策略" class="header-anchor">#</a> 缓存策略</h3> <p>与前端浏览器会缓存静态脚本文件提高性能一样，Node对引入过的模块都会进行缓存，以减少二次引入时的开销。不同的地方在于，浏览器仅仅缓存文件，而 Node 缓存的是编译和执行之后的对象。</p> <h3 id="模块路径"><a href="#模块路径" class="header-anchor">#</a> 模块路径</h3> <p>模块标识符在 Node 中主要分为以下几类，核心模块，路径形式的文件模块，自定义模块，加载速度为：</p> <blockquote><p>缓存过的模块 &gt; 核心模块 &gt; 路径形式文件模块 &gt; 自定义模块</p></blockquote> <p>原因是自定义模块 Node 在定位时使用<strong>模块路径</strong>的查找策略，具体表现为一个路径组成的数组。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">[</span>
+  <span class="token string">'/home/usr/research/node_modules'</span><span class="token punctuation">,</span>
+  <span class="token string">'/home/usr/node_modules'</span><span class="token punctuation">,</span>
+  <span class="token string">'/node_modules'</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p>它生成的规则如下：</p> <ul><li>当前文件目录下的 node_modules 目录</li> <li>父目录下的 node_modules 目录</li> <li>父目录的父目录下的 node_modules 目录</li> <li>沿路径向上逐级递归，直到根目录下的 node_modules 目录</li></ul> <p>并且如果标识符不包含文件扩展名，Node 会按照 <code>.js</code>，<code>.json</code>，<code>.node</code> 的次序补足依次尝试。</p> <h3 id="模块编译"><a href="#模块编译" class="header-anchor">#</a> 模块编译</h3> <p>编译和执行是引入文件模块的最后一个阶段，对于不同的文件扩展名，载入方法也有所不同。</p> <ul><li>.js 文件：通过 fs 同步读取后编译执行</li> <li>.node 文件：C/C++编写的扩展文件</li> <li>.json 文件：通过 fs 同步读取后，JSON.parse 解析</li> <li>其余扩展名文件：均被当做 .js 文件载入</li></ul> <p><strong>JavaScript 模块</strong></p> <p>在 CommonJS 规范中，每个模块文件都存在着 <code>require</code>、<code>exports</code>、<code>modules</code>、<code>__filename</code>、<code>__dirname</code>，它们是从何而来呢？事实上，Node 对获取的 JavaScript 文件进行了头尾包装，一个正常的 JavaScript 文件会被包装成如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">exports<span class="token punctuation">,</span> require<span class="token punctuation">,</span> module<span class="token punctuation">,</span> __filename<span class="token punctuation">,</span> __dirname</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 模块代码实际存在于此处</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>在执行之后，模块的 exports 属性被返回给了调用方，exports 属性上的任何方法和属性都可以被外部调用到，但是模块中的其余变量或属性则不可直接被调用。</p> <p><code>module.exports.f = ...</code> 可以更简洁地写成 <code>exports.f = ...</code> ，相当于每个模块中存在一句<code>var exports = module.exports;</code>，<code>exports</code> 对象是通过形参的方式传入的，如果直接赋值形参会改变形参的引用，等于切断了<code>exports</code> 与 <code>module.exports</code> 的联系。</p> <div class="language-js extra-class"><pre class="language-js"><code>exports<span class="token punctuation">.</span>hello <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// 从模块的 require 中导出</span>
+exports <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">hello</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment">// 未导出，仅在模块中可用</span>
+</code></pre></div><p><a href="https://segmentfault.com/a/1190000010426778" target="_blank" rel="noopener noreferrer">exports、module.exports和export、export default到底是咋回事<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>C/C++ 模块</strong></p> <p><code>.node</code>的模块文件并不需要编译，因为他是 C/C++ 模块编译生成的，所以只有加载和执行的过程。Node 调用<code>dlopen</code>方法进行加载和执行。</p> <blockquote><p>*nix 下通过 gcc/g++ 等编译器编译为动态链接共享对象文件（.so），在 window 下则需要通过 Visual C++ 的编译器编译为动态链接库库文件（.dll），.node 扩展名其实只是为了看起来自然一些，在 *nix 下它是一个 .so 文件，在 windows 下它是一个 .dll 文件。dlopen 方法内部实现时也区分了平台。</p></blockquote> <p>其实在应用中，可能会频繁的出现位运算的需求，包括转码，编码等过程。如果用 JavaScript 来实现，CPU 资源将会耗费很多（JavaScript 的位运算效率较低），此时 C/C++ 模块的优势就体现出来了，我们也可以自己编写 C++ 扩展模块来提升性能。</p> <h3 id="npm"><a href="#npm" class="header-anchor">#</a> npm</h3> <p>CommonJS包规范是理论，NPM 是其中的一种实践。对于 Node 而言，NPM 帮助完成了第三方模块的发布，安装和依赖等。借助 NPM ，Node 与第三方模块之间形成了很好的生态系统。</p> <h2 id="第三章-异步-i-o"><a href="#第三章-异步-i-o" class="header-anchor">#</a> 第三章 异步 I/O</h2> <p>假设业务场景中有一组互不相关的任务需要完成，一般有两种方法：</p> <ul><li>单线程串行依次执行</li> <li>多线程并行完成</li></ul> <p>多线程是首选的，但是代价在于创建线程和执行期线程上下文切换的开销较大，且面临锁、状态同步等问题。但是多线程在多核 CPU 上能够有效提升 CPU 的利用率。</p> <p>单线程顺序执行缺点在于性能，任意一个略慢的任务都会导致后续执行代码被阻塞，在计算机资源中，通常I/O与CPU计算之间是可以并行执行的，但是同步的编程模型导致的问题是，I/O的进行会让后续任务继续等待，造成资源不能被更好地利用。</p> <p>Node 在两者之间给出了它的方案：利用单线程，远离多线程死锁，状态同步等问题；利用异步 I/O，让单线程远离阻塞，以更好得利用 CPU。异步 I/O 可以算作 Node 的特色，因为它是首个大规模将异步 I/O 应用在应用层上的平台，它力求在单线程上将资源分配得更高效。</p> <p>完成 Node 整个异步 I/O 环节需要：事件循环、观察者、请求对象、执行回调</p> <h3 id="事件循环"><a href="#事件循环" class="header-anchor">#</a> 事件循环</h3> <p>在进程启动时，Node 便会创建一个类似于 while(true) 的循环，每执行一次循环的过程成为 Tick，每个 Tick 的过程就是查看是否有事件待处理，如果有就取出事件及回调函数并执行。</p> <h3 id="观察者"><a href="#观察者" class="header-anchor">#</a> 观察者</h3> <p>在每个 Tick 的过程中，如何判断是否有事件需要处理呢？这里就需要观察者，判断是否有事件要处理的过程就是向这些观察者询问是否有要处理的事件。</p> <h3 id="请求对象"><a href="#请求对象" class="header-anchor">#</a> 请求对象</h3> <p>如我们调用<code>fs.open</code>时，JavaScript 会调用 Node 的核心模块，核心模块调用 C++ 内建模块，内建模块通过 libuv 进行系统调用，libuv 作为封装层，有两个平台的实现，实质上是调用了 <code>uv_fs_open</code> 方法，在调用过程中创建了<code>ESReqWrap</code>请求对象。</p> <p>至此，JavaScript 调用立即返回，JavaScript 线程可以继续执行当前任务的后续操作。当前的 I/O 操作在线程池中等待执行，不管他是否阻塞 I/O ，都不回影响 JavaScript 线程的后续执行，如此达到了异步的目的。</p> <p>请求对象是异步 I/O 过程中的重要中间产物，所有的状态都保存在这个对象中，包括送入线程池等待执行以及I/O操作完毕后的回调处理。</p> <h3 id="执行回调"><a href="#执行回调" class="header-anchor">#</a> 执行回调</h3> <p>组装好请求对象、送入 I/O 线程池等待执行，实际上完成了异步 I/O 的第一步，回调通知是第二步。</p> <p>这个过程中我们还调用了事件循环的 I/O 观察者，在每次 Tick 的执行中，它会检查线程池中是否有执行完的请求，如果存在，会将请求对象加入到 I/O 观察者的队列中，然后将其当作事件处理。</p> <p>至此，整个异步 I/O 的流程完全结束。</p> <p><img src="/myblog/assets/img/io.0541b657.jpeg" alt="io"></p> <h2 id="非-i-o-的异步-api"><a href="#非-i-o-的异步-api" class="header-anchor">#</a> 非 I/O 的异步 API</h2> <p>尽管我们在介绍 Node 时，多数情况下都会提到异步 I/O，但是 Node 中其实还存在一些与 I/O 无关的异步 API。</p> <p>setTimeout、setInterval、setImmediate、process.nextTick</p> <h3 id="定时器"><a href="#定时器" class="header-anchor">#</a> 定时器</h3> <p>setTimeout、setInterval 的实现原理与异步 I/O 比较类似，只是不需要 I/O 线程池的参与，创建的定时器会被插入到定时器观察者内部的一个红黑树中。每次 Tick 执行时从该红黑树中迭代取出定时器对象，检查是否超过定时时间，如果超过立即执行回调函数。</p> <p>问题在于它并非精确的，尽管事件循环非常快，但是如果某次循环占用的时间过多，那么下次循环时，它也许已经超时很久了。比如 setTimeout 设定一个任务在 10 毫秒后执行，但是在 9 毫秒后，有一个任务占用了 5 毫秒的 CPU 时间片，时间就已经过期 4 毫秒。</p> <h3 id="process-nexttick"><a href="#process-nexttick" class="header-anchor">#</a> process.nextTick</h3> <p>定时器需要动用红黑树，创建定时器对象和迭代等操作，较为浪费性能。实际上，process.nextTick 更为轻量。</p> <p>每次调用 process.nextTick ，只会将回调函数放入队列，在下一轮 Tick 时取出执行。</p> <h3 id="setimmediate"><a href="#setimmediate" class="header-anchor">#</a> setImmediate</h3> <p>setImmediate 与 process.nextTick 十分类似，只需记住 process.nextTick 观察者优先级高于 setImmediate</p> <div class="language-js extra-class"><pre class="language-js"><code>process<span class="token punctuation">.</span><span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'nextTick延迟执行'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">setImmediate</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setImmediate延迟执行'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'正常执行'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 正常执行</span>
+<span class="token comment">// nextTick延迟执行</span>
+<span class="token comment">// setImmediate延迟执行</span>
+</code></pre></div><h2 id="第五章-内存控制"><a href="#第五章-内存控制" class="header-anchor">#</a> 第五章 内存控制</h2> <p>Chrome 浏览器优异的性能背后离不开 V8，V8 的性能优势使得用 JavaScript 写高性能后台服务程序成为可能，在这样的契机下，Node 的作者选择了 JavaScript，选择了 V8，在事件驱动、非阻塞 I/O 模型的设计下实现了 Node。</p> <h3 id="v8内存限制"><a href="#v8内存限制" class="header-anchor">#</a> V8内存限制</h3> <p>在一般的后端开发语言中，内存使用基本没有什么限制，然而在 Node 中会有内存限制（64位系统下约为 1.4GB，32位系统下约为 0.7 GB），这会导致 Node 无法直接操作大内存对象，如读入 2GB 的文件。</p> <h3 id="v8的对象分配"><a href="#v8的对象分配" class="header-anchor">#</a> V8的对象分配</h3> <p>在 V8 中，所有的 JavaScript 对象都是通过堆来进行分配的，当我们在代码中声明变量并赋值时，所使用对象的内存就分配在堆中。至于 V8 为何要限制堆的大小，主要有两点原因：</p> <ul><li>表层原因：V8 最初是为浏览器而设计，不太可能遇到用大量内存的场景。</li> <li>深层原因：V8 垃圾回收的限制，因为垃圾回收会引起 JavaScript 线程暂停执行，如果内存过大，垃圾回收需要的时间会越多，应用的性能和响应能力都会直线下降。</li></ul> <p>当然也可以打开这个限制，不过需要注意这只是在启动时指定，无法在使用时根据情况自动扩充。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">node</span> --max-old-space-size<span class="token operator">=</span><span class="token number">1700</span> test.js <span class="token comment"># 单位为 MB，用于设置老生代内存最大值</span>
+<span class="token function">node</span> --max-new-space-size<span class="token operator">=</span><span class="token number">1024</span> test.js <span class="token comment"># 单位为 KB，用于设置新声代内存最大值</span>
+</code></pre></div><h3 id="v8的垃圾回收机制"><a href="#v8的垃圾回收机制" class="header-anchor">#</a> V8的垃圾回收机制</h3> <p>在 V8 中主要将内存分为新生代和老生代，新生代中是存活时间较短的对象，老生代中是存活时间较长的或常驻内存的对象。在默认设置下：</p> <ul><li>老生代在 64 位系统下为 1400 MB，在 32 位系统下为 700 MB</li> <li>新生代在 64 位系统下为 32 MB，在 32 位系统下为 16 MB</li></ul> <p>这也就解释了为何在 64 位系统下只能使用约 1.4 GB内存和在 32 位系统下只能使用约 0.7 GB内存</p> <h4 id="scavenge-算法"><a href="#scavenge-算法" class="header-anchor">#</a> Scavenge 算法</h4> <p>在分代的基础上，新生代的对象主要通过 Scavenge 算法进行垃圾回收，在 Scavenge 的具体实现中，主要采用了 Cheney 算法：</p> <blockquote><p>内存一分为二：From 空间和 To 空间</p> <p>分配对象时先在 From 空间分配，进行垃圾回收时，会检查 From 空间中的存活对象，这些存活对象将被复制到 To 空间，而非存活对象占用的空间将被释放，完成复制后，From 和 To 发生对换。</p></blockquote> <p>这种算法的缺点是只能使用堆内存中的一半，典型的空间换取时间的算法，无法大规模应用到所有垃圾回收中。但是特别适合应用在新生代中，因为新生代中对象生命周期较短，恰恰适合这个算法。</p> <h4 id="晋升"><a href="#晋升" class="header-anchor">#</a> 晋升</h4> <p>当一个对象经过多次复制依然存活时，它将会被认为是生命周期较长的对象，这种较长生命周期的对象随后会被移动到老生代中，采用新的算法进行管理。对象晋升的条件有2个：</p> <ol><li>对象是否经历过 Scavenge 回收</li> <li>To 空间的内存占用比超过限制</li></ol> <blockquote><p>当对象从 From 空间复制到 To 空间时，会检查它的内存地址是否已经经历过一次 Scavenge 回收，如果经历过了，将该对象从 From 空间复制到老生代空间中。</p> <p>当对象从 From 空间复制到 To 空间时，如果 To 空间已经使用了超过 25%，则这个对象直接晋升到老生代中。（25% 原因是因为当这次回收完成后，这个 To 空间将变回 From 空间，接下来的内存分配将在这个空间内进行，如果占比过高，会影响后续的内存分配）</p></blockquote> <h4 id="mark-sweep-mark-compact"><a href="#mark-sweep-mark-compact" class="header-anchor">#</a> Mark Sweep &amp; Mark-Compact</h4> <p><strong>标记清除</strong></p> <p>Mark Sweep 分为标记和清除两个阶段，在标记阶段遍历堆中的所有对象，并标记活着的对象，在随后的清除阶段，只清除没有被标记的对象。</p> <p>缺点：在进行一次标记清除时，内存空间会出现不连续的状态。如果后续需要分配一个大的对象，碎片空间无法完成分配。</p> <p><img src="/myblog/assets/img/sweep.1eba59e6.png" alt="sweep"></p> <p><strong>标记整理</strong></p> <p>在标记清除的基础上，如果对象被标记死亡，在整理的过程中，将活着的对象往一端移动，移动完成后，直接清理掉边界外的内存。</p> <p><img src="/myblog/assets/img/compact.3b61010d.png" alt="compact"></p> <table><thead><tr><th>回收算法</th> <th>Mark-Sweep</th> <th>Mark-Compact</th> <th>Scavenge</th></tr></thead> <tbody><tr><td>速度</td> <td>中等</td> <td>最慢</td> <td>最快</td></tr> <tr><td>空间开销</td> <td>少（有碎片）</td> <td>少（无碎片）</td> <td>双倍空间（无碎片）</td></tr> <tr><td>是否移动对象</td> <td>否</td> <td>是</td> <td>是</td></tr></tbody></table> <p>Mark-Compact 速度比 Mark-Sweep 慢，所以在取舍上，V8 主要使用 Mark-Sweep，在空间不足时对从新生代晋升过来的对象进行分配时才使用 Mark-Compact。</p> <h4 id="incremental-marking"><a href="#incremental-marking" class="header-anchor">#</a> Incremental Marking</h4> <p>为了避免出现 JavaScript 应用逻辑与垃圾回收器看到的不一致的情况，垃圾回收的3种基本算法都需要将应用逻辑暂停下来，这种行为称作&quot;全停顿&quot;，为了降低这种停顿时间，V8 先从标记阶段入手，将原本要一口气完成的动作改为增量标记，也就是拆分成许多小&quot;步进&quot;，每做完一&quot;步进&quot;，就让 JavaScript 应用逻辑执行一小会儿，垃圾回收与应用逻辑交替执行。</p> <p><img src="data:image/png;base64,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" alt="incremental_marking"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">3/9/2022, 11:41:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/node/node-6.html" class="prev">
+        Node.js中处理数据I/O
+      </a></span> <span class="next"><a href="/myblog/node/express.html">
+        express
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.9f4db6d8.js" defer></script><script src="/myblog/assets/js/2.08803d47.js" defer></script><script src="/myblog/assets/js/1.a370845a.js" defer></script><script src="/myblog/assets/js/39.6a80f40a.js" defer></script>
+  </body>
+</html>
