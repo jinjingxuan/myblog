@@ -453,7 +453,15 @@ module.exports = [{
                     {
                         text: '长列表优化',
                         link: '/mobile/long-list'
-                    }
+                    },
+                    {
+                        text: 'galacean',
+                        link: '/mobile/galacean'
+                    },
+                    {
+                        text: 'galacean 3d',
+                        link: '/mobile/gc-3d'
+                    },
                 ]
             },
             {

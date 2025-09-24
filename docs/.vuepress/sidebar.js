@@ -119,6 +119,8 @@ module.exports = {
         '/mobile/adaptation',
         '/mobile/h5',
         '/mobile/long-list',
+        '/mobile/galacean',
+        '/mobile/gc-3d',
     ],
     '/algorithm/': [
         '/algorithm/array',
